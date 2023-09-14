@@ -64,30 +64,36 @@ class PaymentPage extends Component
                     $this->fee = 350000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 100000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             } elseif (Auth::user()->participant->participant_type == 'professional presenter') {
                 if (Auth::user()->participant->attendance == 'offline') {
                     $this->fee = 750000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 250000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             } else {
                 if (Auth::user()->participant->attendance == 'offline') {
                     $this->fee = 550000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 150000;
                     $this->discount = $this->fee * 0.25;
                     $this->fee_after_discount = $this->fee - $this->discount;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             }
         } else {
@@ -96,30 +102,36 @@ class PaymentPage extends Component
                     $this->fee = 'IDR 350K / $24 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 'IDR 100K / $7 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             } elseif (Auth::user()->participant->participant_type == 'professional presenter') {
                 if (Auth::user()->participant->attendance == 'offline') {
                     $this->fee = 'IDR 750K / $50 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 'IDR 250K / $17 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             } else {
                 if (Auth::user()->participant->attendance == 'offline') {
                     $this->fee = 'IDR 550K / $37 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 } else {
                     $this->fee = 'IDR 150K / $10 USD';
                     $this->discount = 0;
                     $this->fee_after_discount =  $this->fee;
+                    $this->total_bill = $this->fee_after_discount;
                 }
             }
         }
