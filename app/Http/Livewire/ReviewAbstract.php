@@ -17,7 +17,7 @@ class ReviewAbstract extends Component
     protected $paginationTheme = 'bootstrap';
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
-    public $search = '', $search2, $abstract_review;
+    public $search = '', $search2, $abstract_review, $status_hki;
 
     //LOA
     public $full_name, $institution, $abstractTitle, $loa, $loaPath;
@@ -45,18 +45,25 @@ class ReviewAbstract extends Component
 
     public function showReview($id)
     {
-        $this->review = true;
-        $this->abstract_review = $id;
         $abstract = UploadAbstract::find($id);
-        $this->topic = $abstract->topic;
-        $this->type = $abstract->type;
-        $this->title = $abstract->title;
-        $this->keywords = $abstract->keywords;
-        $this->authors = $abstract->authors;
-        $this->abstract = $abstract->abstract;
-        $this->loa = $abstract->loa;
-        $this->institutions = $abstract->institutions;
-        $this->presenter = $abstract->presenter;
+        if($this->status_hki = $abstract->participant->hki_status == 'not yet validated'){
+            
+        return redirect('/review-abstract')->with('message', "Cannot review ".$abstract->participant->full_name1." 's abstract because his/her HKI member status has not been validated. click the member hki validation menu to validate!");
+        }else{
+            $this->review = true;
+            $this->abstract_review = $id;
+            $this->topic = $abstract->topic;
+            $this->type = $abstract->type;
+            $this->title = $abstract->title;
+            $this->keywords = $abstract->keywords;
+            $this->authors = $abstract->authors;
+            $this->abstract = $abstract->abstract;
+            $this->loa = $abstract->loa;
+            $this->institutions = $abstract->institutions;
+            $this->presenter = $abstract->presenter;
+        }
+        
+
     }
 
     public function showValidate()
