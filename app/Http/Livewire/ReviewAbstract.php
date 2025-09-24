@@ -7,6 +7,7 @@ use Livewire\Component;
 use PDF;
 use Livewire\WithPagination;
 use App\Models\UploadAbstract;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,7 @@ class ReviewAbstract extends Component
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
+    public $validVouchers = ['JICESTFST50RB', 'JICESTFST100RB'];
 
     //LOA
     public $full_name, $institution, $abstractTitle, $loa, $loaPath;
@@ -35,8 +37,10 @@ class ReviewAbstract extends Component
         $this->abstract = null;
         $this->institutions = null;
         $this->presenter = null;
+        $this->attendance = null;
         $this->abstract_review = null;
     }
+
 
     public function cancel()
     {
@@ -47,7 +51,7 @@ class ReviewAbstract extends Component
     {
         $abstract = UploadAbstract::find($id);
         if($this->status_hki = $abstract->participant->hki_status == 'not yet validated'){
-            
+
         return redirect('/review-abstract')->with('message', "Cannot review ".$abstract->participant->full_name1." 's abstract because his/her HKI member status has not been validated. click the member hki validation menu to validate!");
         }else{
             $this->review = true;
@@ -59,69 +63,85 @@ class ReviewAbstract extends Component
             $this->authors = $abstract->authors;
             $this->abstract = $abstract->abstract;
             $this->loa = $abstract->loa;
+            $this->attendance = $abstract->attendance;
             $this->institutions = $abstract->institutions;
             $this->presenter = $abstract->presenter;
         }
-        
 
+
+    }
+    
+    public function applyDiscount($fee, $amount1, $amount2)
+    {
+        // Extract the IDR and USD amounts using regular expressions
+        preg_match('/IDR ([\d.,]+)/', $fee, $idrMatch);
+        preg_match('/\$([\d.]+)/', $fee, $usdMatch);
+
+        // Get the extracted amounts, convert them to numbers, and apply discounts
+        $idr = isset($idrMatch[1]) ? floatval(str_replace('.', '', $idrMatch[1])) : 0;
+        $usd = isset($usdMatch[1]) ? floatval($usdMatch[1]) : 0;
+
+        // Apply the discount
+        $idrDiscounted = max(0, $idr - $amount1);  // Ensure it doesn't go negative
+        $usdDiscounted = max(0, $usd - $amount2);
+
+        // Format the results back into a string
+        $newFee = 'IDR ' . number_format($idrDiscounted, 0, ',', '.') . ' / $' . number_format($usdDiscounted, 1) . ' USD';
+
+        return $newFee;
     }
 
     public function showValidate()
     {
         $participant = UploadAbstract::find($this->abstract_review)->participant;
-        if ($participant->hki_status == 'valid') {
-            if ($participant->participant_type == 'participant') {
-                if ($participant->attendance == 'offline') {
-                    $harga = 350000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                } else {
-                    $harga = 100000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                }
-            } elseif ($participant->participant_type == 'professional presenter') {
-                if ($participant->attendance == 'offline') {
-                    $harga = 750000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                } else {
-                    $harga = 250000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                }
+
+        $participantType = $participant->participant_type;
+        $attendance = $participant->attendance;
+
+        if ($participantType == 'presenter_reguler') {
+            if ($attendance == 'offline') {
+                $this->fee = 'IDR 600.000 / $60 USD';
             } else {
-                if ($participant->attendance == 'offline') {
-                    $harga = 550000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                } else {
-                    $harga = 150000;
-                    $discount = $harga * 0.25;
-                    $this->fee = 'IDR ' . $harga - $discount;
-                }
+                $this->fee = 'IDR 400.000 / $40 USD';
+            }
+        } elseif ($participantType == 'presenter_student') {
+            if ($attendance == 'offline') {
+                $this->fee = 'IDR 350.000 / $35 USD';
+            } else {
+                $this->fee = 'IDR 300.000 / $30 USD';
+            }
+        } elseif ($participantType == 'participant_reguler') {
+            if ($attendance == 'offline') {
+                $this->fee = 'IDR 200.000 / $20 USD';
+            } else {
+                $this->fee = 'IDR 150.000 / $15 USD';
+            }
+        } elseif ($participantType == 'participant_student') {
+            if ($attendance == 'offline') {
+                $this->fee = 'IDR 125.000 / $12.5 USD';
+            } else {
+                $this->fee = 'IDR 75.000 / $7.5 USD';
             }
         } else {
-            if ($participant->participant_type == 'participant') {
-                if ($participant->attendance == 'offline') {
-                    $this->fee = 'IDR 350.000 / $24 USD';
-                } else {
-                    $this->fee = 'IDR 100.000 / $7 USD';
-                }
-            } elseif ($participant->participant_type == 'professional presenter') {
-                if ($participant->attendance == 'offline') {
-                    $this->fee = 'IDR 750.000 / $50 USD';
-                } else {
-                    $this->fee = 'IDR 250.000 / $17 USD';
-                }
+            if ($attendance == 'offline') {
+                $this->fee = 'IDR 175.000 / $15 USD';
             } else {
-                if ($participant->attendance == 'offline') {
-                    $this->fee = 'IDR 550.000 / $37 USD';
-                } else {
-                    $this->fee = 'IDR 150.000 / $10 USD';
-                }
+                $this->fee = 'IDR 125.000 / $10 USD';
             }
         }
+
+        $user_id = $participant->user_id;
+        $user = User::where('id', $user_id)->first();
+        // $this->fee = $user;
+
+        if ($user->voucher != null) {
+            if ($user->voucher == $this->validVouchers[0]) {
+                $this->fee = $this->applyDiscount($this->fee, 50000, 5);
+            } else {
+                $this->fee = $this->applyDiscount($this->fee, 100000, 10);
+            }
+        }
+
         $this->full_name = $participant->full_name1;
         $this->institution = $participant->institution;
         $this->abstractTitle = UploadAbstract::find($this->abstract_review)->title;
@@ -145,8 +165,8 @@ class ReviewAbstract extends Component
             'institution' => $this->institution,
             'abstractTitle' => $this->abstractTitle
         ])->setPaper('a4', 'potrait');
-        Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
-        $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
+        // Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
+        // $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
         $invoice = PDF::loadView('administrator.pdf.invoice', [
             'full_name' => $this->full_name,
             'fee' => $this->fee,
@@ -167,36 +187,33 @@ class ReviewAbstract extends Component
             Storage::path('uploads/' . $this->loaPath),
             Storage::path('uploads/' . $this->invoicePath),
         ];
-        $linkLoa = "'https://icics2023.unja.ac.id/uploads/" . $this->loaPath . "'";
-        $linkInvoice = "'https://icics2023.unja.ac.id/uploads/" . $this->invoicePath . "'";
+        // $linkLoa = "'https://jicest.unja.ac.id/uploads/" . $this->loaPath . "'";
+        $linkInvoice = "'https://jicest.unja.ac.id/uploads/" . $this->invoicePath . "'";
 
         Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
         Dear" . $this->full_name . ", <br>
-        Congratulation! We are happy to inform you that your abstract for The 11st International Conference of the
-        Indonesian
-        Chemical Society
-        (ICICS 2023) <br>
+        Congratulation! We are happy to inform you that your abstract for The 2nd Jambi International Conference on the
+        Enginering, Science, and Technology
+        (JICEST 2024) <br>
         Title of abstract : <strong>" . $this->abstractTitle . "</strong> has been accepted. <br>
-        <a href=" . $linkLoa . ">Download LOA</a>
-        <br>
         <a href=" . $linkInvoice . ">Download Invoice</a>
-        <br>  
         <br>
-        It is our great pleasure therefore to request that you submit your full paper, no later than September 30th
-        2023 by following the template as attached in the website: <a href='icics2023.unja.ac.id'>icics2023.unja.ac.id</a>. <br>
-        In addition, you are requested to proceed with the payment of the registration fee (no later than September 16th
-        2023). <br> <br>
+        <br>
+        <br>
+        It is our great pleasure therefore to request that you submit your full paper, no later than October 10th
+        2024 by following the template as attached in the website: <a href='jicest.unja.ac.id'>jicest.unja.ac.id</a>. <br>
+        In addition, you are requested to proceed with the payment of the registration fee (no later than October 17th
+        2024). <br> <br>
         After finishing the payment, kindly send the receipt to the committee via website. Here is the bank information
         detail: <br>
-        Account name : Perkumpulan Indonesian Chemical Society <br>
-        Account number : 698124931 <br>
-        Bank name : Bank Negara Indonesia (BNI) <br> <br>
+        Account name : RPL 012 BLU UNJA UTK OPS PENERIMAAN <br>
+        Account number : 0003801300008828 <br>
+        Bank name : Bank BTN <br> <br>
         For the purpose of the conference proceeding, we also require that you submit a detailed resume. Please kindly
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
-        (icics2023@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
+        (jicest@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
-        Steering Committee ICICS 2023</p>"));
-
+        Steering Committee JICEST 2024</p>"));
         return redirect('/review-abstract')->with('message', 'Review succefully !');
     }
 
@@ -209,7 +226,7 @@ class ReviewAbstract extends Component
             'reviewed_by' => Auth::user()->email
         ]);
         Mail::to($email)->send(new SendMail('Abstract Rejected', "Dear Author,
-        Sorry, your article " . $abstract . " has been rejected to be presented at the 11st ICICS 2023 Conference. Thank you for your submission , however we hope you will consider submitting again next time"));
+        Sorry, your article " . $abstract . " has been rejected to be presented at the 11st ICICS 2024 Conference. Thank you for your submission , however we hope you will consider submitting again next time"));
         session()->flash('message', 'Review succesfully !');
         return redirect('/review-abstract')->with('message', 'Review succefully !');
     }

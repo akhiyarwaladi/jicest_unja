@@ -18,7 +18,7 @@
     @endif
     <div class="col-lg-12">
         <div class="row">
-            <div class="table-responsive">
+            <div class="table-responsive" style="overflow-x:auto;">
                 <table class="table table-bordered">
                     <thead>
                         <tr>

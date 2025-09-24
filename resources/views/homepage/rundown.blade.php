@@ -1,588 +1,69 @@
-@extends('layouts.main')
+@extends('layouts.main-tailwind')
+
+@php
+    $header = "";//"flex items-center justify-center font-bold text-xl w-1/2 bg-white min-h-[130px] ";
+
+    $container = "";//"max-w-[700px] w-full w-full flex text-center items-center bg-gradient-to-r from-orange-400 to-pink-400 rounded-md";
+
+    $child = "";//"max-w-[500px] w-full rounded-sm px-3 text-lg font-semibold min-w-[150px] bg-white "
+
+    $bgGradient = "bg-gradient-to-r from-orange-300 to-pink-300";
+@endphp
 
 @section('content')
     <!-- Contact Form Section Begin -->
-    <section class="contact-from-section spad" style="margin-top:200px" style="padding-top:0px">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Rundown ICICS 2023</h2>
-                        {{-- <p>Fill in the form below to register.</p> --}}
+    <section
+        class="pt-[200px] pb-20 w-full px-2"
+    >
+        <header class="text-3xl font-bold text-center">RUNDOWN of JICEST 2024</header>
+        <div class="italic font-[300] text-lg text-center">29 October 2024</div>
+        <div class=" w-full flex justify-center">
+            <div class="max-w-xl flex flex-col w-full justify-center items-center gap-4">
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Registration</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">07:00 - 08:00</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
                     </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="card" style="border: 0px">
-                        <div class="card-body">
-                            <section class="schedule-section">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="schedule-tab">
-                                                <ul class="nav nav-tabs" role="tablist">
-                                                    <li class="nav-item col-3" style="padding:0px; margin:0px">
-                                                        <a class="nav-link active" data-toggle="tab" href="#tabs-1"
-                                                            role="tab">
-                                                            <h5>Day 1</h5>
-                                                            <p>November 14, 2023</p>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item col-3" style="padding:0px; margin:0px">
-                                                        <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                                            <h5>Day 2</h5>
-                                                            <p>November 15, 2023</p>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item col-3" style="padding:0px; margin:0px">
-                                                        <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                                            <h5>Day 3</h5>
-                                                            <p>November 16, 2023</p>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item col-3" style="padding:0px; margin:0px">
-                                                        <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                                            <h5>Day 4</h5>
-                                                            <p>November 17, 2023</p>
-                                                        </a>
-                                                    </li>
-                                                </ul><!-- Tab panes -->
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Arrival and Registration</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Committee
-                                                                                </li>
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 13.00-18.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Gala Dinner</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> PNHKI, Branch
-                                                                                    Head, FKJKI
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 19.30-22.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>FGD (Facility Sharing, MBKM and
-                                                                                International Accreditation)</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> PNHKI,
-                                                                                    Branch Head, FKJKI
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 09.00-13.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>HKI National Meeting and Forum of Heads of
-                                                                                Chemistry Departments Indonesia
-                                                                            </h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> HKI Center
-                                                                                    Manager
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 14.00-17.30
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Congress HKI</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> HKI Center
-                                                                                    Manager
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 19.00-22.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Opening Ceremony</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Rahmi,
-                                                                                    S.Pd., M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 08.00-08.10
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Presentation dance</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Rahmi,
-                                                                                    S.Pd., M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 08.10-08.30
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Indonesian National Anthem</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i>
-                                                                                    Anjelli/Kania Difa
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 08.30-08.45
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Committee Chair Report</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Dr.
-                                                                                    Madyawati Latief, S.P., M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 08.45-09.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Speech by the Head of HKI Jambi Branch</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Prof. Drs.
-                                                                                    Sutrisno, Ph.D.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 09.00-09.15
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Speech by the Head of Central HKI</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Dr. Sukro
-                                                                                    Muhab, M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 09.15-09.30
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Pray</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Ustadz
-                                                                                    Supian
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 09.30-09.40
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Coffee Break</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Restina
-                                                                                    Bemis, S.Si., M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 09.40-10.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Keynote Speaker</h4>
-
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> 1. Prof.
-                                                                                    Sedat Ballikaya, Ph.D(Istanbul
-                                                                                    University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> 2. Prof.
-                                                                                    Teruna Siahaan, Ph.D (Kansas
-                                                                                    University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> 3.
-                                                                                    Prof.Dr.Ir.Muh.Nurdin,
-                                                                                    M.Sc. (Halu Oleo University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> 4. Dr.
-                                                                                    AgusHaryono, (BRIN)
-                                                                                </li>
-                                                                            </ul>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 08:00 am -
-                                                                                10:00 AM</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Break</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> All
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 12.30-13.30
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Parallel Seminars</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Prof. Dyah
-                                                                                    Iswantini (IPB University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Nazaruddin,
-                                                                                    S.Si., M.Si., Ph.D(Jambi University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Prof. Yuli
-                                                                                    Rahmawati, Ph.D (Jakarta State
-                                                                                    University)
-                                                                                </li>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Prof.
-                                                                                    Indriana Kartini, Ph.D
-                                                                                    (Gadjah Mada University)
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 13.30-17.30
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <h4>Closing Ceremony</h4>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> All
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> 17.30-18.00
-                                                                                WIB</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Swissbell-Hotel, Jambi
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                                        <div class="st-content">
-                                                            <div class="container">
-                                                                <div class="row">
-
-                                                                    <div class="col-lg-8" style="padding-left: 5%">
-                                                                        <div class="sc-text">
-                                                                            <ul>
-                                                                                <h4>Field Trip to Merangin Geopark (Option
-                                                                                    1)
-
-                                                                                </h4>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <h4>Field trip to Muaro Jambi Temple, Jambi
-                                                                                    City, Jambi Batik (Seberang City)
-                                                                                    (Option 2)</h4>
-                                                                            </ul>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-user"></i> Rahmi,
-                                                                                    S.Pd., M.Si.
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
-                                                                        <ul class="sc-widget">
-                                                                            <li><i class="fa fa-clock-o"></i> Full Day</li>
-                                                                            <li><i class="fa fa-map-marker"></i>
-                                                                                Jambi City
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
+                </section>
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Opening Ceremony</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">08:00 - 08:30</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
                     </div>
-                </div>
+                </section>
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Planary Session</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">08:30 - 12:00</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
+                    </div>
+                </section>
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Break</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">12:00 - 13:00</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
+                    </div>
+                </section>
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Parallel Session</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">13:00 - 16:30</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
+                    </div>
+                </section>
+                <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">
+                    <div class=" font-semibold min-w-[150px]">Closing Ceremony</div>
+                    <div class="">
+                        <div class="text-sm p-2 bg-white shadow-md w-fit rounded-md py-1">16:30 - 17:00</div>
+                        <div class="text-sm ">Senate Meeting Building of Universitas Jambi</div>
+                    </div>
+                </section>
             </div>
         </div>
+
     </section>
     <!-- Contact Form Section End -->
 @endsection

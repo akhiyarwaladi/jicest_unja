@@ -18,10 +18,12 @@
                                     href="/registered-participant" style="font-size:16px">Registered
                                     User</a>
                             </li>
+                            <!--
                             <li class="nav-item" style="width:100%">
                                 <a class="nav-link {{ $title == 'Validation HKI Member' ? 'active' : '' }}"
                                     href="/validation-hki-member" style="font-size:16px">Validation HKI member</a>
                             </li>
+                            -->
                             <li class="nav-item" style="width:100%">
                                 <a class="nav-link {{ $title == 'Review Abstract' ? 'active' : '' }}"
                                     href="/review-abstract" style="font-size:16px">Review Abstract</a>

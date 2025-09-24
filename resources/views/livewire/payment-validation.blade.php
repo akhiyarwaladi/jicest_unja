@@ -48,6 +48,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Attendance</th>
                                 <th scope="col">Total Bill</th>
                                 <th scope="col">Invoice For</th>
                                 <th scope="col">Status</th>
@@ -64,25 +65,28 @@
                             @endif
                             @foreach ($payments as $item)
                                 <tr>
-                                    <td>{{ ($payments->currentpage() - 1) * $payments->perpage() + $loop->index + 1 }}
-                                    </td>
+                                    <td>{{ ($payments->currentpage() - 1) * $payments->perpage() + $loop->index + 1 }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->participant->user->email }}</td>
-                                    <td>{{ $item->total_bill }}</td>
-                                    <td>{{ $item->upload_abstract_id == null ? 'participant' : $item->uploadAbstract->title }}
+                                    <td>
+                                        @if ($item->participant->attendance)
+                                            {{ $item->participant->attendance }}
+                                        @else
+                                            N/A
+                                        @endif
                                     </td>
+                                    <td>{{ $item->total_bill }}</td>
+                                    <td>{{ $item->upload_abstract_id == null ? 'participant' : $item->uploadAbstract->title }}</td>
                                     <td>{{ $item->validation }}</td>
                                     <td>{{ $item->validated_by }}</td>
                                     <td>
                                         @if ($item->receipt)
-                                            <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank"
-                                                style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
-                                                    aria-hidden="true"></i>
+                                            <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank" style="color:red; font-size:20px">
+                                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             </a>
                                         @endif
                                     </td>
-                                    <td><button class="btn btn-primary"
-                                            wire:click="showDetail('{{ $item->id }}')">Validate</button></td>
+                                    <td><button class="btn btn-primary" wire:click="showDetail('{{ $item->id }}')">Validate</button></td>
                                 </tr>
                             @endforeach
                         </tbody>

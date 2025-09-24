@@ -1,3 +1,39 @@
+@php
+    $topics = [
+        'Engineering' => [
+            'sustainable_engineering' => 'Sustainable Engineering',
+            'socio_engineering' => 'Socio-Engineering',
+            'technopreneurship' => 'Technopreneurship',
+            'renewable_energy' => 'Renewable Energy',
+            'advanced_material' => 'Advanced Material',
+        ],
+        'Science & Technology' => [
+            'climate_change' => 'Climate Change',
+            'big_data_analytics' => 'Big Data and Analytics',
+            'food_science_technology' => 'Food Science and Technology',
+            'bio_technology' => 'Bio Technology',
+            'ethnobiology' => 'Ethnobiology',
+            'green_chemistry' => 'Green Chemistry',
+            'bio_medic_technology' => 'Bio Medic Technology',
+            'biodiversity' => 'Biodiversity',
+            'earth_science' => 'Earth Science',
+        ],
+        'Edu Technology' => [
+            'digital_transformation_education' => 'Digital Transformation in Education',
+            'stem_education' => 'STEM (Science, Technology, Engineering, and Mathematics) Education',
+        ],
+    ];
+    
+    function getTopicLabel($topicValue, $topics) {
+        foreach ($topics as $category => $options) {
+            if (array_key_exists($topicValue, $options)) {
+                return $options[$topicValue]; // Return the label
+            }
+        }
+        return null; // Return null if not found
+    }
+@endphp
+
 <div>
 
     @if ($review !== true)
@@ -99,7 +135,6 @@
         </div>
     @else
         <a class="btn btn-warning my-3" wire:click='cancel()'>Back</a>
-
         <div class="row">
             <div class="form-group mx-3">
                 <label for="topic">
@@ -107,16 +142,24 @@
                 </label>
                 <select disabled class="custom-select @error('topic') is-invalid @enderror" id="topic"
                     name="topic" wire:model='topic'>
+                    <!--<option value="">Choose One</option>-->
+                    <!--<option value="organic and bio chemistry">Organic and Bio Chemistry</option>-->
+                    <!--<option value="analytical and enviromental chemistry">Analytical and Enviromental-->
+                    <!--    Chemistry-->
+                    <!--</option>-->
+                    <!--<option value="inorganic and material chemistry">Inorganic and Material Chemistry-->
+                    <!--</option>-->
+                    <!--<option value="physical and computation chemistry">Physical and Computation Chemistry-->
+                    <!--</option>-->
+                    <!--<option value="chemical education">Chemical Education</option>-->
                     <option value="">Choose One</option>
-                    <option value="organic and bio chemistry">Organic and Bio Chemistry</option>
-                    <option value="analytical and enviromental chemistry">Analytical and Enviromental
-                        Chemistry
-                    </option>
-                    <option value="inorganic and material chemistry">Inorganic and Material Chemistry
-                    </option>
-                    <option value="physical and computation chemistry">Physical and Computation Chemistry
-                    </option>
-                    <option value="chemical education">Chemical Education</option>
+                     @foreach($topics as $category => $options)
+                        <optgroup label="{{ $category }}">
+                            @foreach($options as $value => $label)
+                                <option value="{{ $value }}" @if ($topic == $value) selected @endif>{{ $label }}</option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
                 </select>
                 @error('topic')
                     <span class="invalid-feedback">
@@ -269,10 +312,11 @@
                                 </span>
                             @enderror
                         </div>
+
                         <div class="form-group">
                             <label for="fee">Fee</label>
-                            <input type="text" class="form-control @error('fee') is-invalid @enderror"
-                                id="fee" aria-describedby="emailHelp" name="fee" wire:model='fee'>
+                            <input type="text" readonly class="form-control @error('fee') is-invalid @enderror"
+                                id="fee" aria-describedby="emailHelp" name="fee" wire:model="fee">
                             @error('fee')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -304,3 +348,4 @@
         </script>
     @endsection
 </div>
+

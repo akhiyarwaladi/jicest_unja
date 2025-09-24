@@ -28,6 +28,7 @@ class RegisteredExport extends DefaultValueBinder implements FromCollection, Wit
             'H' => NumberFormat::FORMAT_TEXT,
             'I' => NumberFormat::FORMAT_TEXT,
             'J' => NumberFormat::FORMAT_TEXT,
+            'K' => NumberFormat::FORMAT_TEXT,
         ];
     }
 
@@ -61,12 +62,13 @@ class RegisteredExport extends DefaultValueBinder implements FromCollection, Wit
             $participant->address,
             $participant->hki_id,
             $participant->hki_status,
-            $participant->phone
+            $participant->phone,
+            $participant->attendance
         ];
     }
 
     public function headings(): array
     {
-        return ['Email', 'Email Velidation', 'Full Name', 'Full Name (with academic title)', 'Participant Type', 'Institution', 'Address', 'HKI ID', 'Status HKI Member', 'Phone'];
+        return ['Email', 'Email Velidation', 'Full Name', 'Full Name (with academic title)', 'Participant Type', 'Institution', 'Address', 'HKI ID', 'Status HKI Member', 'Phone', 'attendance'];
     }
 }

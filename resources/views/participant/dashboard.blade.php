@@ -1,8 +1,8 @@
 @extends('layouts.participant')
 
 @section('content-dashboard')
-    <div class="row mx-3">
-        @if (Auth::user()->participant->participant_type !== 'participant')
+    <div class="">
+        @if (!in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler', 'participant_student']))
             @if (Auth::user()->participant->uploadAbstracts->first())
                 <p><strong>Abstract Information : </strong>Your abstract status is
                     <strong>{{ Auth::user()->participant->uploadAbstracts->first()->status }}</strong>
@@ -23,8 +23,8 @@
         @endif
     </div>
     <div class="row mx-3">
-        @if (Auth::user()->participant->participant_type !== 'participant')
-            <a href="/download-template-article" class="text-primary"><i class="fa fa-file-text-o"style="font-size:100px"
+        @if (!in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler', 'participant_student']))
+            <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2024.docx" class="text-primary"><i class="fa fa-file-text-o"style="font-size:100px"
                     aria-hidden="true"></i>
                 <br>
                 Template Article

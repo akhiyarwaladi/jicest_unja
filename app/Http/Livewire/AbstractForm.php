@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AbstractForm extends Component
 {
-    public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
+    public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter, $status;
     public $add = false, $edit = false, $abstract_edit_id, $abstract_delete_id;
+    public $canEdit = false, $editId;
 
     public function mount()
     {
@@ -19,7 +20,7 @@ class AbstractForm extends Component
     {
         return
             [
-                'topic' => 'required|in:organic and bio chemistry,analytical and enviromental chemistry,inorganic and material chemistry,physical and computation chemistry,chemical education',
+                'topic' => 'required|in:sustainable_engineering,socio_engineering,technopreneurship,renewable_energy,advanced_material,climate_change,big_data_analytics,food_science_technology,bio_technology,ethnobiology,green_chemistry,bio_medic_technology,biodiversity,earth_science,digital_transformation_education,stem_education',
                 'type' => 'required',
                 'title' => 'required',
                 'authors' => 'required',
@@ -29,11 +30,12 @@ class AbstractForm extends Component
                 'presenter' => 'required',
             ];
     }
+    
 
     //Custom Errror messages for validation
     protected $messages = [
         'topic.required' => 'topic is required !',
-        'topic.in' => 'topic can only contain (Organic and Bio Chemistry, Analytical and Enviromental Chemistry, Inorganic and Material Chemistry, Physical and Computation Chemistry, Chemical Education) !',
+        'topic.in' => 'ERRORR topic can only contain (Organic and Bio Chemistry, Analytical and Enviromental Chemistry, Inorganic and Material Chemistry, Physical and Computation Chemistry, Chemical Education) !',
         'type.required' => 'Type is required !',
         'title.required' => 'Title is required !',
         'keywords.required' => 'Keywords is required !',
@@ -57,6 +59,10 @@ class AbstractForm extends Component
         $this->resetValidation();
     }
 
+
+    public function editItem() {
+        $this->edit = !$this->edit;
+    }
 
     public function empty()
     {
@@ -85,6 +91,7 @@ class AbstractForm extends Component
         $this->institutions = $abstract->institutions;
         $this->presenter = $abstract->presenter;
         $this->edit = true;
+        $this->status = "accepted";//$abstract->status;
     }
 
     public function update()

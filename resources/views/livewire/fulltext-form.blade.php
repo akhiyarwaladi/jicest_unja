@@ -1,5 +1,7 @@
+
 <div>
     @if ($add == true)
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
@@ -9,7 +11,6 @@
         </div>
         <a class="btn btn-warning my-3" wire:click='cancel()'>Back</a>
         <form wire:submit.prevent="save">
-
             <div class="form-group">
                 <label for="payment_id">
                     Upload For Abstract
@@ -17,9 +18,11 @@
                 <select class="custom-select @error('payment_id') is-invalid @enderror" id="payment_id" name="payment_id"
                     wire:model='payment_id'>
                     <option value="">Choose One</option>
-                    @foreach ($payment as $item)
-                        <option value="{{ $item->id }}">{{ $item->uploadAbstract->title }}</option>
-                    @endforeach
+                        @foreach ($payment as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->uploadAbstract->title ?? 'N/A' }}
+                            </option>
+                        @endforeach
                 </select>
                 @error('payment_id')
                     <span class="invalid-feedback">
@@ -60,6 +63,9 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
         </form>
+
+
+
     @else
         @if (count($payment) == 0)
             <button class="btn btn-primary" disabled>Upload Paper</button>
@@ -74,36 +80,38 @@
                 </button>
             </div>
         @endif
-
         @if (count($fulltexts) !== 0)
-            <table class="table my-3">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">File</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Validated by</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $a = 0;
-                    @endphp
-                    @foreach ($fulltexts as $item)
+            <div style="overflow-x:auto;">
+                <table class="table my-3">
+                    <thead class="thead-light">
                         <tr>
-                            <th scope="row">{{ ++$a }}</th>
-                            <td>{{ $item->title }}</td>
-                            <td><a href="{{ asset('uploads/' . $item->fulltext) }}" target="_blank"
-                                    style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
-                                        aria-hidden="true"></i>
-                                </a></td>
-                            <td>{{ $item->validation }}</td>
-                            <td>{{ $item->validated_by }}</td>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">File</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Validated by</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @php
+                            $a = 0;
+                        @endphp
+                        @foreach ($fulltexts as $item)
+                            <tr>
+                                <th scope="row">{{ ++$a }}</th>
+                                <td>{{ $item->title }}</td>
+                                <td><a href="{{ asset('uploads/' . $item->fulltext) }}" target="_blank"
+                                        style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
+                                            aria-hidden="true"></i>
+                                    </a></td>
+                                <td>{{ $item->validation }}</td>
+                                <td>{{ $item->validated_by }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endif
+
     @endif
 </div>

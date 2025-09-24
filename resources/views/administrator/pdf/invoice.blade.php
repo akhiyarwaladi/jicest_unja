@@ -9,6 +9,9 @@
 
 <body>
     <div class="row justify-content-center">
+        @php
+            $early = false;
+        @endphp
         <div style="width:100%">
             <div class="row justify-content-center"style="width:100%" style="margin:0px 5px">
                 <table style="width:100%">
@@ -18,19 +21,15 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                The 11st International Conference of the Indonesian Chemical Society <br>(ICICS 2023)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2024)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
-                                DEPARTMENT OF CHEMISTRY <br>
                                 FACULTY OF SCIENCE AND
                                 TECHNOLOGY <br>
-                                UNIVERSITAS JAMBI</h6>
+                                JAMBI UNIVERSITY</h6>
                             <p style="text-align: center; font-size:14px; margin:0; padding:0">
-                                Email : icics2023@unja.ac.id; Website : https://icics2023.unja.ac.id
+                                Email : jicest@unja.ac.id; Website : https://jicest.unja.ac.id
                             </p>
-                        </td>
-                        <td style="width:15%">
-                            <img src="{{ url('assets/img/logo-fix.png') }}" width="150px" alt="">
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +42,7 @@
                 <table style="width:100%; border-spacing:10px; font-size:16px !important">
                     <tr>
                         <td style="width: 20%; font-weight:bold; ">
-                            Bill for
+                            Bill for 
                         </td>
                         <td style="width: 20%; font-weight:bold;">Issued Date</td>
                         <td style="width: 40%; font-weight:bold;">Total bill</td>
@@ -64,9 +63,9 @@
                         <td style="width: 20%; font-weight:bold;">Category Product</td>
                     </tr>
                     <tr>
-                        <td>Perkumpulan Indonesian Chemical Society</td>
-                        <td>Bank BNI</td>
-                        <td>The 11st International Conference of the Indonesian Chemical Society (ICICS 2023)</td>
+                        <td>RPL 012 BLU UNJA UTK OPS PENERIMAAN</td>
+                        <td>Bank BTN</td>
+                        <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2024)</td>
                         <td>Seminar</td>
                     </tr>
                 </table>
@@ -92,9 +91,10 @@
                         <td style="padding:5px">{{ $fee }}</td>
                         <td style="padding:5px">1</td>
                         <td style="padding:5px">{{ $fee }}</td>
-                        <td style="padding:5px">698124931</td>
-                        <td style="padding:5px">{{ date('d F Y') }}</td>
-                        <td style="padding:5px">30 September 2023</td>
+                        <td style="padding:5px">0003801300008828</td>
+                        <td style="padding:5px">{{$early ? "01 September 2024" : "1 October 2024"}}</td>
+                        <td style="padding:5px">{{$early ? "01 October 2024" : \Carbon\Carbon::now()->addDays(2)->format('d F Y') }}</td>
+                        <!--<td style="padding:5px">{{$early ? "01 October 2024" : "17 October 2024"}}</td>-->
                     </tr>
                     <tr>
                         <td colspan="8" style="padding-top:20px" align="center">
@@ -114,15 +114,12 @@
                             </p>
                             <div class="parent">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: 0;"
-                                        src="{{ url('assets/img/stempel-removebg-preview.png') }}" width="100px" />
-                                    <img class="image2" style="position: absolute;left: 70px;"
-                                        src="{{ url('assets/img/ttd_receipt-removebg-preview.png') }}"
-                                        width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: 0;z-index: 2;" src="{{ url('assets/img/stpml.png') }}" width="100px" />
+                                    <img class="image2" style="position: absolute; left: 40px; top: -40px; transform: scale(2);z-index: 3;" src="{{ url('assets/img/tdtd.png') }}" width="100px" />
                                 </div>
                             </div>
-                            <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end">
-                                Restina Bemis, S.Si., M.Si.
+                            <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">
+                                Dr. Fetty Febriasti Bahar, S.T., M.T.
                             </p>
                         </td>
                     </tr>

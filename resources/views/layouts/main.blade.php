@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="International Conference of the Indonesian Chemical Society
-    2023">
-    <meta name="keywords" content="icics, icics 2023, icics2023, icics jambi, universitas jambi">
+    <meta name="description" content="Jambi International Conference on Enginering, Science and Technology 
+    2024">
+    <meta name="keywords" content="jicest, jicest 2024, jicest2024, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ICICS 2023 | {{ $title }}</title>
+    <title>JICEST 2024 | {{ $title }}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
@@ -26,6 +26,117 @@
     <link rel="stylesheet" href="{{ url('') }}/assets/css/style.css" type="text/css">
     @livewireStyles
     @yield('css')
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee2 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-marquee2 {
+            animation: marquee2 30s linear infinite;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .image-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Loader styles */
+        #preloder {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999999;
+            background: #000;
+        }
+
+        .loader {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -13px;
+            margin-left: -13px;
+            border-radius: 60px;
+            animation: loader 0.8s linear infinite;
+        }
+
+        @keyframes loader {
+            0% {
+                transform: rotate(0deg);
+                border: 4px solid #f44336;
+                border-left-color: transparent;
+            }
+            50% {
+                transform: rotate(180deg);
+                border: 4px solid #673ab7;
+                border-left-color: transparent;
+            }
+            100% {
+                transform: rotate(360deg);
+                border: 4px solid #f44336;
+                border-left-color: transparent;
+            }
+        }
+
+        .overlay-gradient {
+            background: linear-gradient(to top, rgba(249, 115, 22, 0.5), rgba(249, 115, 22, 0));
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .glassmorphism-success {
+            background: rgba(76, 175, 80, 0.4);
+        }
+
+        .glassmorphism-primary {
+            background: rgba(33, 150, 243, 0.4);
+        }
+
+        .glassmorphism-error {
+            background: rgba(244, 67, 54, 0.4);
+        }
+
+        .glassmorphism-danger {
+            background: rgba(255, 69, 58, 0.15);
+        }
+
+        .glassmorphism-warning {
+            background: rgba(255, 193, 7, 0.4);
+        }
+
+        .glassmorphism-secondary {
+            background: rgba(158, 158, 158, 0.4);
+        }
+
+        .glassmorphism-white {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .glassmorphism-sm {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(7px);
+        }
+    </style>
 </head>
 
 <body>
@@ -39,8 +150,9 @@
 
     @yield('content')
     <!-- Footer Section Begin -->
-    <footer class="footer-section">
-        <div class="container">
+   <footer class="footer-section" style="background: rgb(235, 235, 235)">
+        <div class="container" style="overflow-x: hidden;">
+            <!--
             <div class="row  justify-content-center">
                 <h4 class="text-white mb-3">PUBLISHER</h4>
             </div>
@@ -54,51 +166,67 @@
                     </a>
                 </div>
             </div>
-            <div class="row  justify-content-center">
-                <h4 class="text-white mb-3">OTHER PUBLISHER PARTNERS</h4>
+            -->
+            
+            <div class="row justify-content-center">
+                <h4 class="text-black mb-3">INSTITUTE PARTNERS</h4>
             </div>
-            <div class="partner-logo owl-carousel">
-                <a href="https://jkk.unjani.ac.id/index.php/jkk" class="pl-table" style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-2.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
-                <a href="https://journal.uinsgd.ac.id/index.php/tadris-kimiya/index" class="pl-table"
-                    style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-3.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
-                <a href="https://jurnal.untirta.ac.id/index.php/EduChemia" class="pl-table" style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-4.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
-                <a href="https://jurnal.unpad.ac.id/jcena" class="pl-table" style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-5.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
-                <a href="https://journal.uinsgd.ac.id/index.php/ak/index" class="pl-table" style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-6.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
-                <a href="https://online-journal.unja.ac.id/jisic" class="pl-table" style="width:150px">
-                    <div class="pl-tablecell">
-                        <img src="{{ url('') }}/assets/img/partner-logo/partner-7.png" alt=""
-                            style="height: 100px;">
-                    </div>
-                </a>
+            <div class="d-flex justify-content-center py-3 overflow-hidden position-relative" style="width: 1200px; height: fit-content;overflow-x:hidden">
+                <div class="animate-marquee h-auto " style="white-space: nowrap; display: flex; gap: 50px; align-items: center">
+                    <img src="{{asset('assets/img/institute-partnert/int-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-5.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/institute-partnert/int-6.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/institute-partnert/int-7.svg')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-8.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/institute-partnert/int-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-5.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/institute-partnert/int-6.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/institute-partnert/int-7.svg')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/institute-partnert/int-8.png')}}" class="" style="height: 100px; object-fit: cover" />
+
+                </div>
             </div>
 
-            <div class="row mt-3 justify-content-center">
-                <img src="{{ url('') }}/assets/img/hosted.png" alt="hosted.png">
+            <div class="row  justify-content-center">
+                <h4 class="text-black mb-3">OTHER PUBLISHER PARTNERS</h4>
+            </div>
+            <div class="d-flex justify-content-center py-3 overflow-hidden position-relative" style="width: 1200px; height: fit-content;overflow-x:hidden">
+                <div class="animate-marquee h-auto " style="white-space: nowrap; display: flex; gap: 50px; align-items: center">
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-7.svg')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="" style="height: 100px; object-fit: cover" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-7.svg')}}" class="" style="height: 100px; object-fit: cover;" />
+                    <img src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="" style="height: 100px; object-fit: cover" />
+
+                </div>
+            </div>
+
+            <div class="mt-5" style="margin-top: 100px;">
+                <header class="italic text-black text-center" style=""><i>Hosted and Managed by</i></header>
+                <div class="d-flex flex-row align-items-center w-100 justify-content-center" style="">
+                    <img src="{{asset('assets/logos/unja3d.png')}}" style="object-fit: contain; max-width: 100px; width: 100%;" class="" width=""/>
+                    <div class="d-flex flex-column" style="margin-left: 20px;">
+                        <p class="py-0 my-0" style="font-weight: 600;color: black; ">FACULTY OF SCIENCE AND TECHNOLOGY</p>
+                        <p class="py-0 my-0">UNIVERSITAS JAMBI</p>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -108,7 +236,7 @@
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | ICICS 2023
+                                </script> All rights reserved | JICEST 2024
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>

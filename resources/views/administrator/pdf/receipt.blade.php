@@ -18,19 +18,15 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                The 11st International Conference of the Indonesian Chemical Society <br>(ICICS 2023)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2024)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
-                                DEPARTMENT OF CHEMISTRY <br>
                                 FACULTY OF SCIENCE AND
                                 TECHNOLOGY <br>
-                                UNIVERSITAS JAMBI</h6>
+                                JAMBI UNIVERSITY</h6>
                             <p style="text-align: center; font-size:14px; margin:0; padding:0">
-                                Email : icics2023@unja.ac.id; Website : https://icics2023.unja.ac.id
+                                Email : jicest@unja.ac.id; Website : https://jicest.unja.ac.id
                             </p>
-                        </td>
-                        <td style="width:15%">
-                            <img src="{{ url('assets/img/logo-fix.png') }}" width="150px" alt="">
                         </td>
                     </tr>
                     <tr>
@@ -74,14 +70,12 @@
                             </p>
                             <div class="parent">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: 0;"
-                                        src="{{ url('assets/img/stempel-removebg-preview.png') }}" width="100px" />
-                                    <img class="image2" style="position: absolute;left: 70px;"
-                                        src="{{ url('assets/img/ttd_receipt-removebg-preview.png') }}" width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: 0;z-index: 2;" src="{{ url('assets/img/stpml.png') }}" width="100px" />
+                                    <img class="image2" style="position: absolute; left: 40px; top: -40px; transform: scale(2);z-index: 3;" src="{{ url('assets/img/tdtd.png') }}" width="100px" />
                                 </div>
                             </div>
-                            <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end">
-                                Restina Bemis, S.Si., M.Si.
+                            <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">
+                                Dr. Fetty Febriasti Bahar, S.T., M.T.
                             </p>
                         </td>
                     </tr>

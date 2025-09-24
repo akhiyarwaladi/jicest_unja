@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
+use App\Models\UploadAbstract;
+use App\Models\Participant;
+use Illuminate\Support\Facades\Storage;
 
 class UploadAbstractController extends Controller
 {
@@ -56,5 +59,37 @@ class UploadAbstractController extends Controller
         // });
 
         dd('Email Sended');
+    }
+    
+    public function repair2() {
+
+    $abstracts = UploadAbstract::where('loa', '!=', null)->get();
+
+        foreach ($abstracts as $abstract) {
+            $user = Participant::find($abstract->participant_id);
+            // echo $abstract->title ." ---- ". $user->full_name1." ---- ". $user->institution . "<br>";
+            $loa = PDF::loadView('administrator.pdf.loa', [
+                'full_name' => $user->full_name1,
+                'institution' => $user->institution,
+                'abstractTitle' => $abstract->title,
+            ])->setPaper('a4', 'potrait');
+            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+        }
+    }
+    
+    public function repair() {
+
+    $abstracts = UploadAbstract::where('loa', '!=', null)->get();
+
+        foreach ($abstracts as $abstract) {
+            $user = Participant::find($abstract->participant_id);
+            // echo $abstract->title ." ---- ". $user->full_name1." ---- ". $user->institution . "<br>";
+            $loa = PDF::loadView('administrator.pdf.loa', [
+                'full_name' => $user->full_name1,
+                'institution' => $user->institution,
+                'abstractTitle' => $abstract->title,
+            ])->setPaper('a4', 'potrait');
+            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+        }
     }
 }

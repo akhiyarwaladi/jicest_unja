@@ -53,9 +53,10 @@
             <select class="custom-select @error('participant_type') is-invalid @enderror" id="participant_type"
                 name="participant_type" wire:model='participant_type'>
                 <option value="">Choose One</option>
-                <option value="professional presenter">Professional presenter</option>
-                <option value="student presenter">Student presenter</option>
-                <option value="participant">Participant</option>
+                <option value="presenter_reguler">Presenter Reguler</option>
+                <option value="presenter_student">Presenter Student</option>
+                <option value="participant_reguler">Participant Reguler</option>
+                <option value="participant_student">Participant Student</option>
             </select>
             @error('participant_type')
                 <span class="invalid-feedback">
@@ -110,12 +111,13 @@
                 </span>
             @enderror
         </div>
+        <!--
         <div class="form-group">
             <label for="hki_id">HKI Member Status</label>
             <input type="text" disabled class="form-control" id="hki_id" placeholder="Member ID"
                 value="{{ $hki_status }}" name="hki_id">
         </div>
-
+        -->
         {{-- <div class="row">
             <div class="col-4">
                 <div class="form-group">

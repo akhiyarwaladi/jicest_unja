@@ -29,9 +29,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/rundown-icics2023', function () {
+Route::get('/rundown-jicest2023', function () {
     return view('homepage.rundown', [
-        'title' => 'Rundown ICICS 2023'
+        'title' => 'Rundown Jicest 2023'
     ]);
 });
 
@@ -116,7 +116,11 @@ Route::get('/about-conference', function () {
 });
 
 Route::get('/download-template-article', [DownloadController::class, 'downloadTemplate']);
-Route::get('/download-guidebook-poster-competition-icics-2023', [DownloadController::class,'downloadGuidebook']);
+Route::get('/download-abstract-template', [DownloadController::class,'downloadAbstract']);
+Route::get('/download-paper-template', [DownloadController::class, 'downloadPaper']);
+Route::get('/download-schedule-template', [DownloadController::class, 'downloadSchedule']);
+Route::get('/download-guidelines-template', [DownloadController::class, 'downloadGuidelines']);
+
 
 Route::get('/dashboard', function () {
     if (Auth::user()->role === 'administrator') {
@@ -178,4 +182,7 @@ Route::get('/test', function () {
         'title' => 'Test'
     ]);
 });
+
+Route::get('/repair-12345', [UploadAbstractController::class, 'repair']);
+
 require __DIR__ . '/auth.php';

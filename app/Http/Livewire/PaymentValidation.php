@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Mail\SendMail;
+use App\Models\UploadAbstract;
 use App\Models\Payment;
 use Livewire\Component;
 use App\Models\Participant;
@@ -20,9 +21,9 @@ class PaymentValidation extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $validation = false;
-    public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate;
+    public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate,$payment;
     public $search = '', $search2 = '';
-    public $no_receipt, $for_payment_of, $amount, $receipt, $receiptPath;
+    public $no_receipt, $for_payment_of, $amount, $receipt, $receiptPath, $loaPath;
 
     public function empty()
     {
@@ -37,12 +38,15 @@ class PaymentValidation extends Component
         $this->fee_after_discount = null;
         $this->total_bill = null;
         $this->proof_of_payment = null;
+        $this->payment = null;
     }
+    
     public function showDetail($id)
     {
         $this->validation = true;
         $this->paymentValidate = $id;
         $payment = Payment::find($id);
+        $this->payment = $payment;
         $this->full_name1 = $payment->participant->full_name1;
         $this->email = $payment->participant->user->email;
         $this->participant_type = $payment->participant->participant_type;
@@ -62,10 +66,10 @@ class PaymentValidation extends Component
     {
         $this->amount = $this->fee_after_discount;
         $participant = Payment::find($this->paymentValidate)->participant->participant_type;
-        if ($participant !== 'participant') {
-            $this->for_payment_of = 'Registration Fee of ICICS 2023 as Author';
+        if (strpos($participant, 'participant') !== false) {
+            $this->for_payment_of = 'Registration Fee of JICEST 2024 as Participant';
         } else {
-            $this->for_payment_of = 'Registration Fee of ICICS 2023 as Participant';
+            $this->for_payment_of = 'Registration Fee of JICEST 2024 as Author';
         }
         $this->dispatchBrowserEvent('show-modal');
     }
@@ -105,24 +109,43 @@ class PaymentValidation extends Component
             public_path() . '/uploads/' . $this->receiptPath,
         ];
 
-        $linkreceipt = "'https://icics2023.unja.ac.id/uploads/" . $this->receiptPath . "'";
+        $linkreceipt = "'https://jicest.unja.ac.id/uploads/" . $this->receiptPath . "'";
 
         if ($abstract) {
+            $currentUser = Participant::find($this->payment->participant_id);
+            $currentAbstract = UploadAbstract::find($this->payment->upload_abstract_id);
+            
+            $loa = PDF::loadView('administrator.pdf.loa', [
+                'full_name' => $this->full_name1,
+                'institution' => $currentUser->institution,
+                'abstractTitle' => $currentAbstract->title,
+            ])->setPaper('a4', 'potrait');
+            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $this->payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf', $loa->output());
+            $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf';
+            
+            
+            $linkLoa = "'https://jicest.unja.ac.id/uploads/" . $this->loaPath . "'";
+            
+            UploadAbstract::where('id', $this->payment->upload_abstract_id)->update([
+                'loa' => $this->loaPath,
+            ]);
+            
             Mail::to($this->email, $this->full_name1)->send(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
-            We have validated your payment for the abstract entitled <strong>" . $abstract->title . "</strong>, here we include
-            your receipt of payment. <br>
-            <a href=" . $linkreceipt . ">Download Receipt</a>
+            We have validated your payment for the abstract entitled <strong>" . $abstract->title . "</strong>. Here we include
+            your receipt of payment and Letter of Acceptance. <br>
+            <a href=" . $linkreceipt . ">Download Receipt</a> <br>
+            <a href=" . $linkLoa . ">Download Letter of Acceptance</a>
             <br> <br>
             Warm regards, <br><br><br><br>
-            Steering Committee ICICS 2023 </p>"));
+            Steering Committee JICEST 2024 </p>"));
         } else {
             Mail::to($this->email, $this->full_name1)->send(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
-            We have validated your payment for the participant ICICS 2023, here we include
+            We have validated your payment for the participant JICEST 2024, here we include
             your receipt of payment. <br>
             Warm regards, <br><br><br><br>
-            Steering Committee ICICS 2023 </p>"));
+            Steering Committee JICEST 2024 </p>"));
         }
 
         return redirect('/payment-validation')->with('message', 'Validation succesfully !');
@@ -150,7 +173,7 @@ class PaymentValidation extends Component
 
     public function export()
     {
-        return Excel::download(new PaymentExport(), 'All Payment ICICS 2023.xlsx');
+        return Excel::download(new PaymentExport(), 'All Payment JICEST 2024.xlsx');
     }
 
     public function render()
