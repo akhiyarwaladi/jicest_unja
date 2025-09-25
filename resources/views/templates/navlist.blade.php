@@ -1,5 +1,5 @@
 @php
-    $outline = "outline-none outline-offset-0 border-2 border-transparent focus:border-orange-500 focus:outline-[3px] focus:outline-orange-300 transition-all";
+    $outline = "outline-none outline-offset-0 border-2 border-transparent focus:border-emerald-500 focus:outline-[3px] focus:outline-emerald-300 transition-all duration-300";
 @endphp
 
 <script>
@@ -12,14 +12,14 @@
         @if ($nav['type'] == 'single')
             <li class="h-8">
                 <a href="{{ $nav['link'] }}"
-                    class="{{$outline}} {{in_array($title, $nav['inclusion']) ? "bg-gradient-to-r text-white" : "" }} block py-1 rounded-full px-3 hover:text-white text-black hover:bg-gradient-to-r from-orange-300 to-orange-400"
+                    class="{{$outline}} {{in_array($title, $nav['inclusion']) ? "bg-gradient-to-r text-white" : "" }} block py-1 rounded-full px-3 hover:text-white text-black hover:bg-gradient-to-r from-emerald-400 to-emerald-500"
                     aria-current="page">{{ $nav['name'] }}</a>
             </li>
         @endif
         @if ($nav['type'] == 'multiple')
             <li class="relative group flex flex-col h-8" tabindex="0">
                 <button id="dropdownNavbarLink{{ $loop->index }}"
-                    class="{{ in_array($title, $nav['inclusion']) ? 'bg-gradient-to-r from-orange-300 to-orange-400 text-white' : '' }} z-[2] py-1 {{$outline}} flex justify-start md:justify-center items-center rounded-full group-hover:text-white px-3 group-hover:bg-gradient-to-r from-orange-300 to-orange-400">
+                    class="{{ in_array($title, $nav['inclusion']) ? 'bg-gradient-to-r from-emerald-400 to-emerald-500 text-white' : '' }} z-[2] py-1 {{$outline}} flex justify-start md:justify-center items-center rounded-full group-hover:text-white px-3 group-hover:bg-gradient-to-r from-emerald-400 to-emerald-500">
                     {{ $nav['name'] }}
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">

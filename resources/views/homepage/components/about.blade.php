@@ -1,4 +1,6 @@
-<div class="main block mx-auto md:flex items-center p-14 bg-orange-100 gap-5 justify-center">
+<div class="main block mx-auto md:flex items-center p-14 bg-gradient-to-br from-emerald-50 via-sky-50 to-emerald-50 gap-5 justify-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
+    <div class="relative z-10 flex flex-col md:flex-row items-center gap-5 justify-center w-full">
      <img src="{{ asset('assets/logos/jicest.png') }}" class="max-w-[300px] w-full"> 
     <article class="w-full md:w-1/2">
         <!--<header class="text-4xl font-bold">JICEST</header>-->
@@ -25,4 +27,5 @@
             </ul>
         </section>
     </article>
+    </div>
 </div>

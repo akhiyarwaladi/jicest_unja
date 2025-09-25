@@ -116,23 +116,48 @@
     @else
     @if (in_array(Auth::user()->participant->participant_type, ['presenter', 'presenter_reguler', 'presenter_student']))
     @if (count($abstract) == 0)
-    <button class="btn btn-primary" disabled>Add Payments</button>
-    <p>please add your abstract first</p>
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+        <div class="flex items-center">
+            <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm text-yellow-700 font-medium">Abstract Required</p>
+                <p class="text-sm text-yellow-600">Please submit your abstract first before making payment.</p>
+            </div>
+        </div>
+    </div>
+    <button disabled class="btn btn-secondary">Add Payment</button>
     @else
-    <button class="btn btn-primary" wire:click="add()">Add Payments</button>
+    <button wire:click="add()" class="btn btn-primary">Add Payment</button>
     @endif
     @endif
     @if (in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler',
     'participant_student']))
-    <button class="btn btn-primary" wire:click="add()">Add Payments</button>
+    <button wire:click="add()" class="btn btn-primary">Add Payment</button>
     @endif
 
     @if (session()->has('message'))
-    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-        {{ session('message') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="mt-6 bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-emerald-700">{{ session('message') }}</p>
+                </div>
+            </div>
+            <button type="button" class="text-emerald-400 hover:text-emerald-600 transition-colors duration-200" onclick="this.parentElement.parentElement.style.display='none'">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+        </div>
     </div>
     @endif
 
@@ -161,49 +186,66 @@
 
     @if (count($payments) !== 0)
 
-    <h4 class="mt-5">Your Payments</h4>
-    <div class="" style="overflow-x:auto;">
-        <table class="table my-3">
-            <thead class="thead-light">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mt-8">
+        <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
+            </svg>
+            Your Payments
+        </h4>
+        <div class="overflow-x-auto rounded-lg border border-gray-200">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-gradient-to-r from-emerald-50 to-sky-50 text-gray-700 border-b border-gray-200">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Total Bill</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">#</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Date</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Total Bill</th>
                     @can('presenter')
-                    <th scope="col">Payment for abstract</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Payment for abstract</th>
                     @endcan
-                    <th scope="col">Status Validation</th>
-                    <th>Receipt</th>
-                    <th scope="col">Validated By</th>
-
+                    <th scope="col" class="px-6 py-3 font-semibold">Status</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Receipt</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Validated By</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-white divide-y divide-gray-200">
                 @php
                 $a = 0;
                 @endphp
                 @foreach ($payments as $item)
-                <tr>
-                    <td scope="row">{{ ++$a }}</td>
-                    <td>{{ $item->created_at }}</td>
-                    <td>{{ $item->total_bill }}</td>
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                    <td class="px-6 py-4 font-medium text-gray-900">{{ ++$a }}</td>
+                    <td class="px-6 py-4 text-gray-600">{{ $item->created_at->format('d M Y') }}</td>
+                    <td class="px-6 py-4 font-semibold text-emerald-600">{{ $item->total_bill }}</td>
                     @if (in_array(Auth::user()->participant->participant_type, ['presenter', 'presenter_reguler',
                     'presenter_student']))
                     @if ($item->uploadAbstract)
-                    <td>{{ $item->uploadAbstract->title }}</td>
+                    <td class="px-6 py-4 text-gray-600 max-w-xs truncate" title="{{ $item->uploadAbstract->title }}">{{ $item->uploadAbstract->title }}</td>
                     @else
-                    <td>No Title</td>
+                    <td class="px-6 py-4 text-gray-400 italic">No Title</td>
                     @endif
                     @endif
-                    <td>{{ $item->validation }}</td>
-                    <td>
-                        @if ($item->receipt)
-                        <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank"
-                            style="color:red; font-size:20px"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                        </a>
+                    <td class="px-6 py-4">
+                        @if($item->validation == 'valid')
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Valid</span>
+                        @elseif($item->validation == 'pending')
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                        @else
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">{{ $item->validation }}</span>
                         @endif
                     </td>
-                    <td>{{ $item->validated_by }}</td>
+                    <td class="px-6 py-4">
+                        @if ($item->receipt)
+                        <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-200">
+                            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>
+                            View PDF
+                        </a>
+                        @else
+                        <span class="text-gray-400 italic">No file</span>
+                        @endif
+                    </td>
+                    <td class="px-6 py-4 text-gray-600">{{ $item->validated_by ?: 'Not validated' }}</td>
                     {{-- <td> --}}
                         {{-- @if ($item->status == 'not yet reviewed')
                         <button class="btn btn-info" wire:click='editAbstract({{ $item->id }})'>edit</button>
@@ -215,17 +257,18 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+            </table>
+        </div>
     </div>
     @endif
 
-    <h4 class="mt-5">Fee</h4>
-    <div style="overflow-x:auto;">
-        <table class="table my-3">
+    <h4 class="mt-5">Registration Fee Structure</h4>
+    <div class="" style="overflow-x:auto;">
+        <table class="table my-3" style="">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Fee</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Offline</th>
                     <th scope="col">Online</th>
                 </tr>
@@ -234,14 +277,14 @@
                 <tr>
                     <td>1</td>
                     <td>Presenter</td>
-                    <td>Reguler : IDR 600K / $60 USD <br>Student : IDR 350K / $35 USD</td>
-                    <td>Reguler : IDR 400K / $40 USD <br>Student : IDR 300K / $30 USD</td>
+                    <td>Regular: IDR 600K / $60 USD<br>Student: IDR 350K / $35 USD</td>
+                    <td>Regular: IDR 400K / $40 USD<br>Student: IDR 300K / $30 USD</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Participant</td>
-                    <td>Reguler : IDR 200K / $20 USD <br>Student : IDR 125K / $12.5 USD</td>
-                    <td>Reguler : IDR 150K / $15 USD <br> Student : 75K / $7.5 USD</td>
+                    <td>Regular: IDR 200K / $20 USD<br>Student: IDR 125K / $12.5 USD</td>
+                    <td>Regular: IDR 150K / $15 USD<br>Student: IDR 75K / $7.5 USD</td>
                 </tr>
             </tbody>
         </table>

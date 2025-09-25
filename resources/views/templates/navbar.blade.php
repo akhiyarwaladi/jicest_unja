@@ -1,8 +1,8 @@
 @php
-    $outline = "outline-none outline-offset-0 border-2 border-transparent focus:border-orange-500 focus:outline-[3px] focus:outline-orange-300 transition-all";
+    $outline = "outline-none outline-offset-0 border-2 border-transparent focus:border-emerald-500 focus:outline-[3px] focus:outline-emerald-300 transition-all";
 @endphp
 
-<nav class="glassmorphism bg-white bg-opacity-75 fixed top-0 left-0 w-full border-gray-200 font-semibold z-[999]">
+<nav class="glassmorphism bg-white/90 backdrop-blur-md fixed top-0 left-0 w-full border-gray-200 font-semibold z-[999] shadow-lg shadow-emerald-900/10">
 
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-fit">
         <a href="/" class="{{$outline}} flex items-center space-x-3 rtl:space-x-reverse px-3 gap-3 h-8 overflow-y-visible">
@@ -10,7 +10,7 @@
             <img src="{{ asset('assets/logos/unja3d.png') }}" class="h-8" alt="unja" />
         </a>
         <button type="button"
-            class="w-10 h-10 bg-gradient-to-r from-sky-300 to-sky-500 flex items-center justify-center rounded md:hidden "
+            class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 flex items-center justify-center rounded-md md:hidden transform transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
             onclick="toggleNavbar('navbar-dropdown')">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 17 14">
