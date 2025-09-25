@@ -30,7 +30,7 @@
                     <div class="flex items-center text-right">
                         <div class="drop-shadow-lg mr-3">
                             <p class="font-bold">Drs. Jefri Marzal, M.Sc., D.I.T.</p>
-                            <p>Dean of Faculty <br> Science and Technology</p>
+                            <p>Dean of Faculty <br> Science and Technology <br> Universitas Jambi</p>
                         </div>
                         <img class="drop-shadow-md border-2 border-black w-[120px] h-[120px] object-cover rounded-full" src="{{ asset('assets/dean.jpg') }}" />
                     </div>
