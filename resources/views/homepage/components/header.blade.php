@@ -3,14 +3,14 @@
     <div
         class="w-full min-h-screen h-full gap-3 flex flex-col justify-center items-center p-10 pt-24 top-0 left-0 relative">
         <img src="{{ asset('assets/bg/fstaaa.jpeg') }}" class="w-full h-full object-cover absolute left-0 top-0" />
+        <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
         <div class="w-full h-full absolute top-0 left-0 glassmorphism glassmorphism-sm "></div>
         <div class="w-full h-full absolute top-0 left-0 flex flex-col justify-end">
             <div class="overlay-gradient w-full h-[200px]"></div>
         </div>
 
-        <p class="text-white text-xl drop-shadow w-full text-center italic">Faculty Science and Technology,
-            Universitas Jambi</p>
-        <div class="poppins text-3xl font-semibold drop-shadow-md text-white text-center">
+        <p class="text-white text-xl drop-shadow-lg w-full text-center italic bg-black/20 backdrop-blur-sm rounded-lg p-3 max-w-md mx-auto">Faculty Science and Technology, Universitas Jambi</p>
+        <div class="poppins text-2xl md:text-4xl font-bold drop-shadow-lg text-white text-center leading-tight max-w-4xl mx-auto">
             Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society
         </div>
         <div
@@ -18,8 +18,8 @@
             <div class="font-semibold md:block hidden">Friday, 28 November 2025</div>
             <a
                 href="{{auth()->check() ? '/dashboard' : '/login'}}"
-                class="text-white  text-center font-semibold a hover:to-sky-500  bg-gradient-to-r from-sky-300 to-sky-500 px-3 rounded-full p-1 transition-all duration-300 ease-in-out transform w-full md:w-fit">Buy
-                Ticket
+                class="text-white text-center font-semibold bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 px-8 py-3 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-xl w-full md:w-fit flex items-center justify-center gap-2">
+                📝 Submit Abstract
             </a>
         </div>
         <div class=" mt-5">

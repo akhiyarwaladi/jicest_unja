@@ -1,12 +1,12 @@
 <div class="bg-gradient-to-b from-sky-300 to-sky-500 p-10 text-white w-full">
-    <header class="text-3xl font-bold text-center">IMPORTANT DATE</header>
+    <header class="text-3xl md:text-4xl font-bold text-center mb-2">IMPORTANT DATES</header>
     <div class="text-center text-sm">Do not miss any topic about the event</div>
 
     <!-- Early Bird Section -->
     <div class="mt-8">
-        <h3 class="text-2xl font-semibold text-center mb-4">Early Bird</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-center mb-6">Early Bird</h3>
         <div class="flex flex-col md:flex-row justify-center gap-8">
-            <div class="glassmorphism rounded-md overflow-hidden">
+            <div class="glassmorphism rounded-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
                 <header class="bg-gradient-to-r text-center from-emerald-500 to-emerald-600 bg-opacity-75 p-2">Abstract
                     Submission
                     Deadline</header>
@@ -18,7 +18,7 @@
                     <div id="countdown-abstract-early" class="text-lg font-bold">Loading...</div>
                 </div>
             </div>
-            <div class="glassmorphism rounded-md overflow-hidden">
+            <div class="glassmorphism rounded-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
                 <header class="bg-gradient-to-r text-center from-sky-500 to-sky-600 bg-opacity-75 p-2">Full Paper Submission
                     Deadline</header>
                 <div class="bg-white bg-opacity-75 p-2 text-black flex flex-col items-center gap-2">
@@ -34,9 +34,9 @@
 
     <!-- Non Early Bird Section -->
     <div class="mt-8">
-        <h3 class="text-2xl font-semibold text-center mb-4">Non Early Bird</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-center mb-6">Non Early Bird</h3>
         <div class="flex flex-col md:flex-row justify-center gap-8">
-            <div class="glassmorphism rounded-md overflow-hidden">
+            <div class="glassmorphism rounded-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
                 <header class="bg-gradient-to-r text-center from-orange-500 to-orange-600 bg-opacity-75 p-2">Abstract
                     Submission
                     Deadline</header>
@@ -48,7 +48,7 @@
                     <div id="countdown-abstract-regular" class="text-lg font-bold">Loading...</div>
                 </div>
             </div>
-            <div class="glassmorphism rounded-md overflow-hidden">
+            <div class="glassmorphism rounded-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
                 <header class="bg-gradient-to-r text-center from-red-500 to-red-600 bg-opacity-75 p-2">Full Paper Submission
                     Deadline</header>
                 <div class="bg-white bg-opacity-75 p-2 text-black flex flex-col items-center gap-2">

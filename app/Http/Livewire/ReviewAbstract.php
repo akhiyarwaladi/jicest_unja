@@ -194,7 +194,7 @@ class ReviewAbstract extends Component
         Dear" . $this->full_name . ", <br>
         Congratulation! We are happy to inform you that your abstract for The 2nd Jambi International Conference on the
         Enginering, Science, and Technology
-        (JICEST 2024) <br>
+        (JICEST 2025) <br>
         Title of abstract : <strong>" . $this->abstractTitle . "</strong> has been accepted. <br>
         <a href=" . $linkInvoice . ">Download Invoice</a>
         <br>
@@ -213,7 +213,7 @@ class ReviewAbstract extends Component
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
         (jicest@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
-        Steering Committee JICEST 2024</p>"));
+        Steering Committee JICEST 2025</p>"));
         return redirect('/review-abstract')->with('message', 'Review succefully !');
     }
 

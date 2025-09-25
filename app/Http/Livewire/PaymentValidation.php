@@ -67,9 +67,9 @@ class PaymentValidation extends Component
         $this->amount = $this->fee_after_discount;
         $participant = Payment::find($this->paymentValidate)->participant->participant_type;
         if (strpos($participant, 'participant') !== false) {
-            $this->for_payment_of = 'Registration Fee of JICEST 2024 as Participant';
+            $this->for_payment_of = 'Registration Fee of JICEST 2025 as Participant';
         } else {
-            $this->for_payment_of = 'Registration Fee of JICEST 2024 as Author';
+            $this->for_payment_of = 'Registration Fee of JICEST 2025 as Author';
         }
         $this->dispatchBrowserEvent('show-modal');
     }
@@ -138,14 +138,14 @@ class PaymentValidation extends Component
             <a href=" . $linkLoa . ">Download Letter of Acceptance</a>
             <br> <br>
             Warm regards, <br><br><br><br>
-            Steering Committee JICEST 2024 </p>"));
+            Steering Committee JICEST 2025 </p>"));
         } else {
             Mail::to($this->email, $this->full_name1)->send(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
-            We have validated your payment for the participant JICEST 2024, here we include
+            We have validated your payment for the participant JICEST 2025, here we include
             your receipt of payment. <br>
             Warm regards, <br><br><br><br>
-            Steering Committee JICEST 2024 </p>"));
+            Steering Committee JICEST 2025 </p>"));
         }
 
         return redirect('/payment-validation')->with('message', 'Validation succesfully !');
@@ -173,7 +173,7 @@ class PaymentValidation extends Component
 
     public function export()
     {
-        return Excel::download(new PaymentExport(), 'All Payment JICEST 2024.xlsx');
+        return Excel::download(new PaymentExport(), 'All Payment JICEST 2025.xlsx');
     }
 
     public function render()

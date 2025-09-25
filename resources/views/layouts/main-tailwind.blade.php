@@ -202,19 +202,9 @@
             <header class="text-black font-semibold text-2xl font-serif">INSTITUTE PARTNERS</header>
             <div class="relative flex overflow-x-hidden h-fit overflow-y-hidden py-5 w-[1200px] justify-center">
                 <div class="flex animate-marquee whitespace-nowrap h-fit gap-14">
-                    <img src="{{asset('assets/img/institute-partnert/int-1.webp')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-1.webp')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-1.webp')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-1.webp')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
                     <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>

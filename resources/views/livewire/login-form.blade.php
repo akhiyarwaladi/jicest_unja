@@ -28,6 +28,6 @@
                 </span>
             @enderror
         </div>
-        <button type="submit" class="bg-gradient-to-r from-sky-300 to-sky-500 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-sky-500 focus:outline-4 focus:outline-sky-300 rounded-md transition-all">Login</button>
+        <button type="submit" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-emerald-500 focus:outline-4 focus:outline-emerald-300 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">Login</button>
     </form>
 </div>

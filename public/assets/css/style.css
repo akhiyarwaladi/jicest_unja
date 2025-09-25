@@ -170,10 +170,10 @@ ol {
 .price-item .tr-tag,
 .schedule-tab .nav-tabs .nav-item .nav-link.active,
 .site-btn {
-    background-image: -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%),
-        -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(120deg, #ee8425 0%, #f9488b 100%),
-        linear-gradient(120deg, #ee8425 0%, #f9488b 100%);
+    background-image: -o-linear-gradient(330deg, #10b981 0%, #06b6d4 100%),
+        -o-linear-gradient(330deg, #10b981 0%, #06b6d4 100%);
+    background-image: linear-gradient(120deg, #10b981 0%, #06b6d4 100%),
+        linear-gradient(120deg, #10b981 0%, #06b6d4 100%);
 }
 
 /* buttons */
@@ -190,14 +190,14 @@ ol {
             linear,
             left top,
             right top,
-            from(#ee8425),
-            to(#f9488b)
+            from(#10b981),
+            to(#06b6d4)
         ),
-        -webkit-gradient(linear, left top, right top, from(#ee8425), to(#f9488b));
-    background-image: -o-linear-gradient(left, #ee8425 0%, #f9488b 100%),
-        -o-linear-gradient(left, #ee8425 0%, #f9488b 100%);
-    background-image: linear-gradient(to right, #ee8425 0%, #f9488b 100%),
-        linear-gradient(to right, #ee8425 0%, #f9488b 100%);
+        -webkit-gradient(linear, left top, right top, from(#10b981), to(#06b6d4));
+    background-image: -o-linear-gradient(left, #10b981 0%, #06b6d4 100%),
+        -o-linear-gradient(left, #10b981 0%, #06b6d4 100%);
+    background-image: linear-gradient(to right, #10b981 0%, #06b6d4 100%),
+        linear-gradient(to right, #10b981 0%, #06b6d4 100%);
 }
 
 .site-btn {
@@ -1424,11 +1424,11 @@ ol {
         linear,
         left top,
         right top,
-        from(#ee8425),
-        to(#f9488b)
+        from(#10b981),
+        to(#06b6d4)
     );
-    background: -o-linear-gradient(left, #ee8425, #f9488b);
-    background: linear-gradient(to right, #ee8425, #f9488b);
+    background: -o-linear-gradient(left, #10b981, #06b6d4);
+    background: linear-gradient(to right, #10b981, #06b6d4);
     color: #ffffff;
 }
 
@@ -1543,8 +1543,8 @@ ol {
 }
 
 .speaker-item .si-text .si-social a:hover {
-    background: -o-linear-gradient(330deg, #ee8425, #f9488b);
-    background: linear-gradient(120deg, #ee8425, #f9488b);
+    background: -o-linear-gradient(330deg, #10b981, #06b6d4);
+    background: linear-gradient(120deg, #10b981, #06b6d4);
     color: #ffffff;
 }
 
@@ -1671,8 +1671,8 @@ ol {
 }
 
 .schedule-table-tab .schedule-table-content table tbody tr td.hover-bg:hover {
-    background: -o-linear-gradient(330deg, #ee8425, #f9488b);
-    background: linear-gradient(120deg, #ee8425, #f9488b);
+    background: -o-linear-gradient(330deg, #10b981, #06b6d4);
+    background: linear-gradient(120deg, #10b981, #06b6d4);
 }
 
 .schedule-table-tab

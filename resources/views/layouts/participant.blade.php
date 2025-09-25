@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .bg-gradient {
-            background: linear-gradient(to right, #fb923c, #f472b6);
+            background: linear-gradient(to right, #10b981, #06b6d4);
             border: 2px solid transparent;
             width: 100%;
             text-align: start;
@@ -25,7 +25,7 @@
         .bg-current,.bg-current:hover,.bg-current:focus {
             background: white;
             color: black;
-            border: 2px solid #f472b6;
+            border: 2px solid #10b981;
             width: 100%;
             text-align: start;
             display: flex;
@@ -36,7 +36,7 @@
         .bg-gradient:hover {
             background: white;
             color: black;
-            border: 2px solid #f472b6;
+            border: 2px solid #10b981;
             width: 100%;
             text-align: start;
             display: flex;

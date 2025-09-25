@@ -2,8 +2,8 @@
 
 @section('content')
     <!-- Contact Form Section Begin -->
-    <section class="contact-from-section spad w-full min-h-screen py-[100px] px-2 bg-gradient-to-b from-orange-400 to-purple-400 flex justify-center items-center">
-        <div class="container p-10 bg-gray-50  max-w-[500px] w-full h-fit rounded-md shadow-md">
+    <section class="contact-from-section spad w-full min-h-screen py-[100px] px-2 bg-gradient-to-br from-emerald-500 via-sky-400 to-emerald-600 flex justify-center items-center">
+        <div class="container p-10 bg-white/95 backdrop-blur-sm shadow-2xl shadow-emerald-900/20 border border-white/20  max-w-[500px] w-full h-fit rounded-md">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
