@@ -19,7 +19,7 @@
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
         (icics2023@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
-        Steering Committee ICICS 2024
+        Steering Committee JICEST 2025
     </p>
 </body>
 

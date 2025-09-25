@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Jambi International Conference on Enginering, Science and Technology 
-    2024">
-    <meta name="keywords" content="jicest, jicest 2024, jicest2024, jicest jambi, universitas jambi">
+    <meta name="description" content="Jambi International Conference on Enginering, Science and Technology
+    2025">
+    <meta name="keywords" content="jicest, jicest 2025, jicest2025, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JICEST 2024 | {{ $title }}</title>
+    <title>JICEST 2025 | {{ $title }}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
@@ -236,7 +236,7 @@
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | JICEST 2024
+                                </script> All rights reserved | JICEST 2025
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>

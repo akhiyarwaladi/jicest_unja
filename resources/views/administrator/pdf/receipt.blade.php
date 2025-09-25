@@ -18,7 +18,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2024)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND

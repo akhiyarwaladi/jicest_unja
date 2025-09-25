@@ -11,11 +11,11 @@
         <p class="text-white text-xl drop-shadow w-full text-center italic">Faculty Science and Technology,
             Universitas Jambi</p>
         <div class="poppins text-3xl font-semibold drop-shadow-md text-white text-center">
-            The Impacts, Challenges and Strategies in Science and Technology
+            Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society
         </div>
         <div
             class="bg-white z-[10] flex p-2 px-3 items-center max-w-[500px] w-full justify-between mx-auto shadow rounded-full ">
-            <div class="font-semibold md:block hidden">Tuesday, 29 October 2024</div>
+            <div class="font-semibold md:block hidden">Friday, 28 November 2025</div>
             <a
                 href="{{auth()->check() ? '/dashboard' : '/login'}}"
                 class="text-white  text-center font-semibold a hover:to-orange-500  bg-gradient-to-r from-orange-500 to-pink-500 px-3 rounded-full p-1 transition-all duration-300 ease-in-out transform w-full md:w-fit">Buy

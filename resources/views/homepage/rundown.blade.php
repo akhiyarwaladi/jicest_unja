@@ -15,8 +15,8 @@
     <section
         class="pt-[200px] pb-20 w-full px-2"
     >
-        <header class="text-3xl font-bold text-center">RUNDOWN of JICEST 2024</header>
-        <div class="italic font-[300] text-lg text-center">29 October 2024</div>
+        <header class="text-3xl font-bold text-center">RUNDOWN of JICEST 2025</header>
+        <div class="italic font-[300] text-lg text-center">28 November 2025</div>
         <div class=" w-full flex justify-center">
             <div class="max-w-xl flex flex-col w-full justify-center items-center gap-4">
                 <section class="{{$bgGradient}} py-2 px-2 rounded-lg shadow-md w-full flex justify-between items-center">

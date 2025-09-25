@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Jambi International Conference on Enginering, Science and Technology
-    2024">
-    <meta name="keywords" content="jicest, jicest 2024, jicest2024, jicest jambi, universitas jambi">
+    2025">
+    <meta name="keywords" content="jicest, jicest 2025, jicest2025, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JICEST 2024 | {{ $title }}</title>
+    <title>JICEST 2025 | {{ $title }}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
@@ -275,7 +275,7 @@
                 </div>
             </div>
             <div class="border-t-[1px] border-gray-400 text-black py-3 mt-10 w-full">
-                Copyright © 2024 All rights reserved | JICEST 2024
+                Copyright © 2025 All rights reserved | JICEST 2025
             </div>
         </div>
 

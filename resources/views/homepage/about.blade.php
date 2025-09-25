@@ -9,10 +9,10 @@
     </figure>
     <article class="w-full text-lg max-w-[700px] flex flex-col gap-5">
         <section class="text-justify">
-            Welcome to the official website of the <span class="font-bold">Jambi International Conference on Engineering, Science, and Technology (JICEST)</span>, which will take place at Universitas Jambi, Indonesia, on <span class="font-bold">29 October 2024</span>. As an annual event, JICEST is dedicated to bringing together researchers, experts, practitioners, scholars, and students to exchange and share their experiences, innovative ideas, and research findings in the vast and evolving fields of engineering, science, and technology.
+            Welcome to the official website of the <span class="font-bold">Jambi International Conference on Engineering, Science, and Technology (JICEST)</span>, which will take place at Universitas Jambi, Indonesia, on <span class="font-bold">28 November 2025</span>. As an annual event, JICEST is dedicated to bringing together researchers, experts, practitioners, scholars, and students to exchange and share their experiences, innovative ideas, and research findings in the vast and evolving fields of engineering, science, and technology.
         </section>
         <section class="text-justify">
-            The central theme for JICEST 2024 is <span class="font-bold">"The Impacts, Challenges, and Strategies in Science and Technology."</span> This theme highlights the critical role that science and technology play in addressing the complex challenges of our time. It also emphasizes the importance of developing strategic approaches to foster sustainable growth and innovation.
+            The central theme for JICEST 2025 is <span class="font-bold">"Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society."</span> This theme highlights the critical role that digital transformation, green energy innovations, and advanced materials play in creating a sustainable future for society.
         </section>
          <section class="text-justify">
             <h4 class="font-bold">Sub-theme</h4>

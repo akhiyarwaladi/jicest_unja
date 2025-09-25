@@ -21,7 +21,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2024)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -65,7 +65,7 @@
                     <tr>
                         <td>RPL 012 BLU UNJA UTK OPS PENERIMAAN</td>
                         <td>Bank BTN</td>
-                        <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2024)</td>
+                        <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</td>
                         <td>Seminar</td>
                     </tr>
                 </table>
@@ -92,9 +92,9 @@
                         <td style="padding:5px">1</td>
                         <td style="padding:5px">{{ $fee }}</td>
                         <td style="padding:5px">0003801300008828</td>
-                        <td style="padding:5px">{{$early ? "01 September 2024" : "1 October 2024"}}</td>
-                        <td style="padding:5px">{{$early ? "01 October 2024" : \Carbon\Carbon::now()->addDays(2)->format('d F Y') }}</td>
-                        <!--<td style="padding:5px">{{$early ? "01 October 2024" : "17 October 2024"}}</td>-->
+                        <td style="padding:5px">{{$early ? "01 September 2025" : "1 October 2025"}}</td>
+                        <td style="padding:5px">{{$early ? "01 October 2025" : \Carbon\Carbon::now()->addDays(2)->format('d F Y') }}</td>
+                        <!--<td style="padding:5px">{{$early ? "01 October 2025" : "17 October 2025"}}</td>-->
                     </tr>
                     <tr>
                         <td colspan="8" style="padding-top:20px" align="center">

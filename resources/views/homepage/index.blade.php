@@ -167,7 +167,7 @@
                 </div>
                 <div id="countdown" class="bg-white shadow rounded-full text-pink-500 text-xl font-bold px-5 py-2 w-fit">Loading...</div>
                 <script>
-                    const targetDate = new Date('October 29, 2024 00:00:00').getTime();
+                    const targetDate = new Date('November 28, 2025 00:00:00').getTime();
 
                     const countdownTimer = setInterval(() => {
                         const now = new Date().getTime();

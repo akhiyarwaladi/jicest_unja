@@ -18,7 +18,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2024)
+                                JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -55,7 +55,7 @@
                 <br>
                 <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px">Thank you for your interest in
                     <strong>The 2nd
-                        JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2024)</strong> and submitting
+                        JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</strong> and submitting
                     your Abstract entitled:
                 </p>
 
@@ -66,7 +66,7 @@
                 <p style="margin:20px 0px 0px 0px; padding:0px;font-size: 14px">It is our pleasure to inform you that
                     your paper
                     based on your Extended Abstract has been accepted for
-                    presentation at the conference, which will be taking place at Jambi on 29 October 2024.
+                    presentation at the conference, which will be taking place at Jambi on 28 November 2025.
                     We hereby have the honor and pleasure of inviting you to present your paper in the conference.
                 </p>
                 <p style="margin:20px 0px 0px 0px; padding:0px;font-size: 14px">Please do not hesitate to contact us if
@@ -81,7 +81,7 @@
                     <td width="30%">
                         <p style="margin:50px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end">
                             Warm Regards, <br>
-                            Chairman of JICEST 2024 <br>
+                            Chairman of JICEST 2025 <br>
                         </p>
                         <div class="parent" style="position:relative;">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">

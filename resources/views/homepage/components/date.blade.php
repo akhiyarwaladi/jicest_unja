@@ -8,8 +8,8 @@
                 Deadline</header>
             <div class="bg-white bg-opacity-75 p-2 text-black flex flex-col items-center gap-2">
                 <div class="w-full px-5 flex flex-col gap-2">
-                    <div class="bg-white shadow-md text-emerald-600 font-semibold p-1 px-2 rounded-full w-full text-center">25 October 2024 OFFLINE</div>
-                    <div class="bg-rose-500 font-semibold p-1 px-2 rounded-full w-full text-center text-white">27 October 2024 ONLINE</div>
+                    <div class="bg-white shadow-md text-emerald-600 font-semibold p-1 px-2 rounded-full w-full text-center">25 November 2025 OFFLINE</div>
+                    <div class="bg-rose-500 font-semibold p-1 px-2 rounded-full w-full text-center text-white">27 November 2025 ONLINE</div>
                 </div>
                 <div>Time Remaining:</div>
                 <div id="countdown-abstract" class="text-lg font-bold">Loading...</div>
@@ -20,8 +20,8 @@
                 Deadline</header>
             <div class="bg-white bg-opacity-75 p-2 text-black flex flex-col items-center gap-2">
                 <div class="w-full px-5 flex flex-col gap-2">
-                    <div class="bg-white shadow-md text-sky-600 font-semibold p-1 px-2 rounded-full w-full text-center">25 October 2024 OFFLINE</div>
-                    <div class="bg-rose-500 font-semibold p-1 px-2 rounded-full w-full text-center text-white">27 October 2024 ONLINE</div>
+                    <div class="bg-white shadow-md text-sky-600 font-semibold p-1 px-2 rounded-full w-full text-center">25 November 2025 OFFLINE</div>
+                    <div class="bg-rose-500 font-semibold p-1 px-2 rounded-full w-full text-center text-white">27 November 2025 ONLINE</div>
                 </div>
                 <div>Time Remaining:</div>
                 <div id="countdown-paper" class="text-lg font-bold">Loading...</div>
@@ -52,8 +52,8 @@
     }
 
     // Set the target dates
-    const abstractDeadline = new Date('October 25, 2024 23:59:59').getTime();
-    const paperDeadline = new Date('October 25, 2024 23:59:59').getTime();
+    const abstractDeadline = new Date('November 25, 2025 23:59:59').getTime();
+    const paperDeadline = new Date('November 25, 2025 23:59:59').getTime();
 
     // Start the countdowns
     startCountdown(abstractDeadline, 'countdown-abstract');
