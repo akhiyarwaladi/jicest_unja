@@ -10,7 +10,7 @@
             <img src="{{ asset('assets/logos/unja3d.png') }}" class="h-8" alt="unja" />
         </a>
         <button type="button"
-            class="w-10 h-10 bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center rounded md:hidden "
+            class="w-10 h-10 bg-gradient-to-r from-sky-300 to-sky-500 flex items-center justify-center rounded md:hidden "
             onclick="toggleNavbar('navbar-dropdown')">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 17 14">

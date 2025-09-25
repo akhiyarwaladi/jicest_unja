@@ -18,7 +18,7 @@
             <div class="font-semibold md:block hidden">Friday, 28 November 2025</div>
             <a
                 href="{{auth()->check() ? '/dashboard' : '/login'}}"
-                class="text-white  text-center font-semibold a hover:to-orange-500  bg-gradient-to-r from-orange-500 to-pink-500 px-3 rounded-full p-1 transition-all duration-300 ease-in-out transform w-full md:w-fit">Buy
+                class="text-white  text-center font-semibold a hover:to-sky-500  bg-gradient-to-r from-sky-300 to-sky-500 px-3 rounded-full p-1 transition-all duration-300 ease-in-out transform w-full md:w-fit">Buy
                 Ticket
             </a>
         </div>

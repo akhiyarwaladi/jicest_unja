@@ -32,7 +32,7 @@
                             <div class="row mx-3 mt-5 flex flex-col w-full items-center justify-center gap-2">
                                 <form method="POST" action="{{ route('verification.send') }}" class="max-w-[300px] w-full">
                                     @csrf
-                                    <button type="submit" class="btn btn-warning w-full bg-gradient-to-r from-orange-400 to-pink-400 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-sky-500 focus:outline-4 focus:outline-sky-300 rounded-md transition-all hover:contrast-75">Resend Verification Email</button>
+                                    <button type="submit" class="btn btn-warning w-full bg-gradient-to-r from-sky-300 to-sky-500 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-sky-500 focus:outline-4 focus:outline-sky-300 rounded-md transition-all hover:contrast-75">Resend Verification Email</button>
                                 </form>
                                 <form method="POST" action="{{ route('logout') }}" class="max-w-[300px] w-full">
                                     @csrf

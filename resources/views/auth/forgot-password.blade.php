@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Contact Form Section Begin -->
-    <section class="contact-from-section spad w-full min-h-screen py-[100px] px-2 bg-gradient-to-b from-orange-400 to-pink-400 flex justify-center items-center">
+    <section class="contact-from-section spad w-full min-h-screen py-[100px] px-2 bg-gradient-to-b from-sky-300 to-sky-500 flex justify-center items-center">
         <div class="container p-10 bg-gray-50  max-w-[700px] w-full h-fit rounded-md shadow-md">
             <div class="row">
                 <div class="col-lg-12">
@@ -41,7 +41,7 @@
                                     </div>
 
                                     <div class="flex items-center justify-end mt-4">
-                                        <button type="submit" class="btn btn-primary bg-gradient-to-r from-orange-400 to-pink-400 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-sky-500 focus:outline-4 focus:outline-sky-300 rounded-md transition-all w-full shadow border border-orange-600 hover:contrast-[80%]">Email Password Reset Link</button>
+                                        <button type="submit" class="btn btn-primary bg-gradient-to-r from-sky-300 to-sky-500 border-none text-white font-semibold p-2 outline-none outline-offset-0 focus:border-sky-500 focus:outline-4 focus:outline-sky-300 rounded-md transition-all w-full shadow border border-sky-600 hover:contrast-[80%]">Email Password Reset Link</button>
                                     </div>
                                 </form>
                             </div>

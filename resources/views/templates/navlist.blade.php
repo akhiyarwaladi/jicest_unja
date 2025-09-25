@@ -12,14 +12,14 @@
         @if ($nav['type'] == 'single')
             <li class="h-8">
                 <a href="{{ $nav['link'] }}"
-                    class="{{$outline}} {{in_array($title, $nav['inclusion']) ? "bg-gradient-to-r text-white" : "" }} block py-1 rounded-full px-3 hover:text-white text-black hover:bg-gradient-to-r from-orange-500 to-pink-500"
+                    class="{{$outline}} {{in_array($title, $nav['inclusion']) ? "bg-gradient-to-r text-white" : "" }} block py-1 rounded-full px-3 hover:text-white text-black hover:bg-gradient-to-r from-orange-300 to-orange-400"
                     aria-current="page">{{ $nav['name'] }}</a>
             </li>
         @endif
         @if ($nav['type'] == 'multiple')
             <li class="relative group flex flex-col h-8" tabindex="0">
                 <button id="dropdownNavbarLink{{ $loop->index }}"
-                    class="{{ in_array($title, $nav['inclusion']) ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white' : '' }} z-[2] py-1 {{$outline}} flex justify-start md:justify-center items-center rounded-full group-hover:text-white px-3 group-hover:bg-gradient-to-r from-orange-500 to-pink-500">
+                    class="{{ in_array($title, $nav['inclusion']) ? 'bg-gradient-to-r from-orange-300 to-orange-400 text-white' : '' }} z-[2] py-1 {{$outline}} flex justify-start md:justify-center items-center rounded-full group-hover:text-white px-3 group-hover:bg-gradient-to-r from-orange-300 to-orange-400">
                     {{ $nav['name'] }}
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
@@ -33,7 +33,7 @@
                         @foreach ($nav['menu'] as $navmenu)
                             <li>
                                 <a href="{{ $navmenu['link'] }}"
-                                    class="{{$outline}} {{ in_array($title, $navmenu['inclusion']) ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white' : '' }} z-[3] block px-4 py-2 hover:bg-gray-100 text-black group-focus:opacity-100 group-focus:scale-100">{{ $navmenu['name'] }}</a>
+                                    class="{{$outline}} {{ in_array($title, $navmenu['inclusion']) ? 'bg-gradient-to-r from-blue-400 to-sky-500 text-white' : '' }} z-[3] block px-4 py-2 hover:bg-gray-100 text-black group-focus:opacity-100 group-focus:scale-100">{{ $navmenu['name'] }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -50,18 +50,18 @@
     @endforeach
     @if(Auth::user())
         <li class="">
-            <a class="{{$outline}} bg-gradient-to-r from-orange-400 to-pink-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0  h-full group cursor-pointer" href="/dashboard">
+            <a class="{{$outline}} bg-gradient-to-r from-blue-400 to-sky-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0  h-full group cursor-pointer" href="/dashboard">
                 <span class="drop-shadow-md group-hover:text-gray-200">Dashboard</span>
             </a>
         </li>
     @else
         <li class="">
-            <a class="{{$outline}} bg-gradient-to-r from-orange-400 to-pink-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0 py-1   h-full group cursor-pointer" href="/login">
+            <a class="{{$outline}} bg-gradient-to-r from-blue-400 to-sky-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0 py-1   h-full group cursor-pointer" href="/login">
                 <span class="drop-shadow-md group-hover:text-gray-200">Login</span>
             </a>
         </li>
         <li class="">
-            <a class="{{$outline}} bg-gradient-to-r from-orange-400 to-pink-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0 py-1  h-full group cursor-pointer" href="/register">
+            <a class="{{$outline}} bg-gradient-to-r from-blue-400 to-sky-500 font-semibold flex items-center justify-center px-4 rounded-full text-white md:py-0 py-1  h-full group cursor-pointer" href="/register">
                 <span class="drop-shadow-md group-hover:text-gray-200  ">Registration</span>
             </a>
         </li>

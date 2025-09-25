@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Contact Form Section Begin -->
-    <section class="bg-gradient-to-r from-orange-400 to-pink-400 flex w-full min-h-screen flex-col items-center py-[100px] gap-5 px-2" style="">
+    <section class="bg-gradient-to-r from-sky-300 to-sky-500 flex w-full min-h-screen flex-col items-center py-[100px] gap-5 px-2" style="">
         {{-- <div class="w-fit h-full">
             <div class="section-title">
                 <h2 class="text-2xl font-bold">Location</h2>
@@ -32,12 +32,12 @@
         <div class="w-full flex flex-col items-center gap-5">
             <div class="flex flex-col md:flex-row w-full justify-center max-w-full gap-4 items-center">
                 <div class="bg-white text-center shadow-md rounded-md  w-full p-5 md:max-w-[300px] max-w-[620px]">
-                    <div class="text-center text-xl font- text-black">Winny</div>
-                    <a href="https://wa.me/6282182797606" class="underline text-center text-xl font-bold text-black">+62 821 8279 7606</a>
+                    <div class="text-center text-xl font- text-black">Yudi Arista Yulanda</div>
+                    <a href="https://wa.me/6285266524920" class="underline text-center text-xl font-bold text-black">+62 852 6652 4920</a>
                 </div>
                 <div class="bg-white text-center shadow-md rounded-md  md:max-w-[300px] max-w-[620px] w-full p-5">
-                    <div class="text-center text-xl font-normal text-black">Sarah</div>
-                    <a href="https://wa.me/6285213441800" class="underline text-center text-xl font-bold text-black">+62 852 1344 1800</a>
+                    <div class="text-center text-xl font-normal text-black">Andini Vermita Bestari</div>
+                    <a href="https://wa.me/6285719405940" class="underline text-center text-xl font-bold text-black">+62 857 1940 5940</a>
                 </div>
             </div>
             <div class="bg-white shadow-md rounded-md max-w-[620px] w-full p-5">

@@ -160,7 +160,7 @@
     <div class="main static z-[-1]">
         @include('homepage.components.header')
         <div class="main h-fit w-full  ">
-            <div class="bg-gradient-to-b from-orange-400 to-pink-500 p-10 text-white gap-3 flex flex-col md:flex-row items-center justify-between ">
+            <div class="bg-gradient-to-b from-sky-300 to-sky-500 p-10 text-white gap-3 flex flex-col md:flex-row items-center justify-between ">
                 <div class="">
                     <div class="drop-shadow text-xl">Conference Date</div>
                     <div class="drop-shadow text-3xl font-bold">Count Every Second Until the Event</div>
@@ -202,8 +202,8 @@
                     </div>
                     <div class="py-3">
                         <div class="text-sm text-gray-500">Phone:</div>
-                        <div>Winny (+6282182797606)</div>
-                        <div>Sarah (+6285213441800)</div>
+                        <div>Yudi Arista Yulanda (+6285266524920)</div>
+                        <div>Andini Vermita Bestari (+6285719405940)</div>
                     </div>
 
                     <div class="py-3">

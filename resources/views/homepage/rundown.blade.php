@@ -7,7 +7,7 @@
 
     $child = "";//"max-w-[500px] w-full rounded-sm px-3 text-lg font-semibold min-w-[150px] bg-white "
 
-    $bgGradient = "bg-gradient-to-r from-orange-300 to-pink-300";
+    $bgGradient = "bg-gradient-to-r from-sky-300 to-sky-500";
 @endphp
 
 @section('content')
