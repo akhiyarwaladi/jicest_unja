@@ -40,13 +40,22 @@
                 <div class="bg-white shadow-md rounded-md mt-5 p-5 max-w-[700px] w-full">
                     <header class="text-2xl text-black font-bold text-center">Payment</header>
                     <section class="w-full text-center">
-                        <div class="text-center mt-4 text-xl font-semibold">Bank BTN</div>
-                        <div class="text-center text-xl font-semibold bg-gradient-to-r from-sky-300 to-sky-500 w-fit block mx-auto px-5 rounded-full text-white">0003801300008828</div>
-
-                        <section>
-                            <header class="text-center mt-4 text-lg font-[300]">Account Name</header>
-                            <div class="text-center text-xl font-semibold">RPL 012 BLU UNJA UTK OPS PENERIMAAN</div>
-                        </section>
+                        <div class="text-center mt-4 text-lg">
+                            <p class="mb-4">Untuk informasi pembayaran, silakan menghubungi contact person yang tersedia:</p>
+                            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                                <div class="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white px-6 py-3 rounded-lg">
+                                    <div class="font-semibold">Yudi Arista Yulanda</div>
+                                    <div>+6285266524920</div>
+                                </div>
+                                <div class="bg-gradient-to-r from-sky-400 to-sky-600 text-white px-6 py-3 rounded-lg">
+                                    <div class="font-semibold">Andini Vermita Bestari</div>
+                                    <div>+6285719405940</div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p>Email: <a href="mailto:jicest@unja.ac.id" class="text-emerald-600 font-semibold">jicest@unja.ac.id</a></p>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>
