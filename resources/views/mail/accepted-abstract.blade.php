@@ -12,7 +12,7 @@
     <h1>ABSTRACT ACCEPTANCE</h1>
     <p>
         Dear {{ $name }}, <br>
-        Congratulation! We are happy to inform you that your abstract for The 2nd Jambi International Conference on the
+        Congratulation! We are happy to inform you that your abstract for The 3rd Jambi International Conference on the
         Enginering, Science and Technology
         (JICEST 2025) <br>
         Title of abstract : <strong>{{ $title }}</strong> has been accepted. <br>

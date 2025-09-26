@@ -54,7 +54,7 @@
                 <br>
                 <br>
                 <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px">Thank you for your interest in
-                    <strong>The 2nd
+                    <strong>The 3rd
                         JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</strong> and submitting
                     your Abstract entitled:
                 </p>

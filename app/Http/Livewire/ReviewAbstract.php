@@ -170,7 +170,7 @@ class ReviewAbstract extends Component
             
             Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
             Dear " . $this->full_name . ", <br>
-            Congratulations! We are happy to inform you that your abstract for The 2nd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) <br>
+            Congratulations! We are happy to inform you that your abstract for The 3rd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) <br>
             Title of abstract: <strong>" . $this->abstractTitle . "</strong> has been accepted. <br><br>
             Please download your documents:<br>
             <a href='" . $linkLoa . "'>Download Letter of Acceptance</a><br>
@@ -219,7 +219,7 @@ class ReviewAbstract extends Component
                 'reviewed_by' => Auth::user()->email
             ]);
             
-            Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT REJECTION', 'Your abstract for The 2nd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) has been rejected.'));
+            Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT REJECTION', 'Your abstract for The 3rd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) has been rejected.'));
             
             $this->review = false;
             
