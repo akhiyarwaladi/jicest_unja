@@ -124,14 +124,6 @@
     </form>
 
     @else
-    @if (session()->has('payment_success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('payment_success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
     @if (in_array(Auth::user()->participant->participant_type, ['presenter', 'presenter_reguler', 'presenter_student']))
     @if (count($abstract) == 0)
     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
@@ -291,71 +283,19 @@
 </div>
 
 <script>
-    // Debug: Add listener for ALL Livewire events
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Payment page JavaScript loaded');
-
-        // Check if Sweet Alert is available
-        if (typeof Swal !== 'undefined') {
-            console.log('Sweet Alert is loaded');
-        } else {
-            console.error('Sweet Alert is NOT loaded');
-        }
-    });
-
-    // Listen for all Livewire browser events
-    document.addEventListener('livewire:browser-event', function(event) {
-        console.log('Livewire browser event detected:', event.detail.name, event.detail.data);
-    });
-
-    // Sweet Alert for payment success - primary listener
+    // Sweet Alert for payment success
     window.addEventListener('payment-success', event => {
-        console.log('Payment success event received:', event.detail);
-        showSuccessAlert(event.detail);
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#10b981',
+            timer: 5000,
+            showConfirmButton: true,
+            allowOutsideClick: false
+        });
     });
-
-    // Alternative event listener
-    window.addEventListener('livewire-payment-success', event => {
-        console.log('Livewire payment success event received:', event.detail);
-        showSuccessAlert(event.detail);
-    });
-
-    // Direct JavaScript execution listener
-    window.addEventListener('eval-js', event => {
-        console.log('Eval JS event received:', event.detail);
-        try {
-            eval(event.detail.script);
-        } catch (e) {
-            console.error('Error executing JS:', e);
-        }
-    });
-
-    // Function to show success alert
-    function showSuccessAlert(detail) {
-        console.log('About to show Sweet Alert with data:', detail);
-
-        try {
-            if (typeof Swal !== 'undefined') {
-                Swal.fire({
-                    title: detail.title,
-                    text: detail.message,
-                    icon: detail.icon,
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#10b981',
-                    timer: 5000,
-                    showConfirmButton: true,
-                    allowOutsideClick: false
-                });
-                console.log('Sweet Alert should be showing now');
-            } else {
-                console.error('Sweet Alert not available, using regular alert');
-                alert(detail.title + '\n' + detail.message);
-            }
-        } catch (e) {
-            console.error('Error showing Sweet Alert:', e);
-            alert('Payment submitted successfully!'); // Fallback
-        }
-    }
 
     // Sweet Alert for voucher success
     window.addEventListener('voucher-success', event => {

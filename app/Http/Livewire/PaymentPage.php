@@ -237,26 +237,11 @@ class PaymentPage extends Component
 
             \Log::info('Payment created successfully, dispatching browser event');
 
-            // Add session flash as backup
-            session()->flash('payment_success', 'Payment Submitted Successfully!');
-
-            // Try multiple dispatch methods for maximum compatibility
+            // Dispatch single success event
             $this->dispatchBrowserEvent('payment-success', [
                 'title' => 'Payment Submitted Successfully!',
                 'message' => 'Your payment has been submitted and is waiting for validation from administrator.',
                 'icon' => 'success'
-            ]);
-
-            // Also try with different event name
-            $this->dispatchBrowserEvent('livewire-payment-success', [
-                'title' => 'Payment Submitted Successfully!',
-                'message' => 'Your payment has been submitted and is waiting for validation from administrator.',
-                'icon' => 'success'
-            ]);
-
-            // Add direct JavaScript execution as final fallback
-            $this->dispatchBrowserEvent('eval-js', [
-                'script' => "console.log('Direct JS execution test'); if(typeof Swal !== 'undefined') { Swal.fire('Success!', 'Payment submitted successfully', 'success'); } else { alert('Payment submitted successfully!'); }"
             ]);
 
             \Log::info('Payment success events dispatched');
