@@ -215,7 +215,7 @@ class PaymentPage extends Component
                 \Log::info('Payment save method started');
                 $this->validate();
                 \Log::info('Payment validation passed');
-            $imagePath = $this->proof_of_payment->store('images');
+            $imagePath = $this->proof_of_payment->store('proof-of-payment', config('filesystems.storage'));
             $discount = 0;
             if (Auth::user()->voucher !== null) {
                 if (Auth::user()->voucher == $this->validVouchers[0]) {

@@ -85,7 +85,9 @@ class FixStorageCommand extends Command
             'receipt',
             'invoice',
             'abstracts',
-            'fulltext-papers'
+            'fulltext-papers',
+            'proof-of-payment',
+            'member-cards'
         ];
 
         foreach ($directories as $dir) {
