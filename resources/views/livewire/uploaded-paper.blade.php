@@ -7,6 +7,19 @@
                     placeholder="Search by title">
             </div>
         </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="search">
+                    Filter Validation Status
+                </label>
+                <select class="custom-select" id="search" name="search" wire:model.debounce.500ms='search'>
+                    <option value="">All</option>
+                    <option value="valid">Validated</option>
+                    <option value="invalid">Invalid</option>
+                    <option value="not yet validated">Not yet validated</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div class="col-lg-12">
         <div class="row">

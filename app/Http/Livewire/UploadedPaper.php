@@ -98,7 +98,10 @@ class UploadedPaper extends Component
     public function render()
     {
         return view('livewire.uploaded-paper', [
-            'fulltexts' => UploadFulltext::where('title', 'like', '%' . $this->search2 . '%')->orderBy('title')->paginate(10)
+            'fulltexts' => UploadFulltext::where('validation', 'like', '%' . $this->search)
+                ->where('title', 'like', '%' . $this->search2 . '%')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10)
         ]);
     }
 }
