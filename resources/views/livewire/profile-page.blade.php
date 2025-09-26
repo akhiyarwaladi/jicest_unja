@@ -95,7 +95,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" id="phone"
+            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone"
                 placeholder="Phone Number" name="phone" wire:model='phone'>
             @error('phone')
                 <span class="invalid-feedback">
