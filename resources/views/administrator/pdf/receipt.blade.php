@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">
-                                Dr. Fetty Febriasti Bahar, S.T., M.T.
+                                Yudi Arista Yulanda, S.T., M.T.
                             </p>
                         </td>
                     </tr>
