@@ -1,12 +1,4 @@
 <div>
-    @if (session()->has('message'))
-        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-            {{ session('message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <h4 class="mb-3">Profile Information</h4>
     <form wire:submit.prevent="update">
         <div class="form-group">
@@ -158,6 +150,47 @@
                 </span>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+            <span wire:loading.remove wire:target="update">
+                <i class="fa fa-save mr-1"></i> Update
+            </span>
+            <span wire:loading wire:target="update">
+                <div class="d-flex align-items-center">
+                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    Updating... Please wait
+                </div>
+            </span>
+        </button>
     </form>
 </div>
+
+@section('script')
+<script>
+    // Sweet Alert for profile update success
+    window.addEventListener('profile-success', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#10b981',
+            timer: 4000,
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for profile update error
+    window.addEventListener('profile-error', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+</script>
+@endsection

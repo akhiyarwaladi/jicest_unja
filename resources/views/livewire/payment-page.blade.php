@@ -282,6 +282,7 @@
     @endif
 </div>
 
+@section('script')
 <script>
     // Ensure DOM and Sweet Alert are ready
     document.addEventListener('DOMContentLoaded', function() {
@@ -376,3 +377,4 @@
         });
     });
 </script>
+@endsection

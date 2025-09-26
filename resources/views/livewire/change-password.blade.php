@@ -1,14 +1,6 @@
 <div>
     <h4>Update Password</h4>
     <small class="my-3">Ensure your account is using a long, random password to stay secure.</small>
-    @if (session('message'))
-        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-            {{ session('message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <form method="post" wire:submit.prevent="save" class="mt-6 space-y-6">
         @csrf
 
@@ -46,7 +38,48 @@
             @enderror
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                <span wire:loading.remove wire:target="save">
+                    <i class="fa fa-save mr-1"></i> Save
+                </span>
+                <span wire:loading wire:target="save">
+                    <div class="d-flex align-items-center">
+                        <div class="spinner-border spinner-border-sm mr-2" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        Updating... Please wait
+                    </div>
+                </span>
+            </button>
         </div>
     </form>
 </div>
+
+@section('script')
+<script>
+    // Sweet Alert for password update success
+    window.addEventListener('password-success', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#10b981',
+            timer: 4000,
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for password update error
+    window.addEventListener('password-error', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+</script>
+@endsection

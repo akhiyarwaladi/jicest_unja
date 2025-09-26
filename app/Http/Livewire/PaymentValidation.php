@@ -192,15 +192,34 @@ class PaymentValidation extends Component
 
     public function invalid()
     {
-        $participant_id = Payment::find($this->paymentValidate)->participant_id;
-        $email = Participant::find($participant_id)->user->email;
-        Payment::where('id', $this->paymentValidate)->update([
-            'validation' => 'invalid',
-            'validated_by' => Auth::user()->email
-        ]);
-        Mail::to($email)->send(new SendMail('Payment Validation', 'Yout payment for ' . $this->for_payment_of . ' is invalid!', []));
+        try {
+            $participant_id = Payment::find($this->paymentValidate)->participant_id;
+            $email = Participant::find($participant_id)->user->email;
+            
+            Payment::where('id', $this->paymentValidate)->update([
+                'validation' => 'invalid',
+                'validated_by' => Auth::user()->email
+            ]);
+            
+            Mail::to($email)->send(new SendMail('Payment Validation', 'Your payment for ' . $this->for_payment_of . ' is invalid!', []));
 
-        return redirect('/payment-validation')->with('message', 'Validation succesfully !');
+            $this->validation = false;
+
+            // Show success alert for invalid payment marking
+            $this->dispatchBrowserEvent('validation-success', [
+                'title' => 'Payment Marked Invalid!',
+                'message' => 'Payment has been marked as invalid and notification email sent to participant.',
+                'icon' => 'warning'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error marking payment as invalid: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('validation-error', [
+                'title' => 'Operation Failed',
+                'message' => 'An error occurred while marking payment as invalid. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
     public function export()

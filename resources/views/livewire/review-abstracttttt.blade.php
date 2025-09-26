@@ -296,6 +296,12 @@
         <script>
             window.addEventListener('close-modal', event => {
                 $('#modalValidate').modal('hide');
+
+                // Force remove backdrop untuk memastikan layar tidak hitam
+                setTimeout(() => {
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open').css('padding-right', '');
+                }, 300);
             });
             window.addEventListener('show-modal', event => {
                 // console.log('MASUK SINI');

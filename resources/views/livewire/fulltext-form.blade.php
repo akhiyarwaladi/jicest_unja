@@ -72,14 +72,6 @@
         @else
             <button class="btn btn-primary" wire:click="add()">Upload Paper</button>
         @endif
-        @if (session()->has('message'))
-            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                {{ session('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
         @if (count($fulltexts) !== 0)
             <div style="overflow-x:auto;">
                 <table class="table my-3">
@@ -115,3 +107,32 @@
 
     @endif
 </div>
+
+@section('script')
+<script>
+    // Sweet Alert for fulltext upload success
+    window.addEventListener('fulltext-success', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#10b981',
+            timer: 5000,
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for fulltext upload error
+    window.addEventListener('fulltext-error', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+</script>
+@endsection

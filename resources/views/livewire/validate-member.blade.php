@@ -27,14 +27,6 @@
             </div> --}}
         </div>
     </div>
-    @if (session()->has('message'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ session('message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <div class="col-lg-12">
         <div class="row">
             <div class="table-responsive">
@@ -164,10 +156,51 @@
         <script>
             window.addEventListener('close-modal', event => {
                 $('#modalValidate').modal('hide');
+
+                // Force remove backdrop untuk memastikan layar tidak hitam
+                setTimeout(() => {
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open').css('padding-right', '');
+                }, 300);
             });
             window.addEventListener('show-modal', event => {
                 // console.log('MASUK SINI');
                 $('#modalValidate').modal('show');
+            });
+
+            // Sweet Alert for HKI validation success (dengan delay untuk tunggu modal tertutup)
+            window.addEventListener('hki-validation-success', event => {
+                // Close modal dulu, baru tampilkan success alert
+                $('#modalValidate').modal('hide');
+
+                // Delay 500ms untuk memastikan modal dan backdrop benar-benar hilang
+                setTimeout(() => {
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open').css('padding-right', '');
+
+                    Swal.fire({
+                        title: event.detail.title,
+                        text: event.detail.message,
+                        icon: event.detail.icon,
+                        confirmButtonText: 'Great!',
+                        confirmButtonColor: '#10b981',
+                        timer: 5000,
+                        showConfirmButton: true,
+                        allowOutsideClick: false
+                    });
+                }, 500);
+            });
+
+            // Sweet Alert for HKI validation error
+            window.addEventListener('hki-validation-error', event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.message,
+                    icon: event.detail.icon,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#ef4444',
+                    showConfirmButton: true
+                });
             });
         </script>
     @endsection

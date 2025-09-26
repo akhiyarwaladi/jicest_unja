@@ -250,6 +250,7 @@
     <script src="{{ url('') }}/assets/js/owl.carousel.min.js"></script>
     <script src="{{ url('') }}/assets/js/main.js"></script>
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         window.addEventListener('to-top', (event) => {
             event.preventDefault();

@@ -289,14 +289,6 @@
         </form>
     @else
         <button class="btn btn-primary" wire:click="add()">Add Abstract {{$canEdit}}</button>
-        @if (session()->has('message'))
-            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                {{ session('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
 
         @if (count($abstracts) !== 0)
             <div class="" style="overflow-x:auto;">
@@ -353,3 +345,32 @@
         @endif
     @endif
 </div>
+
+@section('script')
+<script>
+    // Sweet Alert for abstract success
+    window.addEventListener('abstract-success', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#10b981',
+            timer: 5000,
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for abstract error
+    window.addEventListener('abstract-error', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+</script>
+@endsection

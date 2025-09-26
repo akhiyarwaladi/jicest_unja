@@ -108,20 +108,35 @@ class FulltextForm extends Component
 
     public function save()
     {
-        $this->validate();
+        try {
+            $this->validate();
 
-        $filePath = $this->fulltext->store('fulltext', 'public');
-        UploadFulltext::create([
-            'title' => $this->title,
-            'payment_id' => $this->payment_id,
-            'fulltext' => $filePath,
-            'validation' => 'not yet validated',
-            'validated_by' => null
-        ]);
+            $filePath = $this->fulltext->store('fulltext', 'public');
+            UploadFulltext::create([
+                'title' => $this->title,
+                'payment_id' => $this->payment_id,
+                'fulltext' => $filePath,
+                'validation' => 'not yet validated',
+                'validated_by' => null
+            ]);
 
-        session()->flash('message', 'Upload fulltext was successful !');
-        $this->cancel();
-        $this->empty();
+            $this->cancel();
+            $this->empty();
+            
+            $this->dispatchBrowserEvent('fulltext-success', [
+                'title' => 'Full-text Uploaded!',
+                'message' => 'Your full-text paper has been uploaded successfully and is waiting for validation.',
+                'icon' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error uploading full-text: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('fulltext-error', [
+                'title' => 'Upload Failed',
+                'message' => 'An error occurred while uploading your full-text paper. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
     public function render()

@@ -52,20 +52,15 @@ class ProfilePage extends Component
     }
     public function rules()
     {
-        return
-            [
-                'full_name1' => 'required',
-                'full_name2' => 'required',
-                'gender' => 'required|in:male,female',
-                'attendance' => 'required|in:online,offline',
-                'participant_type' => 'required|in:professional presenter,participant,presenter,participant_reguler, participant_student, presenter_reguler, presenter_student',
-                'institution' => 'required',
-                'address' => 'required',
-                'phone' => 'required|regex:/^([0-9\s\+]*)$/',
-                'email' => 'required|unique:users,email,' . Auth::user()->id . '|email:rfc',
-                'password' => 'required|min:8',
-                'confirmPassword' => 'required|same:password'
-            ];
+        return [
+            'full_name1' => 'required',
+            'full_name2' => 'required',
+            'gender' => 'required|in:male,female',
+            'institution' => 'required',
+            'address' => 'required',
+            'phone' => 'required|regex:/^([0-9\\\\s\\\\+]*)$/',
+            'email' => 'required|unique:users,email,' . Auth::user()->id . '|email:rfc',
+        ];
     }
 
     //Custom Errror messages for validation
@@ -99,27 +94,63 @@ class ProfilePage extends Component
 
     public function update()
     {
-        if ($this->email !== Auth::user()->email) {
-            dd('Masuk');
-            User::where('id', Auth::user()->id)->update([
-                'email' => $this->email,
-                'email_verified_at' => null
+        try {
+            \Log::info('Profile update started for user: ' . Auth::user()->id);
+            
+            $this->validate();
+            \Log::info('Validation passed');
+            
+            if ($this->email !== Auth::user()->email) {
+                \Log::info('Updating email from ' . Auth::user()->email . ' to ' . $this->email);
+                User::where('id', Auth::user()->id)->update([
+                    'email' => $this->email,
+                    'email_verified_at' => null
+                ]);
+            }
+
+            \Log::info('Updating participant data for user_id: ' . Auth::user()->id);
+            
+            // Only update fields that are actually in the form (participant_type and attendance are commented out)
+            $participantData = [
+                'full_name1' => $this->full_name1,
+                'full_name2' => $this->full_name2,
+                'gender' => $this->gender,
+                'institution' => $this->institution,
+                'address' => $this->address,
+                'phone' => $this->phone,
+            ];
+            
+            \Log::info('Participant data to update: ', $participantData);
+            
+            $result = Participant::where('user_id', Auth::user()->id)->update($participantData);
+            \Log::info('Participant update result (rows affected): ' . $result);
+
+            $this->empty();
+            \Log::info('Profile update completed successfully');
+            
+            $this->dispatchBrowserEvent('profile-success', [
+                'title' => 'Profile Updated!',
+                'message' => 'Your profile has been updated successfully.',
+                'icon' => 'success'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::error('Validation error in profile update: ', $e->errors());
+            
+            $this->dispatchBrowserEvent('profile-error', [
+                'title' => 'Validation Error',
+                'message' => 'Please check your input and try again. ' . collect($e->errors())->flatten()->first(),
+                'icon' => 'error'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error updating profile: ' . $e->getMessage());
+            \Log::error('Error trace: ' . $e->getTraceAsString());
+
+            $this->dispatchBrowserEvent('profile-error', [
+                'title' => 'Update Failed',
+                'message' => 'An error occurred while updating your profile. Please try again. Error: ' . $e->getMessage(),
+                'icon' => 'error'
             ]);
         }
-
-        Participant::where('user_id', Auth::user()->id)->update([
-            'full_name1' => $this->full_name1,
-            'full_name2' => $this->full_name2,
-            'gender' => $this->gender,
-            'participant_type' => $this->participant_type,
-            'institution' => $this->institution,
-            'address' => $this->address,
-            'phone' => $this->phone,
-            'attendance' => $this->attendance,
-        ]);
-
-        $this->empty();
-        return redirect('/profile')->with('message', 'Update profile succes!');
     }
     public function render()
     {

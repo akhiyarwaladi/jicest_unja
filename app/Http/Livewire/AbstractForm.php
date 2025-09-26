@@ -96,21 +96,37 @@ class AbstractForm extends Component
 
     public function update()
     {
-        $this->validate();
-        UploadAbstract::where('id', $this->abstract_edit_id)->update([
-            'topic' => $this->topic,
-            'type' => $this->type,
-            'title' => $this->title,
-            'authors' => $this->authors,
-            'institutions' => $this->institutions,
-            'abstract' => $this->abstract,
-            'keywords' => $this->keywords,
-            'presenter' => $this->presenter,
-        ]);
+        try {
+            $this->validate();
+            
+            UploadAbstract::where('id', $this->abstract_edit_id)->update([
+                'topic' => $this->topic,
+                'type' => $this->type,
+                'title' => $this->title,
+                'authors' => $this->authors,
+                'institutions' => $this->institutions,
+                'abstract' => $this->abstract,
+                'keywords' => $this->keywords,
+                'presenter' => $this->presenter,
+            ]);
 
-        session()->flash('message', 'Edit abstract was successful !');
-        $this->empty();
-        $this->cancel();
+            $this->empty();
+            $this->cancel();
+            
+            $this->dispatchBrowserEvent('abstract-success', [
+                'title' => 'Abstract Updated!',
+                'message' => 'Your abstract has been updated successfully.',
+                'icon' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error updating abstract: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('abstract-error', [
+                'title' => 'Update Failed',
+                'message' => 'An error occurred while updating your abstract. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
     public function cancel()
@@ -124,23 +140,39 @@ class AbstractForm extends Component
 
     public function save()
     {
-        $this->validate();
-        UploadAbstract::create([
-            'topic' => $this->topic,
-            'type' => $this->type,
-            'title' => $this->title,
-            'authors' => $this->authors,
-            'institutions' => $this->institutions,
-            'abstract' => $this->abstract,
-            'keywords' => $this->keywords,
-            'presenter' => $this->presenter,
-            'participant_id' => Auth::user()->participant->id,
-            'status' => 'not yet reviewed'
-        ]);
+        try {
+            $this->validate();
+            
+            UploadAbstract::create([
+                'topic' => $this->topic,
+                'type' => $this->type,
+                'title' => $this->title,
+                'authors' => $this->authors,
+                'institutions' => $this->institutions,
+                'abstract' => $this->abstract,
+                'keywords' => $this->keywords,
+                'presenter' => $this->presenter,
+                'participant_id' => Auth::user()->participant->id,
+                'status' => 'not yet reviewed'
+            ]);
 
-        session()->flash('message', 'Add abstract was successful !');
-        $this->cancel();
-        $this->empty();
+            $this->cancel();
+            $this->empty();
+            
+            $this->dispatchBrowserEvent('abstract-success', [
+                'title' => 'Abstract Submitted!',
+                'message' => 'Your abstract has been submitted successfully and is waiting for review.',
+                'icon' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error saving abstract: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('abstract-error', [
+                'title' => 'Submission Failed',
+                'message' => 'An error occurred while submitting your abstract. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
 

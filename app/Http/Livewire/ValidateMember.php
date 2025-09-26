@@ -36,28 +36,64 @@ class ValidateMember extends Component
 
     public function valid()
     {
-        $email = Participant::find($this->memberValidate)->user->email;
-        Participant::where('id', $this->memberValidate)->update([
-            'hki_status' => 'valid',
-            'hki_validated_by' => Auth::user()->email
-        ]);
-        Mail::to($email)->send(new SendMail('Validation HKI Member', 'Your hki member status has been validated, now you get a 25% discount'));
-        $this->empty();
-        session()->flash('message', 'Validation succesfully !');
-        $this->dispatchBrowserEvent('close-modal');
+        try {
+            $email = Participant::find($this->memberValidate)->user->email;
+            
+            Participant::where('id', $this->memberValidate)->update([
+                'hki_status' => 'valid',
+                'hki_validated_by' => Auth::user()->email
+            ]);
+            
+            Mail::to($email)->send(new SendMail('Validation HKI Member', 'Your hki member status has been validated, now you get a 25% discount'));
+            
+            $this->empty();
+            $this->dispatchBrowserEvent('close-modal');
+            
+            $this->dispatchBrowserEvent('hki-validation-success', [
+                'title' => 'HKI Member Validated!',
+                'message' => 'HKI membership has been validated successfully. Member now gets 25% discount.',
+                'icon' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error validating HKI member: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('hki-validation-error', [
+                'title' => 'Validation Failed',
+                'message' => 'An error occurred while validating HKI membership. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
     public function invalid()
     {
-        $email = Participant::find($this->memberValidate)->user->email;
-        Participant::where('id', $this->memberValidate)->update([
-            'hki_status' => 'invalid',
-            'hki_validated_by' => Auth::user()->email
-        ]);
-        $this->empty();
-        Mail::to($email)->send(new SendMail('Validation HKI Member', "Your hki member status is invalid, you don't get 25% discount."));
-        session()->flash('message', 'Validation succesfully !');
-        $this->dispatchBrowserEvent('close-modal');
+        try {
+            $email = Participant::find($this->memberValidate)->user->email;
+            
+            Participant::where('id', $this->memberValidate)->update([
+                'hki_status' => 'invalid',
+                'hki_validated_by' => Auth::user()->email
+            ]);
+            
+            Mail::to($email)->send(new SendMail('Validation HKI Member', "Your hki member status is invalid, you don't get 25% discount."));
+            
+            $this->empty();
+            $this->dispatchBrowserEvent('close-modal');
+            
+            $this->dispatchBrowserEvent('hki-validation-success', [
+                'title' => 'HKI Member Marked Invalid!',
+                'message' => 'HKI membership has been marked as invalid. No discount will be applied.',
+                'icon' => 'warning'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error marking HKI member as invalid: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('hki-validation-error', [
+                'title' => 'Operation Failed',
+                'message' => 'An error occurred while marking HKI membership as invalid. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
     }
 
     public function render()
