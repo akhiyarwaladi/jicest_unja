@@ -23,8 +23,10 @@ use App\Http\Controllers\UploadFulltextController;
 */
 
 Route::get('/', function () {
+    $pricing = \App\Models\Fee::getAllPricingTiers();
     return view('homepage.index', [
-        'title' => 'Home'
+        'title' => 'Home',
+        'pricing' => $pricing
     ]);
 });
 
