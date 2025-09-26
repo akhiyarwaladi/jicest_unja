@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Mail\SendMail;
+use App\Models\Fee;
 use Livewire\Component;
 use PDF;
 use Livewire\WithPagination;
@@ -93,42 +94,15 @@ class ReviewAbstract extends Component
 
     public function showValidate()
     {
+        \Log::info('showValidate() called for abstract review ID: ' . $this->abstract_review);
         $participant = UploadAbstract::find($this->abstract_review)->participant;
 
         $participantType = $participant->participant_type;
         $attendance = $participant->attendance;
 
-        if ($participantType == 'presenter_reguler') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 600.000 / $60 USD';
-            } else {
-                $this->fee = 'IDR 400.000 / $40 USD';
-            }
-        } elseif ($participantType == 'presenter_student') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 350.000 / $35 USD';
-            } else {
-                $this->fee = 'IDR 300.000 / $30 USD';
-            }
-        } elseif ($participantType == 'participant_reguler') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 200.000 / $20 USD';
-            } else {
-                $this->fee = 'IDR 150.000 / $15 USD';
-            }
-        } elseif ($participantType == 'participant_student') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 125.000 / $12.5 USD';
-            } else {
-                $this->fee = 'IDR 75.000 / $7.5 USD';
-            }
-        } else {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 175.000 / $15 USD';
-            } else {
-                $this->fee = 'IDR 125.000 / $10 USD';
-            }
-        }
+        // Get fee from database using Fee model
+        $feeData = Fee::getFeeForParticipant($participantType, $attendance);
+        $this->fee = $feeData['formatted'];
 
         $user_id = $participant->user_id;
         $user = User::where('id', $user_id)->first();
@@ -158,22 +132,25 @@ class ReviewAbstract extends Component
 
     public function accept()
     {
-        $this->email = UploadAbstract::find($this->abstract_review)->participant->user->email;
+        try {
+            \Log::info('Accept function called for abstract review ID: ' . $this->abstract_review);
+            $this->email = UploadAbstract::find($this->abstract_review)->participant->user->email;
+            \Log::info('Email found: ' . $this->email);
 
         $loa = PDF::loadView('administrator.pdf.loa', [
             'full_name' => $this->full_name,
             'institution' => $this->institution,
             'abstractTitle' => $this->abstractTitle
         ])->setPaper('a4', 'potrait');
-        // Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
-        // $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
+        Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
+        $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
         $invoice = PDF::loadView('administrator.pdf.invoice', [
             'full_name' => $this->full_name,
             'fee' => $this->fee,
             'participant_type' => $this->participant_type,
             'email' => $this->email
         ])->setPaper('a4', 'landscape');
-        Storage::put('invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $invoice->output());
+        Storage::disk('public')->put('invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $invoice->output());
         $this->invoicePath = 'invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
 
         UploadAbstract::where('id', $this->abstract_review)->update([
@@ -183,38 +160,40 @@ class ReviewAbstract extends Component
             'reviewed_by' => Auth::user()->email
         ]);
 
-        $attachment = [
-            Storage::path('uploads/' . $this->loaPath),
-            Storage::path('uploads/' . $this->invoicePath),
-        ];
-        // $linkLoa = "'https://jicest.unja.ac.id/uploads/" . $this->loaPath . "'";
-        $linkInvoice = "'https://jicest.unja.ac.id/uploads/" . $this->invoicePath . "'";
+        $linkLoa = env('APP_URL') . "/storage/" . $this->loaPath;
+        $linkInvoice = env('APP_URL') . "/storage/" . $this->invoicePath;
 
+        \Log::info('Generated LOA URL: ' . $linkLoa);
+        \Log::info('Generated Invoice URL: ' . $linkInvoice);
+        \Log::info('Attempting to send email to: ' . $this->email);
         Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
-        Dear" . $this->full_name . ", <br>
-        Congratulation! We are happy to inform you that your abstract for The 2nd Jambi International Conference on the
-        Enginering, Science, and Technology
-        (JICEST 2025) <br>
-        Title of abstract : <strong>" . $this->abstractTitle . "</strong> has been accepted. <br>
-        <a href=" . $linkInvoice . ">Download Invoice</a>
+        Dear " . $this->full_name . ", <br>
+        Congratulations! We are happy to inform you that your abstract for The 2nd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) <br>
+        Title of abstract: <strong>" . $this->abstractTitle . "</strong> has been accepted. <br><br>
+        Please download your documents:<br>
+        <a href='" . $linkLoa . "'>Download Letter of Acceptance</a><br>
+        <a href='" . $linkInvoice . "'>Download Invoice</a>
         <br>
         <br>
         <br>
-        It is our great pleasure therefore to request that you submit your full paper, no later than October 10th
-        2024 by following the template as attached in the website: <a href='jicest.unja.ac.id'>jicest.unja.ac.id</a>. <br>
-        In addition, you are requested to proceed with the payment of the registration fee (no later than October 17th
-        2024). <br> <br>
-        After finishing the payment, kindly send the receipt to the committee via website. Here is the bank information
-        detail: <br>
-        Account name : RPL 012 BLU UNJA UTK OPS PENERIMAAN <br>
-        Account number : 0003801300008828 <br>
-        Bank name : Bank BTN <br> <br>
+        It is our great pleasure therefore to request that you submit your full paper, no later than November 22nd, 2025 by following the template as attached in the website: <a href='http://localhost:8000'>jicest.unja.ac.id</a>. <br>
+        In addition, you are requested to proceed with the payment of the registration fee (no later than November 22nd, 2025). <br><br>
+        For payment information, please contact our contact persons:<br>
+        - Yudi Arista Yulanda: +6285266524920<br>
+        - Andini Vermita Bestari: +6285719405940<br>
+        - Email: jicest@unja.ac.id<br><br>
         For the purpose of the conference proceeding, we also require that you submit a detailed resume. Please kindly
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
-        (jicest@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
+        (jicest@unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
         Steering Committee JICEST 2025</p>"));
-        return redirect('/review-abstract')->with('message', 'Review succefully !');
+        \Log::info('Email sent successfully');
+        return redirect('/review-abstract')->with('message', 'Review successfully !');
+        } catch (\Exception $e) {
+            \Log::error('Error in accept function: ' . $e->getMessage());
+            session()->flash('error', 'Error sending email: ' . $e->getMessage());
+            return;
+        }
     }
 
     public function reject()

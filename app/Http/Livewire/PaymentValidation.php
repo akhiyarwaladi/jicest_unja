@@ -76,27 +76,39 @@ class PaymentValidation extends Component
 
     public function valid()
     {
-        $this->validate([
-            'no_receipt' => 'required',
-            'full_name1' => 'required',
-            'amount' => 'required',
-            'for_payment_of' => 'required'
-        ]);
-        $participant_id = Payment::find($this->paymentValidate)->participant_id;
-        // $email = Participant::find($participant_id)->user->email;
+        try {
+            \Log::info('Valid function called');
+            $this->validate([
+                'no_receipt' => 'required',
+                'full_name1' => 'required',
+                'amount' => 'required',
+                'for_payment_of' => 'required'
+            ]);
+            \Log::info('Validation passed');
+        // Optimasi: Eager loading untuk mengurangi query database
+        $payment = Payment::with(['participant.user', 'uploadAbstract'])->find($this->paymentValidate);
+
+        // Optimasi PDF: Enable local files untuk gambar
         $receipt = PDF::loadView('administrator.pdf.receipt', [
             'full_name' => $this->full_name1,
             'fee' => $this->amount,
             'receipt_no' => $this->no_receipt,
             'payment_for' => $this->for_payment_of
-        ])->setPaper('a4', 'potrait');
-        $abstract = Payment::find($this->paymentValidate)->uploadAbstract;
+        ])->setPaper('a4', 'potrait')
+        ->setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => false,
+            'isPhpEnabled' => true,
+            'chroot' => public_path()
+        ]);
+
+        $abstract = $payment->uploadAbstract;
         if ($abstract) {
             $id = $abstract->id;
         } else {
             $id = 'participant';
         }
-        Storage::put('receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf', $receipt->output());
+        Storage::disk('public')->put('receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf', $receipt->output());
         $this->receiptPath = 'receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf';
         Payment::where('id', $this->paymentValidate)->update([
             'validation' => 'valid',
@@ -105,32 +117,30 @@ class PaymentValidation extends Component
         ]);
 
 
-        $attachment = [
-            public_path() . '/uploads/' . $this->receiptPath,
-        ];
-
-        $linkreceipt = "'https://jicest.unja.ac.id/uploads/" . $this->receiptPath . "'";
+        $linkreceipt = env('APP_URL') . "/storage/" . $this->receiptPath;
 
         if ($abstract) {
-            $currentUser = Participant::find($this->payment->participant_id);
-            $currentAbstract = UploadAbstract::find($this->payment->upload_abstract_id);
-            
+            // Menggunakan data dari eager loading
+            $currentUser = $payment->participant;
+
             $loa = PDF::loadView('administrator.pdf.loa', [
                 'full_name' => $this->full_name1,
                 'institution' => $currentUser->institution,
-                'abstractTitle' => $currentAbstract->title,
-            ])->setPaper('a4', 'potrait');
-            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $this->payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf', $loa->output());
-            $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf';
+                'abstractTitle' => $abstract->title,
+            ])->setPaper('a4', 'potrait')
+            ->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => false]);
+            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf', $loa->output());
+            $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf';
             
             
-            $linkLoa = "'https://jicest.unja.ac.id/uploads/" . $this->loaPath . "'";
+            $linkLoa = env('APP_URL') . "/storage/" . $this->loaPath;
             
-            UploadAbstract::where('id', $this->payment->upload_abstract_id)->update([
+            UploadAbstract::where('id', $payment->upload_abstract_id)->update([
                 'loa' => $this->loaPath,
             ]);
             
-            Mail::to($this->email, $this->full_name1)->send(new SendMail('Payment Validation', "<p>
+            // Queue email untuk menghindari blocking
+            Mail::to($this->email, $this->full_name1)->queue(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
             We have validated your payment for the abstract entitled <strong>" . $abstract->title . "</strong>. Here we include
             your receipt of payment and Letter of Acceptance. <br>
@@ -140,7 +150,8 @@ class PaymentValidation extends Component
             Warm regards, <br><br><br><br>
             Steering Committee JICEST 2025 </p>"));
         } else {
-            Mail::to($this->email, $this->full_name1)->send(new SendMail('Payment Validation', "<p>
+            // Queue email untuk menghindari blocking
+            Mail::to($this->email, $this->full_name1)->queue(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
             We have validated your payment for the participant JICEST 2025, here we include
             your receipt of payment. <br>
@@ -148,7 +159,28 @@ class PaymentValidation extends Component
             Steering Committee JICEST 2025 </p>"));
         }
 
-        return redirect('/payment-validation')->with('message', 'Validation succesfully !');
+        \Log::info('Validation completed successfully');
+
+        // Close modal dulu, baru tampilkan success alert
+        $this->dispatchBrowserEvent('close-modal');
+        $this->validation = false;
+
+        // Emit Sweet Alert setelah modal tertutup (dengan delay)
+        $this->dispatchBrowserEvent('validation-success', [
+            'title' => 'Validation Successful!',
+            'message' => 'Payment has been validated successfully. Receipt and email have been sent to the participant.',
+            'icon' => 'success'
+        ]);
+        } catch (\Exception $e) {
+            \Log::error('Error in valid function: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('validation-error', [
+                'title' => 'Validation Failed',
+                'message' => 'An error occurred during validation. Please try again or contact administrator.',
+                'icon' => 'error'
+            ]);
+            return;
+        }
     }
 
     public function back()

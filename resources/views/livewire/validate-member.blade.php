@@ -119,7 +119,7 @@
                                 <label for="">Member Card HKI :</label>
                                 <div class="row mx-3 card">
                                     @if ($member_card)
-                                        <img src="{{ asset('uploads/' . $member_card) }}" style="max-width:100%">
+                                        <img src="{{ asset('storage/' . $member_card) }}" style="max-width:100%">
                                     @endif
                                 </div>
                             </div>
@@ -127,13 +127,31 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled">
-                        <span wire:loading.remove wire:target="invalid">Invalid</span>
-                        <span wire:loading wire:target="invalid">Validating..</span>
+                    <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                        <span wire:loading.remove wire:target="invalid">
+                            <i class="fa fa-times mr-1"></i> Invalid
+                        </span>
+                        <span wire:loading wire:target="invalid">
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Processing... Please wait
+                            </div>
+                        </span>
                     </button>
-                    <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled">
-                        <span wire:loading.remove wire:target="valid">Valid</span>
-                        <span wire:loading wire:target="valid">Validating..</span>
+                    <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                        <span wire:loading.remove wire:target="valid">
+                            <i class="fa fa-check mr-1"></i> Valid
+                        </span>
+                        <span wire:loading wire:target="valid">
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Validating... Please wait
+                            </div>
+                        </span>
                     </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         wire:click="empty()">Cancel</button>

@@ -110,7 +110,7 @@ class FulltextForm extends Component
     {
         $this->validate();
 
-        $filePath = $this->fulltext->store('fulltext');
+        $filePath = $this->fulltext->store('fulltext', 'public');
         UploadFulltext::create([
             'title' => $this->title,
             'payment_id' => $this->payment_id,

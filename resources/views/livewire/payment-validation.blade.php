@@ -81,7 +81,7 @@
                                     <td>{{ $item->validated_by }}</td>
                                     <td>
                                         @if ($item->receipt)
-                                            <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank" style="color:red; font-size:20px">
+                                            <a href="{{ asset('storage/' . $item->receipt) }}" target="_blank" style="color:red; font-size:20px">
                                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             </a>
                                         @endif
@@ -165,10 +165,12 @@
 
             <div class="col-7">
                 <div class="form-group">
-                    <label for="">Invoice :</label>
+                    <label for="">Proof of Payment :</label>
                     <div class="row mx-3 card">
                         @if ($proof_of_payment)
-                            <img src="{{ asset('uploads/' . $proof_of_payment) }}" style="max-width:100%">
+                            <img src="{{ asset('storage/' . $proof_of_payment) }}" style="max-width:100%">
+                        @else
+                            <p class="text-muted p-3">No proof of payment uploaded</p>
                         @endif
                     </div>
                 </div>
@@ -176,9 +178,18 @@
         </div>
         <div class="modal-footer">
             @if (!$receipt)
-                <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled">
-                    <span wire:loading.remove wire:target="invalid">Invalid</span>
-                    <span wire:loading wire:target="invalid">Validating..</span>
+                <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                    <span wire:loading.remove wire:target="invalid">
+                        <i class="fa fa-times mr-1"></i> Invalid
+                    </span>
+                    <span wire:loading wire:target="invalid">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            Processing... Please wait
+                        </div>
+                    </span>
                 </button>
                 <button class="btn btn-primary" wire:click='showValidate()'>Valid</button>
             @endif
@@ -197,6 +208,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="form-group">
                             <label for="full_name1">Full Name</label>
                             <input type="text" class="form-control @error('full_name1') is-invalid @enderror"
@@ -234,9 +250,18 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled">
-                            <span wire:loading.remove wire:target="valid">Valid</span>
-                            <span wire:loading wire:target="valid">Validating..</span>
+                        <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                            <span wire:loading.remove wire:target="valid">
+                                <i class="fa fa-check mr-1"></i> Valid
+                            </span>
+                            <span wire:loading wire:target="valid">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    Validating... Please wait
+                                </div>
+                            </span>
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
@@ -250,10 +275,45 @@
         <script>
             window.addEventListener('close-modal', event => {
                 $('#modalValidate').modal('hide');
+
+                // Force remove backdrop untuk memastikan layar tidak hitam
+                setTimeout(() => {
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open').css('padding-right', '');
+                }, 300);
             });
             window.addEventListener('show-modal', event => {
                 // console.log('MASUK SINI');
                 $('#modalValidate').modal('show');
+            });
+
+            // Sweet Alert for validation success (dengan delay untuk tunggu modal tertutup)
+            window.addEventListener('validation-success', event => {
+                // Delay 500ms untuk memastikan modal dan backdrop benar-benar hilang
+                setTimeout(() => {
+                    Swal.fire({
+                        title: event.detail.title,
+                        text: event.detail.message,
+                        icon: event.detail.icon,
+                        confirmButtonText: 'Great!',
+                        confirmButtonColor: '#10b981',
+                        timer: 6000,
+                        showConfirmButton: true,
+                        allowOutsideClick: false
+                    });
+                }, 500);
+            });
+
+            // Sweet Alert for validation error
+            window.addEventListener('validation-error', event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.message,
+                    icon: event.detail.icon,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#ef4444',
+                    showConfirmButton: true
+                });
             });
         </script>
     @endsection

@@ -100,7 +100,7 @@
                             <tr>
                                 <th scope="row">{{ ++$a }}</th>
                                 <td>{{ $item->title }}</td>
-                                <td><a href="{{ asset('uploads/' . $item->fulltext) }}" target="_blank"
+                                <td><a href="{{ asset('storage/' . $item->fulltext) }}" target="_blank"
                                         style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
                                             aria-hidden="true"></i>
                                     </a></td>

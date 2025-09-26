@@ -109,7 +109,16 @@
             </span>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled" wire:target="save">
+            <span wire:loading.remove wire:target="save">Submit</span>
+            <span wire:loading wire:target="save">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Submitting...
+            </span>
+        </button>
         <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
     </form>
 
@@ -139,27 +148,6 @@
     <button wire:click="add()" class="btn btn-primary">Add Payment</button>
     @endif
 
-    @if (session()->has('message'))
-    <div class="mt-6 bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm font-medium text-emerald-700">{{ session('message') }}</p>
-                </div>
-            </div>
-            <button type="button" class="text-emerald-400 hover:text-emerald-600 transition-colors duration-200" onclick="this.parentElement.parentElement.style.display='none'">
-                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-    @endif
 
     {{-- @if (Auth::user()->voucher == NULL) --}}
     <form wire:submit.prevent="redeem" class="mt-5">
@@ -175,9 +163,16 @@
                 <strong>Invalid Voucher!</strong>
             </span>
             @enderror
-            <button @if (Auth::user()->voucher == null) class="btn btn-primary mt-2" type="submit" @else class="btn
-                btn-secondary mt-2" disabled @endif>Redeem
-                Voucher</button>
+            <button @if (Auth::user()->voucher == null) class="btn btn-primary mt-2" type="submit" wire:loading.attr="disabled" wire:target="redeem" @else class="btn btn-secondary mt-2" disabled @endif>
+                <span wire:loading.remove wire:target="redeem">Redeem Voucher</span>
+                <span wire:loading wire:target="redeem">
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Redeeming...
+                </span>
+            </button>
         </div>
     </form>
     {{-- @endif --}}
@@ -185,80 +180,52 @@
 
 
     @if (count($payments) !== 0)
-
-    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mt-8">
-        <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <svg class="w-5 h-5 mr-2 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
-            </svg>
-            Your Payments
-        </h4>
-        <div class="overflow-x-auto rounded-lg border border-gray-200">
-            <table class="w-full text-sm text-left">
-                <thead class="bg-gradient-to-r from-emerald-50 to-sky-50 text-gray-700 border-b border-gray-200">
-                <tr>
-                    <th scope="col" class="px-6 py-3 font-semibold">#</th>
-                    <th scope="col" class="px-6 py-3 font-semibold">Date</th>
-                    <th scope="col" class="px-6 py-3 font-semibold">Total Bill</th>
-                    @can('presenter')
-                    <th scope="col" class="px-6 py-3 font-semibold">Payment for abstract</th>
-                    @endcan
-                    <th scope="col" class="px-6 py-3 font-semibold">Status</th>
-                    <th scope="col" class="px-6 py-3 font-semibold">Receipt</th>
-                    <th scope="col" class="px-6 py-3 font-semibold">Validated By</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                @php
-                $a = 0;
-                @endphp
-                @foreach ($payments as $item)
-                <tr class="hover:bg-gray-50 transition-colors duration-200">
-                    <td class="px-6 py-4 font-medium text-gray-900">{{ ++$a }}</td>
-                    <td class="px-6 py-4 text-gray-600">{{ $item->created_at->format('d M Y') }}</td>
-                    <td class="px-6 py-4 font-semibold text-emerald-600">{{ $item->total_bill }}</td>
-                    @if (in_array(Auth::user()->participant->participant_type, ['presenter', 'presenter_reguler',
-                    'presenter_student']))
-                    @if ($item->uploadAbstract)
-                    <td class="px-6 py-4 text-gray-600 max-w-xs truncate" title="{{ $item->uploadAbstract->title }}">{{ $item->uploadAbstract->title }}</td>
+    <h4 class="mt-5">Your Payments</h4>
+    <div class="" style="overflow-x:auto;">
+        <table class="table my-3" style="">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Bill</th>
+                @can('presenter')
+                <th scope="col">Payment for abstract</th>
+                @endcan
+                <th scope="col">Status</th>
+                <th scope="col">Receipt</th>
+                <th scope="col">Validated By</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+            $a = 0;
+            @endphp
+            @foreach ($payments as $item)
+            <tr>
+                <td>{{ ++$a }}</td>
+                <td>{{ $item->created_at->format('d M Y') }}</td>
+                <td>{{ $item->total_bill }}</td>
+                @if (in_array(Auth::user()->participant->participant_type, ['presenter', 'presenter_reguler',
+                'presenter_student']))
+                @if ($item->uploadAbstract)
+                <td>{{ $item->uploadAbstract->title }}</td>
+                @else
+                <td>No Title</td>
+                @endif
+                @endif
+                <td>{{ $item->validation }}</td>
+                <td>
+                    @if ($item->receipt)
+                    <a href="{{ asset('storage/' . $item->receipt) }}" target="_blank">View PDF</a>
                     @else
-                    <td class="px-6 py-4 text-gray-400 italic">No Title</td>
+                    No file
                     @endif
-                    @endif
-                    <td class="px-6 py-4">
-                        @if($item->validation == 'valid')
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Valid</span>
-                        @elseif($item->validation == 'pending')
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
-                        @else
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">{{ $item->validation }}</span>
-                        @endif
-                    </td>
-                    <td class="px-6 py-4">
-                        @if ($item->receipt)
-                        <a href="{{ asset('uploads/' . $item->receipt) }}" target="_blank"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-200">
-                            <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>
-                            View PDF
-                        </a>
-                        @else
-                        <span class="text-gray-400 italic">No file</span>
-                        @endif
-                    </td>
-                    <td class="px-6 py-4 text-gray-600">{{ $item->validated_by ?: 'Not validated' }}</td>
-                    {{-- <td> --}}
-                        {{-- @if ($item->status == 'not yet reviewed')
-                        <button class="btn btn-info" wire:click='editAbstract({{ $item->id }})'>edit</button>
-                        @else
-                        <p>No actions</p>
-                        @endif --}}
-                        {{--
-                    </td> --}}
-                </tr>
-                @endforeach
-            </tbody>
-            </table>
-        </div>
+                </td>
+                <td>{{ $item->validated_by ?: 'Not validated' }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+        </table>
     </div>
     @endif
 
@@ -269,22 +236,22 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Offline</th>
-                    <th scope="col">Online</th>
+                    <th scope="col">Early Bird</th>
+                    <th scope="col">Non Early Bird</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>Presenter</td>
-                    <td>Regular: IDR 600K / $60 USD<br>Student: IDR 350K / $35 USD</td>
-                    <td>Regular: IDR 400K / $40 USD<br>Student: IDR 300K / $30 USD</td>
+                    <td>IDR 350K / $25 USD</td>
+                    <td>IDR 450K / $30 USD</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Participant</td>
-                    <td>Regular: IDR 200K / $20 USD<br>Student: IDR 125K / $12.5 USD</td>
-                    <td>Regular: IDR 150K / $15 USD<br>Student: IDR 75K / $7.5 USD</td>
+                    <td>IDR 250K / $18 USD</td>
+                    <td>IDR 350K / $23 USD</td>
                 </tr>
             </tbody>
         </table>
@@ -312,3 +279,60 @@
     </div>
     @endif
 </div>
+
+<script>
+    // Sweet Alert for payment success
+    window.addEventListener('payment-success', event => {
+        console.log('Payment success event received:', event.detail);
+
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#10b981',
+            timer: 5000,
+            showConfirmButton: true,
+            allowOutsideClick: false
+        });
+    });
+
+    // Sweet Alert for voucher success
+    window.addEventListener('voucher-success', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#10b981',
+            timer: 4000,
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for voucher error
+    window.addEventListener('voucher-error', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Try Again',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+
+    // Sweet Alert for payment error
+    window.addEventListener('payment-error', event => {
+        console.log('Payment error event received:', event.detail);
+
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.message,
+            icon: event.detail.icon,
+            confirmButtonText: 'Try Again',
+            confirmButtonColor: '#ef4444',
+            showConfirmButton: true
+        });
+    });
+</script>

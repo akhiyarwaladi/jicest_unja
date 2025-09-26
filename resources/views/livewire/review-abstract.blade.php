@@ -106,14 +106,14 @@
                                     <td>{{ $item->reviewed_by }}</td>
                                     <td>
                                         @if ($item->loa)
-                                            <a href="{{ asset('uploads/' . $item->loa) }}" target="_blank"
+                                            <a href="{{ asset('storage/' . $item->loa) }}" target="_blank"
                                                 style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
                                                     aria-hidden="true"></i></a>
                                         @endif
                                     </td>
                                     <td>
                                         @if ($item->invoice)
-                                            <a href="{{ asset('uploads/' . $item->invoice) }}" target="_blank"
+                                            <a href="{{ asset('storage/' . $item->invoice) }}" target="_blank"
                                                 style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
                                                     aria-hidden="true"></i>
                                             </a>
@@ -248,9 +248,18 @@
         </div>
         <div class="modal-footer">
             @if (!$loa)
-                <button class="btn btn-danger" wire:click='reject()' wire:loading.attr="disabled">
-                    <span wire:loading.remove wire:target="reject">Reject</span>
-                    <span wire:loading wire:target="reject">Rejecting..</span>
+                <button class="btn btn-danger" wire:click='reject()' wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                    <span wire:loading.remove wire:target="reject">
+                        <i class="fa fa-times mr-1"></i> Reject
+                    </span>
+                    <span wire:loading wire:target="reject">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            Rejecting... Please wait
+                        </div>
+                    </span>
                 </button>
                 <button class="btn btn-primary" wire:click='showValidate()'>Accept</button>
             @endif
@@ -325,9 +334,18 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button wire:click="accept()" class="btn btn-primary" wire:loading.attr="disabled">
-                            <span wire:loading.remove wire:target="accept">Send to {{ $email }}</span>
-                            <span wire:loading wire:target="accept">Sending to {{ $email }}..</span>
+                        <button wire:click="accept()" class="btn btn-primary position-relative" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                            <span wire:loading.remove wire:target="accept">
+                                <i class="fa fa-paper-plane mr-1"></i> Send to {{ $email }}
+                            </span>
+                            <span wire:loading wire:target="accept">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    Processing... Please wait
+                                </div>
+                            </span>
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>

@@ -36,8 +36,10 @@ Route::get('/rundown-jicest2023', function () {
 });
 
 Route::get('/registration-fee', function () {
+    $pricing = \App\Models\Fee::getAllPricingTiers();
     return view('homepage.registration-fee', [
-        'title' => 'Registration Fee'
+        'title' => 'Registration Fee',
+        'pricing' => $pricing
     ]);
 });
 

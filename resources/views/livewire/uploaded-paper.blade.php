@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group">
                         <label for="fulltext">Full Text</label>
-                        <a href="{{ asset('uploads/' . $fulltext) }}" style="color:black" target="_blank"
+                        <a href="{{ asset('storage/' . $fulltext) }}" style="color:black" target="_blank"
                             class="d-block"><i class="fa fa-file-pdf-o" style="color:red; font-size:30px"
                                 aria-hidden="true"></i>
                             {{ $fulltext }}
@@ -92,13 +92,31 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled">
-                        <span wire:loading.remove wire:target="invalid">Invalid</span>
-                        <span wire:loading wire:target="invalid">Validating..</span>
+                    <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                        <span wire:loading.remove wire:target="invalid">
+                            <i class="fa fa-times mr-1"></i> Invalid
+                        </span>
+                        <span wire:loading wire:target="invalid">
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Processing... Please wait
+                            </div>
+                        </span>
                     </button>
-                    <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled">
-                        <span wire:loading.remove wire:target="valid">Valid</span>
-                        <span wire:loading wire:target="valid">Validating..</span>
+                    <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
+                        <span wire:loading.remove wire:target="valid">
+                            <i class="fa fa-check mr-1"></i> Valid
+                        </span>
+                        <span wire:loading wire:target="valid">
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm mr-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                Validating... Please wait
+                            </div>
+                        </span>
                     </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         wire:click="empty()">Cancel</button>

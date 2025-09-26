@@ -42,15 +42,13 @@
         </div>
         <div class="flex flex-col gap-2">
             <label for="participant">
-                Participant
+                Registration Type
             </label>
             <select class="p-2 outline-none outline-offset-0 border border-gray-400 focus:border-sky-500 focus:outline-[3px] focus:outline-sky-300 rounded-md transition-all   @error('participant_type') focus:outline-rose-300 focus:border-rose-600 border-rose-600 @enderror" id="participant_type"
                 name="participant_type" wire:model.debounce.500ms='participant_type'>
                 <option value="">Choose One</option>
                 <option value="presenter_reguler">Presenter Reguler</option>
-                <option value="presenter_student">Presenter Student</option>
                 <option value="participant_reguler">Participant Reguler</option>
-                <option value="participant_student">Participant Student</option>
             </select>
             @error('participant_type')
                 <span class="font-normal text-sm text-rose-700">
@@ -66,7 +64,6 @@
                 wire:model.debounce.500ms='attendance'>
                 <option value="">Choose One</option>
                 <option value="online">Online</option>
-                <option value="offline">Offline</option>
             </select>
             @error('attendance')
                 <span class="font-normal text-sm text-rose-700">

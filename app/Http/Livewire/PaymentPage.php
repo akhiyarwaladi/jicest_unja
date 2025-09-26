@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Fee;
 use App\Models\Payment;
 use App\Models\Participant;
 use Livewire\Component;
@@ -89,7 +90,11 @@ class PaymentPage extends Component
 
         // Check if the voucher is valid
         if (!in_array($this->voucher, $validVouchers)) {
-            session()->flash('message', 'Voucher not valid');
+            $this->dispatchBrowserEvent('voucher-error', [
+                'title' => 'Invalid Voucher',
+                'message' => 'The voucher code you entered is not valid. Please check and try again.',
+                'icon' => 'error'
+            ]);
             return;
         }
 
@@ -99,8 +104,13 @@ class PaymentPage extends Component
         // Update the user's voucher field and save it
         $user->voucher = $this->voucher;
         $user->save();
-        // Flash a success message with the new bill
-        session()->flash('message', 'Voucher Redeemed!');
+
+        // Dispatch success event
+        $this->dispatchBrowserEvent('voucher-success', [
+            'title' => 'Voucher Redeemed!',
+            'message' => 'Your voucher has been successfully applied. Discount will be shown when you add payment.',
+            'icon' => 'success'
+        ]);
 
         // Clear the voucher input
         $this->voucher = '';
@@ -118,37 +128,9 @@ class PaymentPage extends Component
             $this->abstract = UploadAbstract::where('participant_id', $participant->id)->where('status', 'accepted')->get();
         }
 
-        if ($participantType == 'presenter_reguler') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 600.000 / $60 USD';
-            } else {
-                $this->fee = 'IDR 400.000 / $40 USD';
-            }
-        } elseif ($participantType == 'presenter_student') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 350.000 / $35 USD';
-            } else {
-                $this->fee = 'IDR 300.000 / $30 USD';
-            }
-        } elseif ($participantType == 'participant_reguler') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 200.000 / $20 USD';
-            } else {
-                $this->fee = 'IDR 150.000 / $15 USD';
-            }
-        } elseif ($participantType == 'participant_student') {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 125.000 / $12.5 USD';
-            } else {
-                $this->fee = 'IDR 75.000 / $7.5 USD';
-            }
-        } else {
-            if ($attendance == 'offline') {
-                $this->fee = 'IDR 175.000 / $15 USD';
-            } else {
-                $this->fee = 'IDR 125.000 / $10 USD';
-            }
-        }
+        // Get fee from database using Fee model
+        $feeData = Fee::getFeeForParticipant($participantType, $attendance);
+        $this->fee = $feeData['formatted'];
         
         $this->original_fee = $this->fee;
         $this->discount = 0; // Tidak ada diskon
@@ -229,7 +211,10 @@ class PaymentPage extends Component
 
         public function save()
         {
-            $this->validate();
+            try {
+                \Log::info('Payment save method started');
+                $this->validate();
+                \Log::info('Payment validation passed');
             $imagePath = $this->proof_of_payment->store('images');
             $discount = 0;
             if (Auth::user()->voucher !== null) {
@@ -250,9 +235,28 @@ class PaymentPage extends Component
                 'upload_abstract_id' => $this->uploadAbstractId
             ]);
 
-            session()->flash('message', 'Add payment was successful !');
+            \Log::info('Payment created successfully, dispatching browser event');
+
+            $this->dispatchBrowserEvent('payment-success', [
+                'title' => 'Payment Submitted Successfully!',
+                'message' => 'Your payment has been submitted and is waiting for validation from administrator.',
+                'icon' => 'success'
+            ]);
+
+            \Log::info('Payment success event dispatched');
+
             $this->cancel();
             $this->empty();
+
+            } catch (\Exception $e) {
+                \Log::error('Payment save error: ' . $e->getMessage());
+
+                $this->dispatchBrowserEvent('payment-error', [
+                    'title' => 'Payment Failed',
+                    'message' => 'An error occurred while submitting your payment. Please try again.',
+                    'icon' => 'error'
+                ]);
+            }
         }
 
         public function render()

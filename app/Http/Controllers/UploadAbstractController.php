@@ -73,7 +73,7 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
         }
     }
     
@@ -89,7 +89,7 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
         }
     }
 }

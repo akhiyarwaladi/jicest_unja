@@ -273,6 +273,8 @@
 
     <script src="{{ url('') }}/assets/js/jquery-3.3.1.min.js"></script>
     {{-- <script src="{{ url('') }}/assets/js/main.js"></script> --}}
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

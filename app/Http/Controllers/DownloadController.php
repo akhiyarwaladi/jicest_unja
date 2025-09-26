@@ -18,7 +18,7 @@ class DownloadController extends Controller
     
     public function downloadPaper()
     {
-        return response()->download('uploads/downloads/JICEST_Paper.docx');
+        return response()->download(public_path('uploads/downloads/JICEST_Paper.docx'));
     }
     public function downloadSchedule()
     {
@@ -26,6 +26,6 @@ class DownloadController extends Controller
     }
     public function downloadGuidelines()
     {
-        return response()->download('uploads/downloads/Presentation_Guidelines.pdf');
+        return response()->download(public_path('uploads/downloads/Presentation_Guidelines.pdf'));
     }
 }
