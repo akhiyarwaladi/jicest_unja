@@ -142,7 +142,7 @@ class ReviewAbstract extends Component
                 'institution' => $this->institution,
                 'abstractTitle' => $this->abstractTitle
             ])->setPaper('a4', 'potrait');
-            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $loa->output());
             $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
             
             $invoice = PDF::loadView('administrator.pdf.invoice', [
@@ -151,7 +151,7 @@ class ReviewAbstract extends Component
                 'participant_type' => $this->participant_type,
                 'email' => $this->email
             ])->setPaper('a4', 'landscape');
-            Storage::disk('public')->put('invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $invoice->output());
+            Storage::disk(config('filesystems.storage'))->put('invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $invoice->output());
             $this->invoicePath = 'invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
 
             UploadAbstract::where('id', $this->abstract_review)->update([

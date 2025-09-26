@@ -108,7 +108,7 @@ class PaymentValidation extends Component
         } else {
             $id = 'participant';
         }
-        Storage::disk('public')->put('receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf', $receipt->output());
+        Storage::disk(config('filesystems.storage'))->put('receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf', $receipt->output());
         $this->receiptPath = 'receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf';
         Payment::where('id', $this->paymentValidate)->update([
             'validation' => 'valid',
@@ -129,7 +129,7 @@ class PaymentValidation extends Component
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait')
             ->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => false]);
-            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf', $loa->output());
             $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf';
             
             

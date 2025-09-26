@@ -25,9 +25,12 @@ class UploadAbstractController extends Controller
     public function testEmail()
     {
         $data = array('name' => 'Khoirul Anam');
-        $attachment = [
-            public_path() . '/storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf'
-        ];
+        $storageDisk = config('filesystems.storage');
+        $attachmentPath = $storageDisk === 'public_html'
+            ? config('filesystems.disks.public_html.root') . '/letter-of-acceptance/LOA-Muhammad Ridho.pdf'
+            : public_path() . '/storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf';
+
+        $attachment = [$attachmentPath];
 
 
         Mail::to('anam@gmail.com', 'Anam')->send(new SendMail('Abstract Rejected', "<p>
@@ -55,7 +58,7 @@ class UploadAbstractController extends Controller
         // Mail::send('mail.accepted-abstract', $data, function ($message) {
         //     $message->to('anam@gmail.com', 'Anam')->subject('Abstract Accepted');
         //     // $message->attach(asset('storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf'));
-        //     $message->attach(public_path() . '/storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf');
+        //     $message->attach($attachmentPath);
         // });
 
         dd('Email Sended');
@@ -73,7 +76,7 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
         }
     }
     
@@ -89,7 +92,7 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::disk('public')->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
         }
     }
 }

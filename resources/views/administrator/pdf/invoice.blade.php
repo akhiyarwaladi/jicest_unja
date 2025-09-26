@@ -17,7 +17,7 @@
                 <table style="width:100%">
                     <tr style="margin:0; padding:0">
                         <td style="width:20%">
-                            <img src="{{ public_path('assets/img/unja-3d.jpeg') }}" width="100px" alt="">
+                            <img src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('assets/img/unja-3d.jpeg'))) }}" width="100px" alt="">
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
@@ -114,8 +114,8 @@
                             </p>
                             <div class="parent">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: 0;z-index: 2;" src="{{ public_path('assets/img/stpml.png') }}" width="100px" />
-                                    <img class="image2" style="position: absolute; left: 40px; top: -40px; transform: scale(2);z-index: 3;" src="{{ public_path('assets/img/tdtd.png') }}" width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: 0;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/stpml.png'))) }}" width="100px" />
+                                    <img class="image2" style="position: absolute; left: 40px; top: -40px; transform: scale(2);z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="100px" />
                                 </div>
                             </div>
                             <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">

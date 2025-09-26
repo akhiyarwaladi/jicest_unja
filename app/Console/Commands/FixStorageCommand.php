@@ -32,26 +32,45 @@ class FixStorageCommand extends Command
 
     private function checkStorageLink()
     {
-        $this->info('Checking storage symbolic link...');
+        $storageDisk = config('filesystems.storage');
+        $this->info("Checking storage configuration (using disk: {$storageDisk})...");
 
-        $linkPath = public_path('storage');
-        $targetPath = storage_path('app/public');
+        if ($storageDisk === 'public_html') {
+            $this->info('✓ Using public_html storage disk for production');
+            $storagePath = config('filesystems.disks.public_html.root');
+            $this->line("  Storage path: {$storagePath}");
 
-        if (is_link($linkPath)) {
-            $this->info('✓ Storage link exists');
-            $this->line('  Target: ' . readlink($linkPath));
-        } else {
-            $this->warn('✗ Storage link missing');
-
-            if ($this->confirm('Create storage link?')) {
-                if (File::exists($linkPath)) {
-                    File::deleteDirectory($linkPath);
+            if (!File::exists($storagePath)) {
+                $this->warn('✗ public_html/storage directory does not exist');
+                if ($this->confirm('Create public_html/storage directory?')) {
+                    File::makeDirectory($storagePath, 0755, true);
+                    $this->info('✓ Created public_html/storage directory');
                 }
+            } else {
+                $this->info('✓ public_html/storage directory exists');
+            }
+        } else {
+            $this->info('✓ Using standard Laravel storage (development mode)');
 
-                if (File::link($targetPath, $linkPath)) {
-                    $this->info('✓ Storage link created');
-                } else {
-                    $this->error('✗ Failed to create storage link');
+            $linkPath = public_path('storage');
+            $targetPath = storage_path('app/public');
+
+            if (is_link($linkPath)) {
+                $this->info('✓ Storage link exists');
+                $this->line('  Target: ' . readlink($linkPath));
+            } else {
+                $this->warn('✗ Storage link missing');
+
+                if ($this->confirm('Create storage link?')) {
+                    if (File::exists($linkPath)) {
+                        File::deleteDirectory($linkPath);
+                    }
+
+                    if (File::link($targetPath, $linkPath)) {
+                        $this->info('✓ Storage link created');
+                    } else {
+                        $this->error('✗ Failed to create storage link');
+                    }
                 }
             }
         }
@@ -70,8 +89,8 @@ class FixStorageCommand extends Command
         ];
 
         foreach ($directories as $dir) {
-            if (!Storage::disk('public')->exists($dir)) {
-                Storage::disk('public')->makeDirectory($dir);
+            if (!Storage::disk(config('filesystems.storage'))->exists($dir)) {
+                Storage::disk(config('filesystems.storage'))->makeDirectory($dir);
                 $this->info("✓ Created directory: $dir");
             } else {
                 $this->line("✓ Directory exists: $dir");
@@ -83,7 +102,10 @@ class FixStorageCommand extends Command
     {
         $this->info('Fixing permissions...');
 
-        $storagePath = storage_path('app/public');
+        $storageDisk = config('filesystems.storage');
+        $storagePath = $storageDisk === 'public_html'
+            ? config('filesystems.disks.public_html.root')
+            : storage_path('app/public');
 
         if (is_dir($storagePath)) {
             // Fix directory permissions
@@ -119,12 +141,15 @@ class FixStorageCommand extends Command
         foreach ($directories as $dir) {
             $this->line("\n$dir/:");
 
-            $files = Storage::disk('public')->files($dir);
+            $files = Storage::disk(config('filesystems.storage'))->files($dir);
             $fileData = [];
 
             foreach ($files as $file) {
                 if (pathinfo($file, PATHINFO_EXTENSION) === 'pdf') {
-                    $fullPath = storage_path('app/public/' . $file);
+                    $storageDisk = config('filesystems.storage');
+                    $fullPath = $storageDisk === 'public_html'
+                        ? config('filesystems.disks.public_html.root') . '/' . $file
+                        : storage_path('app/public/' . $file);
                     $fileData[] = [
                         'name' => basename($file),
                         'size' => File::size($fullPath),
