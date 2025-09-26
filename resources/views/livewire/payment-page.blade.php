@@ -283,19 +283,59 @@
 </div>
 
 <script>
-    // Sweet Alert for payment success
-    window.addEventListener('payment-success', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text: event.detail.message,
-            icon: event.detail.icon,
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#10b981',
-            timer: 5000,
-            showConfirmButton: true,
-            allowOutsideClick: false
-        });
+    // Ensure DOM and Sweet Alert are ready
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Payment page loaded');
+
+        // Check if Sweet Alert is available
+        if (typeof Swal === 'undefined') {
+            console.error('Sweet Alert not loaded!');
+        } else {
+            console.log('Sweet Alert is available');
+        }
     });
+
+    // Listen for Livewire browser events (alternative method)
+    document.addEventListener('livewire:browser-event', function(event) {
+        if (event.detail.name === 'payment-success') {
+            console.log('Livewire payment success event:', event.detail.data);
+            showPaymentSuccessAlert(event.detail.data);
+        }
+    });
+
+    // Sweet Alert for payment success with error handling
+    window.addEventListener('payment-success', event => {
+        console.log('Window payment success event received:', event.detail);
+        showPaymentSuccessAlert(event.detail);
+    });
+
+    // Function to show payment success alert
+    function showPaymentSuccessAlert(data) {
+        console.log('Showing payment success alert with data:', data);
+
+        try {
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: data.title,
+                    text: data.message,
+                    icon: data.icon,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#10b981',
+                    showConfirmButton: true,
+                    allowOutsideClick: false
+                }).then(() => {
+                    console.log('Sweet Alert closed');
+                });
+            } else {
+                // Fallback: use regular alert if Sweet Alert fails
+                alert(data.title + '\n\n' + data.message);
+            }
+        } catch (error) {
+            console.error('Error showing Sweet Alert:', error);
+            // Fallback: use regular alert
+            alert('Payment submitted successfully!');
+        }
+    }
 
     // Sweet Alert for voucher success
     window.addEventListener('voucher-success', event => {
