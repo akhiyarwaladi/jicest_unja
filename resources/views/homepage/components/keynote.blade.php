@@ -46,24 +46,42 @@
             </div>
         </div>
         <div class="flex gap-3 w-full md:w-2/5">
-            <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center">
-                <span class="text-gray-500 text-xs">TBA</span>
+            <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
+                {{-- Photo will be added when speaker details are confirmed --}}
+                {{-- Save as: public/uploads/speakers/partido-speaker.jpg --}}
+                <img src="{{ asset('uploads/speakers/partido-speaker.jpg') }}"
+                     alt="Keynote Speaker from Partido State University"
+                     class="keynote-image object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="text-gray-500 text-xs">Photo</span>
             </div>
             <div class="text-lg text-wrap font-semibold">
-                <div>Keynote Speaker 3</div>
+                <div>Keynote Speaker</div>
                 <div class="text-sm font-normal text-gray-600">
-                    To Be Announced
+                    Partido State University, Philippines
+                </div>
+                <div class="text-xs font-normal text-gray-500 mt-2">
+                    Details to be announced
                 </div>
             </div>
         </div>
         <div class="flex gap-3 w-full md:w-2/5">
-            <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center">
-                <span class="text-gray-500 text-xs">TBA</span>
+            <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
+                {{-- Photo will be added when speaker details are confirmed --}}
+                {{-- Save as: public/uploads/speakers/japan-speaker.jpg --}}
+                <img src="{{ asset('uploads/speakers/japan-speaker.jpg') }}"
+                     alt="Keynote Speaker from Japan University"
+                     class="keynote-image object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="text-gray-500 text-xs">Photo</span>
             </div>
             <div class="text-lg text-wrap font-semibold">
-                <div>Keynote Speaker 4</div>
+                <div>Keynote Speaker</div>
                 <div class="text-sm font-normal text-gray-600">
-                    To Be Announced
+                    University of Tokyo, Japan
+                </div>
+                <div class="text-xs font-normal text-gray-500 mt-2">
+                    Details to be announced
                 </div>
             </div>
         </div>
