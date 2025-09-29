@@ -117,7 +117,7 @@ class PaymentValidation extends Component
         ]);
 
 
-        $linkreceipt = env('APP_URL') . "/storage/" . $this->receiptPath;
+        $linkreceipt = url('storage/' . $this->receiptPath);
 
         if ($abstract) {
             // Menggunakan data dari eager loading
@@ -133,7 +133,7 @@ class PaymentValidation extends Component
             $this->loaPath = 'letter-of-acceptance/' . 'LOA-ABS' . $payment->upload_abstract_id . '-' . $this->full_name1 . '.pdf';
             
             
-            $linkLoa = env('APP_URL') . "/storage/" . $this->loaPath;
+            $linkLoa = url('storage/' . $this->loaPath);
             
             UploadAbstract::where('id', $payment->upload_abstract_id)->update([
                 'loa' => $this->loaPath,
@@ -143,9 +143,9 @@ class PaymentValidation extends Component
             Mail::to($this->email, $this->full_name1)->queue(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
             We have validated your payment for the abstract entitled <strong>" . $abstract->title . "</strong>. Here we include
-            your receipt of payment and Letter of Acceptance. <br>
-            <a href=" . $linkreceipt . ">Download Receipt</a> <br>
-            <a href=" . $linkLoa . ">Download Letter of Acceptance</a>
+            your receipt of payment and Letter of Acceptance. <br><br>
+            <a href=\"" . $linkreceipt . "\" style=\"color: #007bff; text-decoration: underline;\">Download Receipt</a> <br>
+            <a href=\"" . $linkLoa . "\" style=\"color: #007bff; text-decoration: underline;\">Download Letter of Acceptance</a>
             <br> <br>
             Warm regards, <br><br><br><br>
             Steering Committee JICEST 2025 </p>"));

@@ -55,16 +55,18 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td style="width: 20%; font-weight:bold;">
-                            Recipient's name
+                        <td style="width: 40%; font-weight:bold;">
+                            Payment Information
                         </td>
-                        <td style="width: 20%; font-weight:bold;">Payment method</td>
+                        <td style="width: 20%; font-weight:bold;"></td>
                         <td style="width: 20%; font-weight:bold;">Product Name</td>
                         <td style="width: 20%; font-weight:bold;">Category Product</td>
                     </tr>
                     <tr>
-                        <td>RPL 012 BLU UNJA UTK OPS PENERIMAAN</td>
-                        <td>Bank BTN</td>
+                        <td>For payment information, please contact:<br>
+                        Tia Wulandari (+62 852 6646 9829)<br>
+                        Rara Ayu Lestary (+62 822 1079 4479)</td>
+                        <td></td>
                         <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</td>
                         <td>Seminar</td>
                     </tr>
@@ -81,7 +83,6 @@
                         <td style="font-weight:bold; padding:5px">Fee</td>
                         <td style="font-weight:bold;padding:5px">Amount</td>
                         <td style="font-weight:bold;padding:5px">Subtotal</td>
-                        <td style="font-weight:bold;padding:5px">Virtual Account</td>
                         <td style="font-weight:bold;padding:5px">Payment Start Date</td>
                         <td style="font-weight:bold;padding:5px">Payment End Date</td>
                     </tr>
@@ -91,9 +92,8 @@
                         <td style="padding:5px">{{ $fee }}</td>
                         <td style="padding:5px">1</td>
                         <td style="padding:5px">{{ $fee }}</td>
-                        <td style="padding:5px">0003801300008828</td>
-                        <td style="padding:5px">{{$early ? "01 September 2025" : "1 October 2025"}}</td>
-                        <td style="padding:5px">{{$early ? "01 October 2025" : \Carbon\Carbon::now()->addDays(2)->format('d F Y') }}</td>
+                        <td style="padding:5px">1 October 2025</td>
+                        <td style="padding:5px">22 November 2025</td>
                         <!--<td style="padding:5px">{{$early ? "01 October 2025" : "17 October 2025"}}</td>-->
                     </tr>
                     <tr>

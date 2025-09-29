@@ -199,17 +199,6 @@
     <!-- Footer Section Begin -->
     <footer>
         <div id="partners" class="bg-gray-100 w-full pt-12 h-fit text-center flex flex-col items-center overflow-x-hidden">
-            <header class="text-black font-semibold text-2xl font-serif">INSTITUTE PARTNERS</header>
-            <div class="relative flex overflow-x-hidden h-fit overflow-y-hidden py-5 w-[1200px] justify-center">
-                <div class="flex animate-marquee whitespace-nowrap h-fit gap-14">
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="w-32 h-32 object-contain"/>
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="w-32 h-32 object-contain"/>
-                </div>
-            </div>
 
             <!--<header class="text-black font-semibold text-2xl font-serif mt-10">OTHER PUBLISHER PARTNERS</header>-->
             <!--<div class="relative flex overflow-x-hidden h-fit overflow-y-hidden py-5 w-[1200px] justify-center">-->
@@ -248,12 +237,6 @@
             <!--        });-->
             <!--    </script>-->
             <!--</div>-->
-            <div class="mt-11">
-                <header class="italic text-black">Sponsored By</header>
-                <div class="flex gap-10 px-5 justify-center">
-                    <img src="{{asset('uploads/logo bank jambi.png')}}" class="object-contain mt-2 w-96" width=""/>
-                </div>
-            </div>
             <div class="mt-11">
                 <header class="italic text-black">Hosted and Managed by</header>
                 <div class="flex gap-10 px-5 justify-center">

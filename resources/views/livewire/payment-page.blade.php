@@ -272,9 +272,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Bank BTN</td>
-                    <td>0003801300008828</td>
-                    <td>RPL 012 BLU UNJA UTK OPS PENERIMAAN</td>
+                    <td colspan="3" class="text-center">
+                        <strong>For payment information, please contact:</strong><br>
+                        Tia Wulandari: +62 852 6646 9829<br>
+                        Rara Ayu Lestary: +62 822 1079 4479
+                    </td>
                 </tr>
             </tbody>
         </table>

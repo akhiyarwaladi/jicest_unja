@@ -216,42 +216,6 @@
             </div>
             -->
 
-            <div class="row justify-content-center">
-                <h4 class="text-black mb-3">INSTITUTE PARTNERS</h4>
-            </div>
-            <div class="d-flex justify-content-center py-3 overflow-hidden position-relative" style="width: 1200px; height: fit-content;overflow-x:hidden">
-                <div class="animate-marquee h-auto " style="white-space: nowrap; display: flex; gap: 50px; align-items: center">
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/institute-partnert/int-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/institute-partnert/int-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/institute-partnert/int-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                </div>
-            </div>
-
-            <div class="row  justify-content-center">
-                <h4 class="text-black mb-3">OTHER PUBLISHER PARTNERS</h4>
-            </div>
-            <div class="d-flex justify-content-center py-3 overflow-hidden position-relative" style="width: 1200px; height: fit-content;overflow-x:hidden">
-                <div class="animate-marquee h-auto " style="white-space: nowrap; display: flex; gap: 50px; align-items: center">
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="" style="height: 100px; object-fit: cover" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="" style="height: 100px; object-fit: cover" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="" style="height: 100px; object-fit: cover" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="" style="height: 100px; object-fit: cover;" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="" style="height: 100px; object-fit: cover" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="" style="height: 100px; object-fit: cover" />
-                    <img src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="" style="height: 100px; object-fit: cover" />
-
-                </div>
-            </div>
 
             <div class="mt-5" style="margin-top: 100px;">
                 <header class="italic text-black text-center" style=""><i>Hosted and Managed by</i></header>

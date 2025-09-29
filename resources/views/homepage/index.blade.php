@@ -202,8 +202,8 @@
                     </div>
                     <div class="py-3">
                         <div class="text-sm text-gray-500">Phone:</div>
-                        <div>Yudi Arista Yulanda (+6285266524920)</div>
-                        <div>Andini Vermita Bestari (+6285719405940)</div>
+                        <div>Tia Wulandari (+6285266469829)</div>
+                        <div>Rara Ayu Lestary (+6282210794479)</div>
                     </div>
 
                     <div class="py-3">

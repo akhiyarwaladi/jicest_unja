@@ -61,8 +61,8 @@ JICEST UNJA is a comprehensive conference management system for the **Jambi Inte
 - **Email**: jicest@unja.ac.id
 - **Website**: https://jicest.unja.ac.id
 - **Contacts**:
-  - Yudi Arista Yulanda (+6285266524920)
-  - Andini Vermita Bestari (+6285719405940)
+  - Tia Wulandari (+6285266469829)
+  - Rara Ayu Lestary (+6282210794479)
 
 ## Development Notes
 - Uses Livewire for dynamic components
