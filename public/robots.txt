@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://jicest.unja.ac.id/sitemap.xml

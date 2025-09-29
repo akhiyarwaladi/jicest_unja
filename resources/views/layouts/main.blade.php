@@ -10,6 +10,54 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JICEST 2025 | {{ $title }}</title>
 
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="JICEST 2025 - Jambi International Conference on Engineering, Science and Technology">
+    <meta property="og:description" content="Join us for JICEST 2025 - Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society. November 28, 2025">
+    <meta property="og:url" content="https://jicest.unja.ac.id/">
+    <meta property="og:type" content="event">
+    <meta property="og:image" content="https://jicest.unja.ac.id/assets/logos/jicest.png">
+    <meta property="og:site_name" content="JICEST 2025">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JICEST 2025 - Jambi International Conference on Engineering, Science and Technology">
+    <meta name="twitter:description" content="Join us for JICEST 2025 - Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society. November 28, 2025">
+    <meta name="twitter:image" content="https://jicest.unja.ac.id/assets/logos/jicest.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "JICEST 2025 - Jambi International Conference on Engineering, Science and Technology",
+        "description": "Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society",
+        "startDate": "2025-11-28T00:00:00+07:00",
+        "endDate": "2025-11-28T23:59:59+07:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "location": {
+            "@type": "VirtualLocation",
+            "url": "https://jicest.unja.ac.id"
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Faculty of Science and Technology, Universitas Jambi",
+            "url": "https://jicest.unja.ac.id",
+            "email": "jicest@unja.ac.id"
+        },
+        "offers": {
+            "@type": "Offer",
+            "name": "Conference Registration",
+            "price": "350000",
+            "priceCurrency": "IDR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://jicest.unja.ac.id/register"
+        },
+        "image": "https://jicest.unja.ac.id/assets/logos/jicest.png",
+        "url": "https://jicest.unja.ac.id"
+    }
+    </script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
         rel="stylesheet">
