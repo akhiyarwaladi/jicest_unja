@@ -67,21 +67,21 @@
         </div>
         <div class="flex gap-3 w-full md:w-2/5">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
-                {{-- Photo will be added when speaker details are confirmed --}}
-                {{-- Save as: public/uploads/speakers/japan-speaker.jpg --}}
-                <img src="{{ asset('uploads/speakers/japan-speaker.jpg') }}"
-                     alt="Keynote Speaker from Japan University"
+                {{-- Photo URL: Business card photo from WhatsApp --}}
+                {{-- Save as: public/uploads/speakers/thanda-shwe.jpg --}}
+                <img src="{{ asset('uploads/speakers/thanda-shwe.jpg') }}"
+                     alt="Dr. Eng. Thanda Shwe"
                      class="keynote-image object-cover"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <span class="text-gray-500 text-xs">Photo</span>
+                <span class="text-gray-500 text-xs" style="display: none;">Photo</span>
             </div>
             <div class="text-lg text-wrap font-semibold">
-                <div>Keynote Speaker</div>
+                <div>Dr. Eng. Thanda Shwe</div>
                 <div class="text-sm font-normal text-gray-600">
-                    University of Tokyo, Japan
+                    Assistant Professor, Faculty of Advanced Science and Technology, Kumamoto University, Japan
                 </div>
                 <div class="text-xs font-normal text-gray-500 mt-2">
-                    Details to be announced
+                    Expert in Big Data Science, Cloud Computing, and Distributed Systems
                 </div>
             </div>
         </div>
