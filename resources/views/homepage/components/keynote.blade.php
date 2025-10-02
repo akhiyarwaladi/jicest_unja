@@ -18,7 +18,7 @@
             <div class="text-lg text-wrap font-semibold">
                 <div>Dr. Mostafa Sharifzadeh</div>
                 <div class="text-sm font-normal text-gray-600">
-                    Senior Lecturer, Western Australian School of Mines (WASM), Curtin University, Australia
+                    Adjunct University Professor @Curtin University and Associate Technical Director @MEC
                 </div>
                 <div class="text-xs font-normal text-gray-500 mt-2">
                     Expert in Geomechanics, Rock Mechanics, and Underground Excavation

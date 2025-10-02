@@ -5,7 +5,7 @@
 <div class="main flex flex-col items-center p-14 bg-orange-100 jutify-center py-20">
     <header class="text-2xl font-bold mt-10 ">ABOUT JICEST</header>
     <figure class="w-full p-10 flex justify-center">
-        <img src="{{ asset('assets/logos/jicest.png') }}" class="max-w-[700px] w-full max-h-[200px] object-cover">
+        <img src="{{ asset('assets/logos/jicest.png') }}" class="max-w-[700px] w-full max-h-[200px] object-contain">
     </figure>
     <article class="w-full text-lg max-w-[700px] flex flex-col gap-5">
         <section class="text-justify">
