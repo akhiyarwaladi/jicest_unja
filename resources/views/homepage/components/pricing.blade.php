@@ -17,8 +17,8 @@
             @endif
         </div>
 
-        <div class="flex flex-col md:flex-row gap-7 mt-8">
-            <div class="md:w-80 rounded bg-white py-7 text-2xl text-center relative transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 mt-8 max-w-6xl mx-auto px-6">
+            <div class="rounded bg-white py-7 text-2xl text-center relative transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
                 <div class="absolute top-0 right-12 drop-shadow-md">
                     <div class="w-[30px] h-[45px] absolute bg-orange-400 z-20">
                         <img src="{{asset('assets/logos/start.svg')}}" class="mt-2"/>
@@ -32,12 +32,32 @@
                 <div class="bg-gradient-to-r py-3 text-white from-orange-500 to-orange-600 text-xl font-semibold">Non Early Bird</div>
                 <div class="text-center text-2xl font-bold py-3 text-orange-600">{{ $pricing['presenter']['non_early_bird']['formatted'] ?? '450K IDR / 30 USD' }}</div>
             </div>
-            <div class="md:w-80 rounded bg-white py-7 text-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
+            <div class="rounded bg-white py-7 text-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
                 <div class="font-bold py-3 text-3xl">PARTICIPANT</div>
                 <div class="bg-gradient-to-r py-3 text-white from-emerald-400 to-emerald-500 text-xl font-semibold">Early Bird</div>
                 <div class="text-center text-2xl font-bold py-3 text-emerald-600">{{ $pricing['participant']['early_bird']['formatted'] ?? '250K IDR / 18 USD' }}</div>
                 <div class="bg-gradient-to-r py-3 text-white from-orange-400 to-orange-500 text-xl font-semibold">Non Early Bird</div>
                 <div class="text-center text-2xl font-bold py-3 text-orange-600">{{ $pricing['participant']['non_early_bird']['formatted'] ?? '350K IDR / 23 USD' }}</div>
+            </div>
+            <div class="rounded bg-white py-7 text-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
+                <div class="font-bold py-3 text-3xl">
+                    <div>PRESENTER</div>
+                    <div>STUDENT</div>
+                </div>
+                <div class="bg-gradient-to-r py-3 text-white from-emerald-500 to-emerald-600 text-xl font-semibold">Early Bird</div>
+                <div class="text-center text-2xl font-bold py-3 text-emerald-600">250K IDR / 18 USD</div>
+                <div class="bg-gradient-to-r py-3 text-white from-orange-500 to-orange-600 text-xl font-semibold">Non Early Bird</div>
+                <div class="text-center text-2xl font-bold py-3 text-orange-600">250K IDR / 18 USD</div>
+            </div>
+            <div class="rounded bg-white py-7 text-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer hover:ring-2 hover:ring-sky-400/50">
+                <div class="font-bold py-3 text-3xl">
+                    <div>PARTICIPANT</div>
+                    <div>STUDENT</div>
+                </div>
+                <div class="bg-gradient-to-r py-3 text-white from-emerald-400 to-emerald-500 text-xl font-semibold">Early Bird</div>
+                <div class="text-center text-2xl font-bold py-3 text-emerald-600">50K IDR / 4 USD</div>
+                <div class="bg-gradient-to-r py-3 text-white from-orange-400 to-orange-500 text-xl font-semibold">Non Early Bird</div>
+                <div class="text-center text-2xl font-bold py-3 text-orange-600">50K IDR / 4 USD</div>
             </div>
         </div>
     </div>

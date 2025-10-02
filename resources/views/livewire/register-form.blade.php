@@ -49,6 +49,8 @@
                 <option value="">Choose One</option>
                 <option value="presenter_reguler">Presenter Reguler</option>
                 <option value="participant_reguler">Participant Reguler</option>
+                <option value="presenter_student">Presenter Student</option>
+                <option value="participant_student">Participant Student</option>
             </select>
             @error('participant_type')
                 <span class="font-normal text-sm text-rose-700">

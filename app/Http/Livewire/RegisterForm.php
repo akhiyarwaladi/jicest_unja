@@ -74,7 +74,7 @@ class RegisterForm extends Component
                 'full_name2' => 'required',
                 'gender' => 'required|in:male,female',
                 'attendance' => 'required|in:online,offline',
-                'participant_type' => 'required|in:Presenter,Participant,presenter reguler,presenter student,participant reguler,paricipant student',
+                'participant_type' => 'required|in:Presenter,Participant,presenter_reguler,presenter_student,participant_reguler,participant_student',
                 'institution' => 'required',
                 'address' => 'required',
                 'phone' => 'required|regex:/^([0-9\s\+]*)$/',

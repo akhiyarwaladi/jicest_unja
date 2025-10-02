@@ -4,8 +4,8 @@
         </div>
     </div> --}}
     <header class="text-3xl font-bold text-center">Keynote Speaker</header>
-    <div class="flex flex-wrap items-center justify-center h-fit gap-8 p-10 px-2">
-        <div class="flex gap-3 w-full md:w-2/5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 px-2">
+        <div class="flex gap-3">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
                 {{-- Photo URL: https://staffportal.curtin.edu.au/staff/profile/view/mostafa-sharifzadeh-9cf531a1/ --}}
                 {{-- Save as: public/uploads/speakers/mostafa-sharifzadeh.jpg --}}
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex gap-3 w-full md:w-2/5">
+        <div class="flex gap-3">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
                 {{-- Photo URL: https://web.sas.upenn.edu/percecgroup/files/2018/04/VP-20gdt6y-300x298.jpg --}}
                 {{-- Save as: public/uploads/speakers/virgil-percec.jpg --}}
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex gap-3 w-full md:w-2/5">
+        <div class="flex gap-3">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
                 {{-- Photo will be added when speaker details are confirmed --}}
                 {{-- Save as: public/uploads/speakers/partido-speaker.jpg --}}
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex gap-3 w-full md:w-2/5">
+        <div class="flex gap-3">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
                 {{-- Photo URL: Business card photo from WhatsApp --}}
                 {{-- Save as: public/uploads/speakers/thanda-shwe.jpg --}}
@@ -82,6 +82,26 @@
                 </div>
                 <div class="text-xs font-normal text-gray-500 mt-2">
                     Expert in Big Data Science, Cloud Computing, and Distributed Systems
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
+                {{-- Photo URL: https://itb.ac.id/files/dosen/3242-05d647eace8e848ce32d2fadc2215f9f800c9911e72aa9c68c75cf45f693482b.png --}}
+                {{-- Save as: public/uploads/speakers/nuhindro-widodo.png --}}
+                <img src="{{ asset('uploads/speakers/nuhindro-widodo.png') }}"
+                     alt="Dr. Eng. Nuhindro Priagung Widodo"
+                     class="keynote-image object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="text-gray-500 text-xs" style="display: none;">Photo</span>
+            </div>
+            <div class="text-lg text-wrap font-semibold">
+                <div>Dr. Eng. Nuhindro Priagung Widodo, S.T., M.T.</div>
+                <div class="text-sm font-normal text-gray-600">
+                    Senior Lecturer, Faculty of Mining and Petroleum Engineering, Institut Teknologi Bandung
+                </div>
+                <div class="text-xs font-normal text-gray-500 mt-2">
+                    Expert in Underground Mine Ventilation, Mining Technology, and Artificial Intelligence in Mining
                 </div>
             </div>
         </div>
