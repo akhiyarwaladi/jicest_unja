@@ -21,11 +21,18 @@ class ReviewAbstract extends Component
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
     public $validVouchers = ['JICESTFST50RB', 'JICESTFST100RB'];
+    public $date_from = '2025-09-01';
+    public $date_to = '';
 
     //LOA
     public $full_name, $institution, $abstractTitle, $loa, $loaPath;
     //Invoice
     public $email, $fee, $participant_type, $invoicePath;
+
+    public function mount()
+    {
+        $this->date_to = date('Y-m-d');
+    }
 
     public function empty()
     {
@@ -241,10 +248,20 @@ class ReviewAbstract extends Component
 
     public function render()
     {
+        $query = UploadAbstract::where('status', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
+            $query->where('full_name1', 'like', '%' . $this->search2 . '%');
+        });
+
+        if ($this->date_from) {
+            $query->whereDate('created_at', '>=', $this->date_from);
+        }
+
+        if ($this->date_to) {
+            $query->whereDate('created_at', '<=', $this->date_to);
+        }
+
         return view('livewire.review-abstract', [
-            'abstracts' => UploadAbstract::where('status', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
-                $query->where('full_name1', 'like', '%' . $this->search2 . '%');
-            })->orderBy('topic')->paginate(10)
+            'abstracts' => $query->orderBy('topic')->paginate(10)
         ]);
     }
 }

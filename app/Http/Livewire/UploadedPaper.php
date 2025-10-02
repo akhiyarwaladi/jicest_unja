@@ -17,6 +17,13 @@ class UploadedPaper extends Component
     protected $paginationTheme = 'bootstrap';
     public $title, $fulltext, $uploadedPaper;
     public $search = '', $search2 = '';
+    public $date_from = '2025-09-01';
+    public $date_to = '';
+
+    public function mount()
+    {
+        $this->date_to = date('Y-m-d');
+    }
 
     public function empty()
     {
@@ -97,11 +104,19 @@ class UploadedPaper extends Component
 
     public function render()
     {
+        $query = UploadFulltext::where('validation', 'like', '%' . $this->search)
+            ->where('title', 'like', '%' . $this->search2 . '%');
+
+        if ($this->date_from) {
+            $query->whereDate('created_at', '>=', $this->date_from);
+        }
+
+        if ($this->date_to) {
+            $query->whereDate('created_at', '<=', $this->date_to);
+        }
+
         return view('livewire.uploaded-paper', [
-            'fulltexts' => UploadFulltext::where('validation', 'like', '%' . $this->search)
-                ->where('title', 'like', '%' . $this->search2 . '%')
-                ->orderBy('created_at', 'desc')
-                ->paginate(10)
+            'fulltexts' => $query->orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 }

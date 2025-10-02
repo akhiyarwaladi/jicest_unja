@@ -38,14 +38,14 @@
 
     @if ($review !== true)
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-3">
                 <div class="form-group">
                     <label for="search2">Search</label>
                     <input type="text" class="form-control" id="search2" name="search2"
                         wire:model.debounce.500ms="search2" placeholder="Search by presenter name">
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="form-group">
                     <label for="participant">
                         Filter Status Reviewed
@@ -56,13 +56,20 @@
                         <option value="not yet reviewed">Not yet reviewed</option>
                     </select>
                 </div>
-
-                {{-- <div class="form-group">
-                <label for="search">Filter Status HKI Member</label>
-                <select name="search" id="search" wire:model='search' class="form-control">
-
-                </select>
-            </div> --}}
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="date_from">Date From</label>
+                    <input type="date" class="form-control" id="date_from" name="date_from"
+                        wire:model="date_from">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="date_to">Date To</label>
+                    <input type="date" class="form-control" id="date_to" name="date_to"
+                        wire:model="date_to">
+                </div>
             </div>
         </div>
         <div class="col-lg-12">
@@ -74,6 +81,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Presenter</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Tanggal Submit</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Reviewed By</th>
                                 <th scope="col">LOA</th>
@@ -85,7 +93,7 @@
 
                             @if (count($abstracts) == 0)
                                 <tr>
-                                    <td colspan="7" align="center">No data</td>
+                                    <td colspan="9" align="center">No data</td>
                                 </tr>
                             @endif
                             @foreach ($abstracts as $item)
@@ -94,6 +102,7 @@
                                     </td>
                                     <td>{{ $item->participant->full_name1 }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->created_at->format('d M Y, H:i') }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->reviewed_by }}</td>
                                     <td>

@@ -24,6 +24,13 @@ class PaymentValidation extends Component
     public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate,$payment;
     public $search = '', $search2 = '';
     public $no_receipt, $for_payment_of, $amount, $receipt, $receiptPath, $loaPath;
+    public $date_from = '2025-09-01';
+    public $date_to = '';
+
+    public function mount()
+    {
+        $this->date_to = date('Y-m-d');
+    }
 
     public function empty()
     {
@@ -229,10 +236,20 @@ class PaymentValidation extends Component
 
     public function render()
     {
+        $query = Payment::where('validation', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
+            $query->where('full_name1', 'like', '%' . $this->search2 . '%');
+        });
+
+        if ($this->date_from) {
+            $query->whereDate('created_at', '>=', $this->date_from);
+        }
+
+        if ($this->date_to) {
+            $query->whereDate('created_at', '<=', $this->date_to);
+        }
+
         return view('livewire.payment-validation', [
-            'payments' => Payment::where('validation', 'like', '%' . $this->search)->orderBy('created_at')->whereHas('participant', function ($query) {
-                $query->where('full_name1', 'like', '%' . $this->search2 . '%');
-            })->paginate(10)
+            'payments' => $query->orderBy('created_at')->paginate(10)
         ]);
     }
 }

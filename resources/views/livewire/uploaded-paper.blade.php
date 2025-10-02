@@ -1,13 +1,13 @@
 <div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-3">
             <div class="form-group">
                 <label for="search2">Search</label>
                 <input type="text" class="form-control" id="search2" name="search2" wire:model.debounce.500ms="search2"
                     placeholder="Search by title">
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-3">
             <div class="form-group">
                 <label for="search">
                     Filter Validation Status
@@ -20,6 +20,20 @@
                 </select>
             </div>
         </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="date_from">Date From</label>
+                <input type="date" class="form-control" id="date_from" name="date_from"
+                    wire:model="date_from">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="date_to">Date To</label>
+                <input type="date" class="form-control" id="date_to" name="date_to"
+                    wire:model="date_to">
+            </div>
+        </div>
     </div>
     <div class="col-lg-12">
         <div class="row">
@@ -28,6 +42,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Upload Date</th>
                             <th scope="col">Title</th>
                             <th scope="col">Email</th>
                             <th scope="col">Presenter Type</th>
@@ -40,13 +55,14 @@
 
                         @if (count($fulltexts) == 0)
                             <tr>
-                                <td colspan="7" align="center">No data</td>
+                                <td colspan="8" align="center">No data</td>
                             </tr>
                         @endif
                         @foreach ($fulltexts as $item)
                             <tr>
                                 <td>{{ ($fulltexts->currentpage() - 1) * $fulltexts->perpage() + $loop->index + 1 }}
                                 </td>
+                                <td>{{ $item->created_at->format('d M Y, H:i') }}</td>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->payment->participant->user->email }}</td>
                                 <td>{{ $item->payment->participant->participant_type }}</td>

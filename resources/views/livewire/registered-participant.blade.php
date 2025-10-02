@@ -8,11 +8,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 <label for="search2">Search</label>
                 <input type="text" class="form-control" id="search2" name="search2"
                     wire:model.debounce.500ms="search2" placeholder="Search by full name">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="date_from">Date From</label>
+                <input type="date" class="form-control" id="date_from" name="date_from"
+                    wire:model="date_from">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label for="date_to">Date To</label>
+                <input type="date" class="form-control" id="date_to" name="date_to"
+                    wire:model="date_to">
             </div>
         </div>
     </div>
@@ -23,6 +37,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Registration Date</th>
                             <th scope="col">Email</th>
                             <th scope="col">Email Validation</th>
                             <th scope="col">Full Name</th>
@@ -49,6 +64,7 @@
                             <tr>
                                 <td>{{ ($participants->currentpage() - 1) * $participants->perpage() + $loop->index + 1 }}
                                 </td>
+                                <td>{{ $item->created_at->format('d M Y, H:i') }}</td>
                                 <td>{{ $item->user->email }}</td>
                                 <td>{{ $item->user->email_verified_at != null ? 'Verified' : 'Not Verified' }}</td>
                                 <td>{{ $item->full_name1 }}</td>
