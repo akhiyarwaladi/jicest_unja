@@ -274,8 +274,8 @@
                 <tr>
                     <td colspan="3" class="text-center">
                         <strong>For payment information, please contact:</strong><br>
-                        Tia Wulandari: +62 852 6646 9829<br>
-                        Rara Ayu Lestary: +62 822 1079 4479
+                        Rara Ayu Lestary: +62 822 1079 4479<br>
+                        Tia Wulandari: +62 852 6646 9829
                     </td>
                 </tr>
             </tbody>

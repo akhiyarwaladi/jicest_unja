@@ -32,12 +32,12 @@
         <div class="w-full flex flex-col items-center gap-5">
             <div class="flex flex-col md:flex-row w-full justify-center max-w-full gap-4 items-center">
                 <div class="bg-white text-center shadow-md rounded-md  w-full p-5 md:max-w-[300px] max-w-[620px]">
-                    <div class="text-center text-xl font- text-black">Tia Wulandari</div>
-                    <a href="https://wa.me/6285266469829" class="underline text-center text-xl font-bold text-black">+62 852 6646 9829</a>
-                </div>
-                <div class="bg-white text-center shadow-md rounded-md  md:max-w-[300px] max-w-[620px] w-full p-5">
                     <div class="text-center text-xl font-normal text-black">Rara Ayu Lestary</div>
                     <a href="https://wa.me/6282210794479" class="underline text-center text-xl font-bold text-black">+62 822 1079 4479</a>
+                </div>
+                <div class="bg-white text-center shadow-md rounded-md  md:max-w-[300px] max-w-[620px] w-full p-5">
+                    <div class="text-center text-xl font- text-black">Tia Wulandari</div>
+                    <a href="https://wa.me/6285266469829" class="underline text-center text-xl font-bold text-black">+62 852 6646 9829</a>
                 </div>
             </div>
             <div class="bg-white shadow-md rounded-md max-w-[620px] w-full p-5">

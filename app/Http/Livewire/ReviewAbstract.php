@@ -188,8 +188,8 @@ class ReviewAbstract extends Component
             It is our great pleasure therefore to request that you submit your full paper, no later than November 22nd, 2025 by following the template as attached in the website: <a href='http://localhost:8000'>jicest.unja.ac.id</a>. <br>
             In addition, you are requested to proceed with the payment of the registration fee (no later than November 22nd, 2025). <br><br>
             For payment information, please contact our contact persons:<br>
-            - Tia Wulandari: +6285266469829<br>
             - Rara Ayu Lestary: +6282210794479<br>
+            - Tia Wulandari: +6285266469829<br>
             - Email: jicest@unja.ac.id<br><br>
             For the purpose of the conference proceeding, we also require that you submit a detailed resume. Please kindly
             acknowledge the receipt of this email, and do not hesitate to contact the organizing committee

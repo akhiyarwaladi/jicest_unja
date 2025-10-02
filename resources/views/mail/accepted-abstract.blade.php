@@ -21,8 +21,8 @@
         In addition, you are requested to proceed with the payment of the registration fee (no later than September 14th
         2025). <br> <br>
         After finishing the payment, kindly send the receipt to the committee via website. For payment information, please contact our contact persons: <br>
-        Tia Wulandari: +62 852 6646 9829 <br>
-        Rara Ayu Lestary: +62 822 1079 4479 <br> <br>
+        Rara Ayu Lestary: +62 822 1079 4479 <br>
+        Tia Wulandari: +62 852 6646 9829 <br> <br>
         For the purpose of the conference proceeding, we also require that you submit a detailed resume. Please kindly
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
         (JICEST@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>

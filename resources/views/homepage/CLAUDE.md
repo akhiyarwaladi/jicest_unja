@@ -25,7 +25,7 @@ Contains all public-facing pages for the JICEST 2025 conference website. These a
 
 ### contact.blade.php
 **Contact Information and Form**
-- Contact persons: Tia Wulandari and Rara Ayu Lestary
+- Contact persons: Rara Ayu Lestary and Tia Wulandari
 - Phone numbers with WhatsApp links
 - Email: jicest@unja.ac.id
 - University address

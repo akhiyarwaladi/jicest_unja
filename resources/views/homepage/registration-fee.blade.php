@@ -52,12 +52,12 @@
                             <p class="mb-4">Untuk informasi pembayaran, silakan menghubungi contact person yang tersedia:</p>
                             <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                                 <div class="bg-gradient-to-r from-emerald-400 to-emerald-600 text-white px-6 py-3 rounded-lg">
-                                    <div class="font-semibold">Tia Wulandari</div>
-                                    <div>+6285266469829</div>
-                                </div>
-                                <div class="bg-gradient-to-r from-sky-400 to-sky-600 text-white px-6 py-3 rounded-lg">
                                     <div class="font-semibold">Rara Ayu Lestary</div>
                                     <div>+6282210794479</div>
+                                </div>
+                                <div class="bg-gradient-to-r from-sky-400 to-sky-600 text-white px-6 py-3 rounded-lg">
+                                    <div class="font-semibold">Tia Wulandari</div>
+                                    <div>+6285266469829</div>
                                 </div>
                             </div>
                             <div class="mt-4">

@@ -64,8 +64,8 @@
                     </tr>
                     <tr>
                         <td>For payment information, please contact:<br>
-                        Tia Wulandari (+62 852 6646 9829)<br>
-                        Rara Ayu Lestary (+62 822 1079 4479)</td>
+                        Rara Ayu Lestary (+62 822 1079 4479)<br>
+                        Tia Wulandari (+62 852 6646 9829)</td>
                         <td></td>
                         <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</td>
                         <td>Seminar</td>
