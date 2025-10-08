@@ -18,7 +18,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
+                                JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -55,7 +55,7 @@
                 <br>
                 <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px">Thank you for your interest in
                     <strong>The 3rd
-                        JAMBI INTERNATIONAL CONFERENCE ON ENGINERING SCIENCE AND TECNNOLOGY (JICEST 2025)</strong> and submitting
+                        JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2025)</strong> and submitting
                     your Abstract entitled:
                 </p>
 
