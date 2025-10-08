@@ -53,7 +53,7 @@
                      alt="Engr. Emelina R. Padayao"
                      class="keynote-image object-cover"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <span class="text-gray-500 text-xs">Photo</span>
+                <span class="text-gray-500 text-xs" style="display: none;">Photo</span>
             </div>
             <div class="text-lg text-wrap font-semibold">
                 <div>Engr. Emelina R. Padayao</div>
