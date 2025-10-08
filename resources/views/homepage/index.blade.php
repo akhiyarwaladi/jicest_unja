@@ -11,8 +11,13 @@
             min-height: 100px;
             width: 100px;
             height: 100px;
-            object-fit: cover;
-            object-position: 10% 10%;
+        }
+
+        .keynote-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
             border-radius: 0.125em;
             cursor: pointer;
         }
@@ -187,6 +192,7 @@
             </div>
             @include('homepage.components.about')
             @include('homepage.components.keynote')
+            @include('homepage.components.publication')
             @include('homepage.components.date')
             @include('homepage.components.pricing')
             @include('homepage.components.icon-jambi')

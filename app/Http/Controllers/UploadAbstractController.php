@@ -35,7 +35,7 @@ class UploadAbstractController extends Controller
 
         Mail::to('anam@gmail.com', 'Anam')->send(new SendMail('Abstract Rejected', "<p>
         Dear ANAM, <br>
-        Congratulation! We are happy to inform you that your abstract for The 11st International Conference of the
+        Congratulations! We are happy to inform you that your abstract for The 11st International Conference of the
         Indonesian
         Chemical Society
         (ICICS 2023) <br>

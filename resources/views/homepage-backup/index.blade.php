@@ -193,7 +193,7 @@
                         </p>
                         {{-- <ul>
                             <li><span class="icon_check"></span> Organic and Bio Chemistry</li>
-                            <li><span class="icon_check"></span> Analytical and Enviromental Chemistry</li>
+                            <li><span class="icon_check"></span> Analytical and Environmental Chemistry</li>
                             <li><span class="icon_check"></span> Inorganic and Material Chemistry</li>
                             <li><span class="icon_check"></span> Physical and Computation Chemistry</li>
                             <li><span class="icon_check"></span> Chemical Education</li>

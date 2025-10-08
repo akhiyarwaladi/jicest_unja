@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Jambi International Conference on Enginering, Science and Technology
+    <meta name="description" content="Jambi International Conference on Engineering, Science and Technology
     2025">
     <meta name="keywords" content="jicest, jicest 2025, jicest2025, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

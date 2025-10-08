@@ -35,7 +35,7 @@ class AbstractForm extends Component
     //Custom Errror messages for validation
     protected $messages = [
         'topic.required' => 'topic is required !',
-        'topic.in' => 'ERRORR topic can only contain (Organic and Bio Chemistry, Analytical and Enviromental Chemistry, Inorganic and Material Chemistry, Physical and Computation Chemistry, Chemical Education) !',
+        'topic.in' => 'ERRORR topic can only contain (Organic and Bio Chemistry, Analytical and Environmental Chemistry, Inorganic and Material Chemistry, Physical and Computation Chemistry, Chemical Education) !',
         'type.required' => 'Type is required !',
         'title.required' => 'Title is required !',
         'keywords.required' => 'Keywords is required !',

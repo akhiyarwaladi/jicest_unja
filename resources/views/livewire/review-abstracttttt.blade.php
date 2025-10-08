@@ -109,7 +109,7 @@
                     name="topic" wire:model='topic'>
                     <option value="">Choose One</option>
                     <option value="organic and bio chemistry">Organic and Bio Chemistry</option>
-                    <option value="analytical and enviromental chemistry">Analytical and Enviromental
+                    <option value="analytical and environmental chemistry">Analytical and Environmental
                         Chemistry
                     </option>
                     <option value="inorganic and material chemistry">Inorganic and Material Chemistry

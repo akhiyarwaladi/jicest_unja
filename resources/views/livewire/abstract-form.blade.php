@@ -84,7 +84,7 @@
                     
                     <!--
                     <option value="organic and bio chemistry">Organic and Bio Chemistry</option>
-                    <option value="analytical and enviromental chemistry">Analytical and Enviromental Chemistry</option>
+                    <option value="analytical and environmental chemistry">Analytical and Environmental Chemistry</option>
                     <option value="inorganic and material chemistry">Inorganic and Material Chemistry</option>
                     <option value="physical and computation chemistry">Physical and Computation Chemistry</option>
                     <option value="chemical education">Chemical Education</option>
