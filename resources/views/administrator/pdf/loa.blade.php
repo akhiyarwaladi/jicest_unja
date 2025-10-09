@@ -86,10 +86,10 @@
                         <div class="parent" style="position:relative;">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
                                     <img class="image1" style="position: relative;top: 0;left: 0;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/stpml.png'))) }}" width="100px" />
-                                    <img class="image2" style="position: absolute; left: 40px; top: -40px; transform: scale(2);z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="100px" />
+                                    <img class="image2" style="position: absolute; left: 40px; top: -20px; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="90px" />
                                 </div>
                             </div>
-                           <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">
+                           <p style="margin:5px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">
                                 Yudi Arista Yulanda, S.T., M.T.
                             </p>
                     </td>
