@@ -15,7 +15,7 @@ class PaymentPage extends Component
     public $fee, $discount, $original_fee, $total_bill, $fee_after_discount, $proof_of_payment, $voucher;
     public $add = false, $edit = false, $payment_edit_id, $abstract_delete_id;
     public $abstract, $uploadAbstractId;
-    public $validVouchers = ['JICESTFST50RB', 'JICESTFST100RB'];
+    public $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
 
     use WithFileUploads;
 
@@ -86,7 +86,7 @@ class PaymentPage extends Component
         ]);
 
         // List of valid vouchers
-        $validVouchers = ['JICESTFST50RB', 'JICESTFST100RB'];
+        $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
 
         // Check if the voucher is valid
         if (!in_array($this->voucher, $validVouchers)) {

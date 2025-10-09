@@ -20,7 +20,7 @@ class ReviewAbstract extends Component
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
-    public $validVouchers = ['JICESTFST50RB', 'JICESTFST100RB'];
+    public $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
     public $date_from = '2025-09-01';
     public $date_to = '';
 
