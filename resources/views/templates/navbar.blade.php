@@ -35,7 +35,7 @@
                         'inclusion' => ['Registration Fee', 'About', 'Contact'],
 
                     ],
-                    ['name' => 'Rundown', 'type' => 'single', 'link' => '/rundown-jicest2023', 'inclusion' => ["Rundown Jicest 2023"]],
+                    ['name' => 'Schedule', 'type' => 'single', 'link' => '/rundown', 'inclusion' => ["Schedule"]],
                     [
                         'name' => 'Download',
                         'type' => 'multiple',

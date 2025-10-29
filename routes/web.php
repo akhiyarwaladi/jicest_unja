@@ -31,9 +31,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/rundown-jicest2023', function () {
+Route::get('/rundown', function () {
     return view('homepage.rundown', [
-        'title' => 'Rundown Jicest 2023'
+        'title' => 'Schedule'
     ]);
 });
 
