@@ -198,9 +198,11 @@
                         }
 
                         // Determine conference year based on submission date
+                        // JICEST is held in November, so:
+                        // - Submissions Jan-Nov: for current year conference
+                        // - Submissions in Dec: for next year conference (after event)
                         $submissionYear = $abstract->created_at->year;
-                        $conferenceYear = $submissionYear;
-                        if ($abstract->created_at->month < 6) {
+                        if ($abstract->created_at->month <= 11) {
                             $conferenceYear = $submissionYear;
                         } else {
                             $conferenceYear = $submissionYear + 1;
@@ -340,9 +342,11 @@
             @if ($payments->count() > 0)
                 @foreach ($payments as $index => $payment)
                     @php
+                        // JICEST is held in November, so:
+                        // - Submissions Jan-Nov: for current year conference
+                        // - Submissions in Dec: for next year conference (after event)
                         $submissionYear = $payment->created_at->year;
-                        $conferenceYear = $submissionYear;
-                        if ($payment->created_at->month < 6) {
+                        if ($payment->created_at->month <= 11) {
                             $conferenceYear = $submissionYear;
                         } else {
                             $conferenceYear = $submissionYear + 1;
