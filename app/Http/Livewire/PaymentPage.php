@@ -15,7 +15,7 @@ class PaymentPage extends Component
     public $fee, $discount, $original_fee, $total_bill, $fee_after_discount, $proof_of_payment, $voucher;
     public $add = false, $edit = false, $payment_edit_id, $abstract_delete_id;
     public $abstract, $uploadAbstractId;
-    public $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
+    public $validVouchers = ['JICEST2025FST50RB'];
 
     use WithFileUploads;
 
@@ -86,7 +86,7 @@ class PaymentPage extends Component
         ]);
 
         // List of valid vouchers
-        $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
+        $validVouchers = ['JICEST2025FST50RB'];
 
         // Check if the voucher is valid
         if (!in_array($this->voucher, $validVouchers)) {
@@ -140,9 +140,6 @@ class PaymentPage extends Component
                 if (Auth::user()->voucher == $this->validVouchers[0]) {
                     $this->fee = $this->applyDiscount($this->fee, 50000, 5);
                     $this->discount = 'IDR 50.000 / USD 5';
-                } else {
-                    $this->fee = $this->applyDiscount($this->fee, 100000, 10);
-                    $this->discount = 'IDR 100.000 / USD 10';
                 }
             }
         }
@@ -220,8 +217,6 @@ class PaymentPage extends Component
             if (Auth::user()->voucher !== null) {
                 if (Auth::user()->voucher == $this->validVouchers[0]) {
                     $discount = 'IDR 50.000 / USD 5';
-                } else {
-                    $discount = 'IDR 100.000 / USD 10';
                 }
             } 
             Payment::create([

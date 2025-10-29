@@ -20,7 +20,7 @@ class ReviewAbstract extends Component
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
-    public $validVouchers = ['JICEST2025FST50RB', 'JICEST2025FST100RB'];
+    public $validVouchers = ['JICEST2025FST50RB'];
     public $date_from = '2025-09-01';
     public $date_to = '';
 
@@ -118,8 +118,6 @@ class ReviewAbstract extends Component
         if ($user->voucher != null) {
             if ($user->voucher == $this->validVouchers[0]) {
                 $this->fee = $this->applyDiscount($this->fee, 50000, 5);
-            } else {
-                $this->fee = $this->applyDiscount($this->fee, 100000, 10);
             }
         }
 
