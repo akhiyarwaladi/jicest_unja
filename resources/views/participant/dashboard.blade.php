@@ -132,7 +132,6 @@
     }
 
     .dashboard-submissions-wrapper .template-section {
-        text-align: center;
         padding: 35px 30px;
         background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         border-radius: 12px;
@@ -140,16 +139,58 @@
         border: 1px solid #bfdbfe;
     }
 
-    .dashboard-submissions-wrapper .template-section a {
-        text-decoration: none;
+    .dashboard-submissions-wrapper .template-section-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
         color: #1e40af;
-        transition: all 0.2s;
-        display: inline-block;
+        margin-bottom: 25px;
     }
 
-    .dashboard-submissions-wrapper .template-section a:hover {
-        color: #1e3a8a;
-        transform: scale(1.05);
+    .dashboard-submissions-wrapper .template-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .dashboard-submissions-wrapper .template-card {
+        background: white;
+        border: 2px solid #bfdbfe;
+        border-radius: 10px;
+        padding: 25px 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .dashboard-submissions-wrapper .template-card:hover {
+        border-color: #1e40af;
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        transform: translateY(-3px);
+    }
+
+    .dashboard-submissions-wrapper .template-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .dashboard-submissions-wrapper .template-card .template-icon {
+        color: #1e40af;
+        margin-bottom: 15px;
+    }
+
+    .dashboard-submissions-wrapper .template-card .template-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 8px;
+    }
+
+    .dashboard-submissions-wrapper .template-card .template-desc {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.5;
     }
 
     .dashboard-submissions-wrapper .card-title-text {
@@ -406,14 +447,41 @@
             @endif
         @endif
 
-        <!-- Template Article Download Section -->
+        <!-- Template Download Section -->
         @if (!in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler', 'participant_student']))
             <div class="template-section">
-                <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2025.docx">
-                    <i class="fa fa-file-text-o" style="font-size: 60px; display: block; margin-bottom: 15px;" aria-hidden="true"></i>
-                    <span style="display: block; font-size: 18px; font-weight: 600; margin-bottom: 5px;">Download Template Article</span>
-                    <span style="display: block; font-size: 14px; color: #6b7280;">JICEST 2025 Abstract Template</span>
-                </a>
+                <h4 class="template-section-title">
+                    <i class="fa fa-download" style="margin-right: 10px;"></i>
+                    Download Templates
+                </h4>
+
+                <div class="template-grid">
+                    <!-- Abstract Template -->
+                    <div class="template-card">
+                        <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2025.docx">
+                            <div class="template-icon">
+                                <i class="fa fa-file-text-o" style="font-size: 50px;"></i>
+                            </div>
+                            <div class="template-title">Abstract Template</div>
+                            <div class="template-desc">
+                                Download the template for submitting your abstract to JICEST conference
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Full Paper Template -->
+                    <div class="template-card">
+                        <a href="https://jicest.unja.ac.id/uploads/downloads/JICEST_Paper.docx">
+                            <div class="template-icon">
+                                <i class="fa fa-file-word-o" style="font-size: 50px;"></i>
+                            </div>
+                            <div class="template-title">Full Paper Template</div>
+                            <div class="template-desc">
+                                Download the template for submitting your full paper after acceptance
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         @endif
     </div>
