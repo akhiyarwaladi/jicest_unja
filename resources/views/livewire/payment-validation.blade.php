@@ -141,35 +141,48 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="fee">Fee</label>
-                    <input type="text" disabled class="form-control @error('fee') is-invalid @enderror"
-                        id="fee" name="fee" wire:model.debounce.500ms="fee">
+                    <label for="fee">Fee (IDR)</label>
+                    <input type="text" class="form-control @error('fee') is-invalid @enderror"
+                        id="fee" name="fee" wire:model.defer="fee" placeholder="e.g. 450000">
                     @error('fee')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
+                    <small class="form-text text-muted">Enter amount in IDR (numbers only). Example: 450000</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="discount">Discount</label>
-                    <input type="text" disabled class="form-control @error('discount') is-invalid @enderror"
-                        id="discount" name="discount" wire:model.debounce.500ms="discount">
+                    <label for="discount">Discount (IDR)</label>
+                    <input type="text" class="form-control @error('discount') is-invalid @enderror"
+                        id="discount" name="discount" wire:model.defer="discount" placeholder="e.g. 50000">
                     @error('discount')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
+                    <small class="form-text text-muted">Enter discount in IDR (optional). Example: 50000</small>
                 </div>
+
                 <div class="form-group">
-                    <label for="fee_after_discount">Fee After Discount</label>
-                    <input type="text" disabled
-                        class="form-control @error('fee_after_discount') is-invalid @enderror" id="fee_after_discount"
-                        name="fee_after_discount" wire:model.debounce.500ms="fee_after_discount">
+                    <button type="button" class="btn btn-primary btn-block" wire:click="updateUSDDisplay">
+                        <i class="fa fa-calculator"></i> Calculate & Convert to USD
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="fee_after_discount">Fee After Discount <span class="badge badge-success">Auto-Calculated</span></label>
+                    <input type="text" readonly class="form-control bg-light @error('fee_after_discount') is-invalid @enderror" id="fee_after_discount"
+                        name="fee_after_discount" wire:model="fee_after_discount" placeholder="Will be calculated">
                     @error('fee_after_discount')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
+                    @if($fee_after_discount_usd_display)
+                        <div class="alert alert-success mt-2 py-2 px-3">
+                            <strong>USD:</strong> {{ $fee_after_discount_usd_display }}
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
-                    <label for="total_bill">Total Bill</label>
-                    <input type="text" disabled class="form-control @error('total_bill') is-invalid @enderror"
-                        id="total_bill" name="total_bill" wire:model.debounce.500ms="total_bill">
+                    <label for="total_bill">Total Bill <span class="badge badge-success">Auto-Calculated</span></label>
+                    <input type="text" readonly class="form-control bg-light @error('total_bill') is-invalid @enderror"
+                        id="total_bill" name="total_bill" wire:model="total_bill" placeholder="Same as Fee After Discount">
                     @error('total_bill')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -236,12 +249,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="no_receipt">Nomor Receipt</label>
-                            <input type="text" class="form-control @error('no_receipt') is-invalid @enderror"
-                                id="no_receipt" name="no_receipt" wire:model.debounce.500ms="no_receipt">
+                            <label for="no_receipt">Nomor Receipt <span class="badge badge-success">Auto-Generated</span></label>
+                            <div class="input-group">
+                                <input type="text" readonly class="form-control bg-light @error('no_receipt') is-invalid @enderror"
+                                    id="no_receipt" name="no_receipt" wire:model="no_receipt">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="document.getElementById('no_receipt').removeAttribute('readonly'); document.getElementById('no_receipt').focus();">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </button>
+                                </div>
+                            </div>
                             @error('no_receipt')
-                                <span class="invalid-feedback">{{ $message }}</span>
+                                <span class="invalid-feedback d-block">{{ $message }}</span>
                             @enderror
+                            <small class="form-text text-muted">Receipt number auto-generated. Click "Edit" button to modify manually.</small>
                         </div>
 
                         <div class="form-group">

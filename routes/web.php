@@ -189,4 +189,24 @@ Route::get('/test', function () {
 
 Route::get('/repair-12345', [UploadAbstractController::class, 'repair']);
 
+// Test email route - remove after testing
+Route::get('/test-email', function () {
+    try {
+        Mail::raw('Test email from JICEST UNJA Conference System. If you receive this, your email configuration is working correctly!', function ($message) {
+            $message->to('jicest@unja.ac.id')
+                    ->subject('Test Email - JICEST System');
+        });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Email sent successfully! Check your inbox at jicest@unja.ac.id'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage()
+        ], 500);
+    }
+});
+
 require __DIR__ . '/auth.php';
