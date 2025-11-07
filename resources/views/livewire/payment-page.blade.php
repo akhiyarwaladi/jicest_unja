@@ -217,8 +217,8 @@
                 @endif
                 <td>{{ $item->validation }}</td>
                 <td>
-                    @if ($item->receipt)
-                    <a href="{{ asset('storage/' . $item->receipt) }}" target="_blank">View PDF</a>
+                    @if ($item->receipt && $item->validation === 'valid')
+                    <a href="{{ asset('storage/' . $item->receipt_path) }}" target="_blank" title="Receipt No: {{ $item->receipt }}">View PDF</a>
                     @else
                     No file
                     @endif
