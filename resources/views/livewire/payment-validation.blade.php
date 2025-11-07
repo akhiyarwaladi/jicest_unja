@@ -58,6 +58,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th scope="col">Action</th>
                                 <th scope="col">#</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Email</th>
@@ -67,17 +68,17 @@
                                 <th scope="col">Status</th>
                                 <th scope="col">Validated By</th>
                                 <th>Receipt</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (count($payments) == 0)
                                 <tr>
-                                    <td colspan="9" align="center">No data</td>
+                                    <td colspan="10" align="center">No data</td>
                                 </tr>
                             @endif
                             @foreach ($payments as $item)
                                 <tr>
+                                    <td><button class="btn btn-primary btn-sm" wire:click="showDetail('{{ $item->id }}')">Validate</button></td>
                                     <td>{{ ($payments->currentpage() - 1) * $payments->perpage() + $loop->index + 1 }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->participant->user->email }}</td>
@@ -99,7 +100,6 @@
                                             </a>
                                         @endif
                                     </td>
-                                    <td><button class="btn btn-primary" wire:click="showDetail('{{ $item->id }}')">Validate</button></td>
                                 </tr>
                             @endforeach
                         </tbody>

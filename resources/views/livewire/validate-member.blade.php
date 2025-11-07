@@ -33,13 +33,13 @@
                 <table class="table table-bordered text-nowrap">
                     <thead>
                         <tr>
+                            <th scope="col">Action</th>
                             <th scope="col">#</th>
                             <th scope="col">Email</th>
                             <th scope="col">Full Name</th>
                             <th scope="col">HKI ID</th>
                             <th scope="col">Status</th>
                             <th scope="col">Validated By</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +51,8 @@
                         @endif
                         @foreach ($participants as $item)
                             <tr>
+                                <td><button class="btn btn-primary btn-sm"
+                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
                                 <td>{{ ($participants->currentpage() - 1) * $participants->perpage() + $loop->index + 1 }}
                                 </td>
                                 <td>{{ $item->user->email }}</td>
@@ -58,8 +60,6 @@
                                 <td>{{ $item->hki_id }}</td>
                                 <td>{{ $item->hki_status }}</td>
                                 <td>{{ $item->hki_validated_by }}</td>
-                                <td><button class="btn btn-primary"
-                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
                             </tr>
                         @endforeach
                     </tbody>

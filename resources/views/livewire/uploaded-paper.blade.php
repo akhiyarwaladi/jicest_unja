@@ -41,6 +41,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col">Action</th>
                             <th scope="col">#</th>
                             <th scope="col">Upload Date</th>
                             <th scope="col">Title</th>
@@ -48,7 +49,6 @@
                             <th scope="col">Presenter Type</th>
                             <th scope="col">Status</th>
                             <th scope="col">Validated By</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +60,8 @@
                         @endif
                         @foreach ($fulltexts as $item)
                             <tr>
+                                <td><button class="btn btn-primary btn-sm"
+                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
                                 <td>{{ ($fulltexts->currentpage() - 1) * $fulltexts->perpage() + $loop->index + 1 }}
                                 </td>
                                 <td>{{ $item->created_at->format('d M Y, H:i') }}</td>
@@ -68,8 +70,6 @@
                                 <td>{{ $item->payment->participant->participant_type }}</td>
                                 <td>{{ $item->validation }}</td>
                                 <td>{{ $item->validated_by }}</td>
-                                <td><button class="btn btn-primary"
-                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
                             </tr>
                         @endforeach
                     </tbody>

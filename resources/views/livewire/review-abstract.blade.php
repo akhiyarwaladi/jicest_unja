@@ -78,6 +78,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th scope="col">Action</th>
                                 <th scope="col">#</th>
                                 <th scope="col">Presenter</th>
                                 <th scope="col">Title</th>
@@ -86,7 +87,6 @@
                                 <th scope="col">Reviewed By</th>
                                 <th scope="col">LOA</th>
                                 <th scope="col">Invoice</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,6 +98,8 @@
                             @endif
                             @foreach ($abstracts as $item)
                                 <tr>
+                                    <td><button class="btn btn-primary btn-sm"
+                                            wire:click="showReview('{{ $item->id }}')">Review</button></td>
                                     <td>{{ ($abstracts->currentpage() - 1) * $abstracts->perpage() + $loop->index + 1 }}
                                     </td>
                                     <td>{{ $item->participant->full_name1 }}</td>
@@ -120,8 +122,6 @@
                                             </a>
                                         @endif
                                     </td>
-                                    <td><button class="btn btn-primary"
-                                            wire:click="showReview('{{ $item->id }}')">Review</button></td>
                                 </tr>
                             @endforeach
                         </tbody>
