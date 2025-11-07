@@ -113,7 +113,7 @@
             </div>
         </div>
     @else
-        <div class="row">
+        <div class="row" wire:key="payment-detail-{{ $paymentValidate }}">
             <div class="col-5">
                 <div class="form-group">
                     <label for="full_name1">Full Name</label>
@@ -143,7 +143,7 @@
                 <div class="form-group">
                     <label for="fee">Fee (IDR)</label>
                     <input type="text" class="form-control @error('fee') is-invalid @enderror"
-                        id="fee" name="fee" wire:model.defer="fee" placeholder="e.g. 450000">
+                        id="fee" name="fee" wire:model.lazy="fee" placeholder="e.g. 450000">
                     @error('fee')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -153,7 +153,7 @@
                 <div class="form-group">
                     <label for="discount">Discount (IDR)</label>
                     <input type="text" class="form-control @error('discount') is-invalid @enderror"
-                        id="discount" name="discount" wire:model.defer="discount" placeholder="e.g. 50000">
+                        id="discount" name="discount" wire:model.lazy="discount" placeholder="e.g. 50000">
                     @error('discount')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -161,8 +161,14 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-block" wire:click="updateUSDDisplay">
-                        <i class="fa fa-calculator"></i> Calculate & Convert to USD
+                    <button type="button" class="btn btn-primary btn-block" wire:click="updateUSDDisplay"
+                        wire:loading.attr="disabled" wire:loading.class="btn-secondary" wire:target="updateUSDDisplay">
+                        <span wire:loading.remove wire:target="updateUSDDisplay">
+                            <i class="fa fa-calculator"></i> Calculate & Convert to USD
+                        </span>
+                        <span wire:loading wire:target="updateUSDDisplay">
+                            <i class="fa fa-spinner fa-spin"></i> Calculating...
+                        </span>
                     </button>
                 </div>
 

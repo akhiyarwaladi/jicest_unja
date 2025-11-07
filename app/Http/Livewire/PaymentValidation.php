@@ -55,6 +55,10 @@ class PaymentValidation extends Component
         $this->total_bill = null;
         $this->proof_of_payment = null;
         $this->payment = null;
+
+        // Reset USD display fields
+        $this->fee_usd_display = '';
+        $this->fee_after_discount_usd_display = '';
     }
     
     public function showDetail($id)
