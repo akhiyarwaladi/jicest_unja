@@ -93,8 +93,8 @@
                                     <td>{{ $item->validation }}</td>
                                     <td>{{ $item->validated_by }}</td>
                                     <td>
-                                        @if ($item->receipt)
-                                            <a href="{{ asset('storage/' . $item->receipt) }}" target="_blank" style="color:red; font-size:20px">
+                                        @if ($item->receipt && $item->validation === 'valid')
+                                            <a href="{{ asset('storage/' . $item->receipt_path) }}" target="_blank" style="color:red; font-size:20px" title="Receipt: {{ $item->receipt }}">
                                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             </a>
                                         @endif

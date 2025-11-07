@@ -29,4 +29,21 @@ class Payment extends Model
     {
         return $this->hasMany(UploadFulltext::class);
     }
+
+    /**
+     * Get the receipt PDF path attribute
+     * Generates path from participant name and abstract ID
+     * Format: receipt/receipt-abs-{abstract_id}-{participant_name}.pdf
+     */
+    public function getReceiptPathAttribute()
+    {
+        if (!$this->participant) {
+            return null;
+        }
+
+        $id = $this->upload_abstract_id ?? 'participant';
+        $fullName = $this->participant->full_name1;
+
+        return "receipt/receipt-abs-{$id}-{$fullName}.pdf";
+    }
 }

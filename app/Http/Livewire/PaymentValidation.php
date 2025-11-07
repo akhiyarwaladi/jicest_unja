@@ -288,7 +288,7 @@ class PaymentValidation extends Component
         $this->receiptPath = 'receipt/' . 'receipt-abs-' . $id . '-' . $this->full_name1 . '.pdf';
         Payment::where('id', $this->paymentValidate)->update([
             'validation' => 'valid',
-            'receipt' => $this->receiptPath,
+            'receipt' => $this->no_receipt,  // Save receipt NUMBER, not path!
             'validated_by' => Auth::user()->email
         ]);
 
