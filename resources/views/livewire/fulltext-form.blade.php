@@ -41,14 +41,14 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="fulltext">Upload Fulltext (Microsoft Word .docx or PDF)</label>
+                <label for="fulltext">Upload Fulltext (Microsoft Word .docx)</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
+                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext">
-                            {{ $fulltext == null ? 'Choose file (.docx or .pdf)' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose Word file (.docx)' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -109,20 +109,20 @@
                 <div class="alert alert-info">
                     <strong>Current File:</strong>
                     <a href="{{ asset('storage/' . $current_file) }}" target="_blank" class="alert-link">
-                        <i class="fa fa-file-pdf-o"></i> View Current PDF
+                        <i class="fa fa-file-word-o"></i> View Current Document
                     </a>
                 </div>
             @endif
 
             <div class="form-group">
-                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx or PDF) - Optional</label>
+                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx) - Optional</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
+                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext_edit"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext_edit">
-                            {{ $fulltext == null ? 'Choose new file (.docx or .pdf) - optional' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose new Word file (.docx) - optional' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -151,7 +151,7 @@
                         <i class="fa fa-exclamation-circle"></i> Important: Upload Format Requirements
                     </h5>
                     <p style="color: #1e3a8a; margin-bottom: 8px; line-height: 1.6;">
-                        <strong>ACCEPTED FORMATS: Microsoft Word (.docx) or PDF (.pdf)</strong>
+                        <strong>FORMAT YANG DIUPLOAD HARUS DALAM BENTUK MICROSOFT WORD (.docx)</strong>
                     </p>
                     <div style="color: #1e3a8a; line-height: 1.6;">
                         <div style="margin-bottom: 5px;">
@@ -194,7 +194,7 @@
                                 <th scope="row">{{ ++$a }}</th>
                                 <td>{{ $item->title }}</td>
                                 <td><a href="{{ asset('storage/' . $item->fulltext) }}" target="_blank"
-                                        style="color:red; font-size:20px"><i class="fa fa-file-pdf-o"
+                                        style="color:#2563eb; font-size:20px"><i class="fa fa-file-word-o"
                                             aria-hidden="true"></i>
                                     </a></td>
                                 <td>{{ $item->validation }}</td>
