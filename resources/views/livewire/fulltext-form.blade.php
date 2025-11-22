@@ -140,6 +140,34 @@
         </form>
 
     @else
+        <!-- Information Box -->
+        <div class="alert alert-success" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-left: 5px solid #059669; border-radius: 10px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15); margin-bottom: 20px;">
+            <div style="display: flex; align-items: start; gap: 15px;">
+                <div style="flex-shrink: 0;">
+                    <i class="fa fa-file-text" style="font-size: 28px; color: #059669;"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h5 style="color: #065f46; font-weight: 700; margin-bottom: 10px; margin-top: 0;">
+                        <i class="fa fa-refresh"></i> Full Paper Editing Information
+                    </h5>
+                    <p style="color: #064e3b; margin-bottom: 8px; line-height: 1.6;">
+                        You can <strong>update your full paper submission</strong> before the presentation date.
+                        Click the <span style="background: #059669; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Edit</span> button to modify your paper title or re-upload your PDF file.
+                    </p>
+                    <div style="color: #064e3b; line-height: 1.6;">
+                        <div style="margin-bottom: 5px;">
+                            <i class="fa fa-check-circle" style="color: #10b981;"></i>
+                            <strong>Update title:</strong> Edit your paper title anytime
+                        </div>
+                        <div>
+                            <i class="fa fa-check-circle" style="color: #10b981;"></i>
+                            <strong>Re-upload PDF:</strong> Replace your file with an updated version (optional)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         @if (count($payment) == 0)
             <button class="btn btn-primary" disabled>Upload Paper</button>
         @else

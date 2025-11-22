@@ -288,6 +288,28 @@
             <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
         </form>
     @else
+        <!-- Information Box -->
+        <div class="alert alert-info" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-left: 5px solid #0284c7; border-radius: 10px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);">
+            <div style="display: flex; align-items: start; gap: 15px;">
+                <div style="flex-shrink: 0;">
+                    <i class="fa fa-info-circle" style="font-size: 28px; color: #0284c7;"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h5 style="color: #075985; font-weight: 700; margin-bottom: 10px; margin-top: 0;">
+                        <i class="fa fa-edit"></i> Abstract Editing Information
+                    </h5>
+                    <p style="color: #0c4a6e; margin-bottom: 8px; line-height: 1.6;">
+                        You can <strong>update and edit your abstract information</strong> at any time before the presentation session.
+                        Simply click the <span style="background: #0284c7; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Edit</span> button to modify your submission.
+                    </p>
+                    <p style="color: #0c4a6e; margin: 0; line-height: 1.6;">
+                        <i class="fa fa-check-circle" style="color: #10b981;"></i>
+                        <strong>Editable fields:</strong> Title, Authors, Institutions, Abstract Content, Keywords, and Presenter
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <button class="btn btn-primary" wire:click="add()">Add Abstract {{$canEdit}}</button>
 
         @if (count($abstracts) !== 0)
