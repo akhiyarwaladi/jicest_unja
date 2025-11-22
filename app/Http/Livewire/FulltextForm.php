@@ -12,7 +12,8 @@ use Livewire\WithFileUploads;
 class FulltextForm extends Component
 {
     public $title, $fulltext, $payment_id, $payment;
-    public $add = false, $edit = false, $abstract_edit_id, $abstract_delete_id;
+    public $add = false, $edit = false, $fulltext_edit_id;
+    public $current_file = null;
 
     use WithFileUploads;
     public function mount()
@@ -22,12 +23,19 @@ class FulltextForm extends Component
     }
     public function rules()
     {
-        return
-            [
-                'title' => 'required',
-                'payment_id' => 'required',
-                'fulltext' => 'required|file|mimes:pdf',
-            ];
+        $rules = [
+            'title' => 'required',
+            'payment_id' => 'required',
+        ];
+
+        // Only require file on create, make it optional on edit
+        if (!$this->edit) {
+            $rules['fulltext'] = 'required|file|mimes:pdf';
+        } else {
+            $rules['fulltext'] = 'nullable|file|mimes:pdf';
+        }
+
+        return $rules;
     }
 
     //Custom Errror messages for validation
@@ -56,51 +64,75 @@ class FulltextForm extends Component
 
     public function empty()
     {
-        $this->abstract_edit_id = null;
+        $this->fulltext_edit_id = null;
         $this->title = null;
         $this->fulltext = null;
         $this->payment_id = null;
+        $this->current_file = null;
         $this->add = false;
+        $this->edit = false;
     }
 
-    // public function editAbstract($id)
-    // {
-    //     $abstract = UploadAbstract::find($id);
-    //     $this->abstract_edit_id = $id;
-    //     $this->topic = $abstract->topic;
-    //     $this->type = $abstract->type;
-    //     $this->title = $abstract->title;
-    //     $this->keywords = $abstract->keywords;
-    //     $this->authors = $abstract->authors;
-    //     $this->abstract = $abstract->abstract;
-    //     $this->institutions = $abstract->institutions;
-    //     $this->presenter = $abstract->presenter;
-    //     $this->edit = true;
-    // }
+    public function editFulltext($id)
+    {
+        $fulltext = UploadFulltext::find($id);
+        $this->fulltext_edit_id = $id;
+        $this->title = $fulltext->title;
+        $this->payment_id = $fulltext->payment_id;
+        $this->current_file = $fulltext->fulltext;
+        $this->edit = true;
+        $this->dispatchBrowserEvent('to-top');
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
 
-    // public function update()
-    // {
-    //     $this->validate();
-    //     UploadAbstract::where('id', $this->abstract_edit_id)->update([
-    //         'topic' => $this->topic,
-    //         'type' => $this->type,
-    //         'title' => $this->title,
-    //         'authors' => $this->authors,
-    //         'institutions' => $this->institutions,
-    //         'abstract' => $this->abstract,
-    //         'keywords' => $this->keywords,
-    //         'presenter' => $this->presenter,
-    //     ]);
+    public function update()
+    {
+        try {
+            $this->validate();
 
-    //     session()->flash('message', 'Edit abstract was successful !');
-    //     $this->empty();
-    //     $this->cancel();
-    // }
+            $updateData = [
+                'title' => $this->title,
+                'payment_id' => $this->payment_id,
+            ];
+
+            // Only update file if a new one is uploaded
+            if ($this->fulltext) {
+                $filePath = $this->fulltext->store('fulltext-papers', config('filesystems.storage'));
+                $updateData['fulltext'] = $filePath;
+
+                // Delete old file
+                $oldFulltext = UploadFulltext::find($this->fulltext_edit_id);
+                if ($oldFulltext && $oldFulltext->fulltext) {
+                    \Storage::disk(config('filesystems.storage'))->delete($oldFulltext->fulltext);
+                }
+            }
+
+            UploadFulltext::where('id', $this->fulltext_edit_id)->update($updateData);
+
+            $this->empty();
+            $this->cancel();
+
+            $this->dispatchBrowserEvent('fulltext-success', [
+                'title' => 'Full-text Updated!',
+                'message' => 'Your full-text paper has been updated successfully.',
+                'icon' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Error updating full-text: ' . $e->getMessage());
+
+            $this->dispatchBrowserEvent('fulltext-error', [
+                'title' => 'Update Failed',
+                'message' => 'An error occurred while updating your full-text paper. Please try again.',
+                'icon' => 'error'
+            ]);
+        }
+    }
 
     public function cancel()
     {
         $this->add = false;
-        // $this->edit = false;
+        $this->edit = false;
         $this->resetErrorBag();
         $this->resetValidation();
         $this->dispatchBrowserEvent('to-top');

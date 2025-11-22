@@ -13,7 +13,7 @@ class DownloadController extends Controller
     
     public function downloadAbstract()
     {
-        return response()->download(public_path('uploads/downloads/JICEST Abstract.docx'));
+        return response()->download(public_path('uploads/TemplateAbstract2025.docx'));
     }
     
     public function downloadPaper()

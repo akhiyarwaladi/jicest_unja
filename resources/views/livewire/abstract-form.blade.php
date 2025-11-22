@@ -212,7 +212,7 @@
                 <label for="type">
                     Type
                 </label>
-                <select @if ($status == "accepted") disabled @endif class="custom-select @error('type') is-invalid @enderror" id="type" name="type"
+                <select class="custom-select @error('type') is-invalid @enderror" id="type" name="type"
                     wire:model='type'>
                     <option value="">Choose One</option>
                     <option value="oral presentation">Oral Presentation</option>
@@ -226,7 +226,7 @@
 
             <div class="form-group">
                 <label for="title">Title</label>
-                <input  @if ($status == "accepted") disabled @endif type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                     placeholder="Title" name="title" wire:model='title'>
                 @error('title')
                     <span class="invalid-feedback">
@@ -236,7 +236,7 @@
             </div>
             <div class="form-group">
                 <label for="authors">All Authors</label>
-                <textarea @if ($status == "accepted") disabled @endif class="form-control @error('authors') is-invalid @enderror" id="authors" rows="3"
+                <textarea class="form-control @error('authors') is-invalid @enderror" id="authors" rows="3"
                     placeholder="All Authors" name="authors" wire:model='authors'></textarea>
                 @error('authors')
                     <span class="invalid-feedback">
@@ -246,7 +246,7 @@
             </div>
             <div class="form-group">
                 <label for="institutions">Institutions</label>
-                <textarea @if ($status == "accepted") disabled @endif class="form-control @error('institutions') is-invalid @enderror" id="institutions" rows="3"
+                <textarea class="form-control @error('institutions') is-invalid @enderror" id="institutions" rows="3"
                     placeholder="Institutions" name="institutions" wire:model='institutions'></textarea>
                 @error('institutions')
                     <span class="invalid-feedback">
@@ -256,7 +256,7 @@
             </div>
             <div class="form-group">
                 <label for="abstract">Content of Abstract</label>
-                <textarea @if ($status == "accepted") disabled @endif class="form-control @error('abstract') is-invalid @enderror" id="abstract" rows="3"
+                <textarea class="form-control @error('abstract') is-invalid @enderror" id="abstract" rows="3"
                     placeholder="Content of abstract" name="abstract" wire:model='abstract'></textarea>
                 @error('abstract')
                     <span class="invalid-feedback">
@@ -266,7 +266,7 @@
             </div>
             <div class="form-group">
                 <label for="keywords">Keywords</label>
-                <input @if ($status == "accepted") disabled @endif type="text" class="form-control @error('keywords') is-invalid @enderror" id="keywords"
+                <input type="text" class="form-control @error('keywords') is-invalid @enderror" id="keywords"
                     placeholder="Keywords" name="keywords" wire:model='keywords'>
                 @error('keywords')
                     <span class="invalid-feedback">
@@ -276,7 +276,7 @@
             </div>
             <div class="form-group">
                 <label for="presenter">Presenter</label>
-                <input @if ($status == "accepted") disabled @endif type="text" class="form-control @error('presenter') is-invalid @enderror" id="presenter"
+                <input type="text" class="form-control @error('presenter') is-invalid @enderror" id="presenter"
                     aria-describedby="emailHelp" placeholder="Presenter" name="presenter" wire:model='presenter'>
                 @error('presenter')
                     <span class="invalid-feedback" role="alert">

@@ -64,7 +64,80 @@
             <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
         </form>
 
+    @elseif ($edit == true)
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Edit Fulltext</h2>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-warning my-3" wire:click='cancel()'>Back</a>
+        <form wire:submit.prevent="update">
+            <div class="form-group">
+                <label for="payment_id">
+                    Upload For Abstract
+                </label>
+                <select class="custom-select @error('payment_id') is-invalid @enderror" id="payment_id" name="payment_id"
+                    wire:model='payment_id'>
+                    <option value="">Choose One</option>
+                        @foreach ($payment as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->uploadAbstract->title ?? 'N/A' }}
+                            </option>
+                        @endforeach
+                </select>
+                @error('payment_id')
+                    <span class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                    placeholder="Title" name="title" wire:model='title'>
+                @error('title')
+                    <span class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            @if ($current_file)
+                <div class="alert alert-info">
+                    <strong>Current File:</strong>
+                    <a href="{{ asset('storage/' . $current_file) }}" target="_blank" class="alert-link">
+                        <i class="fa fa-file-pdf-o"></i> View Current PDF
+                    </a>
+                </div>
+            @endif
+
+            <div class="form-group">
+                <label for="fulltext_edit">Upload New Fulltext (.pdf) - Optional</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" accept=".pdf"
+                            class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext_edit"
+                            wire:model.debounce.500ms='fulltext'>
+                        <label class="custom-file-label" for="fulltext_edit">
+                            {{ $fulltext == null ? 'Choose new file (optional)' : $fulltext->getClientOriginalName() }}
+                        </label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                    </div>
+                </div>
+                <small class="form-text text-muted">Leave empty to keep current file</small>
+                @error('fulltext')
+                    <span class="invalid-feedback" style="display:block">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
+        </form>
 
     @else
         @if (count($payment) == 0)
@@ -82,6 +155,7 @@
                             <th scope="col">File</th>
                             <th scope="col">Status</th>
                             <th scope="col">Validated by</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,6 +172,9 @@
                                     </a></td>
                                 <td>{{ $item->validation }}</td>
                                 <td>{{ $item->validated_by }}</td>
+                                <td>
+                                    <button class="btn btn-info" wire:click='editFulltext({{ $item->id }})'>Edit</button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
