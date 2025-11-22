@@ -5,29 +5,39 @@
     {{-- Inherit CSS dari layouts/participant.blade.php untuk User Menu styling --}}
 
 <style>
-    /* Scoped styles untuk dashboard submissions - tidak mempengaruhi User Menu */
-    /* Semua CSS di-scope dalam .dashboard-submissions-wrapper sehingga TIDAK mempengaruhi sidebar */
+    /* Font Poppins - sama dengan homepage */
+    .dashboard-submissions-wrapper {
+        font-family: "Poppins", sans-serif;
+    }
 
+    /* Keep FontAwesome icons working */
+    .dashboard-submissions-wrapper .fa {
+        font-family: "FontAwesome";
+    }
+
+    /* Modern card styling - sama dengan about/contact pages */
     .dashboard-submissions-wrapper .submission-card {
-        border: 1px solid #dee2e6;
-        border-radius: 10px;
+        border: none;
+        border-radius: 16px;
         overflow: hidden;
         margin-bottom: 25px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         transition: all 0.3s ease;
         background: white;
+        border-top: 4px solid #0284c7;
     }
 
     .dashboard-submissions-wrapper .submission-card:hover {
-        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: translateY(-4px);
     }
 
     .dashboard-submissions-wrapper .submission-header {
-        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
         color: #ffffff !important;
-        padding: 24px;
+        padding: 48px 40px;
         position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .dashboard-submissions-wrapper .submission-header * {
@@ -35,27 +45,29 @@
     }
 
     .dashboard-submissions-wrapper .submission-header.participant-type {
-        background: linear-gradient(135deg, #047857 0%, #059669 100%);
+        background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
     }
 
     .dashboard-submissions-wrapper .conference-badge {
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(10px);
-        padding: 6px 16px;
-        border-radius: 25px;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
+        padding: 12px 24px;
+        border-radius: 999px;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
         display: inline-block;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 3px solid rgba(255, 255, 255, 0.5);
         color: #ffffff !important;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .dashboard-submissions-wrapper .status-row {
         display: flex;
         align-items: center;
-        padding: 18px 0;
-        border-bottom: 1px solid #f1f3f5;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e7eb;
     }
 
     .dashboard-submissions-wrapper .status-row:last-child {
@@ -63,9 +75,9 @@
     }
 
     .dashboard-submissions-wrapper .status-icon {
-        width: 45px;
+        width: 48px;
         text-align: center;
-        margin-right: 16px;
+        margin-right: 20px;
         flex-shrink: 0;
     }
 
@@ -76,24 +88,24 @@
 
     .dashboard-submissions-wrapper .status-label {
         font-weight: 700;
-        color: #1f2937;
-        margin-bottom: 4px;
-        font-size: 14px;
+        color: #111827;
+        margin-bottom: 6px;
+        font-size: 15px;
     }
 
     .dashboard-submissions-wrapper .status-date {
-        font-size: 12px;
+        font-size: 13px;
         color: #6b7280;
         margin-top: 4px;
     }
 
     .dashboard-submissions-wrapper .status-badge {
-        padding: 6px 16px;
-        border-radius: 25px;
+        padding: 8px 18px;
+        border-radius: 999px;
         font-size: 12px;
         font-weight: 700;
         white-space: nowrap;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
     }
 
@@ -125,26 +137,26 @@
 
     .dashboard-submissions-wrapper .empty-state {
         text-align: center;
-        padding: 50px 30px;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border: 2px dashed #93c5fd;
-        border-radius: 12px;
+        padding: 60px 40px;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 2px dashed #7dd3fc;
+        border-radius: 16px;
     }
 
     .dashboard-submissions-wrapper .template-section {
-        padding: 35px 30px;
+        padding: 40px 32px;
         background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border-radius: 12px;
+        border-radius: 16px;
         margin-top: 30px;
         border: 1px solid #bfdbfe;
     }
 
     .dashboard-submissions-wrapper .template-section-title {
         text-align: center;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
         color: #1e40af;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
 
     .dashboard-submissions-wrapper .template-grid {
@@ -156,17 +168,17 @@
     .dashboard-submissions-wrapper .template-card {
         background: white;
         border: 2px solid #bfdbfe;
-        border-radius: 10px;
-        padding: 25px 20px;
+        border-radius: 16px;
+        padding: 32px 24px;
         text-align: center;
         transition: all 0.3s ease;
         cursor: pointer;
     }
 
     .dashboard-submissions-wrapper .template-card:hover {
-        border-color: #1e40af;
-        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
-        transform: translateY(-3px);
+        border-color: #3b82f6;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transform: translateY(-4px);
     }
 
     .dashboard-submissions-wrapper .template-card a {
@@ -176,43 +188,49 @@
     }
 
     .dashboard-submissions-wrapper .template-card .template-icon {
-        color: #1e40af;
-        margin-bottom: 15px;
+        color: #2563eb;
+        margin-bottom: 20px;
     }
 
     .dashboard-submissions-wrapper .template-card .template-title {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         color: #1e40af;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
     }
 
     .dashboard-submissions-wrapper .template-card .template-desc {
-        font-size: 13px;
+        font-size: 14px;
         color: #6b7280;
-        line-height: 1.5;
+        line-height: 1.6;
     }
 
     .dashboard-submissions-wrapper .card-title-text {
         color: #ffffff !important;
-        font-weight: 600 !important;
+        font-weight: 900 !important;
         margin: 0 !important;
+        font-size: 32px !important;
+        line-height: 1.3 !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .dashboard-submissions-wrapper .card-subtitle-text {
         color: rgba(255, 255, 255, 0.95) !important;
-        font-size: 14px !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
     }
 
     .dashboard-submissions-wrapper .card-meta-text {
-        color: rgba(255, 255, 255, 0.85) !important;
-        font-size: 12px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
     }
 
     .dashboard-submissions-wrapper .page-title {
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #1f2937;
+        font-weight: 700;
+        font-size: 28px;
+        margin-bottom: 24px;
+        color: #111827;
     }
 </style>
 @endsection
@@ -255,13 +273,13 @@
                         <div class="submission-header">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                                 <div style="flex: 1; min-width: 0;">
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 18px;">
                                         <span class="conference-badge">JICEST {{ $conferenceYear }}</span>
-                                        <span class="card-meta-text" style="font-size: 11px; opacity: 0.8;">
-                                            <i class="fa fa-hashtag" style="margin-right: 3px;"></i>{{ $abstracts->count() - $index }}
+                                        <span class="card-meta-text" style="opacity: 0.9;">
+                                            <i class="fa fa-hashtag" style="margin-right: 5px;"></i>{{ $abstracts->count() - $index }}
                                         </span>
                                     </div>
-                                    <h4 class="card-title-text" style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.4;">
+                                    <h4 class="card-title-text" style="margin: 0;">
                                         {{ $abstract->title }}
                                     </h4>
                                 </div>
@@ -369,9 +387,9 @@
                 @endforeach
             @else
                 <div class="empty-state">
-                    <i class="fa fa-info-circle" style="font-size: 48px; color: #60a5fa; margin-bottom: 15px;"></i>
-                    <h5 style="font-weight: 600; color: #1f2937; margin-bottom: 8px;">No abstracts submitted yet</h5>
-                    <p style="color: #6b7280; margin: 0;">Please add your abstract in the abstract menu to get started.</p>
+                    <i class="fa fa-info-circle" style="font-size: 56px; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <h5 style="font-weight: 700; font-size: 20px; color: #111827; margin-bottom: 12px;">No abstracts submitted yet</h5>
+                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Please add your abstract in the abstract menu to get started.</p>
                 </div>
             @endif
         @else
@@ -398,14 +416,14 @@
                         <div class="submission-header participant-type">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                                 <div style="flex: 1; min-width: 0;">
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 18px;">
                                         <span class="conference-badge">JICEST {{ $conferenceYear }}</span>
-                                        <span class="card-meta-text" style="font-size: 11px; opacity: 0.8;">
-                                            <i class="fa fa-hashtag" style="margin-right: 3px;"></i>{{ $payments->count() - $index }}
+                                        <span class="card-meta-text" style="opacity: 0.9;">
+                                            <i class="fa fa-hashtag" style="margin-right: 5px;"></i>{{ $payments->count() - $index }}
                                         </span>
                                     </div>
-                                    <h4 class="card-title-text" style="margin: 0; font-size: 18px; font-weight: 700;">
-                                        <i class="fa fa-ticket" style="margin-right: 10px;"></i>
+                                    <h4 class="card-title-text" style="margin: 0;">
+                                        <i class="fa fa-ticket" style="margin-right: 12px; font-size: 28px;"></i>
                                         Participant Registration
                                     </h4>
                                 </div>
@@ -440,9 +458,9 @@
                 @endforeach
             @else
                 <div class="empty-state">
-                    <i class="fa fa-info-circle" style="font-size: 48px; color: #60a5fa; margin-bottom: 15px;"></i>
-                    <h5 style="font-weight: 600; color: #1f2937; margin-bottom: 8px;">No payment submitted yet</h5>
-                    <p style="color: #6b7280; margin: 0;">Please add your payment in the payment menu.</p>
+                    <i class="fa fa-info-circle" style="font-size: 56px; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <h5 style="font-weight: 700; font-size: 20px; color: #111827; margin-bottom: 12px;">No payment submitted yet</h5>
+                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Please add your payment in the payment menu.</p>
                 </div>
             @endif
         @endif

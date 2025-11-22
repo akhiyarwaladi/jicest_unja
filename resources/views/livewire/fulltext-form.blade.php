@@ -41,14 +41,14 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="fulltext">Upload Fulltext (.pdf)</label>
+                <label for="fulltext">Upload Fulltext (Microsoft Word .docx)</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".pdf"
+                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext">
-                            {{ $fulltext == null ? 'Choose' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose Word file (.docx)' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -115,14 +115,14 @@
             @endif
 
             <div class="form-group">
-                <label for="fulltext_edit">Upload New Fulltext (.pdf) - Optional</label>
+                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx) - Optional</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".pdf"
+                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext_edit"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext_edit">
-                            {{ $fulltext == null ? 'Choose new file (optional)' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose new Word file (.docx) - optional' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -141,27 +141,26 @@
 
     @else
         <!-- Information Box -->
-        <div class="alert alert-success" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-left: 5px solid #059669; border-radius: 10px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15); margin-bottom: 20px;">
+        <div class="alert alert-success" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-left: 5px solid #2563eb; border-radius: 10px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15); margin-bottom: 20px;">
             <div style="display: flex; align-items: start; gap: 15px;">
                 <div style="flex-shrink: 0;">
-                    <i class="fa fa-file-text" style="font-size: 28px; color: #059669;"></i>
+                    <i class="fa fa-file-word-o" style="font-size: 28px; color: #2563eb;"></i>
                 </div>
                 <div style="flex: 1;">
-                    <h5 style="color: #065f46; font-weight: 700; margin-bottom: 10px; margin-top: 0;">
-                        <i class="fa fa-refresh"></i> Full Paper Editing Information
+                    <h5 style="color: #1e40af; font-weight: 700; margin-bottom: 10px; margin-top: 0;">
+                        <i class="fa fa-exclamation-circle"></i> Important: Upload Format Requirements
                     </h5>
-                    <p style="color: #064e3b; margin-bottom: 8px; line-height: 1.6;">
-                        You can <strong>update your full paper submission</strong> before the presentation date.
-                        Click the <span style="background: #059669; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Edit</span> button to modify your paper title or re-upload your PDF file.
+                    <p style="color: #1e3a8a; margin-bottom: 8px; line-height: 1.6;">
+                        <strong>FORMAT YANG DIUPLOAD HARUS DALAM BENTUK MICROSOFT WORD (.docx)</strong>
                     </p>
-                    <div style="color: #064e3b; line-height: 1.6;">
+                    <div style="color: #1e3a8a; line-height: 1.6;">
                         <div style="margin-bottom: 5px;">
-                            <i class="fa fa-check-circle" style="color: #10b981;"></i>
+                            <i class="fa fa-check-circle" style="color: #2563eb;"></i>
                             <strong>Update title:</strong> Edit your paper title anytime
                         </div>
                         <div>
-                            <i class="fa fa-check-circle" style="color: #10b981;"></i>
-                            <strong>Re-upload PDF:</strong> Replace your file with an updated version (optional)
+                            <i class="fa fa-check-circle" style="color: #2563eb;"></i>
+                            <strong>Re-upload file:</strong> Replace your file with an updated version (optional)
                         </div>
                     </div>
                 </div>
