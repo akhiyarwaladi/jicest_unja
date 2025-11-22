@@ -176,6 +176,34 @@
             backdrop-filter: blur(7px);
             -webkit-backdrop-filter: blur(7px);
         }
+
+        /* Fade in on scroll animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom gradient animation */
+        @keyframes gradient-slow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .animate-gradient-slow {
+            background-size: 200% 200%;
+            animation: gradient-slow 15s ease infinite;
+        }
     </style>
 </head>
 
@@ -271,6 +299,19 @@
         window.addEventListener('to-top', (event) => {
             event.preventDefault();
             window.scrollTo(0, 0);
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
         });
     </script>
     @yield('script')
