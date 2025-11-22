@@ -151,7 +151,7 @@
                         <i class="fa fa-exclamation-circle"></i> Important: Upload Format Requirements
                     </h5>
                     <p style="color: #1e3a8a; margin-bottom: 8px; line-height: 1.6;">
-                        <strong>FORMAT YANG DIUPLOAD HARUS DALAM BENTUK MICROSOFT WORD (.docx)</strong>
+                        <strong>ACCEPTED FORMAT: MICROSOFT WORD (.docx) ONLY</strong>
                     </p>
                     <div style="color: #1e3a8a; line-height: 1.6;">
                         <div style="margin-bottom: 5px;">
