@@ -44,7 +44,7 @@
                     </div>
                     <div class="p-6 text-center">
                         <div class="inline-block bg-sky-100 text-sky-800 font-bold px-6 py-3 rounded-full mb-4">
-                            22 November 2025
+                            26 November 2025
                         </div>
                         <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
                         <div id="countdown-paper-early" class="text-2xl font-black text-sky-600">Loading...</div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="p-6 text-center">
                         <div class="inline-block bg-orange-100 text-orange-800 font-bold px-6 py-3 rounded-full mb-4">
-                            22 November 2025
+                            26 November 2025
                         </div>
                         <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
                         <div id="countdown-abstract-regular" class="text-2xl font-black text-orange-600">Loading...</div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="p-6 text-center">
                         <div class="inline-block bg-red-100 text-red-800 font-bold px-6 py-3 rounded-full mb-4">
-                            22 November 2025
+                            26 November 2025
                         </div>
                         <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
                         <div id="countdown-paper-regular" class="text-2xl font-black text-red-600">Loading...</div>
@@ -126,11 +126,11 @@
 
     // Set the target dates for Early Bird
     const abstractEarlyDeadline = new Date('October 31, 2025 23:59:59').getTime();
-    const paperEarlyDeadline = new Date('November 22, 2025 23:59:59').getTime();
+    const paperEarlyDeadline = new Date('November 26, 2025 23:59:59').getTime();
 
     // Set the target dates for Non Early Bird
-    const abstractRegularDeadline = new Date('November 22, 2025 23:59:59').getTime();
-    const paperRegularDeadline = new Date('November 22, 2025 23:59:59').getTime();
+    const abstractRegularDeadline = new Date('November 26, 2025 23:59:59').getTime();
+    const paperRegularDeadline = new Date('November 26, 2025 23:59:59').getTime();
 
     // Start the countdowns
     startCountdown(abstractEarlyDeadline, 'countdown-abstract-early');
