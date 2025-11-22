@@ -119,16 +119,26 @@ class Fee extends Model
      */
     public static function getAllPricingTiers()
     {
-        $fees = self::orderBy('category')->orderBy('early_bird', 'desc')->get();
+        $fees = self::orderBy('category')->orderBy('participant_type')->orderBy('early_bird', 'desc')->get();
 
         $pricing = [
             'presenter' => ['early_bird' => null, 'non_early_bird' => null],
-            'participant' => ['early_bird' => null, 'non_early_bird' => null]
+            'participant' => ['early_bird' => null, 'non_early_bird' => null],
+            'presenter_student' => ['early_bird' => null, 'non_early_bird' => null],
+            'participant_student' => ['early_bird' => null, 'non_early_bird' => null]
         ];
 
         foreach ($fees as $fee) {
             $key = $fee->early_bird ? 'early_bird' : 'non_early_bird';
-            $pricing[$fee->category][$key] = [
+
+            // Determine the pricing key based on category and participant_type
+            if ($fee->participant_type === 'student') {
+                $pricingKey = $fee->category . '_student';
+            } else {
+                $pricingKey = $fee->category;
+            }
+
+            $pricing[$pricingKey][$key] = [
                 'idr' => $fee->fee_idr_online,
                 'usd' => $fee->fee_usd_online,
                 'formatted' => number_format($fee->fee_idr_online / 1000, 0) . 'K IDR / ' . number_format($fee->fee_usd_online, 0) . ' USD',

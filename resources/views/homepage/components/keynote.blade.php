@@ -7,21 +7,22 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 px-2">
         <div class="flex gap-3">
             <div class="keynote-image shadow-md rounded-md bg-gray-200 flex items-center justify-center overflow-hidden">
-                {{-- Photo URL: https://staffportal.curtin.edu.au/staff/profile/view/mostafa-sharifzadeh-9cf531a1/ --}}
-                {{-- Save as: public/uploads/speakers/mostafa-sharifzadeh.jpg --}}
-                <img src="{{ asset('uploads/speakers/mostafa-sharifzadeh.jpg') }}"
-                     alt="Dr. Mostafa Sharifzadeh"
+                {{-- Photo URL: https://staffportal.curtin.edu.au/staff/profile/view/apurna-ghosh-985bd58b/ --}}
+                {{-- Or: https://research.curtin.edu.au/supervisor/dr-apurna-ghosh/ --}}
+                {{-- Save as: public/uploads/speakers/apurna-ghosh.png --}}
+                <img src="{{ asset('uploads/speakers/apurna-ghosh.png') }}"
+                     alt="Dr Apurna Ghosh"
                      class="keynote-image object-cover"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <span class="text-gray-500 text-xs" style="display: none;">Photo</span>
             </div>
             <div class="text-lg text-wrap font-semibold">
-                <div>Dr. Mostafa Sharifzadeh</div>
+                <div>Dr Apurna Ghosh</div>
                 <div class="text-sm font-normal text-gray-600">
-                    Adjunct University Professor @Curtin University and Associate Technical Director @MEC
+                    Senior Lecturer, Department of Mining Engineering, WA School of Mines, Curtin University
                 </div>
                 <div class="text-xs font-normal text-gray-500 mt-2">
-                    Expert in Geomechanics, Rock Mechanics, and Underground Excavation
+                    Expert in Mine Safety Management, Mine Planning and Design, and Sustainability (25+ years experience)
                 </div>
             </div>
         </div>
