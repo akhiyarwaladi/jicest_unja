@@ -30,9 +30,9 @@ class FulltextForm extends Component
 
         // Only require file on create, make it optional on edit
         if (!$this->edit) {
-            $rules['fulltext'] = 'required|file|mimes:pdf';
+            $rules['fulltext'] = 'required|file|mimes:pdf,docx';
         } else {
-            $rules['fulltext'] = 'nullable|file|mimes:pdf';
+            $rules['fulltext'] = 'nullable|file|mimes:pdf,docx';
         }
 
         return $rules;
@@ -44,7 +44,7 @@ class FulltextForm extends Component
         'payment_id.required' => 'Abstract is required !',
         'fulltext.required' => 'Fulltext is required !',
         'fulltext.file' => 'Fulltext must type a file !',
-        'fulltext.mimes' => 'Fulltext must have .pdf format !',
+        'fulltext.mimes' => 'Fulltext must have .pdf or .docx format !',
     ];
 
     //Reatime Validation

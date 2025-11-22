@@ -41,14 +41,14 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="fulltext">Upload Fulltext (Microsoft Word .docx)</label>
+                <label for="fulltext">Upload Fulltext (Microsoft Word .docx or PDF)</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        <input type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext">
-                            {{ $fulltext == null ? 'Choose Word file (.docx)' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose file (.docx or .pdf)' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -115,14 +115,14 @@
             @endif
 
             <div class="form-group">
-                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx) - Optional</label>
+                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx or PDF) - Optional</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        <input type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
                             class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext_edit"
                             wire:model.debounce.500ms='fulltext'>
                         <label class="custom-file-label" for="fulltext_edit">
-                            {{ $fulltext == null ? 'Choose new Word file (.docx) - optional' : $fulltext->getClientOriginalName() }}
+                            {{ $fulltext == null ? 'Choose new file (.docx or .pdf) - optional' : $fulltext->getClientOriginalName() }}
                         </label>
                     </div>
                     <div class="input-group-append">
@@ -151,7 +151,7 @@
                         <i class="fa fa-exclamation-circle"></i> Important: Upload Format Requirements
                     </h5>
                     <p style="color: #1e3a8a; margin-bottom: 8px; line-height: 1.6;">
-                        <strong>FORMAT YANG DIUPLOAD HARUS DALAM BENTUK MICROSOFT WORD (.docx)</strong>
+                        <strong>ACCEPTED FORMATS: Microsoft Word (.docx) or PDF (.pdf)</strong>
                     </p>
                     <div style="color: #1e3a8a; line-height: 1.6;">
                         <div style="margin-bottom: 5px;">
