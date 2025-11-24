@@ -12,6 +12,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\AbstractReviewExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReviewAbstract extends Component
 {
@@ -218,16 +220,16 @@ class ReviewAbstract extends Component
     {
         try {
             $this->email = UploadAbstract::find($this->abstract_review)->participant->user->email;
-            
+
             UploadAbstract::where('id', $this->abstract_review)->update([
                 'status' => 'rejected',
                 'reviewed_by' => Auth::user()->email
             ]);
-            
+
             Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT REJECTION', 'Your abstract for The 3rd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) has been rejected.'));
-            
+
             $this->review = false;
-            
+
             $this->dispatchBrowserEvent('review-success', [
                 'title' => 'Abstract Rejected!',
                 'message' => 'Abstract has been rejected and notification email sent to the author.',
@@ -235,13 +237,22 @@ class ReviewAbstract extends Component
             ]);
         } catch (\Exception $e) {
             \Log::error('Error in reject function: ' . $e->getMessage());
-            
+
             $this->dispatchBrowserEvent('review-error', [
                 'title' => 'Reject Failed',
                 'message' => 'An error occurred while rejecting the abstract. Please try again.',
                 'icon' => 'error'
             ]);
         }
+    }
+
+    public function exportExcel()
+    {
+        $filename = 'abstract-review-list-' . date('Y-m-d-His') . '.xlsx';
+        return Excel::download(
+            new AbstractReviewExport($this->date_from, $this->date_to, $this->search, $this->search2),
+            $filename
+        );
     }
 
     public function render()
