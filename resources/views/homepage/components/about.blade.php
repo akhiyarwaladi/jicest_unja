@@ -77,7 +77,7 @@
                     </div>
 
                     <!-- Sub-theme 5 -->
-                    <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-5 border border-pink-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 md:col-span-2">
+                    <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-5 border border-pink-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                         <div class="flex items-start gap-3">
                             <div class="flex-shrink-0 w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,6 +87,21 @@
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-1">Educational Technology</h4>
                                 <p class="text-sm text-gray-600">Digital Transformation in Education, STEM (Science, Technology, Engineering and Mathematics) Education</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-theme 6 -->
+                    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-5 border border-indigo-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Applied Science & Sustainable Innovation</h4>
+                                <p class="text-sm text-gray-600">Technology Transfer, Innovation Management, Sustainable Solutions for Society</p>
                             </div>
                         </div>
                     </div>
