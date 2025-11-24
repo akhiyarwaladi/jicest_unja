@@ -1,56 +1,28 @@
-<!-- Hero Section -->
-<div class="relative py-16 bg-gradient-to-br from-purple-50 via-orange-50 to-white overflow-hidden">
+<!-- Pricing Section with Dark Background -->
+<div class="relative w-full h-fit py-20 bg-gradient-to-br from-gray-900 via-sky-900 to-emerald-900 overflow-hidden">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #9333ea 1px, transparent 0); background-size: 40px 40px;"></div>
-    </div>
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 text-center">
-        <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg mb-6 border border-purple-100">
-            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
-            </svg>
-            <span class="text-sm font-semibold text-gray-700">Conference Registration</span>
-        </div>
-
-        <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Registration <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-orange-600">Fees</span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Choose your ticket plan and secure your spot at JICEST 2025
-        </p>
+    <div class="relative flex items-center flex-col p-6 md:p-10">
+        <!-- Header -->
+        <header class="text-4xl md:text-5xl font-bold text-white mb-4">Registration Fees</header>
+        <div class="text-xl text-white/80 mb-8">Choose your ticket plan and secure your spot at JICEST 2025</div>
 
         <!-- Period Information -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div class="text-center mt-6 mb-8 flex flex-col md:flex-row gap-4 md:gap-3">
             @if(isset($pricing['presenter']['early_bird']) && $pricing['presenter']['early_bird'])
-            <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl p-6 shadow-lg text-white">
-                <div class="flex items-center justify-center gap-2 mb-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                    <h3 class="font-bold text-lg">Early Bird</h3>
+                <div class="inline-block text-lg md:text-xl font-semibold text-white drop-shadow-md bg-emerald-500 rounded-lg px-6 py-3">
+                    Early Bird: {{ $pricing['presenter']['early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}
                 </div>
-                <p class="text-emerald-100">{{ $pricing['presenter']['early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}</p>
-            </div>
             @endif
-
             @if(isset($pricing['presenter']['non_early_bird']) && $pricing['presenter']['non_early_bird'])
-            <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 shadow-lg text-white">
-                <div class="flex items-center justify-center gap-2 mb-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <h3 class="font-bold text-lg">Non Early Bird</h3>
+                <div class="inline-block text-lg md:text-xl font-semibold text-white drop-shadow-md bg-orange-500 rounded-lg px-6 py-3">
+                    Non Early Bird: {{ $pricing['presenter']['non_early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}
                 </div>
-                <p class="text-orange-100">{{ $pricing['presenter']['non_early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}</p>
-            </div>
             @endif
         </div>
-    </div>
-</div>
 
-<!-- Pricing Cards Section -->
-<div class="py-20 bg-white">
+        <!-- Pricing Cards -->
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Presenter Card -->
@@ -243,5 +215,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
