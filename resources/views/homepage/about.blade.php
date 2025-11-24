@@ -145,7 +145,7 @@
             </div>
 
             <!-- Sub-theme 5 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-pink-500 md:col-span-2">
+            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-pink-500">
                 <div class="flex items-start gap-4 mb-4">
                     <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,6 +160,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Sub-theme 6 -->
+            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-indigo-500">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Applied Science & Sustainable Innovation</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Technology Transfer, Innovation Management, Sustainable Solutions for Society
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -169,7 +186,7 @@
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Explore Our Research Domains</h2>
-            <p class="text-lg text-gray-600">Deep dive into the five key areas driving innovation at JICEST 2025</p>
+            <p class="text-lg text-gray-600">Deep dive into the six key areas driving innovation at JICEST 2025</p>
         </div>
 
         <div class="space-y-6">
@@ -253,6 +270,23 @@
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Educational Technology</h3>
                         <p class="text-gray-700 leading-relaxed text-justify">
                             Educational Technology continues to be a cornerstone of modern learning. The conference will explore digital transformation in education and innovative STEM pedagogies that enhance learning outcomes, foster critical thinking, and prepare students for the challenges of an increasingly technological society.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applied Science & Sustainable Innovation -->
+            <div class="group bg-gradient-to-r from-indigo-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-indigo-500">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Applied Science & Sustainable Innovation</h3>
+                        <p class="text-gray-700 leading-relaxed text-justify">
+                            Applied Science and Sustainable Innovation bridges the gap between theoretical research and practical implementation. This domain focuses on technology transfer, innovation management, and developing sustainable solutions that address real-world challenges. The conference will highlight collaborative approaches that transform scientific discoveries into tangible benefits for society while promoting environmental stewardship and economic viability.
                         </p>
                     </div>
                 </div>
