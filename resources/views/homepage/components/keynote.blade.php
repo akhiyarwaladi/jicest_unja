@@ -87,7 +87,7 @@
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Dr. Eng. Nur Hamid, S.Si., M.Kom.</h3>
-                    <p class="text-sm text-orange-600 font-semibold mb-3">Postdoctoral Researcher</p>
+                    <p class="text-sm text-orange-600 font-semibold mb-3">Postdoctoral Fellow</p>
                     <p class="text-sm text-gray-600 mb-2">King Fahd University of Petroleum and Minerals, Saudi Arabia</p>
                     <p class="text-sm text-gray-900 font-bold mb-4">Lecturer at Universitas Indonesia</p>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
