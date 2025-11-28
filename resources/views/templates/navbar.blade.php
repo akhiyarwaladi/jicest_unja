@@ -47,6 +47,7 @@
                         ],
                         'inclusion' => [''],
                     ],
+                    ['name' => 'Proceeding', 'type' => 'single', 'link' => '/proceeding', 'inclusion' => ['Proceeding']],
                 ],
             ])
         </div>

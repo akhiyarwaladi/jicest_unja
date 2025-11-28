@@ -119,6 +119,12 @@ Route::get('/about-conference', function () {
     ]);
 });
 
+Route::get('/proceeding', function () {
+    return view('homepage.proceeding', [
+        'title' => 'Proceeding'
+    ]);
+});
+
 Route::get('/download-template-article', [DownloadController::class, 'downloadTemplate']);
 Route::get('/download-abstract-template', [DownloadController::class,'downloadAbstract']);
 Route::get('/download-paper-template', [DownloadController::class, 'downloadPaper']);

@@ -61,7 +61,7 @@
                                 <li><a href="/download-guidelines-template">Presentation Guidelines JICEST</a></li>
                             </ul>
                         </li>
-                        </li>
+                        <li class="{{ $title == 'Proceeding' ? 'active' : '' }}"><a href="/proceeding">Proceeding</a></li>
 
                         <!-- HAPUS PREVIOUSLY
                         <li class="{{ $title == 'Previously' ? 'active' : '' }}"><a href="#">Previously</a>
