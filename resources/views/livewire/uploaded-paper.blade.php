@@ -35,6 +35,18 @@
             </div>
         </div>
     </div>
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <button class="btn btn-success" wire:click="exportExcel()" wire:loading.attr="disabled">
+                <span wire:loading.remove wire:target="exportExcel">
+                    <i class="fa fa-file-excel-o mr-1"></i> Export to Excel
+                </span>
+                <span wire:loading wire:target="exportExcel">
+                    <i class="fa fa-spinner fa-spin mr-1"></i> Exporting...
+                </span>
+            </button>
+        </div>
+    </div>
     <div class="col-lg-12">
         <div class="row">
             <div class="table-responsive" style="overflow-x:auto;">

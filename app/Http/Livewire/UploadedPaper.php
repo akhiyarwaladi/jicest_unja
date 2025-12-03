@@ -9,6 +9,8 @@ use App\Models\UploadFulltext;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Exports\UploadedPaperExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UploadedPaper extends Component
 {
@@ -100,6 +102,15 @@ class UploadedPaper extends Component
                 'icon' => 'error'
             ]);
         }
+    }
+
+    public function exportExcel()
+    {
+        $filename = 'uploaded-paper-list-' . date('Y-m-d-His') . '.xlsx';
+        return Excel::download(
+            new UploadedPaperExport($this->date_from, $this->date_to, $this->search, $this->search2),
+            $filename
+        );
     }
 
     public function render()
