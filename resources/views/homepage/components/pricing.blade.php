@@ -1,220 +1,102 @@
-<!-- Pricing Section with Dark Background -->
-<div class="relative w-full h-fit py-20 bg-gradient-to-br from-gray-900 via-sky-900 to-emerald-900 overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+{{--
+    Registration fees.
 
-    <div class="relative flex items-center flex-col p-6 md:p-10">
-        <!-- Header -->
-        <header class="text-4xl md:text-5xl font-bold text-white mb-4">Registration Fees</header>
-        <div class="text-xl text-white/80 mb-8">Choose your ticket plan and secure your spot at JICEST 2025</div>
+    Rendered as a printed price list (category / early bird / regular) instead of a set of
+    gradient cards. The ink band below is the one deliberately dramatic moment on the
+    homepage; everything around it stays on paper.
 
-        <!-- Period Information -->
-        <div class="text-center mt-6 mb-8 flex flex-col md:flex-row gap-4 md:gap-3">
+    Data comes from App\Models\Fee::getAllPricingTiers(), keyed as:
+    presenter, presenter_student, participant, participant_student.
+--}}
+<div class="ed-ink-band w-full py-24 md:py-28 text-white">
+    <div class="max-w-5xl mx-auto px-6">
+        <header class="max-w-3xl">
+            <p class="ed-eyebrow" style="color:#6ee7b7">Registration</p>
+            <h2 class="ed-display text-4xl md:text-5xl mt-3 text-white">Registration Fees</h2>
+            <p class="mt-5 text-white/70 leading-relaxed">
+                Fees are quoted per person and cover attendance, the conference proceedings, and
+                a certificate of presentation or participation issued online.
+            </p>
+        </header>
+
+        {{-- Round dates, taken from the live fee table --}}
+        <div class="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-xs tracking-[.14em] uppercase">
             @if(isset($pricing['presenter']['early_bird']) && $pricing['presenter']['early_bird'])
-                <div class="inline-block text-lg md:text-xl font-semibold text-white drop-shadow-md bg-emerald-500 rounded-lg px-6 py-3">
-                    Early Bird: {{ $pricing['presenter']['early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}
-                </div>
+                <span style="color:#6ee7b7">
+                    Early bird &middot;
+                    {{ $pricing['presenter']['early_bird']['period_start']->format('d M') }}
+                    &ndash;
+                    {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}
+                </span>
+            @else
+                <span style="color:#6ee7b7">Early bird &middot; 01 Aug &ndash; 14 Oct 2026</span>
             @endif
+
             @if(isset($pricing['presenter']['non_early_bird']) && $pricing['presenter']['non_early_bird'])
-                <div class="inline-block text-lg md:text-xl font-semibold text-white drop-shadow-md bg-orange-500 rounded-lg px-6 py-3">
-                    Non Early Bird: {{ $pricing['presenter']['non_early_bird']['period_start']->format('d M') }} - {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}
-                </div>
+                <span class="text-white/60">
+                    Regular &middot;
+                    {{ $pricing['presenter']['non_early_bird']['period_start']->format('d M') }}
+                    &ndash;
+                    {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}
+                </span>
+            @else
+                <span class="text-white/60">Regular &middot; 15 Oct &ndash; 09 Nov 2026</span>
             @endif
         </div>
 
-        <!-- Pricing Cards -->
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Presenter Card -->
-            <div class="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-t-4 border-purple-500">
-                <!-- Ribbon Badge -->
-                <div class="absolute top-4 right-4 z-10">
-                    <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-sm font-bold">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                        Popular
-                    </div>
-                </div>
-
-                <div class="p-8">
-                    <!-- Icon -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg mb-4 mx-auto">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-3xl font-black text-gray-900 text-center mb-6">PRESENTER</h3>
-
-                    <!-- Early Bird Pricing -->
-                    <div class="mb-4">
-                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span class="font-bold">Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-emerald-50 py-4 px-4 rounded-b-lg border-2 border-emerald-100">
-                            <p class="text-3xl font-black text-emerald-600 text-center">{{ $pricing['presenter']['early_bird']['formatted'] ?? '350K IDR / 25 USD' }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Non Early Bird Pricing -->
-                    <div>
-                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="font-bold">Non Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-orange-50 py-4 px-4 rounded-b-lg border-2 border-orange-100">
-                            <p class="text-3xl font-black text-orange-600 text-center">{{ $pricing['presenter']['non_early_bird']['formatted'] ?? '450K IDR / 30 USD' }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Participant Card -->
-            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-t-4 border-sky-500">
-                <div class="p-8">
-                    <!-- Icon -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl flex items-center justify-center shadow-lg mb-4 mx-auto">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-3xl font-black text-gray-900 text-center mb-6">PARTICIPANT</h3>
-
-                    <!-- Early Bird Pricing -->
-                    <div class="mb-4">
-                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span class="font-bold">Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-emerald-50 py-4 px-4 rounded-b-lg border-2 border-emerald-100">
-                            <p class="text-3xl font-black text-emerald-600 text-center">{{ $pricing['participant']['early_bird']['formatted'] ?? '250K IDR / 18 USD' }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Non Early Bird Pricing -->
-                    <div>
-                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="font-bold">Non Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-orange-50 py-4 px-4 rounded-b-lg border-2 border-orange-100">
-                            <p class="text-3xl font-black text-orange-600 text-center">{{ $pricing['participant']['non_early_bird']['formatted'] ?? '350K IDR / 23 USD' }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Presenter Student Card -->
-            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-t-4 border-indigo-500">
-                <div class="p-8">
-                    <!-- Icon -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg mb-4 mx-auto">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-3xl font-black text-gray-900 text-center mb-2">PRESENTER</h3>
-                    <p class="text-lg text-indigo-600 font-semibold text-center mb-6">Student</p>
-
-                    <!-- Early Bird Pricing -->
-                    <div class="mb-4">
-                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span class="font-bold">Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-emerald-50 py-4 px-4 rounded-b-lg border-2 border-emerald-100">
-                            <p class="text-3xl font-black text-emerald-600 text-center">{{ $pricing['presenter_student']['early_bird']['formatted'] ?? '250K IDR / 18 USD' }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Non Early Bird Pricing -->
-                    <div>
-                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="font-bold">Non Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-orange-50 py-4 px-4 rounded-b-lg border-2 border-orange-100">
-                            <p class="text-3xl font-black text-orange-600 text-center">{{ $pricing['presenter_student']['non_early_bird']['formatted'] ?? '250K IDR / 18 USD' }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Participant Student Card -->
-            <div class="group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-t-4 border-teal-500">
-                <div class="p-8">
-                    <!-- Icon -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center shadow-lg mb-4 mx-auto">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-
-                    <h3 class="text-3xl font-black text-gray-900 text-center mb-2">PARTICIPANT</h3>
-                    <p class="text-lg text-teal-600 font-semibold text-center mb-6">Student</p>
-
-                    <!-- Early Bird Pricing -->
-                    <div class="mb-4">
-                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span class="font-bold">Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-emerald-50 py-4 px-4 rounded-b-lg border-2 border-emerald-100">
-                            <p class="text-3xl font-black text-emerald-600 text-center">{{ $pricing['participant_student']['early_bird']['formatted'] ?? '50K IDR / 4 USD' }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Non Early Bird Pricing -->
-                    <div>
-                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-4 rounded-t-lg">
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="font-bold">Non Early Bird</span>
-                            </div>
-                        </div>
-                        <div class="bg-orange-50 py-4 px-4 rounded-b-lg border-2 border-orange-100">
-                            <p class="text-3xl font-black text-orange-600 text-center">{{ $pricing['participant_student']['non_early_bird']['formatted'] ?? '50K IDR / 4 USD' }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {{-- Column headings --}}
+        <div class="mt-10 hidden md:grid grid-cols-12 gap-6 pb-4 border-b border-white/25">
+            <div class="col-span-1"></div>
+            <div class="col-span-5 ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Category</div>
+            <div class="col-span-3 ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Early bird</div>
+            <div class="col-span-3 ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60 md:text-right">Regular</div>
         </div>
-    </div>
+
+        @php
+            $tiers = [
+                ['key' => 'presenter', 'index' => '01', 'name' => 'Presenter', 'note' => 'Authors presenting an accepted paper. Regular and institutional rate.', 'early' => '350K IDR / 35 USD', 'regular' => '400K IDR / 40 USD'],
+                ['key' => 'presenter_student', 'index' => '02', 'name' => 'Presenter', 'note' => 'Authors presenting an accepted paper. Student rate, valid student ID required.', 'early' => '250K IDR / 25 USD', 'regular' => '300K IDR / 30 USD'],
+                ['key' => 'participant', 'index' => '03', 'name' => 'Participant', 'note' => 'Attendees without a paper. Regular and institutional rate.', 'early' => '100K IDR / 10 USD', 'regular' => '150K IDR / 15 USD'],
+                ['key' => 'participant_student', 'index' => '04', 'name' => 'Participant', 'note' => 'Attendees without a paper. Student rate, valid student ID required.', 'early' => '50K IDR / 4 USD', 'regular' => '50K IDR / 4 USD'],
+            ];
+        @endphp
+
+        <div>
+            @foreach ($tiers as $tier)
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-t border-white/15">
+                    <div class="ed-mono text-xs text-white/60 md:col-span-1">{{ $tier['index'] }}</div>
+
+                    <div class="md:col-span-5">
+                        <h3 class="ed-display text-2xl text-white">{{ $tier['name'] }}</h3>
+                        <p class="text-[15px] text-white/70 mt-2">{{ $tier['note'] }}</p>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase text-white/60 md:hidden">Early bird
+                        </div>
+                        <div class="ed-mono text-base" style="color:#6ee7b7">
+                            {{ $pricing[$tier['key']]['early_bird']['formatted'] ?? $tier['early'] }}
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-3 md:text-right">
+                        <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase text-white/60 md:hidden">Regular</div>
+                        <div class="ed-mono text-base text-white">
+                            {{ $pricing[$tier['key']]['non_early_bird']['formatted'] ?? $tier['regular'] }}
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-white/15 pt-8">
+            <p class="text-[15px] text-white/70 max-w-xl">
+                Payment is made by bank transfer and confirmed by uploading the receipt in your dashboard.
+                Students are asked to include a scan of their student card with the receipt.
+            </p>
+            <a href="{{ auth()->check() ? '/dashboard' : '/register' }}" class="ed-btn ed-btn-inverse shrink-0">
+                Register now
+            </a>
+        </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
     <!-- Page Title -->
     <div class="mb-8">
         <h2 class="text-3xl font-bold text-gray-900">Create Account</h2>
-        <p class="text-gray-600 mt-2">Join JICEST 2025 - Register for the conference</p>
+        <p class="text-gray-600 mt-2">Join JICEST 2026 - Register for the conference</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}" class="space-y-6">
@@ -52,7 +52,7 @@
         <!-- Terms Agreement -->
         <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
             <p class="text-xs text-gray-600">
-                By creating an account, you agree to JICEST 2025's Terms of Service and Privacy Policy.
+                By creating an account, you agree to JICEST 2026's Terms of Service and Privacy Policy.
                 Your information will be used for conference registration and communication purposes only.
             </p>
         </div>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }} - JICEST 2025</title>
+        <title>{{ config('app.name', 'Laravel') }} - JICEST 2026</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -43,42 +43,35 @@
     <body class="font-sans text-gray-900 antialiased overflow-hidden">
         <div class="min-h-screen flex">
             <!-- Left Side - Branding (Hidden on mobile, visible on lg+) -->
-            <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-emerald-600 via-sky-600 to-emerald-700 animate-gradient">
-                <!-- Animated Background Pattern -->
-                <div class="absolute inset-0 opacity-10">
-                    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
-                </div>
-
-                <!-- Floating Orbs -->
-                <div class="absolute top-20 left-20 w-64 h-64 bg-white/10 rounded-full blur-3xl floating-orb"></div>
-                <div class="absolute bottom-20 right-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl floating-orb" style="animation-delay: 2s;"></div>
+            <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden ed-ink-band">
 
                 <!-- Content -->
                 <div class="relative z-10 flex flex-col justify-center items-center p-12 text-white w-full">
                     <a href="/" class="mb-8">
-                        <img src="{{ asset('assets/logos/jicest.png') }}" alt="JICEST Logo" class="w-64 drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+                        <img src="{{ asset('assets/logos/jicest.png') }}" alt="JICEST Logo" class="w-64">
                     </a>
 
                     <div class="text-center max-w-md">
-                        <h1 class="text-4xl font-bold mb-4 drop-shadow-lg">Welcome to JICEST 2025</h1>
-                        <p class="text-lg text-white/90 mb-6 leading-relaxed">
+                        <h1 class="ed-display text-4xl mb-5 text-white">Welcome to JICEST 2026</h1>
+                        <p class="text-base text-white/70 mb-8 leading-relaxed">
                             Jambi International Conference on Engineering, Science, and Technology
                         </p>
-                        <div class="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 inline-block border border-white/30">
-                            <p class="font-semibold">📅 November 28, 2025</p>
+
+                        <div class="ed-mono text-sm text-white/70 border-y border-white/15 py-4">
+                            Wednesday, 11 November 2026 &middot; online
                         </div>
 
                         <!-- Conference Info -->
-                        <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                                <div class="text-3xl font-bold">2025</div>
-                                <div class="text-sm text-white/80">Conference</div>
+                        <dl class="grid grid-cols-2 gap-6 mt-10 text-left">
+                            <div class="border-t border-white/15 pt-4">
+                                <dt class="ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Edition</dt>
+                                <dd class="ed-display text-2xl text-white mt-2">4th</dd>
                             </div>
-                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                                <div class="text-3xl font-bold">5</div>
-                                <div class="text-sm text-white/80">Sub-Themes</div>
+                            <div class="border-t border-white/15 pt-4">
+                                <dt class="ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Sub-themes</dt>
+                                <dd class="ed-display text-2xl text-white mt-2">06</dd>
                             </div>
-                        </div>
+                        </dl>
                     </div>
                 </div>
             </div>
@@ -92,19 +85,19 @@
                     </a>
                 </div>
 
-                <!-- Form Container -->
+                <!-- Form Container: hairline card, square corners, no drop shadow -->
                 <div class="w-full max-w-md mt-20 lg:mt-0">
-                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+                    <div class="bg-white border border-[rgba(11,27,20,0.14)] p-8 md:p-10">
                         {{ $slot }}
                     </div>
 
                     <!-- Back to Home -->
                     <div class="text-center mt-6">
-                        <a href="/" class="text-sm text-gray-600 hover:text-emerald-600 transition-colors inline-flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        <a href="/" class="ed-mono text-[12px] tracking-[.16em] uppercase text-[rgba(11,27,20,0.70)] hover:text-[#0b1b14] transition-colors inline-flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                             </svg>
-                            Back to Homepage
+                            Back to homepage
                         </a>
                     </div>
                 </div>

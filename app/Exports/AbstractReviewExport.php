@@ -39,7 +39,7 @@ class AbstractReviewExport extends DefaultValueBinder implements
 
     public function __construct($dateFrom = null, $dateTo = null, $search = '', $search2 = '')
     {
-        $this->dateFrom = $dateFrom ?: '2025-09-01';
+        $this->dateFrom = $dateFrom ?: '2026-08-01';
         $this->dateTo = $dateTo ?: date('Y-m-d');
         $this->search = $search;
         $this->search2 = $search2;

@@ -21,7 +21,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBl INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2026)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -67,7 +67,7 @@
                         Rara Ayu Lestary (+62 822 1079 4479)<br>
                         Tia Wulandari (+62 852 6646 9829)</td>
                         <td></td>
-                        <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2025)</td>
+                        <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2026)</td>
                         <td>Seminar</td>
                     </tr>
                 </table>
@@ -92,9 +92,9 @@
                         <td style="padding:5px">{{ $fee }}</td>
                         <td style="padding:5px">1</td>
                         <td style="padding:5px">{{ $fee }}</td>
-                        <td style="padding:5px">1 October 2025</td>
-                        <td style="padding:5px">22 November 2025</td>
-                        <!--<td style="padding:5px">{{$early ? "01 October 2025" : "17 October 2025"}}</td>-->
+                        <td style="padding:5px">14 October 2026</td>
+                        <td style="padding:5px">9 November 2026</td>
+                        <!--<td style="padding:5px">{{$early ? "14 October 2026" : "1 November 2026"}}</td>-->
                     </tr>
                     <tr>
                         <td colspan="8" style="padding-top:20px" align="center">
@@ -114,7 +114,7 @@
                             </p>
                             <div class="parent">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2025.png'))) }}" width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="100px" />
                                     <img class="image2" style="position: absolute; left: 40px; top: -30px; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="90px" />
                                 </div>
                             </div>

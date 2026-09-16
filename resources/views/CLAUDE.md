@@ -81,8 +81,8 @@ Notification emails for various system events:
 - **Accessibility**: Semantic HTML and ARIA support
 
 ## Conference Theme Integration
-- **2025 Theme**: "Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society"
-- **Visual Elements**: Sky blue gradients, modern typography
+- **2026 Theme**: "Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future"
+- **Visual Elements**: Editorial system — IBM Plex Serif headings, IBM Plex Mono metadata, hairline rules, a single green accent on warm paper
 - **Content Structure**: Clear information hierarchy for academic conference
 - **Interactive Elements**: Countdown timers, dynamic forms, real-time updates
 

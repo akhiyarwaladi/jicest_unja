@@ -1,299 +1,171 @@
 @extends('layouts.main-tailwind')
 
 @section('content')
-<!-- Hero Section -->
-<div class="relative pt-32 pb-20 bg-gradient-to-br from-emerald-50 via-sky-50 to-white overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #059669 1px, transparent 0); background-size: 40px 40px;"></div>
-    </div>
+{{--
+    About the conference.
 
-    <div class="relative max-w-7xl mx-auto px-6">
-        <!-- Logo & Title -->
-        <div class="text-center mb-16">
-            <div class="inline-block mb-8">
-                <img src="{{ asset('assets/logos/jicest.png') }}" class="max-w-[400px] w-full drop-shadow-2xl hover:scale-105 transition-transform duration-300">
-            </div>
-            <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-                About <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-sky-600">JICEST</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Jambi International Conference on Engineering, Science, and Technology
-            </p>
-        </div>
-
-        <!-- Conference Highlights -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                <div class="text-4xl font-black text-emerald-600 mb-2">2025</div>
-                <div class="text-sm text-gray-600">Conference Year</div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-sky-100">
-                <div class="text-4xl font-black text-sky-600 mb-2">Nov 28</div>
-                <div class="text-sm text-gray-600">Conference Date</div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-100">
-                <div class="text-4xl font-black text-purple-600 mb-2">5</div>
-                <div class="text-sm text-gray-600">Sub-Themes</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Main Content -->
-<div class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6">
-        <article class="text-lg text-gray-700 leading-relaxed space-y-8">
-        <section class="text-justify">
-            Welcome to the official website of the <span class="font-bold">Jambi International Conference on Engineering, Science, and Technology (JICEST)</span>, taking place at Universitas Jambi, Indonesia, on <span class="font-bold">28 November 2025</span>. As a flagship annual event hosted by the Faculty of Science and Technology, JICEST serves as a premier international platform that unites researchers, experts, practitioners, scholars, and students to exchange groundbreaking research, innovative ideas, and transformative solutions across the dynamic fields of engineering, science, and technology.
-        </section>
-        <!-- Theme Section -->
-        <section class="bg-gradient-to-br from-emerald-50 to-sky-50 rounded-2xl p-8 border border-emerald-100">
-            <div class="flex items-start gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Conference Theme 2025</h3>
-                    <p class="text-lg">
-                        The central theme for JICEST 2025 is <span class="font-bold text-emerald-700">"Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society."</span> This theme highlights the critical role that digital transformation, green energy innovations, and advanced materials play in creating a sustainable future for society.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </article>
-    </div>
-</div>
-
-<!-- Sub-Themes Section -->
-<div class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Conference Sub-Themes</h2>
-            <p class="text-xl text-gray-600">Exploring cutting-edge research across five key domains</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Sub-theme 1 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-emerald-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mathematical & Natural Sciences</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Chemistry, Physics, Biology, Mathematics, Industrial Chemistry, Chemical Analysis
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sub-theme 2 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-amber-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Earth Sciences & Mining Technology</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Geophysics, Geology, Mining Engineering, Sustainable Resource Management
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sub-theme 3 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-blue-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Civil, Chemical & Environmental Engineering</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Sustainable Infrastructure, Chemical Process Engineering, Environmental Technology, Green Engineering
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sub-theme 4 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-purple-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Electrical Engineering & Information Systems</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Smart Technology, IoT Applications, Data Analytics, Digital Innovation
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sub-theme 5 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-pink-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Educational Technology</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Digital Transformation in Education, STEM (Science, Technology, Engineering and Mathematics) Education
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sub-theme 6 -->
-            <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-indigo-500">
-                <div class="flex items-start gap-4 mb-4">
-                    <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Applied Science & Sustainable Innovation</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Technology Transfer, Innovation Management, Sustainable Solutions for Society
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Detailed Descriptions -->
-<div class="py-20 bg-white">
+    A masthead, a theme pull-quote and two numbered indexes (short sub-theme list, then the
+    longer research-domain descriptions). Replaces the previous stack of gradient statistic
+    tiles and rainbow-bordered cards.
+--}}
+<div class="ed-paper pt-32 pb-20 w-full">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Explore Our Research Domains</h2>
-            <p class="text-lg text-gray-600">Deep dive into the six key areas driving innovation at JICEST 2025</p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div class="lg:col-span-7 order-2 lg:order-1">
+                <p class="ed-eyebrow">About the conference</p>
+                <h1 class="ed-display text-5xl md:text-6xl mt-4">
+                    JICEST <span style="color:var(--ed-accent)">2026</span>
+                </h1>
+                <p class="ed-quiet text-xl mt-6 max-w-xl leading-relaxed">
+                    Jambi International Conference on Engineering, Science, and Technology, hosted by
+                    the Faculty of Science and Technology, Universitas Jambi.
+                </p>
+            </div>
+
+            <div class="lg:col-span-5 order-1 lg:order-2 lg:justify-self-end w-full">
+                <img src="{{ asset('assets/logos/jicest.png') }}" alt="JICEST 2026 logo"
+                     class="w-full max-w-[320px] h-auto">
+            </div>
         </div>
 
-        <div class="space-y-6">
-            <!-- Mathematical & Natural Sciences -->
-            <div class="group bg-gradient-to-r from-emerald-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-emerald-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Mathematical & Natural Sciences</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Mathematical & Natural Sciences form the fundamental backbone of scientific innovation. The conference will showcase cutting-edge research in chemistry, physics, biology, and mathematics, including specialized applications in industrial chemistry and chemical analysis. These disciplines drive breakthrough discoveries that power technological advancement and sustainable development.
-                        </p>
-                    </div>
-                </div>
+        <dl class="mt-16 grid grid-cols-1 md:grid-cols-3 border-t border-[var(--ed-hair)]">
+            <div class="py-7 md:pr-8 md:border-r border-[var(--ed-hair)]">
+                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Edition</dt>
+                <dd class="ed-display text-4xl mt-3">4th</dd>
             </div>
+            <div class="py-7 md:px-8 md:border-r border-[var(--ed-hair)]">
+                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Conference date</dt>
+                <dd class="ed-display text-4xl mt-3">11 Nov 2026</dd>
+            </div>
+            <div class="py-7 md:pl-8">
+                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Sub-themes</dt>
+                <dd class="ed-display text-4xl mt-3">06</dd>
+            </div>
+        </dl>
+    </div>
+</div>
 
-            <!-- Earth Sciences & Mining Technology -->
-            <div class="group bg-gradient-to-r from-amber-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-amber-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Earth Sciences & Mining Technology</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Earth Sciences & Mining Technology address critical challenges in sustainable resource management. Through geophysics, geology, and mining engineering, researchers will present innovative approaches to responsible resource extraction, environmental monitoring, and geological hazard mitigation, ensuring sustainable practices for future generations.
-                        </p>
-                    </div>
-                </div>
-            </div>
+{{-- Introduction and theme --}}
+<div class="w-full bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+        <p class="text-lg leading-relaxed ed-quiet">
+            Welcome to the official website of the Jambi International Conference on Engineering, Science,
+            and Technology (JICEST), taking place online from Universitas Jambi, Indonesia, on
+            <span class="font-semibold" style="color:var(--ed-ink)">11 November 2026</span>. As an annual event
+            hosted by the Faculty of Science and Technology, JICEST brings together researchers, experts,
+            practitioners, scholars, and students to exchange research, ideas, and practical solutions across
+            engineering, science, and technology.
+        </p>
 
-            <!-- Civil, Chemical & Environmental Engineering -->
-            <div class="group bg-gradient-to-r from-blue-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-blue-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Civil, Chemical & Environmental Engineering</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Civil, Chemical & Environmental Engineering focus on building resilient infrastructure and developing clean technologies. The conference will highlight sustainable infrastructure development, advanced chemical process engineering, environmental remediation technologies, and green engineering solutions that address contemporary challenges while minimizing ecological impact.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <figure class="mt-14 border-l-2 pl-8" style="border-color:var(--ed-accent)">
+            <figcaption class="ed-eyebrow">Conference theme 2026</figcaption>
+            <blockquote class="ed-display text-2xl md:text-3xl mt-5 leading-snug">
+                &ldquo;Accelerating Green Innovation and Digital Transformation in Science, Technology, and
+                Engineering for a Sustainable Future.&rdquo;
+            </blockquote>
+            <p class="ed-quiet mt-6 leading-relaxed">
+                The theme puts green innovation and digital transformation side by side, and asks how advances in
+                science, technology, and engineering can be turned into outcomes that hold up in practice: cleaner
+                processes, more resilient infrastructure, and tools that reach the people who need them.
+            </p>
+        </figure>
+    </div>
+</div>
 
-            <!-- Electrical Engineering & Information Systems -->
-            <div class="group bg-gradient-to-r from-purple-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Electrical Engineering & Information Systems</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Electrical Engineering & Information Systems represent the digital transformation era. Discussions will cover smart technology implementations, Internet of Things (IoT) applications, advanced data analytics, and digital innovation strategies that are reshaping industries and improving quality of life through intelligent systems.
-                        </p>
-                    </div>
-                </div>
+{{-- Sub-themes (short index) --}}
+<div class="w-full py-16 md:py-20 ed-paper">
+    <div class="max-w-6xl mx-auto px-6">
+        <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 pb-2">
+            <div>
+                <p class="ed-eyebrow">Tracks</p>
+                <h2 class="ed-display text-4xl md:text-5xl mt-3">Conference Sub-Themes</h2>
             </div>
+            <p class="ed-quiet md:text-right md:pb-2 max-w-xs">Six tracks, reviewed by separate scientific committees.</p>
+        </header>
 
-            <!-- Educational Technology -->
-            <div class="group bg-gradient-to-r from-pink-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-pink-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Educational Technology</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Educational Technology continues to be a cornerstone of modern learning. The conference will explore digital transformation in education and innovative STEM pedagogies that enhance learning outcomes, foster critical thinking, and prepare students for the challenges of an increasingly technological society.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        @php
+            $subThemes = [
+                ['index' => '01', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, Physics, Biology, Mathematics, Industrial Chemistry, Chemical Analysis'],
+                ['index' => '02', 'title' => 'Earth Sciences &amp; Mining Technology', 'desc' => 'Geophysics, Geology, Mining Engineering, Sustainable Resource Management'],
+                ['index' => '03', 'title' => 'Civil, Chemical &amp; Environmental Engineering', 'desc' => 'Sustainable Infrastructure, Chemical Process Engineering, Environmental Technology, Green Engineering'],
+                ['index' => '04', 'title' => 'Electrical Engineering &amp; Information Systems', 'desc' => 'Smart Technology, IoT Applications, Data Analytics, Digital Innovation'],
+                ['index' => '05', 'title' => 'Educational Technology', 'desc' => 'Digital Transformation in Education, STEM (Science, Technology, Engineering and Mathematics) Education'],
+                ['index' => '06', 'title' => 'Applied Science &amp; Sustainable Innovation', 'desc' => 'Technology Transfer, Innovation Management, Sustainable Solutions for Society'],
+            ];
+        @endphp
 
-            <!-- Applied Science & Sustainable Innovation -->
-            <div class="group bg-gradient-to-r from-indigo-50 to-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-indigo-500">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Applied Science & Sustainable Innovation</h3>
-                        <p class="text-gray-700 leading-relaxed text-justify">
-                            Applied Science and Sustainable Innovation bridges the gap between theoretical research and practical implementation. This domain focuses on technology transfer, innovation management, and developing sustainable solutions that address real-world challenges. The conference will highlight collaborative approaches that transform scientific discoveries into tangible benefits for society while promoting environmental stewardship and economic viability.
-                        </p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14">
+            @foreach ($subThemes as $theme)
+                <div class="ed-row flex items-baseline gap-5 py-6">
+                    <span class="ed-mono text-xs ed-quiet shrink-0">{{ $theme['index'] }}</span>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-baseline gap-3">
+                            <h3 class="ed-display text-lg">{!! $theme['title'] !!}</h3>
+                            <span class="ed-leader hidden lg:block"></span>
+                        </div>
+                        <p class="ed-quiet text-[15px] mt-2">{!! $theme['desc'] !!}</p>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
 
+{{-- Research domains (long form) --}}
+<div class="w-full bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+        <header class="pb-4">
+            <p class="ed-eyebrow">In detail</p>
+            <h2 class="ed-display text-3xl md:text-4xl mt-3">Research domains in detail</h2>
+            <p class="ed-quiet mt-4">The six areas driving the 2026 programme.</p>
+        </header>
 
+        @php
+            $domains = [
+                [
+                    'index' => '01',
+                    'title' => 'Mathematical &amp; Natural Sciences',
+                    'desc' => 'Mathematical and natural sciences form the backbone of scientific innovation. The conference showcases research in chemistry, physics, biology, and mathematics, including specialised applications in industrial chemistry and chemical analysis. These disciplines drive the discoveries that underpin technological advancement and sustainable development.',
+                ],
+                [
+                    'index' => '02',
+                    'title' => 'Earth Sciences &amp; Mining Technology',
+                    'desc' => 'Earth sciences and mining technology address the practical challenges of sustainable resource management. Through geophysics, geology, and mining engineering, researchers present approaches to responsible resource extraction, environmental monitoring, and geological hazard mitigation.',
+                ],
+                [
+                    'index' => '03',
+                    'title' => 'Civil, Chemical &amp; Environmental Engineering',
+                    'desc' => 'This track covers resilient infrastructure and clean technology: sustainable infrastructure development, advanced chemical process engineering, environmental remediation, and green engineering solutions that reduce ecological impact.',
+                ],
+                [
+                    'index' => '04',
+                    'title' => 'Electrical Engineering &amp; Information Systems',
+                    'desc' => 'Electrical engineering and information systems sit at the centre of digital transformation. Sessions cover smart technology implementations, Internet of Things (IoT) applications, advanced data analytics, and digital innovation strategies reshaping industry and public services.',
+                ],
+                [
+                    'index' => '05',
+                    'title' => 'Educational Technology',
+                    'desc' => 'Educational technology remains a cornerstone of modern learning. The conference explores digital transformation in education and STEM pedagogies that improve learning outcomes, foster critical thinking, and prepare students for a technology-intensive society.',
+                ],
+                [
+                    'index' => '06',
+                    'title' => 'Applied Science &amp; Sustainable Innovation',
+                    'desc' => 'Applied science and sustainable innovation bridge theoretical research and practical implementation. This track focuses on technology transfer, innovation management, and solutions to real-world problems, highlighting collaborations that turn scientific discoveries into public benefit.',
+                ],
+            ];
+        @endphp
+
+        <div class="mt-8">
+            @foreach ($domains as $domain)
+                <article class="ed-row grid grid-cols-12 gap-x-6 gap-y-3 py-8">
+                    <div class="col-span-12 md:col-span-2 ed-mono text-xs ed-quiet">{{ $domain['index'] }}</div>
+                    <div class="col-span-12 md:col-span-10">
+                        <h3 class="ed-display text-2xl">{!! $domain['title'] !!}</h3>
+                        <p class="ed-quiet mt-3 leading-relaxed">{!! $domain['desc'] !!}</p>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+    </div>
+</div>
 @endsection

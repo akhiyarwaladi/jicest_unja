@@ -18,7 +18,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBl INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
+                                JAMBl INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2026)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -70,7 +70,7 @@
                             </p>
                             <div class="parent">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2025.png'))) }}" width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="100px" />
                                     <img class="image2" style="position: absolute; left: 40px; top: -30px; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="90px" />
                                 </div>
                             </div>

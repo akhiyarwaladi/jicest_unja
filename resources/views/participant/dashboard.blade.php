@@ -476,7 +476,7 @@
                 <div class="template-grid">
                     <!-- Abstract Template -->
                     <div class="template-card">
-                        <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2025.docx">
+                        <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2026.docx">
                             <div class="template-icon">
                                 <i class="fa fa-file-text-o" style="font-size: 50px;"></i>
                             </div>

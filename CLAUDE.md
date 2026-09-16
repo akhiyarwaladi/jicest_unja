@@ -46,16 +46,22 @@ JICEST UNJA is a comprehensive conference management system for the **Jambi Inte
 - `UploadFulltext` - Full-text paper submissions
 - `Payment` - Payment tracking and verification
 
-## Conference Details (2025)
-- **Theme**: "Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society"
-- **Date**: November 28, 2025
+## Conference Details (2026)
+- **Edition**: 4th
+- **Theme**: "Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future"
+- **Date**: 11 November 2026 (Wednesday)
 - **Format**: Online only
-- **Sub-themes**:
+- **Key dates**:
+  - Abstract submission, early bird: 14 October 2026
+  - Abstract & full paper, final round: 9 November 2026
+  - Fee periods: Early bird 1 Aug – 14 Oct 2026 · Regular 15 Oct – 9 Nov 2026
+- **Sub-themes** (6):
   - Mathematical & Natural Sciences
   - Earth Sciences & Mining Technology
   - Civil, Chemical & Environmental Engineering
   - Electrical Engineering & Information Systems
   - Educational Technology
+  - Applied Science & Sustainable Innovation
 
 ## Contact Information
 - **Email**: jicest@unja.ac.id
@@ -71,88 +77,98 @@ JICEST UNJA is a comprehensive conference management system for the **Jambi Inte
 - File uploads stored in `public/uploads/`
 - Certificates generated via DomPDF
 
-## UI/UX Design System (2025 Modernization)
+## UI/UX Design System (Editorial / Print-Inspired)
 
 ### Design Philosophy
-Modern, clean, and professional interface following 2024-2025 design trends with emphasis on:
-- **Visual Hierarchy**: Clear content structure with consistent spacing
-- **Micro-interactions**: Smooth hover effects and transitions
-- **Responsive Design**: Mobile-first approach with breakpoints
-- **Accessibility**: Semantic HTML and readable typography
-
-### Color Palette
-- **Primary**: Emerald (500-600) - Main CTAs and primary elements
-- **Secondary**: Sky (500-600) - Supporting elements
-- **Accent Colors**: Purple, Orange, Pink, Blue, Amber - Sub-theme differentiation
-- **Neutral**: Gray scale for text and backgrounds
+The public pages follow a conference-proceedings aesthetic rather than a dashboard-SaaS one:
+restrained typography, hairline rules and numbered rows instead of drop shadows, pill badges,
+gradient chips and hover lift. The goal is a page that reads as though it was designed for a
+university press, not assembled from a component library.
 
 ### Typography
-- **Font Family**: Poppins (sans-serif)
-- **Headings**: font-black (900 weight) for impact
-- **Body**: Regular (400) and semibold (600)
-- **Sizes**: text-4xl to text-6xl for hero headings
-- **Special Effects**: Gradient text with bg-clip-text
+- **Display / headings**: IBM Plex Serif (medium), tight letter-spacing, `.ed-display`
+- **Metadata** (dates, fees, phone numbers, indices, eyebrows): IBM Plex Mono, tabular numerals, `.ed-mono`
+- **Body**: Poppins (existing site default)
+- Fonts are loaded once from `resources/views/assets/editorial.blade.php`
 
-### Component Standards
+### Colour
+Defined as CSS variables in `assets/editorial.blade.php`:
+- `--ed-ink` `#0b1b14` — text and the single dark band
+- `--ed-paper` `#fbfaf5` — warm off-white page background, faint printed grain
+- `--ed-accent` `#047857` — one green accent, used sparingly
+- `--ed-signal` `#a16207` — ochre, reserved for final-round urgency
+- `--ed-hair` — 1px hairline rules
 
-#### Cards
-- **Border Radius**: rounded-2xl (16px) for all cards
-- **Shadows**: shadow-lg (default), shadow-xl (hover), shadow-2xl (emphasis)
-- **Padding**: p-6 to p-8 for card content
-- **Borders**: border-l-4 or border-t-4 for color accents
-- **Hover**: transform hover:-translate-y-1 or -translate-y-2
+### Reusable Classes
+- `.ed-paper` / `.ed-ink-band` — section backgrounds with a faint dot grain
+- `.ed-row` — hairline-topped row with a soft hover wash (replaces card grids)
+- `.ed-leader` — dotted leader tying a label to its value, as in a printed index
+- `.ed-btn` / `.ed-btn-inverse` — flat, square, monospaced buttons (no gradients)
+- `.ed-underline` — underline that grows from 0 to 100% on hover
+- `.ed-media` — slightly desaturated image that resolves to colour on hover
+
+### Applied To
+- Homepage: countdown band, About/sub-themes index, Keynote speakers, Publication,
+  Important dates, Registration fees, Location & contact
+- `about-conference`, `rundown` (timetable), `contact`
+- Auth branding panel (`layouts/guest.blade.php`)
+
+### Implementation Notes
+
+#### Cards vs. rows
+Prefer hairline-separated rows over card grids. Where a card is genuinely needed, use a 1px
+border (`border-[var(--ed-hair)]` / `.ed-hair`) and no drop shadow. Avoid the
+`rounded-2xl + shadow-lg + hover:-translate-y-2` pattern entirely.
 
 #### Icons
-- **Source**: Heroicons (inline SVG)
-- **Size**: w-6 h-6 (standard), w-7 h-7 (large)
-- **Background**: Gradient backgrounds (from-{color}-400 to-{color}-600)
-- **Container**: w-12 h-12 or w-14 h-14 rounded-xl with shadow
+Inline Heroicons SVG remain in use across the dashboard and admin areas. Public pages should
+not introduce new gradient-backed icon tiles; use monospaced index numbers (01, 02, ...) to
+anchor a row instead.
 
 #### Buttons
-- **Primary**: gradient-to-r from-emerald-500 to-emerald-600
-- **Hover**: Enhanced gradient and shadow-xl
-- **Transform**: hover:-translate-y-0.5 for lift effect
-- **Icons**: Inline SVG with gap-2 spacing
+Use `.ed-btn` (ink) or `.ed-btn-inverse` (white on ink). Square corners, monospaced label,
+uppercase, no gradient and no lift.
 
 #### Sections
-- **Spacing**: py-20 for vertical section padding
-- **Backgrounds**: Alternating white and gray-50/gradient backgrounds
-- **Max Width**: max-w-5xl to max-w-7xl centered with mx-auto
-- **Padding**: px-6 for horizontal spacing
+- Vertical rhythm: `py-20 md:py-24`
+- Header pattern: `.ed-eyebrow` label, `.ed-display` heading, quiet supporting line
+- Backgrounds alternate `bg-white` and `.ed-paper`, with at most one `.ed-ink-band` per page
+- Containers: `max-w-4xl` / `max-w-5xl` / `max-w-6xl` with `px-6`
 
-### Page-Specific Implementations
+#### Page-Specific Implementations
 
-#### Authentication Pages (Login/Register)
-- **Layout**: Split-screen design (50/50)
-- **Left Side**: Branding with animated gradient background, floating orbs, conference info
-- **Right Side**: Form with white card on gray-50 background
-- **Features**: Glassmorphism effects, backdrop-blur, responsive stacking
+##### Homepage
+- `components/header`: full-height photograph, date badge, serif title, opening speakers
+- Ink countdown band divided by vertical hairlines (figures clamp at zero)
+- `components/about`: identity column plus a numbered six-track index
+- `components/keynote`: portrait grid, muted images that resolve to colour on hover
+- `components/publication`: single quiet colophon band with leader rows
+- `components/date`: deadline table, early bird and final rounds, live countdowns
+- `components/pricing`: fee prospectus on the ink band, periods read from the `fees` table
+- Location & contact: secretariat leader rows, address, map in a hairline frame
 
-#### About Page
-- **Hero**: Large logo, gradient title, conference highlights (3 cards)
-- **Theme Section**: Highlighted card with icon for main theme
-- **Sub-themes**: 2-column grid with 5 color-coded cards (last spans 2 cols)
-- **Descriptions**: 5 stacked cards with gradient backgrounds and icons
+##### About Page
+- Masthead with three hairline statistics (edition, date, sub-theme count)
+- Theme presented as a left-bordered pull-quote
+- Sub-theme index, then long-form research domains as numbered articles
 
-#### Rundown Page
-- **Hero**: Date badge with calendar icon, gradient title
-- **Timeline**: Vertical line with alternating left/right cards
-- **Nodes**: Circular colored dots that scale on hover
-- **Cards**: 6 events with unique colors and icons
-- **Mobile**: Left-aligned timeline, cards stack with left margin
+##### Rundown Page
+- Printed timetable: monospaced time column, serif session titles, hairline rows
 
-#### Contact Page
-- **Hero**: Standard hero with "Get In Touch" badge
-- **Contact Persons**: 2-column grid with gradient cards and WhatsApp buttons
-- **Info Cards**: Email and Website in 2-column grid with border-left accents
-- **Map**: Large section with address info and embedded Google Maps
+##### Contact Page
+- Contact persons as leader rows with monospaced numbers and outline-style WhatsApp buttons
+- Secretariat rows, venue address and a hairline-framed map
+
+##### Authentication Pages
+- Split screen retained; the branding panel is now `.ed-ink-band` with the logo, edition and
+  sub-theme figures, replacing the animated gradient and floating orbs
+- Form side unchanged (white card on gray-50)
 
 ### Animation & Transitions
-- **Duration**: duration-200 (buttons), duration-300 (cards/general)
-- **Easing**: Default ease or ease-in-out
-- **Hover Scale**: scale-105, scale-110, scale-150 (for small elements)
-- **Translations**: -translate-y-0.5 to -translate-y-2
-- **Opacity**: opacity-5 (backgrounds), opacity-10 (patterns)
+- **Duration**: `.3s`–`.35s` on cubic-bezier(.4, 0, .2, 1)
+- **Hover**: underline grow (`.ed-underline`), row wash (`.ed-row`), image saturation (`.ed-media`)
+- **Avoided**: scale/lift transforms, bouncing icons, perpetual background motion
+- `prefers-reduced-motion` disables all of the above
 
 ### Responsive Breakpoints
 - **Mobile**: Default (< 768px) - single column, stacked layouts
@@ -165,6 +181,28 @@ Modern, clean, and professional interface following 2024-2025 design trends with
 - **Focus States**: focus:ring-2 focus:ring-{color}-500
 - **Contrast**: WCAG AA compliant color combinations
 - **Interactive Elements**: Clear hover/focus states
+
+## Recent Updates (JICEST 2026 edition)
+### Content rollover
+- ✅ Conference moved to **11 November 2026**, theme updated to "Accelerating Green Innovation
+  and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future"
+- ✅ Edition corrected to "The 4th" in LOA, acceptance emails and invoice
+- ✅ Deadlines re-based on the new date: abstract early bird 14 Oct 2026, final round 9 Nov 2026
+- ✅ `fees` table re-dated (early bird 1 Aug – 14 Oct 2026, regular 15 Oct – 9 Nov 2026) via
+  migration `2026_08_01_000000_update_fees_for_jicest_2026` and the SQL dump
+- ✅ Added `2026_08_01_000001_create_fees_table` — the table previously existed only in the SQL
+  dump, so a fresh `php artisan migrate` broke the homepage ("Base table or view not found: fees").
+  The new migration creates the table and seeds the 2026 tiers, and is a no-op where data exists.
+- ✅ Voucher code rolled to `JICEST2026FST50RB`; admin `date_from` filters default to 2026-08-01
+- ✅ Stale "JICEST 2023" export filenames corrected
+- ✅ Created the missing `assets/img/jicest-logo-2026.png` and `uploads/TemplateAbstract2026.docx`
+  (PDFs and template downloads were 404-ing before this)
+
+### Frontend redesign
+- ✅ Added the editorial design system (`assets/editorial.blade.php`)
+- ✅ Rebuilt homepage countdown, sub-themes, keynotes, publication, deadlines and fees
+- ✅ Rebuilt the About, Rundown and Contact pages
+- ✅ Reworked the auth branding panel
 
 ## Recent Updates (January 2025)
 ### Frontend Modernization

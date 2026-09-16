@@ -1,27 +1,32 @@
 @extends('layouts.main-tailwind')
 
 @section('content')
-    <!-- Contact Form Section Begin -->
-    <section class="contact-from-section spad w-full h-full py-[100px] px-2 bg-gradient-to-br from-emerald-500 via-sky-400 to-emerald-600 flex justify-center">
-        <div class="container p-10 bg-white/95 backdrop-blur-sm shadow-2xl shadow-emerald-900/20 border border-white/20  max-w-[700px] w-full rounded-md">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2 class=" text-2xl font-bold">Registration</h2>
-                        <p class="font-[300]">Fill in the form below to register.</p>
-                    </div>
-                </div>
+{{--
+    Registration.
+
+    Warm paper field with a white hairline card, matching the login page,
+    replacing the emerald/sky gradient backdrop.
+--}}
+<div class="ed-paper w-full min-h-screen flex items-start md:items-center justify-center px-4 pt-28 pb-20">
+    <div class="w-full max-w-2xl">
+        <div class="bg-white border border-[var(--ed-hair)] shadow-[0_24px_48px_-32px_rgba(11,27,20,0.35)] p-8 md:p-10">
+            <div class="flex justify-center mb-8">
+                <a href="/"><img src="{{ asset('assets/logos/jicest.png') }}" alt="JICEST 2026" class="h-12 w-auto"></a>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <livewire:register-form />
-                        </div>
-                    </div>
-                </div>
+
+            <p class="ed-eyebrow text-center">Participant registration</p>
+            <h1 class="ed-display text-3xl mt-3 text-center">Registration</h1>
+            <p class="ed-quiet text-[15px] text-center mt-3">Fill in the form below to register for JICEST 2026.</p>
+
+            <div class="mt-8">
+                <livewire:register-form />
             </div>
         </div>
-    </section>
-    <!-- Contact Form Section End -->
+
+        <p class="ed-mono text-[.75rem] tracking-[.16em] uppercase text-center mt-6 ed-quiet">
+            Already registered?
+            <a href="/login" class="ed-underline" style="color:var(--ed-accent)">Log in</a>
+        </p>
+    </div>
+</div>
 @endsection

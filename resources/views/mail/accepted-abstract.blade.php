@@ -12,14 +12,14 @@
     <h1>ABSTRACT ACCEPTANCE</h1>
     <p>
         Dear {{ $name }}, <br>
-        Congratulations! We are happy to inform you that your abstract for The 3rd Jambi International Conference on
+        Congratulations! We are happy to inform you that your abstract for The 4th Jambi International Conference on
         Engineering, Science and Technology
-        (JICEST 2025) <br>
+        (JICEST 2026) <br>
         Title of abstract : <strong>{{ $title }}</strong> has been accepted. <br>
-        It is our great pleasure therefore to request that you submit your full paper, no later than October 10
-        2025 by following the template as attached in the website: JICEST.unja.ac.id.
-        In addition, you are requested to proceed with the payment of the registration fee (no later than September 14th
-        2025). <br> <br>
+        It is our great pleasure therefore to request that you submit your full paper, no later than November 9,
+        2026 by following the template as attached in the website: JICEST.unja.ac.id.
+        In addition, you are requested to proceed with the payment of the registration fee (no later than November 9,
+        2026). <br> <br>
         After finishing the payment, kindly send the receipt to the committee via website. For payment information, please contact our contact persons: <br>
         Rara Ayu Lestary: +62 822 1079 4479 <br>
         Tia Wulandari: +62 852 6646 9829 <br> <br>
@@ -27,7 +27,7 @@
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
         (JICEST@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
-        Steering Committee JICEST 2025
+        Steering Committee JICEST 2026
     </p>
 </body>
 

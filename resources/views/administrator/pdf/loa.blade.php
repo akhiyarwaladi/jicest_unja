@@ -18,7 +18,7 @@
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
-                                JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2025)
+                                JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY <br>(JICEST 2026)
                             </h4>
                             <h6 style="text-align: center; font-size:16px; margin:0; padding:0">
                                 FACULTY OF SCIENCE AND
@@ -44,7 +44,7 @@
                     <!--</tr>-->
                 </table>
                 <div style="width: 100%; text-align: right; font-size: 14px;">
-                    {{ date('d F Y') }}
+                    {{ $date ?? date('d F Y') }}
                 </div>
                 <p style="margin:0px; padding:0px;font-size: 14px">Dear :</p>
                 <div class="div" style="margin:0px; padding:0px; width:200px;font-size: 14px">
@@ -54,8 +54,8 @@
                 <br>
                 <br>
                 <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px">Thank you for your interest in
-                    <strong>The 3rd
-                        JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2025)</strong> and submitting
+                    <strong>The 4th
+                        JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2026)</strong> and submitting
                     your Abstract entitled:
                 </p>
 
@@ -66,7 +66,7 @@
                 <p style="margin:20px 0px 0px 0px; padding:0px;font-size: 14px">It is our pleasure to inform you that
                     your paper
                     based on your Extended Abstract has been accepted for
-                    presentation at the conference, which will be taking place at Jambi on 28 November 2025.
+                    presentation at the conference, which will be taking place at Jambi on 11 November 2026.
                     We hereby have the honor and pleasure of inviting you to present your paper in the conference.
                 </p>
                 <p style="margin:20px 0px 0px 0px; padding:0px;font-size: 14px">Please do not hesitate to contact us if
@@ -81,11 +81,11 @@
                     <td width="30%">
                         <p style="margin:50px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end">
                             Warm Regards, <br>
-                            Chairman of JICEST 2025 <br>
+                            Chairman of JICEST 2026 <br>
                         </p>
                         <div class="parent" style="position:relative;">
                                 <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2025.png'))) }}" width="100px" />
+                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="100px" />
                                     <img class="image2" style="position: absolute; left: 40px; top: -30px; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="90px" />
                                 </div>
                             </div>

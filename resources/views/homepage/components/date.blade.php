@@ -1,138 +1,133 @@
-<div class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 w-full">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Important Dates</h2>
-            <p class="text-xl text-gray-600">Mark these deadlines on your calendar</p>
-        </div>
-
-        <!-- Early Bird Section -->
-        <div class="mb-16">
-            <div class="flex items-center justify-center gap-3 mb-8">
-                <div class="h-px bg-emerald-500 flex-1 max-w-xs"></div>
-                <h3 class="text-2xl md:text-3xl font-bold text-emerald-600 px-4">Early Bird Period</h3>
-                <div class="h-px bg-emerald-500 flex-1 max-w-xs"></div>
+{{-- Important dates: a printed deadline table rather than a grid of gradient cards. --}}
+<div class="ed-paper w-full py-20 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+        <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8">
+            <div class="max-w-2xl">
+                <p class="ed-eyebrow">Deadlines</p>
+                <h2 class="ed-display text-4xl md:text-5xl mt-3">Abstract &amp; Paper Schedule</h2>
+                <p class="ed-quiet mt-4">All cut-offs are 23:59 Jambi time (UTC+7). Submissions received after a
+deadline move to the next round.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <!-- Abstract Early Bird -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-t-4 border-emerald-500">
-                    <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 p-6 text-white text-center">
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
-                            <h4 class="text-xl font-bold">Abstract Submission</h4>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <div class="inline-block bg-emerald-100 text-emerald-800 font-bold px-6 py-3 rounded-full mb-4">
-                            31 October 2025
-                        </div>
-                        <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
-                        <div id="countdown-abstract-early" class="text-2xl font-black text-emerald-600">Loading...</div>
-                    </div>
-                </div>
+            <div class="ed-mono text-sm ed-quiet md:text-right md:pb-1">
+                <div>Conference &middot; 11 Nov 2026</div>
+                <div class="mt-1" style="color:var(--ed-accent)">Online attendance</div>
+            </div>
+        </header>
 
-                <!-- Full Paper Early Bird -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-t-4 border-sky-500">
-                    <div class="bg-gradient-to-r from-sky-500 to-sky-600 p-6 text-white text-center">
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
-                            <h4 class="text-xl font-bold">Full Paper Submission</h4>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <div class="inline-block bg-sky-100 text-sky-800 font-bold px-6 py-3 rounded-full mb-4">
-                            26 November 2025
-                        </div>
-                        <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
-                        <div id="countdown-paper-early" class="text-2xl font-black text-sky-600">Loading...</div>
-                    </div>
+        {{-- Early bird round --}}
+        <section class="pt-10">
+            <div class="flex items-center gap-4">
+                <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Early bird round
+    </h3>
+                <span class="ed-leader"></span>
+                <span class="ed-mono text-xs ed-quiet">closes 14 Oct 2026</span>
+            </div>
+
+            <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
+                <div class="ed-mono text-xs ed-quiet md:col-span-1">01</div>
+                <div class="md:col-span-5">
+                    <h4 class="ed-display text-2xl">Abstract submission</h4>
+                    <p class="ed-quiet text-[15px] mt-2">Extended abstract, 250-300 words, in the provided template. Early
+        bird fee applies.</p>
+                </div>
+                <div class="ed-mono text-sm md:col-span-2 md:text-right">14 Oct 2026</div>
+                <div class="md:col-span-4 md:text-right">
+                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-abstract-early" class="ed-mono text-lg mt-1" style="color:var(--ed-accent)">&mdash;</div>
                 </div>
             </div>
-        </div>
 
-        <!-- Non Early Bird Section -->
-        <div>
-            <div class="flex items-center justify-center gap-3 mb-8">
-                <div class="h-px bg-orange-500 flex-1 max-w-xs"></div>
-                <h3 class="text-2xl md:text-3xl font-bold text-orange-600 px-4">Non Early Bird Period</h3>
-                <div class="h-px bg-orange-500 flex-1 max-w-xs"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                <!-- Abstract Non Early Bird -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-t-4 border-orange-500">
-                    <div class="bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white text-center">
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
-                            <h4 class="text-xl font-bold">Abstract Submission</h4>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <div class="inline-block bg-orange-100 text-orange-800 font-bold px-6 py-3 rounded-full mb-4">
-                            26 November 2025
-                        </div>
-                        <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
-                        <div id="countdown-abstract-regular" class="text-2xl font-black text-orange-600">Loading...</div>
-                    </div>
+            <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
+                <div class="ed-mono text-xs ed-quiet md:col-span-1">02</div>
+                <div class="md:col-span-5">
+                    <h4 class="ed-display text-2xl">Full paper submission</h4>
+                    <p class="ed-quiet text-[15px] mt-2">Final manuscript for the proceedings, submitted after abstract
+        acceptance.</p>
                 </div>
-
-                <!-- Full Paper Non Early Bird -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-t-4 border-red-500">
-                    <div class="bg-gradient-to-r from-red-500 to-red-600 p-6 text-white text-center">
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
-                            <h4 class="text-xl font-bold">Full Paper Submission</h4>
-                        </div>
-                    </div>
-                    <div class="p-6 text-center">
-                        <div class="inline-block bg-red-100 text-red-800 font-bold px-6 py-3 rounded-full mb-4">
-                            26 November 2025
-                        </div>
-                        <div class="text-sm text-gray-600 mb-3">Time Remaining:</div>
-                        <div id="countdown-paper-regular" class="text-2xl font-black text-red-600">Loading...</div>
-                    </div>
+                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="md:col-span-4 md:text-right">
+                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-paper-early" class="ed-mono text-lg mt-1" style="color:var(--ed-accent)">&mdash;</div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        {{-- Final round --}}
+        <section class="pt-12">
+            <div class="flex items-center gap-4">
+                <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-signal)">Final round</h3>
+                <span class="ed-leader"></span>
+                <span class="ed-mono text-xs ed-quiet">early bird rates no longer apply</span>
+            </div>
+
+            <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
+                <div class="ed-mono text-xs ed-quiet md:col-span-1">03</div>
+                <div class="md:col-span-5">
+                    <h4 class="ed-display text-2xl">Abstract submission</h4>
+                    <p class="ed-quiet text-[15px] mt-2">Last call for abstracts. Regular registration fee applies.</p>
+                </div>
+                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="md:col-span-4 md:text-right">
+                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-abstract-regular" class="ed-mono text-lg mt-1" style="color:var(--ed-signal)">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-b border-[var(--ed-hair)]">
+                <div class="ed-mono text-xs ed-quiet md:col-span-1">04</div>
+                <div class="md:col-span-5">
+                    <h4 class="ed-display text-2xl">Full paper submission</h4>
+                    <p class="ed-quiet text-[15px] mt-2">Absolute deadline for manuscripts to be included in the
+        proceedings.</p>
+                </div>
+                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="md:col-span-4 md:text-right">
+                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-paper-regular" class="ed-mono text-lg mt-1" style="color:var(--ed-signal)">&mdash;</div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
 <script>
-    // Function to start a countdown to a specific date
+    // Countdown to a fixed deadline. Each element shows days / hours / minutes / seconds
+    // and settles on "Closed" once the date has passed.
     function startCountdown(targetDate, elementId) {
-        const countdownTimer = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+        const el = document.getElementById(elementId);
+        if (!el) return;
+
+        let timer = null;
+
+        const tick = () => {
+            const distance = targetDate - new Date().getTime();
+
+            if (distance < 0) {
+                el.textContent = 'Closed';
+                if (timer) clearInterval(timer);
+                return;
+            }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById(elementId).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            el.textContent = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+        };
 
-            if (distance < 0) {
-                clearInterval(countdownTimer);
-                document.getElementById(elementId).innerHTML = "EXPIRED";
-            }
-        }, 1000);
+        tick();
+        timer = setInterval(tick, 1000);
     }
 
-    // Set the target dates for Early Bird
-    const abstractEarlyDeadline = new Date('October 31, 2025 23:59:59').getTime();
-    const paperEarlyDeadline = new Date('November 26, 2025 23:59:59').getTime();
+    // Early bird round
+    const abstractEarlyDeadline = new Date('October 14, 2026 23:59:59').getTime();
+    const paperEarlyDeadline = new Date('November 9, 2026 23:59:59').getTime();
 
-    // Set the target dates for Non Early Bird
-    const abstractRegularDeadline = new Date('November 26, 2025 23:59:59').getTime();
-    const paperRegularDeadline = new Date('November 26, 2025 23:59:59').getTime();
+    // Final round
+    const abstractRegularDeadline = new Date('November 9, 2026 23:59:59').getTime();
+    const paperRegularDeadline = new Date('November 9, 2026 23:59:59').getTime();
 
-    // Start the countdowns
     startCountdown(abstractEarlyDeadline, 'countdown-abstract-early');
     startCountdown(paperEarlyDeadline, 'countdown-paper-early');
     startCountdown(abstractRegularDeadline, 'countdown-abstract-regular');

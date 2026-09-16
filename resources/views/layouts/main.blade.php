@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Jambi International Conference on Engineering, Science and Technology
-    2025">
-    <meta name="keywords" content="jicest, jicest 2025, jicest2025, jicest jambi, universitas jambi">
+    2026">
+    <meta name="keywords" content="jicest, jicest 2026, jicest2026, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JICEST 2025 | {{ $title }}</title>
+    <title>JICEST 2026 | {{ $title }}</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="JICEST 2025 - Jambi International Conference on Engineering, Science and Technology">
-    <meta property="og:description" content="Join us for JICEST 2025 - Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society. November 28, 2025">
+    <meta property="og:title" content="JICEST 2026 - Jambi International Conference on Engineering, Science and Technology">
+    <meta property="og:description" content="Join us for JICEST 2026 - Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future. November 11, 2026">
     <meta property="og:url" content="https://jicest.unja.ac.id/">
     <meta property="og:type" content="event">
     <meta property="og:image" content="https://jicest.unja.ac.id/assets/logos/jicest.png">
-    <meta property="og:site_name" content="JICEST 2025">
+    <meta property="og:site_name" content="JICEST 2026">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JICEST 2025 - Jambi International Conference on Engineering, Science and Technology">
-    <meta name="twitter:description" content="Join us for JICEST 2025 - Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society. November 28, 2025">
+    <meta name="twitter:title" content="JICEST 2026 - Jambi International Conference on Engineering, Science and Technology">
+    <meta name="twitter:description" content="Join us for JICEST 2026 - Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future. November 11, 2026">
     <meta name="twitter:image" content="https://jicest.unja.ac.id/assets/logos/jicest.png">
 
     <!-- Structured Data (JSON-LD) -->
@@ -29,10 +29,10 @@
     {
         "@context": "https://schema.org",
         "@type": "Event",
-        "name": "JICEST 2025 - Jambi International Conference on Engineering, Science and Technology",
-        "description": "Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society",
-        "startDate": "2025-11-28T00:00:00+07:00",
-        "endDate": "2025-11-28T23:59:59+07:00",
+        "name": "JICEST 2026 - Jambi International Conference on Engineering, Science and Technology",
+        "description": "Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future",
+        "startDate": "2026-11-11T00:00:00+07:00",
+        "endDate": "2026-11-11T23:59:59+07:00",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
         "location": {
@@ -235,7 +235,7 @@
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | JICEST 2025
+                                </script> All rights reserved | JICEST 2026
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>

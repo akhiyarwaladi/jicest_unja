@@ -1,7 +1,7 @@
 # Homepage Views Directory
 
 ## Overview
-Contains all public-facing pages for the JICEST 2025 conference website. These are the main pages visitors see when learning about and registering for the conference.
+Contains all public-facing pages for the JICEST 2026 conference website. These are the main pages visitors see when learning about and registering for the conference.
 
 ## Main Pages
 
@@ -18,7 +18,7 @@ Contains all public-facing pages for the JICEST 2025 conference website. These a
 ### about.blade.php
 **Detailed Conference Information**
 - Complete conference description
-- 2025 theme: "Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society"
+- 2026 theme: "Accelerating Green Innovation and Digital Transformation in Science, Technology, and Engineering for a Sustainable Future"
 - Detailed sub-theme breakdown covering all FAINTEK departments
 - Conference objectives and scope
 - Target audience information
@@ -34,15 +34,18 @@ Contains all public-facing pages for the JICEST 2025 conference website. These a
 
 ### registration-fee.blade.php
 **Pricing and Payment Details**
-- Early Bird pricing (29 Sep - 31 Oct 2025)
-- Non Early Bird pricing (1 Nov - 22 Nov 2025)
-- Presenter: 350K IDR (Early Bird), 450K IDR (Non Early Bird)
-- Participant: 250K IDR (Early Bird), 350K IDR (Non Early Bird)
+- Early Bird pricing (1 Aug - 14 Oct 2026)
+- Non Early Bird pricing (15 Oct - 9 Nov 2026)
+- Presenter: 350K IDR / 35 USD (Early Bird), 400K IDR / 40 USD (Regular)
+- Presenter (student): 250K IDR / 25 USD (Early Bird), 300K IDR / 30 USD (Regular)
+- Participant: 100K IDR / 10 USD (Early Bird), 150K IDR / 15 USD (Regular)
+- Participant (student): 50K IDR / 4 USD (Early Bird), 50K IDR / 4 USD (Regular)
+- Amounts and periods are read from the `fees` table, not hard-coded in the view
 - Payment instructions and bank details
 
 ### rundown.blade.php
 **Conference Schedule**
-- Conference date: November 28, 2025
+- Conference date: 11 November 2026 (Wednesday)
 - Event timeline
 - Session details
 - Online format information

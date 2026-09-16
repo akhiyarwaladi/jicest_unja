@@ -24,7 +24,7 @@ class PaymentValidation extends Component
     public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate,$payment;
     public $search = '', $search2 = '';
     public $no_receipt, $for_payment_of, $amount, $receipt, $receiptPath, $loaPath;
-    public $date_from = '2025-09-01';
+    public $date_from = '2026-08-01';
     public $date_to = '';
 
     // USD display fields (read-only for display purposes)
@@ -172,9 +172,9 @@ class PaymentValidation extends Component
         $this->amount = $this->fee_after_discount;
         $participant = Payment::find($this->paymentValidate)->participant->participant_type;
         if (strpos($participant, 'participant') !== false) {
-            $this->for_payment_of = 'Registration Fee of JICEST 2025 as Participant';
+            $this->for_payment_of = 'Registration Fee of JICEST 2026 as Participant';
         } else {
-            $this->for_payment_of = 'Registration Fee of JICEST 2025 as Author';
+            $this->for_payment_of = 'Registration Fee of JICEST 2026 as Author';
         }
 
         // Auto-generate receipt number
@@ -185,7 +185,7 @@ class PaymentValidation extends Component
 
     /**
      * Generate unique receipt number with database locking (OPTIMIZED)
-     * Format: JICEST/2025/MMDD/XXXX
+     * Format: JICEST/2026/MMDD/XXXX
      * Performance: Only checks today's records (~100-1000 rows max per day)
      */
     private function generateReceiptNumber()
@@ -205,7 +205,7 @@ class PaymentValidation extends Component
                                   ->first();
 
             if ($lastPayment && $lastPayment->receipt) {
-                // Extract the sequence number from receipt format: JICEST/2025/1107/0001
+                // Extract the sequence number from receipt format: JICEST/2026/1107/0001
                 $parts = explode('/', $lastPayment->receipt);
                 $lastSequence = intval(end($parts));
                 $sequence = str_pad($lastSequence + 1, 4, '0', STR_PAD_LEFT);
@@ -328,15 +328,15 @@ class PaymentValidation extends Component
             <a href=\"" . $linkLoa . "\" style=\"color: #007bff; text-decoration: underline;\">Download Letter of Acceptance</a>
             <br> <br>
             Warm regards, <br><br><br><br>
-            Steering Committee JICEST 2025 </p>"));
+            Steering Committee JICEST 2026 </p>"));
         } else {
             // Queue email untuk menghindari blocking
             Mail::to($this->email, $this->full_name1)->queue(new SendMail('Payment Validation', "<p>
             Dear " . $this->full_name1 . ", <br>
-            We have validated your payment for the participant JICEST 2025, here we include
+            We have validated your payment for the participant JICEST 2026, here we include
             your receipt of payment. <br>
             Warm regards, <br><br><br><br>
-            Steering Committee JICEST 2025 </p>"));
+            Steering Committee JICEST 2026 </p>"));
         }
 
         \Log::info('Validation completed successfully');
@@ -404,7 +404,7 @@ class PaymentValidation extends Component
 
     public function export()
     {
-        return Excel::download(new PaymentExport(), 'All Payment JICEST 2025.xlsx');
+        return Excel::download(new PaymentExport(), 'All Payment JICEST 2026.xlsx');
     }
 
     public function render()

@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Jambi International Conference on Engineering, Science and Technology
-    2025">
-    <meta name="keywords" content="jicest, jicest 2025, jicest2025, jicest jambi, universitas jambi">
+    2026">
+    <meta name="keywords" content="jicest, jicest 2026, jicest2026, jicest jambi, universitas jambi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JICEST 2025 | {{ $title }}</title>
+    <title>JICEST 2026 | {{ $title }}</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {{-- Fonts (Poppins via assets/poppins, IBM Plex via assets/editorial) are loaded by the
+        includes below, each with their own preconnects. No duplicate requests here. --}}
 
 
     <!-- Css Styles -->
@@ -52,6 +47,7 @@
         }
     </script>
     @include('assets.poppins')
+    @include('assets.editorial')
 
     @livewireStyles
     @yield('css')
@@ -276,7 +272,7 @@
                 </div>
             </div>
             <div class="border-t-[1px] border-gray-400 text-black py-3 mt-10 w-full">
-                Copyright © 2025 All rights reserved | JICEST 2025
+                Copyright © 2026 All rights reserved | JICEST 2026
             </div>
         </div>
 

@@ -22,8 +22,8 @@ class ReviewAbstract extends Component
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
-    public $validVouchers = ['JICEST2025FST50RB'];
-    public $date_from = '2025-09-01';
+    public $validVouchers = ['JICEST2026FST50RB'];
+    public $date_from = '2026-08-01';
     public $date_to = '';
 
     //LOA
@@ -177,7 +177,7 @@ class ReviewAbstract extends Component
             
             Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
             Dear " . $this->full_name . ", <br>
-            Congratulations! We are happy to inform you that your abstract for The 3rd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) <br>
+            Congratulations! We are happy to inform you that your abstract for The 4th Jambi International Conference on Engineering, Science, and Technology (JICEST 2026) <br>
             Title of abstract: <strong>" . $this->abstractTitle . "</strong> has been accepted. <br><br>
             Please download your documents:<br>
             <a href='" . $linkLoa . "'>Download Letter of Acceptance</a><br>
@@ -185,8 +185,8 @@ class ReviewAbstract extends Component
             <br>
             <br>
             <br>
-            It is our great pleasure therefore to request that you submit your full paper, no later than November 22nd, 2025 by following the template as attached in the website: <a href='http://localhost:8000'>jicest.unja.ac.id</a>. <br>
-            In addition, you are requested to proceed with the payment of the registration fee (no later than November 22nd, 2025). <br><br>
+            It is our great pleasure therefore to request that you submit your full paper, no later than November 9th, 2026 by following the template as attached in the website: <a href='http://localhost:8000'>jicest.unja.ac.id</a>. <br>
+            In addition, you are requested to proceed with the payment of the registration fee (no later than November 9th, 2026). <br><br>
             For payment information, please contact our contact persons:<br>
             - Rara Ayu Lestary: +6282210794479<br>
             - Tia Wulandari: +6285266469829<br>
@@ -195,7 +195,7 @@ class ReviewAbstract extends Component
             acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
             (jicest@unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
             Warm regards, <br><br><br><br>
-            Steering Committee JICEST 2025</p>"));
+            Steering Committee JICEST 2026</p>"));
             
             \Log::info('Email sent successfully');
             $this->review = false;
@@ -226,7 +226,7 @@ class ReviewAbstract extends Component
                 'reviewed_by' => Auth::user()->email
             ]);
 
-            Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT REJECTION', 'Your abstract for The 3rd Jambi International Conference on Engineering, Science, and Technology (JICEST 2025) has been rejected.'));
+            Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT REJECTION', 'Your abstract for The 4th Jambi International Conference on Engineering, Science, and Technology (JICEST 2026) has been rejected.'));
 
             $this->review = false;
 

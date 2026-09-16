@@ -13,7 +13,7 @@ class ParticipantPaid extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $search2 = '';
-    public $date_from = '2025-09-01';
+    public $date_from = '2026-08-01';
     public $date_to = '';
 
     public function mount()
@@ -42,6 +42,6 @@ class ParticipantPaid extends Component
 
     public function export()
     {
-        return Excel::download(new PaidParticipantExport(), 'Participant have paid JICEST 2023.xlsx');
+        return Excel::download(new PaidParticipantExport(), 'Participant have paid JICEST 2026.xlsx');
     }
 }

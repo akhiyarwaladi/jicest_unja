@@ -1,63 +1,67 @@
 @php
-    $outline = "outline-none outline-offset-0 border-2 border-transparent focus:border-emerald-500 focus:outline-[3px] focus:outline-emerald-300 transition-all";
+    // Shared focus style for every interactive element in the masthead.
+    $focus = "outline-none focus-visible:ring-1 focus-visible:ring-[#047857] transition-colors";
 @endphp
 
-<nav class="glassmorphism bg-white/90 backdrop-blur-md fixed top-0 left-0 w-full border-gray-200 font-semibold z-[999] shadow-lg shadow-emerald-900/10">
+{{-- Editorial masthead: warm paper bar, hairline bottom rule, monospaced navigation.
+     Replaces the previous frosted-glass bar with emerald pill links. --}}
+<nav class="fixed top-0 left-0 w-full z-[999] bg-[#fbfaf5]/95 backdrop-blur border-b border-[rgba(11,27,20,0.14)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[72px]">
 
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-fit">
-        <a href="/" class="{{$outline}} flex items-center space-x-3 rtl:space-x-reverse px-3 gap-3 h-8 overflow-y-visible">
-            <img src="{{ asset('assets/logos/jicest.png') }}" class="h-[70px]" alt="jicest" />
-            <img src="{{ asset('assets/logos/unja3d.png') }}" class="h-8" alt="unja" />
+        <a href="/" class="{{$focus}} flex items-center gap-3 shrink-0">
+            <img src="{{ asset('assets/logos/jicest.png') }}" class="h-10 md:h-11 w-auto" alt="JICEST 2026" />
+            <img src="{{ asset('assets/logos/unja3d.png') }}" class="h-8 w-auto" alt="Universitas Jambi" />
         </a>
-        <button type="button"
-            class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 flex items-center justify-center rounded-md md:hidden transform transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
-            onclick="toggleNavbar('navbar-dropdown')">
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
+
+        <button type="button" onclick="toggleNavbar('navbar-dropdown', this)"
+            class="{{$focus}} md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-[#0b1b14] border border-[rgba(11,27,20,0.14)]"
+            aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-dropdown">
+            <span class="block w-5 h-px bg-current"></span>
+            <span class="block w-5 h-px bg-current"></span>
+            <span class="block w-5 h-px bg-current"></span>
         </button>
 
-        <div class="scale-0 w-full h-0 flex flex-col mt-2 md:mt-0 md:py-0 md:scale-100 md:w-auto bg-transparent md:h-8 "
-            id="navbar-dropdown">
-            @include('templates.navlist', [
-                'navList' => [
-                    ['name' => 'Home', 'type' => 'single', 'link' => '/', 'inclusion' => ['Home']],
-                    [
-                        'name' => 'Information',
-                        'type' => 'multiple',
-                        'menu' => [
-                            ['name' => 'Registration Fee', 'type' => 'single', 'link' => '/registration-fee','inclusion' => ['Registration Fee'],],
-                            ['name' => 'About Conference', 'type' => 'single', 'link' => '/about-conference','inclusion' => ['About'],],
-                            ['name' => 'Contact', 'type' => 'single', 'link' => '/contact','inclusion' => ['Contact'],],
+        <div id="navbar-dropdown"
+            class="scale-0 h-0 overflow-hidden w-full md:overflow-visible md:scale-100 md:h-auto md:w-auto">
+            <div class="border-t border-[rgba(11,27,20,0.14)] md:border-t-0 mt-3 md:mt-0 pb-4 md:pb-0">
+                @include('templates.navlist', [
+                    'navList' => [
+                        ['name' => 'Home', 'type' => 'single', 'link' => '/', 'inclusion' => ['Home']],
+                        [
+                            'name' => 'Information',
+                            'type' => 'multiple',
+                            'menu' => [
+                                ['name' => 'Registration Fee', 'type' => 'single', 'link' => '/registration-fee', 'inclusion' => ['Registration Fee']],
+                                ['name' => 'About Conference', 'type' => 'single', 'link' => '/about-conference', 'inclusion' => ['About']],
+                                ['name' => 'Contact', 'type' => 'single', 'link' => '/contact', 'inclusion' => ['Contact']],
+                            ],
+                            'inclusion' => ['Registration Fee', 'About', 'Contact'],
                         ],
-                        'inclusion' => ['Registration Fee', 'About', 'Contact'],
-
-                    ],
-                    ['name' => 'Schedule', 'type' => 'single', 'link' => '/rundown', 'inclusion' => ["Schedule"]],
-                    [
-                        'name' => 'Download',
-                        'type' => 'multiple',
-                        'menu' => [
-                            ['name' => 'Paper Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/downloads/JICEST_Paper.docx', 'inclusion' => [""]],
-                            ['name' => 'Abstrack Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/TemplateAbstract2025.docx', 'inclusion' => [""]],
-                            ['name' => 'Oral Presentation Schedule JICEST', 'type' => 'download', 'link' => '/download-schedule-template', 'inclusion' => [""]],
-                            ['name' => 'Presentation Guideline JICEST', 'type' => 'download', 'link' => '/download-guidelines-template', 'inclusion' => [""]],
+                        ['name' => 'Schedule', 'type' => 'single', 'link' => '/rundown', 'inclusion' => ["Schedule"]],
+                        [
+                            'name' => 'Download',
+                            'type' => 'multiple',
+                            'menu' => [
+                                ['name' => 'Paper Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/downloads/JICEST_Paper.docx', 'inclusion' => [""]],
+                                ['name' => 'Abstract Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/TemplateAbstract2026.docx', 'inclusion' => [""]],
+                                ['name' => 'Oral Presentation Schedule JICEST', 'type' => 'download', 'link' => '/download-schedule-template', 'inclusion' => [""]],
+                                ['name' => 'Presentation Guideline JICEST', 'type' => 'download', 'link' => '/download-guidelines-template', 'inclusion' => [""]],
+                            ],
+                            'inclusion' => [''],
                         ],
-                        'inclusion' => [''],
+                        ['name' => 'Proceeding', 'type' => 'single', 'link' => '/proceeding', 'inclusion' => ['Proceeding']],
                     ],
-                    ['name' => 'Proceeding', 'type' => 'single', 'link' => '/proceeding', 'inclusion' => ['Proceeding']],
-                ],
-            ])
+                ])
+            </div>
         </div>
     </div>
 </nav>
 
 <script>
-    function toggleNavbar(id) {
+    function toggleNavbar(id, trigger) {
         const element = document.getElementById(id);
-        if (element.classList.contains('scale-0')) {
+        const opening = element.classList.contains('scale-0');
+        if (opening) {
             element.classList.remove('scale-0');
             element.classList.add('scale-100');
             element.classList.add('h-full');
@@ -68,5 +72,6 @@
             element.classList.remove('h-full');
             element.classList.add('h-0');
         }
+        if (trigger) trigger.setAttribute('aria-expanded', opening ? 'true' : 'false');
     }
 </script>
