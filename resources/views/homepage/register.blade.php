@@ -16,14 +16,14 @@
 
             <p class="ed-eyebrow text-center">Participant registration</p>
             <h1 class="ed-display text-3xl mt-3 text-center">Registration</h1>
-            <p class="ed-quiet text-[15px] text-center mt-3">Fill in the form below to register for JICEST 2026.</p>
+            <p class="ed-quiet text-base text-center mt-3">Fill in the form below to register for JICEST 2026.</p>
 
             <div class="mt-8">
                 <livewire:register-form />
             </div>
         </div>
 
-        <p class="ed-mono text-[.75rem] tracking-[.16em] uppercase text-center mt-6 ed-quiet">
+        <p class="ed-mono text-sm tracking-[.16em] uppercase text-center mt-6 ed-quiet">
             Already registered?
             <a href="/login" class="ed-underline" style="color:var(--ed-accent)">Log in</a>
         </p>

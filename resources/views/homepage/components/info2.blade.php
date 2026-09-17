@@ -23,7 +23,7 @@
             <div class="absolute pointer-events-none top-0 left-0 w-full h-full flex items-end text-white">
                 <div class="w-full p-10 flex flex-col items-center">
                     <header class="ed-display text-2xl detail title block">{{ $pic['title'] }}</header>
-                    <div class="text-center text-[15px] leading-relaxed hidden md:block detail"
+                    <div class="text-center text-base leading-relaxed hidden md:block detail"
                         id="detail{{ $loop->index }}">
                         {{ $pic['desc'] }}
                     </div>

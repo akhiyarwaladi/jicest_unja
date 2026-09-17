@@ -15,6 +15,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        {{-- Editorial system: the branding panel below uses .ed-ink-band and
+             .ed-display, so the stylesheet must be loaded here too. --}}
+        @include('assets.editorial')
+
         <style>
             * {
                 font-family: "Poppins", sans-serif;
@@ -57,18 +61,18 @@
                             Jambi International Conference on Engineering, Science, and Technology
                         </p>
 
-                        <div class="ed-mono text-sm text-white/70 border-y border-white/15 py-4">
+                        <div class="ed-mono text-base text-white/70 border-y border-white/15 py-4">
                             Wednesday, 11 November 2026 &middot; online
                         </div>
 
                         <!-- Conference Info -->
                         <dl class="grid grid-cols-2 gap-6 mt-10 text-left">
                             <div class="border-t border-white/15 pt-4">
-                                <dt class="ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Edition</dt>
+                                <dt class="ed-mono text-sm tracking-[.14em] uppercase text-white/70">Edition</dt>
                                 <dd class="ed-display text-2xl text-white mt-2">4th</dd>
                             </div>
                             <div class="border-t border-white/15 pt-4">
-                                <dt class="ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Sub-themes</dt>
+                                <dt class="ed-mono text-sm tracking-[.14em] uppercase text-white/70">Sub-themes</dt>
                                 <dd class="ed-display text-2xl text-white mt-2">06</dd>
                             </div>
                         </dl>
@@ -93,7 +97,7 @@
 
                     <!-- Back to Home -->
                     <div class="text-center mt-6">
-                        <a href="/" class="ed-mono text-[12px] tracking-[.16em] uppercase text-[rgba(11,27,20,0.70)] hover:text-[#0b1b14] transition-colors inline-flex items-center gap-2">
+                        <a href="/" class="ed-mono text-sm tracking-[.16em] uppercase text-[rgba(11,27,20,0.80)] hover:text-[#0b1b14] transition-colors inline-flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                             </svg>

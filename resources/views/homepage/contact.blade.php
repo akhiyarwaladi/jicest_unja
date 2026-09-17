@@ -14,7 +14,7 @@
                 <p class="ed-eyebrow">Get in touch</p>
                 <h1 class="ed-display text-4xl md:text-5xl mt-3">Contact Us</h1>
             </div>
-            <p class="ed-quiet max-w-sm md:text-right md:pb-1">
+            <p class="ed-quiet text-lg max-w-sm md:text-right md:pb-1">
                 Questions about JICEST 2026, submissions or payment? The secretariat replies within one working day.
             </p>
         </header>
@@ -22,9 +22,9 @@
         {{-- Contact persons --}}
         <section class="pb-16">
             <div class="flex items-center gap-4">
-                <h2 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Contact persons</h2>
+                <h2 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Contact persons</h2>
                 <span class="ed-leader"></span>
-                <span class="ed-mono text-xs ed-quiet">WhatsApp</span>
+                <span class="ed-mono text-sm ed-quiet">WhatsApp</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
@@ -49,11 +49,11 @@
         {{-- Secretariat details --}}
         <section class="pb-16">
             <div class="flex items-center gap-4">
-                <h2 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Secretariat</h2>
+                <h2 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Secretariat</h2>
                 <span class="ed-leader"></span>
             </div>
 
-            <dl class="mt-6 ed-mono text-[15px]">
+            <dl class="mt-6 ed-mono text-base">
                 <div class="flex items-baseline gap-3 py-4 border-t border-[var(--ed-hair)]">
                     <dt class="ed-quiet">Email</dt>
                     <span class="ed-leader"></span>
@@ -77,20 +77,20 @@
         {{-- Venue --}}
         <section>
             <div class="flex items-center gap-4">
-                <h2 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Venue</h2>
+                <h2 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Venue</h2>
                 <span class="ed-leader"></span>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
                 <address class="lg:col-span-4 not-italic">
                     <p class="ed-display text-xl">Universitas Jambi</p>
-                    <p class="ed-quiet text-[15px] mt-3 leading-relaxed">
+                    <p class="ed-quiet text-base mt-3 leading-relaxed">
                         Jl. Jambi &ndash; Muara Bulian No. KM. 15<br>
                         Mendalo Darat, Kec. Jambi Luar Kota<br>
                         Kabupaten Muaro Jambi<br>
                         Jambi, Indonesia
                     </p>
-                    <p class="ed-mono text-xs ed-quiet mt-5">1.6154&deg; S, 103.5201&deg; E</p>
+                    <p class="ed-mono text-sm ed-quiet mt-5">1.6154&deg; S, 103.5201&deg; E</p>
                 </address>
 
                 <div class="lg:col-span-8 border border-[var(--ed-hair)]">

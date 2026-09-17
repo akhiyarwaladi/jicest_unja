@@ -30,15 +30,15 @@
 
         <dl class="mt-16 grid grid-cols-1 md:grid-cols-3 border-t border-[var(--ed-hair)]">
             <div class="py-7 md:pr-8 md:border-r border-[var(--ed-hair)]">
-                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Edition</dt>
+                <dt class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Edition</dt>
                 <dd class="ed-display text-4xl mt-3">4th</dd>
             </div>
             <div class="py-7 md:px-8 md:border-r border-[var(--ed-hair)]">
-                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Conference date</dt>
+                <dt class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Conference date</dt>
                 <dd class="ed-display text-4xl mt-3">11 Nov 2026</dd>
             </div>
             <div class="py-7 md:pl-8">
-                <dt class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Sub-themes</dt>
+                <dt class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Sub-themes</dt>
                 <dd class="ed-display text-4xl mt-3">06</dd>
             </div>
         </dl>
@@ -63,7 +63,7 @@
                 &ldquo;Accelerating Green Innovation and Digital Transformation in Science, Technology, and
                 Engineering for a Sustainable Future.&rdquo;
             </blockquote>
-            <p class="ed-quiet mt-6 leading-relaxed">
+            <p class="ed-quiet text-lg mt-6 leading-relaxed">
                 The theme puts green innovation and digital transformation side by side, and asks how advances in
                 science, technology, and engineering can be turned into outcomes that hold up in practice: cleaner
                 processes, more resilient infrastructure, and tools that reach the people who need them.
@@ -80,7 +80,7 @@
                 <p class="ed-eyebrow">Tracks</p>
                 <h2 class="ed-display text-4xl md:text-5xl mt-3">Conference Sub-Themes</h2>
             </div>
-            <p class="ed-quiet md:text-right md:pb-2 max-w-xs">Six tracks, reviewed by separate scientific committees.</p>
+            <p class="ed-quiet text-lg md:text-right md:pb-2 max-w-xs">Six tracks, reviewed by separate scientific committees.</p>
         </header>
 
         @php
@@ -97,13 +97,13 @@
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14">
             @foreach ($subThemes as $theme)
                 <div class="ed-row flex items-baseline gap-5 py-6">
-                    <span class="ed-mono text-xs ed-quiet shrink-0">{{ $theme['index'] }}</span>
+                    <span class="ed-mono text-sm ed-quiet shrink-0">{{ $theme['index'] }}</span>
                     <div class="flex-1 min-w-0">
                         <div class="flex items-baseline gap-3">
                             <h3 class="ed-display text-lg">{!! $theme['title'] !!}</h3>
                             <span class="ed-leader hidden lg:block"></span>
                         </div>
-                        <p class="ed-quiet text-[15px] mt-2">{!! $theme['desc'] !!}</p>
+                        <p class="ed-quiet text-base mt-2">{!! $theme['desc'] !!}</p>
                     </div>
                 </div>
             @endforeach
@@ -117,7 +117,7 @@
         <header class="pb-4">
             <p class="ed-eyebrow">In detail</p>
             <h2 class="ed-display text-3xl md:text-4xl mt-3">Research domains in detail</h2>
-            <p class="ed-quiet mt-4">The six areas driving the 2026 programme.</p>
+            <p class="ed-quiet text-lg mt-4">The six areas driving the 2026 programme.</p>
         </header>
 
         @php
@@ -158,7 +158,7 @@
         <div class="mt-8">
             @foreach ($domains as $domain)
                 <article class="ed-row grid grid-cols-12 gap-x-6 gap-y-3 py-8">
-                    <div class="col-span-12 md:col-span-2 ed-mono text-xs ed-quiet">{{ $domain['index'] }}</div>
+                    <div class="col-span-12 md:col-span-2 ed-mono text-sm ed-quiet">{{ $domain['index'] }}</div>
                     <div class="col-span-12 md:col-span-10">
                         <h3 class="ed-display text-2xl">{!! $domain['title'] !!}</h3>
                         <p class="ed-quiet mt-3 leading-relaxed">{!! $domain['desc'] !!}</p>

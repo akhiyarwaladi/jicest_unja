@@ -17,24 +17,24 @@
 
         {{-- The full conference name is a sentence, not a label: sentence case at a
             readable size instead of tiny tracked-out capitals. --}}
-        <p class="ed-mono text-[.8125rem] leading-relaxed" style="color: #6ee7b7">
+        <p class="ed-mono text-sm leading-relaxed" style="color: #6ee7b7">
             4th Jambi International Conference on Engineering, Science and Technology
         </p>
 
-        <h1 class="ed-display text-5xl md:text-7xl mt-6 fade-in-up" style="color: #fff">
+        <h1 class="ed-display text-5xl md:text-7xl lg:text-8xl mt-6 fade-in-up" style="color: #fff">
             JICEST 2026
         </h1>
 
-        <p class="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-white/80 fade-in-up">
+        <p class="mt-6 max-w-2xl text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 fade-in-up">
             Accelerating Green Innovation and Digital Transformation in Science, Technology,
             and Engineering for a Sustainable Future
         </p>
 
         {{-- One quiet date line with a live countdown — plain text, no boxes. --}}
-        <p class="ed-mono text-xs tracking-[.18em] uppercase mt-6 text-white/80 fade-in-up">
+        <p class="ed-mono text-sm tracking-[.16em] uppercase mt-6 text-white/80 fade-in-up">
             Wednesday, 11 November 2026 &middot; Online &middot; UTC+7
         </p>
-        <p class="ed-mono text-xs tracking-[.18em] uppercase mt-2 fade-in-up" style="color:#6ee7b7">
+        <p class="ed-mono text-sm tracking-[.16em] uppercase mt-2 fade-in-up" style="color:#6ee7b7">
             Opens in <span id="hero-countdown">&mdash;</span>
         </p>
 
@@ -44,22 +44,22 @@
                 Submit abstract &rarr;
             </a>
             <a href="#about"
-                class="ed-mono text-[.75rem] tracking-[.16em] uppercase text-white/80 hover:text-white ed-underline self-center sm:self-auto">
+                class="ed-mono text-sm tracking-[.16em] uppercase text-white/80 hover:text-white ed-underline self-center sm:self-auto">
                 About the conference &darr;
             </a>
         </div>
 
         {{-- Opening speeches: square hairline portraits, no drop shadows, no rings. --}}
         <div class="mt-16 md:mt-20 border-t border-white/15 pt-8">
-            <p class="ed-mono text-[.75rem] tracking-[.2em] uppercase text-white/60">Opening speeches</p>
+            <p class="ed-mono text-sm tracking-[.16em] uppercase text-white/70">Opening speeches</p>
             <div class="mt-6 grid gap-8 md:grid-cols-2 max-w-3xl">
                 <figure class="flex items-center gap-4">
                     <img src="{{ asset('assets/dean.jpg') }}" alt="Drs. Jefri Marzal, M.Sc., D.I.T."
                         class="w-16 h-16 md:w-20 md:h-20 object-cover object-top border border-white/20 ed-media shrink-0"
                         loading="lazy" />
                     <figcaption>
-                        <p class="ed-display text-base md:text-lg" style="color: #fff">Drs. Jefri Marzal, M.Sc., D.I.T.</p>
-                        <p class="ed-mono text-[.75rem] tracking-[.04em] text-white/60 mt-1.5 leading-relaxed">
+                        <p class="ed-display text-lg md:text-xl" style="color: #fff">Drs. Jefri Marzal, M.Sc., D.I.T.</p>
+                        <p class="ed-mono text-sm tracking-[.04em] text-white/70 mt-1.5 leading-relaxed">
                             Dean, Faculty of Science and Technology, Universitas Jambi
                         </p>
                     </figcaption>
@@ -69,8 +69,8 @@
                         class="w-16 h-16 md:w-20 md:h-20 object-cover object-top border border-white/20 ed-media shrink-0"
                         loading="lazy" />
                     <figcaption>
-                        <p class="ed-display text-base md:text-lg" style="color: #fff">Prof. Dr. Helmi, S.H., M.H.</p>
-                        <p class="ed-mono text-[.75rem] tracking-[.04em] text-white/60 mt-1.5 leading-relaxed">
+                        <p class="ed-display text-lg md:text-xl" style="color: #fff">Prof. Dr. Helmi, S.H., M.H.</p>
+                        <p class="ed-mono text-sm tracking-[.04em] text-white/70 mt-1.5 leading-relaxed">
                             Rector, Universitas Jambi
                         </p>
                     </figcaption>

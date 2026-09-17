@@ -1,6 +1,6 @@
 @extends('layouts.main-tailwind')
 
-@section('title', 'Page not found')
+@php $title = 'Page not found'; @endphp
 
 @section('content')
 {{--
@@ -9,7 +9,7 @@
 --}}
 <div class="ed-paper pt-32 pb-24 w-full">
     <div class="max-w-4xl mx-auto px-6">
-        <p class="ed-mono text-[.75rem] tracking-[.22em] uppercase ed-quiet">Error &middot; not found</p>
+        <p class="ed-mono text-sm tracking-[.16em] uppercase ed-quiet">Error &middot; not found</p>
 
         <h1 class="ed-display text-7xl md:text-8xl mt-6">404</h1>
 
@@ -21,12 +21,12 @@
         <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5">
             <a href="/" class="ed-btn">Back to the conference &rarr;</a>
             <a href="mailto:jicest@unja.ac.id"
-                class="ed-mono text-[.75rem] tracking-[.16em] uppercase ed-quiet hover:text-[var(--ed-ink)] ed-underline self-center sm:self-auto">
+                class="ed-mono text-sm tracking-[.16em] uppercase ed-quiet hover:text-[var(--ed-ink)] ed-underline self-center sm:self-auto">
                 Report a broken link
             </a>
         </div>
 
-        <dl class="mt-16 ed-mono text-[15px] max-w-xl">
+        <dl class="mt-16 ed-mono text-base max-w-xl">
             <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
                 <dt class="ed-quiet">Conference</dt>
                 <span class="ed-leader"></span>

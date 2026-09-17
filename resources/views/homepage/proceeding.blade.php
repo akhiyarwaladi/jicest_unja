@@ -30,19 +30,19 @@
 
             {{-- 01 · Book of Abstracts — available --}}
             <article>
-                <div class="flex items-baseline justify-between ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">
+                <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
                     <span>01</span>
                     <span style="color:var(--ed-accent)">Available</span>
                 </div>
 
                 <h2 class="ed-display text-2xl md:text-3xl mt-4">Book of Abstracts</h2>
-                <p class="ed-quiet text-[15px] mt-3 leading-relaxed">
+                <p class="ed-quiet text-base mt-3 leading-relaxed">
                     Research summaries from all JICEST 2025 presenters across the six conference
                     sub-themes &mdash; an official publication of the Faculty of Science and
                     Technology, Universitas Jambi.
                 </p>
 
-                <dl class="ed-mono text-[15px] mt-6">
+                <dl class="ed-mono text-base mt-6">
                     <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
                         <dt class="ed-quiet">Edition</dt>
                         <span class="ed-leader"></span>
@@ -64,7 +64,7 @@
                     <img src="{{ asset('uploads/proceeding_related/Book_of_Abstract_JICEST_2025_Code.jpeg') }}"
                         alt="QR code linking to the JICEST 2025 Book of Abstracts"
                         class="w-24 h-24 object-contain shrink-0" loading="lazy">
-                    <p class="ed-quiet text-[15px] leading-relaxed">
+                    <p class="ed-quiet text-base leading-relaxed">
                         Scan the code with your phone camera, or download the PDF directly below.
                     </p>
                 </div>
@@ -78,18 +78,18 @@
 
             {{-- 02 · Full Paper Proceeding — in preparation --}}
             <article>
-                <div class="flex items-baseline justify-between ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">
+                <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
                     <span>02</span>
                     <span style="color:var(--ed-signal)">In preparation</span>
                 </div>
 
                 <h2 class="ed-display text-2xl md:text-3xl mt-4">Full Paper Proceeding</h2>
-                <p class="ed-quiet text-[15px] mt-3 leading-relaxed">
+                <p class="ed-quiet text-base mt-3 leading-relaxed">
                     The complete collection of accepted research papers from JICEST 2025 is
                     currently being compiled and reviewed. It will be published on this page.
                 </p>
 
-                <dl class="ed-mono text-[15px] mt-6">
+                <dl class="ed-mono text-base mt-6">
                     <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
                         <dt class="ed-quiet">Expected</dt>
                         <span class="ed-leader"></span>
@@ -102,8 +102,8 @@
                     </div>
                 </dl>
 
-                <h3 class="ed-mono text-xs tracking-[.22em] uppercase mt-10" style="color:var(--ed-accent)">What to expect</h3>
-                <ul class="mt-4 text-[15px] ed-quiet">
+                <h3 class="ed-mono text-sm tracking-[.16em] uppercase mt-10" style="color:var(--ed-accent)">What to expect</h3>
+                <ul class="mt-4 text-base ed-quiet">
                     <li class="py-3 border-t border-[var(--ed-hair)]">Full research papers with complete methodology</li>
                     <li class="py-3 border-t border-[var(--ed-hair)]">Detailed results and analysis</li>
                     <li class="py-3 border-t border-b border-[var(--ed-hair)]">Peer-reviewed and indexed publication</li>
@@ -111,7 +111,7 @@
 
                 <div class="border border-[var(--ed-hair)] p-5 mt-10">
                     <p class="ed-display text-lg">In preparation</p>
-                    <p class="ed-quiet text-[15px] mt-2 leading-relaxed">
+                    <p class="ed-quiet text-base mt-2 leading-relaxed">
                         Our editorial team is currently reviewing and compiling all accepted papers.
                         Check back in a few months.
                     </p>
@@ -132,7 +132,7 @@
                 for the latest information.
             </p>
             <a href="/contact"
-                class="ed-mono text-[.75rem] tracking-[.16em] uppercase ed-underline inline-block mt-6"
+                class="ed-mono text-sm tracking-[.16em] uppercase ed-underline inline-block mt-6"
                 style="color:var(--ed-accent)">
                 Contact the secretariat &rarr;
             </a>
@@ -143,7 +143,7 @@
 {{-- Conference theme --}}
 <div class="ed-ink-band w-full">
     <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
-        <p class="ed-mono text-xs tracking-[.22em] uppercase text-white/60">Conference theme 2025</p>
+        <p class="ed-mono text-sm tracking-[.16em] uppercase text-white/70">Conference theme 2025</p>
         <blockquote class="ed-display italic text-2xl md:text-4xl leading-snug mt-6 max-w-3xl" style="color:#fff">
             &ldquo;Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society&rdquo;
         </blockquote>

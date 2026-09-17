@@ -5,7 +5,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:items-baseline">
             <div class="md:col-span-3">
                 <p class="ed-eyebrow">Publication</p>
-                <p class="ed-mono text-xs ed-quiet mt-2">National ISSN</p>
+                <p class="ed-mono text-sm ed-quiet mt-2">National ISSN</p>
             </div>
 
             <div class="md:col-span-9">
@@ -14,7 +14,7 @@
                     <span class="whitespace-nowrap">JICEST Conference Proceedings</span> and made available online.
                 </p>
 
-                <dl class="mt-8 ed-mono text-[15px]">
+                <dl class="mt-8 ed-mono text-base">
                     <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
                         <dt class="ed-quiet">Indexing</dt>
                         <span class="ed-leader"></span>

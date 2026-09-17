@@ -28,7 +28,7 @@
             left: 0;
             z-index: 2;
             color: rgba(255, 255, 255, .85);
-            font-size: 12px;
+            font-size: .875rem;
             padding: 8px 12px;
             width: 100%;
             box-sizing: border-box;
@@ -44,7 +44,7 @@
             margin-top: -22px;
             color: #fff;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.125rem;
             border: 0;
             background: transparent;
             user-select: none;
@@ -117,7 +117,7 @@
                             <p class="ed-eyebrow">Practical information</p>
                             <h2 class="ed-display text-4xl md:text-5xl mt-3">Location &amp; Contact</h2>
                         </div>
-                        <p class="ed-quiet md:text-right md:pb-2 max-w-sm">
+                        <p class="ed-quiet text-lg md:text-right md:pb-2 max-w-sm">
                             JICEST 2026 is held online. The secretariat sits at the Faculty of Science and
                             Technology, Universitas Jambi.
                         </p>
@@ -126,9 +126,9 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         {{-- Secretariat details --}}
                         <div class="lg:col-span-5">
-                            <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Secretariat</h3>
+                            <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Secretariat</h3>
 
-                            <dl class="mt-6 ed-mono text-[15px]">
+                            <dl class="mt-6 ed-mono text-base">
                                 <div class="flex items-baseline gap-3 py-4 border-t border-[var(--ed-hair)]">
                                     <dt class="ed-quiet shrink-0">Email</dt>
                                     <span class="ed-leader"></span>
@@ -158,8 +158,8 @@
                             </dl>
 
                             <address class="not-italic mt-10">
-                                <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Address</h3>
-                                <p class="ed-quiet text-[15px] mt-4 leading-relaxed">
+                                <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Address</h3>
+                                <p class="ed-quiet text-base mt-4 leading-relaxed">
                                     Faculty of Science and Technology<br>
                                     Universitas Jambi<br>
                                     Jl. Jambi &ndash; Muara Bulian No. KM. 15<br>
@@ -177,7 +177,7 @@
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
-                            <p class="ed-mono text-xs ed-quiet mt-4">1.6154&deg; S, 103.5201&deg; E</p>
+                            <p class="ed-mono text-sm ed-quiet mt-4">1.6154&deg; S, 103.5201&deg; E</p>
                         </div>
                     </div>
                 </div>

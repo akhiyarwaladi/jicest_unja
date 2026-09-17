@@ -17,7 +17,7 @@
                 <h2 class="ed-display text-3xl md:text-4xl mt-3">Jambi International Conference on Engineering, Science
     and Technology</h2>
 
-                <dl class="mt-8 ed-mono text-[15px]">
+                <dl class="mt-8 ed-mono text-base">
                     <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
                         <dt class="ed-quiet">Edition</dt>
                         <span class="ed-leader"></span>
@@ -47,10 +47,10 @@
 
                 <div class="mt-12">
                     <div class="flex items-center gap-4">
-                        <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Conference
+                        <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Conference
     sub-themes</h3>
                         <span class="ed-leader"></span>
-                        <span class="ed-mono text-xs ed-quiet">06 tracks</span>
+                        <span class="ed-mono text-sm ed-quiet">06 tracks</span>
                     </div>
 
                     @php
@@ -67,10 +67,10 @@
                     <div class="mt-2">
                         @foreach ($subThemes as $theme)
                             <div class="ed-row grid grid-cols-12 gap-x-5 gap-y-1 py-5 items-baseline">
-                                <div class="col-span-2 md:col-span-1 ed-mono text-xs ed-quiet">{{ $theme['index'] }}</div>
+                                <div class="col-span-2 md:col-span-1 ed-mono text-sm ed-quiet">{{ $theme['index'] }}</div>
                                 <div class="col-span-10 md:col-span-11">
                                     <h4 class="ed-display text-lg">{!! $theme['title'] !!}</h4>
-                                    <p class="ed-quiet text-[15px] mt-1">{!! $theme['desc'] !!}</p>
+                                    <p class="ed-quiet text-base mt-1">{!! $theme['desc'] !!}</p>
                                 </div>
                             </div>
                         @endforeach

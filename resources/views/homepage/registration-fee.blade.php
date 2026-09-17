@@ -15,14 +15,14 @@
                 <p class="ed-eyebrow">Registration</p>
                 <h1 class="ed-display text-4xl md:text-5xl mt-3">Registration Fees</h1>
             </div>
-            <p class="ed-quiet max-w-sm md:text-right md:pb-1">
+            <p class="ed-quiet text-lg max-w-sm md:text-right md:pb-1">
                 Fees are quoted per person and cover attendance, the conference proceedings,
                 and a certificate of presentation or participation issued online.
             </p>
         </header>
 
         {{-- Fee periods, taken from the live fee table --}}
-        <div class="flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-xs tracking-[.14em] uppercase">
+        <div class="flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-sm tracking-[.14em] uppercase">
             @if(isset($pricing['presenter']['early_bird']) && $pricing['presenter']['early_bird'])
                 <span style="color:var(--ed-accent)">
                     Early bird &middot;
@@ -53,9 +53,9 @@
     <div class="max-w-5xl mx-auto px-6">
         <div class="hidden md:grid grid-cols-12 gap-6 pb-4 border-b border-[var(--ed-hair)]">
             <div class="col-span-1"></div>
-            <div class="col-span-5 ed-mono text-[.75rem] tracking-[.2em] uppercase ed-quiet">Category</div>
-            <div class="col-span-3 ed-mono text-[.75rem] tracking-[.2em] uppercase ed-quiet">Early bird</div>
-            <div class="col-span-3 ed-mono text-[.75rem] tracking-[.2em] uppercase ed-quiet md:text-right">Regular</div>
+            <div class="col-span-5 ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Category</div>
+            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Early bird</div>
+            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:text-right">Regular</div>
         </div>
 
         @php
@@ -69,32 +69,40 @@
 
         <div>
             @foreach ($tiers as $tier)
+                @php
+                    $early = $pricing[$tier['key']]['early_bird']['formatted'] ?? $tier['early'];
+                    $regular = $pricing[$tier['key']]['non_early_bird']['formatted'] ?? $tier['regular'];
+                    $earlyAmount = array_map('trim', explode('/', $early));
+                    $regularAmount = array_map('trim', explode('/', $regular));
+                @endphp
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-t border-[var(--ed-hair)]">
-                    <div class="ed-mono text-xs ed-quiet md:col-span-1">{{ $tier['index'] }}</div>
+                    <div class="ed-mono text-sm ed-quiet md:col-span-1">{{ $tier['index'] }}</div>
 
                     <div class="md:col-span-5">
                         <h2 class="ed-display text-2xl">{{ $tier['name'] }}</h2>
-                        <p class="ed-quiet text-[15px] mt-2">{{ $tier['note'] }}</p>
+                        <p class="ed-quiet text-base mt-2">{{ $tier['note'] }}</p>
                     </div>
 
                     <div class="md:col-span-3">
-                        <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet md:hidden">Early bird</div>
-                        <div class="ed-mono text-base mt-1 md:mt-0" style="color:var(--ed-accent)">
-                            {{ $pricing[$tier['key']]['early_bird']['formatted'] ?? $tier['early'] }}
-                        </div>
+                        <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:hidden">Early bird</div>
+                        <div class="ed-mono text-3xl mt-1 md:mt-0 whitespace-nowrap" style="color:var(--ed-accent)">{{ $earlyAmount[0] }}</div>
+                        @isset($earlyAmount[1])
+                            <div class="ed-mono text-xl ed-quiet mt-1.5 whitespace-nowrap">{{ $earlyAmount[1] }}</div>
+                        @endisset
                     </div>
 
                     <div class="md:col-span-3 md:text-right">
-                        <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet md:hidden">Regular</div>
-                        <div class="ed-mono text-base mt-1 md:mt-0">
-                            {{ $pricing[$tier['key']]['non_early_bird']['formatted'] ?? $tier['regular'] }}
-                        </div>
+                        <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:hidden">Regular</div>
+                        <div class="ed-mono text-3xl mt-1 md:mt-0 whitespace-nowrap">{{ $regularAmount[0] }}</div>
+                        @isset($regularAmount[1])
+                            <div class="ed-mono text-xl ed-quiet mt-1.5 whitespace-nowrap">{{ $regularAmount[1] }}</div>
+                        @endisset
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <p class="ed-quiet text-[15px] mt-8 max-w-2xl leading-relaxed">
+        <p class="ed-quiet text-lg mt-8 max-w-2xl leading-relaxed">
             All amounts include attendance, the conference proceedings and the certificate.
             Students are asked to include a scan of their student card with the payment receipt.
         </p>
@@ -106,7 +114,7 @@
     <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div class="lg:col-span-7">
             <div class="flex items-center gap-4">
-                <h2 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">How to pay</h2>
+                <h2 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">How to pay</h2>
                 <span class="ed-leader"></span>
             </div>
 
@@ -120,10 +128,10 @@
                 @endphp
                 @foreach ($steps as $step)
                     <div class="ed-row grid grid-cols-12 gap-x-5 gap-y-1 py-5 items-baseline">
-                        <div class="col-span-2 md:col-span-1 ed-mono text-xs ed-quiet">{{ $step['index'] }}</div>
+                        <div class="col-span-2 md:col-span-1 ed-mono text-sm ed-quiet">{{ $step['index'] }}</div>
                         <div class="col-span-10 md:col-span-11">
                             <h3 class="ed-display text-lg">{{ $step['title'] }}</h3>
-                            <p class="ed-quiet text-[15px] mt-1 leading-relaxed">{{ $step['desc'] }}</p>
+                            <p class="ed-quiet text-base mt-1 leading-relaxed">{{ $step['desc'] }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -132,7 +140,7 @@
 
         <div class="lg:col-span-5">
             <div class="flex items-center gap-4">
-                <h2 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Need help?</h2>
+                <h2 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Need help?</h2>
                 <span class="ed-leader"></span>
             </div>
 
@@ -153,7 +161,7 @@
                     </div>
                 @endforeach
 
-                <div class="flex items-baseline gap-3 py-4 border-t border-[var(--ed-hair)] ed-mono text-[15px]">
+                <div class="flex items-baseline gap-3 py-4 border-t border-[var(--ed-hair)] ed-mono text-base">
                     <span class="ed-quiet shrink-0">Email</span>
                     <span class="ed-leader"></span>
                     <a href="mailto:jicest@unja.ac.id" class="ed-underline">jicest@unja.ac.id</a>

@@ -5,10 +5,10 @@
             <div class="max-w-2xl">
                 <p class="ed-eyebrow">Deadlines</p>
                 <h2 class="ed-display text-4xl md:text-5xl mt-3">Abstract &amp; Paper Schedule</h2>
-                <p class="ed-quiet mt-4">All cut-offs are 23:59 Jambi time (UTC+7). Submissions received after a
+                <p class="ed-quiet text-lg mt-4">All cut-offs are 23:59 Jambi time (UTC+7). Submissions received after a
 deadline move to the next round.</p>
             </div>
-            <div class="ed-mono text-sm ed-quiet md:text-right md:pb-1">
+            <div class="ed-mono text-lg ed-quiet md:text-right md:pb-1">
                 <div>Conference &middot; 11 Nov 2026</div>
                 <div class="mt-1" style="color:var(--ed-accent)">Online attendance</div>
             </div>
@@ -17,37 +17,37 @@ deadline move to the next round.</p>
         {{-- Early bird round --}}
         <section class="pt-10">
             <div class="flex items-center gap-4">
-                <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-accent)">Early bird round
+                <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Early bird round
     </h3>
                 <span class="ed-leader"></span>
-                <span class="ed-mono text-xs ed-quiet">closes 14 Oct 2026</span>
+                <span class="ed-mono text-sm ed-quiet">closes 14 Oct 2026</span>
             </div>
 
             <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
-                <div class="ed-mono text-xs ed-quiet md:col-span-1">01</div>
+                <div class="ed-mono text-sm ed-quiet md:col-span-1">01</div>
                 <div class="md:col-span-5">
                     <h4 class="ed-display text-2xl">Abstract submission</h4>
-                    <p class="ed-quiet text-[15px] mt-2">Extended abstract, 250-300 words, in the provided template. Early
+                    <p class="ed-quiet text-base mt-2">Extended abstract, 250-300 words, in the provided template. Early
         bird fee applies.</p>
                 </div>
-                <div class="ed-mono text-sm md:col-span-2 md:text-right">14 Oct 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">14 Oct 2026</div>
                 <div class="md:col-span-4 md:text-right">
-                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
-                    <div id="countdown-abstract-early" class="ed-mono text-lg mt-1" style="color:var(--ed-accent)">&mdash;</div>
+                    <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-abstract-early" class="ed-mono text-2xl mt-1" style="color:var(--ed-accent)">&mdash;</div>
                 </div>
             </div>
 
             <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
-                <div class="ed-mono text-xs ed-quiet md:col-span-1">02</div>
+                <div class="ed-mono text-sm ed-quiet md:col-span-1">02</div>
                 <div class="md:col-span-5">
                     <h4 class="ed-display text-2xl">Full paper submission</h4>
-                    <p class="ed-quiet text-[15px] mt-2">Final manuscript for the proceedings, submitted after abstract
+                    <p class="ed-quiet text-base mt-2">Final manuscript for the proceedings, submitted after abstract
         acceptance.</p>
                 </div>
-                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
                 <div class="md:col-span-4 md:text-right">
-                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
-                    <div id="countdown-paper-early" class="ed-mono text-lg mt-1" style="color:var(--ed-accent)">&mdash;</div>
+                    <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-paper-early" class="ed-mono text-2xl mt-1" style="color:var(--ed-accent)">&mdash;</div>
                 </div>
             </div>
         </section>
@@ -55,35 +55,35 @@ deadline move to the next round.</p>
         {{-- Final round --}}
         <section class="pt-12">
             <div class="flex items-center gap-4">
-                <h3 class="ed-mono text-xs tracking-[.22em] uppercase" style="color:var(--ed-signal)">Final round</h3>
+                <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-signal)">Final round</h3>
                 <span class="ed-leader"></span>
-                <span class="ed-mono text-xs ed-quiet">early bird rates no longer apply</span>
+                <span class="ed-mono text-sm ed-quiet">early bird rates no longer apply</span>
             </div>
 
             <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
-                <div class="ed-mono text-xs ed-quiet md:col-span-1">03</div>
+                <div class="ed-mono text-sm ed-quiet md:col-span-1">03</div>
                 <div class="md:col-span-5">
                     <h4 class="ed-display text-2xl">Abstract submission</h4>
-                    <p class="ed-quiet text-[15px] mt-2">Last call for abstracts. Regular registration fee applies.</p>
+                    <p class="ed-quiet text-base mt-2">Last call for abstracts. Regular registration fee applies.</p>
                 </div>
-                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
                 <div class="md:col-span-4 md:text-right">
-                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
-                    <div id="countdown-abstract-regular" class="ed-mono text-lg mt-1" style="color:var(--ed-signal)">&mdash;</div>
+                    <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-abstract-regular" class="ed-mono text-2xl mt-1" style="color:var(--ed-signal)">&mdash;</div>
                 </div>
             </div>
 
             <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-b border-[var(--ed-hair)]">
-                <div class="ed-mono text-xs ed-quiet md:col-span-1">04</div>
+                <div class="ed-mono text-sm ed-quiet md:col-span-1">04</div>
                 <div class="md:col-span-5">
                     <h4 class="ed-display text-2xl">Full paper submission</h4>
-                    <p class="ed-quiet text-[15px] mt-2">Absolute deadline for manuscripts to be included in the
+                    <p class="ed-quiet text-base mt-2">Absolute deadline for manuscripts to be included in the
         proceedings.</p>
                 </div>
-                <div class="ed-mono text-sm md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
                 <div class="md:col-span-4 md:text-right">
-                    <div class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">Closes in</div>
-                    <div id="countdown-paper-regular" class="ed-mono text-lg mt-1" style="color:var(--ed-signal)">&mdash;</div>
+                    <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
+                    <div id="countdown-paper-regular" class="ed-mono text-2xl mt-1" style="color:var(--ed-signal)">&mdash;</div>
                 </div>
             </div>
         </section>

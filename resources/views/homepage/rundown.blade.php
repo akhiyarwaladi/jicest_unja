@@ -15,7 +15,7 @@
                 <p class="ed-eyebrow">Programme</p>
                 <h1 class="ed-display text-4xl md:text-5xl mt-3">Conference Schedule</h1>
             </div>
-            <div class="ed-mono text-sm ed-quiet md:text-right md:pb-1">
+            <div class="ed-mono text-lg ed-quiet md:text-right md:pb-1">
                 <div>Wednesday, 11 November 2026</div>
                 <div class="mt-1" style="color:var(--ed-accent)">Online &middot; all times UTC+7</div>
             </div>
@@ -40,24 +40,24 @@
         <div>
             @foreach ($programme as $index => $item)
                 <div class="ed-row grid grid-cols-12 gap-x-6 gap-y-2 py-6 items-baseline">
-                    <div class="col-span-12 md:col-span-3 ed-mono text-[15px]">
+                    <div class="col-span-12 md:col-span-3 ed-mono text-base">
                         {{ $item['time'] }}<span class="ed-quiet"> &ndash; {{ $item['end'] }}</span>
                     </div>
                     <div class="col-span-12 md:col-span-9">
                         <h2 class="ed-display text-xl md:text-2xl">{{ $item['title'] }}</h2>
-                        <p class="ed-quiet text-[15px] mt-1">{{ $item['note'] }}</p>
+                        <p class="ed-quiet text-base mt-1">{{ $item['note'] }}</p>
                     </div>
                 </div>
             @endforeach
         </div>
 
         <div class="flex items-center gap-4 pt-10">
-            <span class="ed-mono text-xs tracking-[.18em] uppercase ed-quiet">Broadcast from</span>
+            <span class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Broadcast from</span>
             <span class="ed-leader"></span>
-            <span class="ed-mono text-xs ed-quiet">Senate Meeting Building, Universitas Jambi</span>
+            <span class="ed-mono text-sm ed-quiet">Senate Meeting Building, Universitas Jambi</span>
         </div>
 
-        <p class="ed-quiet text-[15px] mt-10">
+        <p class="ed-quiet text-base mt-10">
             Session links are emailed to registered delegates two days before the conference and are also
             available from your dashboard.
         </p>

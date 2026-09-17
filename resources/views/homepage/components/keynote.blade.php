@@ -24,14 +24,14 @@
         <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
             @foreach ($slots as $slot)
                 <article class="border-t border-[var(--ed-hair)] pt-5">
-                    <div class="flex items-baseline justify-between ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">
+                    <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
                         <span>{{ str_pad($slot, 2, '0', STR_PAD_LEFT) }}</span>
                         <span>Keynote</span>
                     </div>
 
                     {{-- Portrait frame held open until the speaker is confirmed --}}
                     <div class="mt-5 aspect-[4/5] bg-[#f3f2ec] border border-[var(--ed-hair)] flex items-center justify-center">
-                        <span class="ed-mono text-[.75rem] tracking-[.18em] uppercase ed-quiet">
+                        <span class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
                             Portrait to be announced
                         </span>
                     </div>
@@ -41,7 +41,7 @@
             @endforeach
         </div>
 
-        <p class="ed-quiet text-[15px] mt-12 max-w-2xl leading-relaxed border-t border-[var(--ed-hair)] pt-6">
+        <p class="ed-quiet text-lg mt-12 max-w-2xl leading-relaxed border-t border-[var(--ed-hair)] pt-6">
             The keynote line-up is being confirmed. Names, affiliations and lecture topics
             will be published on this page as they are fixed.
         </p>

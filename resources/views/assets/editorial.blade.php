@@ -16,9 +16,16 @@
     rel="stylesheet">
 
 <style>
+    /* Readability step: one point above the browser default (16px). Every
+       rem-based Tailwind size and spacing on the public pages scales with it,
+       so the whole editorial scale lifts together instead of piecemeal. */
+    html {
+        font-size: 17px;
+    }
+
     :root {
         --ed-ink: #0b1b14;
-        --ed-ink-70: rgba(11, 27, 20, .70);
+        --ed-ink-70: rgba(11, 27, 20, .80);
         --ed-ink-45: rgba(11, 27, 20, .45);
         --ed-hair: rgba(11, 27, 20, .14);
         --ed-paper: #fbfaf5;
@@ -44,9 +51,9 @@
 
     .ed-eyebrow {
         font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: .75rem;
+        font-size: .875rem;
         font-weight: 500;
-        letter-spacing: .22em;
+        letter-spacing: .16em;
         text-transform: uppercase;
         color: var(--ed-accent);
     }
@@ -132,7 +139,7 @@
         background: var(--ed-ink);
         color: #fff;
         font-family: 'IBM Plex Mono', monospace;
-        font-size: .8125rem;
+        font-size: .875rem;
         font-weight: 500;
         letter-spacing: .12em;
         text-transform: uppercase;
