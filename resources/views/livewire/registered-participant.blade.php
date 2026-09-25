@@ -56,7 +56,7 @@
                     <tbody>
                         @if (count($participants) == 0)
                             <tr>
-                                <td colspan="11" align="center">No data</td>
+                                <td colspan="11" align="center">No registered users found.</td>
                             </tr>
                         @endif
 

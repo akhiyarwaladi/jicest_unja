@@ -67,13 +67,13 @@
 
                         @if (count($fulltexts) == 0)
                             <tr>
-                                <td colspan="8" align="center">No data</td>
+                                <td colspan="8" align="center">No full papers found.</td>
                             </tr>
                         @endif
                         @foreach ($fulltexts as $item)
                             <tr>
                                 <td><button class="btn btn-primary btn-sm"
-                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
+                                        wire:click="showValidate('{{ $item->id }}')">Review paper</button></td>
                                 <td>{{ ($fulltexts->currentpage() - 1) * $fulltexts->perpage() + $loop->index + 1 }}
                                 </td>
                                 <td>{{ $item->created_at->format('d M Y, H:i') }}</td>
@@ -95,12 +95,12 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
         role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditTitle">Validate Fulltext</h5>
+                    <h5 class="modal-title" id="modalEditTitle">Review Full Paper</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="empty()">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -115,7 +115,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fulltext">Full Text</label>
+                        <label for="fulltext">Paper document</label>
                         <a href="{{ asset('storage/' . $fulltext) }}" style="color:black" target="_blank"
                             class="d-block"><i class="fa fa-file-pdf-o" style="color:red; font-size:30px"
                                 aria-hidden="true"></i>
@@ -127,27 +127,27 @@
                 <div class="modal-footer">
                     <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
                         <span wire:loading.remove wire:target="invalid">
-                            <i class="fa fa-times mr-1"></i> Invalid
+                            <i class="fa fa-times mr-1"></i> Reject paper
                         </span>
                         <span wire:loading wire:target="invalid">
                             <div class="d-flex align-items-center">
                                 <div class="spinner-border spinner-border-sm mr-2" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
-                                Processing... Please wait
+                                Rejecting paper...
                             </div>
                         </span>
                     </button>
                     <button wire:click="valid()" class="btn btn-primary" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
                         <span wire:loading.remove wire:target="valid">
-                            <i class="fa fa-check mr-1"></i> Valid
+                            <i class="fa fa-check mr-1"></i> Approve paper
                         </span>
                         <span wire:loading wire:target="valid">
                             <div class="d-flex align-items-center">
                                 <div class="spinner-border spinner-border-sm mr-2" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
-                                Validating... Please wait
+                                Approving paper...
                             </div>
                         </span>
                     </button>

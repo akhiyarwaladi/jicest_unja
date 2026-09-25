@@ -54,10 +54,10 @@
 
         @php
             $tiers = [
-                ['key' => 'presenter', 'index' => '01', 'name' => 'Presenter', 'note' => 'Authors presenting an accepted paper. Regular and institutional rate.', 'early' => '350K IDR / 35 USD', 'regular' => '400K IDR / 40 USD'],
-                ['key' => 'presenter_student', 'index' => '02', 'name' => 'Presenter', 'note' => 'Authors presenting an accepted paper. Student rate, valid student ID required.', 'early' => '250K IDR / 25 USD', 'regular' => '300K IDR / 30 USD'],
-                ['key' => 'participant', 'index' => '03', 'name' => 'Participant', 'note' => 'Attendees without a paper. Regular and institutional rate.', 'early' => '100K IDR / 10 USD', 'regular' => '150K IDR / 15 USD'],
-                ['key' => 'participant_student', 'index' => '04', 'name' => 'Participant', 'note' => 'Attendees without a paper. Student rate, valid student ID required.', 'early' => '50K IDR / 4 USD', 'regular' => '50K IDR / 4 USD'],
+                ['key' => 'presenter', 'index' => '01', 'name' => 'Presenter (Reguler)', 'note' => 'Authors presenting an accepted paper. Regular and institutional rate.', 'early' => '350K IDR / 35 USD', 'regular' => '400K IDR / 40 USD'],
+                ['key' => 'presenter_student', 'index' => '02', 'name' => 'Presenter (Student)', 'note' => 'Authors presenting an accepted paper. Student rate, valid student ID required.', 'early' => '250K IDR / 25 USD', 'regular' => '300K IDR / 30 USD'],
+                ['key' => 'participant', 'index' => '03', 'name' => 'Participant (Reguler)', 'note' => 'Attendees without a paper. Regular and institutional rate.', 'early' => '100K IDR / 10 USD', 'regular' => '150K IDR / 15 USD'],
+                ['key' => 'participant_student', 'index' => '04', 'name' => 'Participant (Student)', 'note' => 'Attendees without a paper. Student rate, valid student ID required.', 'early' => '50K IDR / 4 USD', 'regular' => '50K IDR / 4 USD'],
             ];
         @endphp
 

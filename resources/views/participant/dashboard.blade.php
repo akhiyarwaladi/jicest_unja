@@ -389,7 +389,7 @@
                 <div class="empty-state">
                     <i class="fa fa-info-circle" style="font-size: 56px; color: #3b82f6; margin-bottom: 20px;"></i>
                     <h5 style="font-weight: 700; font-size: 20px; color: #111827; margin-bottom: 12px;">No abstracts submitted yet</h5>
-                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Please add your abstract in the abstract menu to get started.</p>
+                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Select “Submit Abstract” from your account navigation to get started.</p>
                 </div>
             @endif
         @else

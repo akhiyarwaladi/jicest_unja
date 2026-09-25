@@ -41,7 +41,7 @@
         {{-- One primary action; the anchor link to the about section stays quiet by design. --}}
         <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5 fade-in-up">
             <a href="{{ auth()->check() ? '/dashboard' : '/login' }}" class="ed-btn ed-btn-inverse">
-                Submit abstract &rarr;
+                Submit Abstract &rarr;
             </a>
             <a href="#about"
                 class="ed-mono text-sm tracking-[.16em] uppercase text-white/80 hover:text-white ed-underline self-center sm:self-auto">

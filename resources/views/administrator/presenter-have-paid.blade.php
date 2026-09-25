@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title">
-                <h4>Presenter Have Paid</h4>
+                <h4>Presenter Payments</h4>
             </div>
         </div>
     </div>

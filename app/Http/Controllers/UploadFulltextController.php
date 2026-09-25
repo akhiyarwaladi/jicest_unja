@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UploadFulltext;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreUploadFulltextRequest;
-use App\Http\Requests\UpdateUploadFulltextRequest;
-
 class UploadFulltextController extends Controller
 {
     /**
@@ -15,16 +10,18 @@ class UploadFulltextController extends Controller
     public function upload()
     {
         $this->authorize('presenter');
+
         return view('participant.fulltext', [
-            'title' => 'Upload Fulltext'
+            'title' => 'Submit Full Paper',
         ]);
     }
 
     public function uploadedPaper()
     {
         $this->authorize('administrator');
+
         return view('administrator.uploaded-paper', [
-            'title' => 'Uploaded Paper'
+            'title' => 'Full Paper Submissions',
         ]);
     }
 }

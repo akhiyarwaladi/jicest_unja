@@ -3,19 +3,46 @@
 namespace App\Http\Livewire;
 
 use App\Models\UploadAbstract;
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class AbstractForm extends Component
 {
-    public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter, $status;
-    public $add = false, $edit = false, $abstract_edit_id, $abstract_delete_id;
-    public $canEdit = false, $editId;
+    public $topic;
+
+    public $type;
+
+    public $title;
+
+    public $authors;
+
+    public $institutions;
+
+    public $abstract;
+
+    public $keywords;
+
+    public $presenter;
+
+    public $status;
+
+    public $add = false;
+
+    public $edit = false;
+
+    public $abstract_edit_id;
+
+    public $abstract_delete_id;
+
+    public $canEdit = false;
+
+    public $editId;
 
     public function mount()
     {
         $this->presenter = Auth::user()->participant->full_name1;
     }
+
     public function rules()
     {
         return
@@ -30,19 +57,18 @@ class AbstractForm extends Component
                 'presenter' => 'required',
             ];
     }
-    
 
     //Custom Errror messages for validation
     protected $messages = [
-        'topic.required' => 'topic is required !',
-        'topic.in' => 'ERRORR topic can only contain (Organic and Bio Chemistry, Analytical and Environmental Chemistry, Inorganic and Material Chemistry, Physical and Computation Chemistry, Chemical Education) !',
-        'type.required' => 'Type is required !',
-        'title.required' => 'Title is required !',
-        'keywords.required' => 'Keywords is required !',
-        'authors.required' => 'Authors type is required !',
-        'institutions.required' => 'Institutions is required !',
-        'abstract.required' => 'Abstract is required !',
-        'presenter.required' => 'Presenter is required !',
+        'topic.required' => 'Choose a conference topic.',
+        'topic.in' => 'Choose a valid conference topic.',
+        'type.required' => 'Choose a presentation format.',
+        'title.required' => 'Enter the abstract title.',
+        'keywords.required' => 'Enter at least one keyword.',
+        'authors.required' => 'List every author.',
+        'institutions.required' => 'List the author affiliations.',
+        'abstract.required' => 'Enter the abstract content.',
+        'presenter.required' => 'Enter the presenting author.',
     ];
 
     //Reatime Validation
@@ -59,9 +85,9 @@ class AbstractForm extends Component
         $this->resetValidation();
     }
 
-
-    public function editItem() {
-        $this->edit = !$this->edit;
+    public function editItem()
+    {
+        $this->edit = ! $this->edit;
     }
 
     public function empty()
@@ -91,14 +117,14 @@ class AbstractForm extends Component
         $this->institutions = $abstract->institutions;
         $this->presenter = $abstract->presenter;
         $this->edit = true;
-        $this->status = "accepted";//$abstract->status;
+        $this->status = 'accepted'; //$abstract->status;
     }
 
     public function update()
     {
         try {
             $this->validate();
-            
+
             UploadAbstract::where('id', $this->abstract_edit_id)->update([
                 'topic' => $this->topic,
                 'type' => $this->type,
@@ -112,19 +138,19 @@ class AbstractForm extends Component
 
             $this->empty();
             $this->cancel();
-            
+
             $this->dispatchBrowserEvent('abstract-success', [
                 'title' => 'Abstract Updated!',
                 'message' => 'Your abstract has been updated successfully.',
-                'icon' => 'success'
+                'icon' => 'success',
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error updating abstract: ' . $e->getMessage());
+            \Log::error('Error updating abstract: '.$e->getMessage());
 
             $this->dispatchBrowserEvent('abstract-error', [
                 'title' => 'Update Failed',
                 'message' => 'An error occurred while updating your abstract. Please try again.',
-                'icon' => 'error'
+                'icon' => 'error',
             ]);
         }
     }
@@ -142,7 +168,7 @@ class AbstractForm extends Component
     {
         try {
             $this->validate();
-            
+
             UploadAbstract::create([
                 'topic' => $this->topic,
                 'type' => $this->type,
@@ -153,34 +179,32 @@ class AbstractForm extends Component
                 'keywords' => $this->keywords,
                 'presenter' => $this->presenter,
                 'participant_id' => Auth::user()->participant->id,
-                'status' => 'not yet reviewed'
+                'status' => 'not yet reviewed',
             ]);
 
             $this->cancel();
             $this->empty();
-            
+
             $this->dispatchBrowserEvent('abstract-success', [
                 'title' => 'Abstract Submitted!',
                 'message' => 'Your abstract has been submitted successfully and is waiting for review.',
-                'icon' => 'success'
+                'icon' => 'success',
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error saving abstract: ' . $e->getMessage());
+            \Log::error('Error saving abstract: '.$e->getMessage());
 
             $this->dispatchBrowserEvent('abstract-error', [
                 'title' => 'Submission Failed',
                 'message' => 'An error occurred while submitting your abstract. Please try again.',
-                'icon' => 'error'
+                'icon' => 'error',
             ]);
         }
     }
 
-
-
     public function render()
     {
         return view('livewire.abstract-form', [
-            'abstracts' => UploadAbstract::where('participant_id', Auth::user()->participant->id)->latest()->get()
+            'abstracts' => UploadAbstract::where('participant_id', Auth::user()->participant->id)->latest()->get(),
         ]);
     }
 }

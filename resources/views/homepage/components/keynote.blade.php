@@ -1,10 +1,3 @@
-{{--
-    Keynote speakers.
-
-    The 2026 plenary line-up is not yet fixed, so the five slots are published as
-    placeholders: hairline rules, a quiet portrait frame and "To be announced".
-    A confirmed speaker replaces a slot with a portrait, name, role and topic.
---}}
 <div class="w-full py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6">
         <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 max-w-5xl">
@@ -13,37 +6,89 @@
                 <h2 class="ed-display text-4xl md:text-5xl mt-3">Keynote Speakers</h2>
             </div>
             <p class="ed-quiet max-w-sm md:text-right md:pb-2">
-                Five plenary lectures are planned for the 2026 programme.
+                Four keynote speakers are confirmed. The fifth plenary speaker will be announced when the programme is final.
             </p>
         </header>
 
         @php
-            $slots = [1, 2, 3, 4, 5];
+            $speakers = [
+                [
+                    'name' => 'Asst. Prof. Dr. Nattinee Thongdee',
+                    'role' => 'Director',
+                    'institution' => 'Khorat Fossil Museum',
+                    'image' => 'uploads/speakers/nattinee-thongdee.jpg',
+                    'alt' => 'Portrait of Asst. Prof. Dr. Nattinee Thongdee',
+                    'url' => 'https://www.khoratfossil.org/khoratfossil/index.php/en/about-us/board/administrative-board',
+                ],
+                [
+                    'name' => 'Asst. Prof. Dr. Worapat Paireekreng',
+                    'role' => 'Assistant Professor',
+                    'institution' => 'KMITL Business School',
+                    'image' => 'uploads/speakers/worapat-paireekreng.jpg',
+                    'alt' => 'Portrait of Asst. Prof. Dr. Worapat Paireekreng',
+                    'url' => 'https://www.kbs.kmitl.ac.th/en/person/dr-vorapat-pairigreng/',
+                ],
+                [
+                    'name' => 'Prof. Dr. rer. nat. Martin Dressel',
+                    'role' => 'Head of Institute',
+                    'institution' => 'University of Stuttgart',
+                    'image' => 'uploads/speakers/martin-dressel.jpg',
+                    'alt' => 'Portrait of Prof. Dr. rer. nat. Martin Dressel',
+                    'url' => 'https://www.pi1.uni-stuttgart.de/institute/team/Dressel/',
+                ],
+                [
+                    'name' => 'Nur Hamid',
+                    'role' => 'Postdoctoral Fellow',
+                    'institution' => 'King Fahd University of Petroleum & Minerals',
+                    'image' => 'uploads/speakers/nur-hamid.JPG',
+                    'alt' => 'Portrait of Nur Hamid',
+                    'url' => 'https://pure.kfupm.edu.sa/en/persons/dr-nur-hamid/',
+                ],
+                [
+                    'name' => 'To be announced',
+                    'role' => null,
+                    'institution' => null,
+                    'image' => null,
+                    'alt' => null,
+                    'url' => null,
+                ],
+            ];
         @endphp
 
         <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
-            @foreach ($slots as $slot)
+            @foreach ($speakers as $index => $speaker)
                 <article class="border-t border-[var(--ed-hair)] pt-5">
                     <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
-                        <span>{{ str_pad($slot, 2, '0', STR_PAD_LEFT) }}</span>
-                        <span>Keynote</span>
+                        <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                        <span>{{ $speaker['url'] ? 'Confirmed' : 'Pending' }}</span>
                     </div>
 
-                    {{-- Portrait frame held open until the speaker is confirmed --}}
-                    <div class="mt-5 aspect-[4/5] bg-[#f3f2ec] border border-[var(--ed-hair)] flex items-center justify-center">
-                        <span class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
-                            Portrait to be announced
-                        </span>
+                    <div class="mt-5 aspect-[4/5] bg-[#f3f2ec] border border-[var(--ed-hair)] flex items-center justify-center overflow-hidden">
+                        @if ($speaker['image'])
+                            <img src="{{ asset($speaker['image']) }}" alt="{{ $speaker['alt'] }}"
+                                class="ed-media w-full h-full object-cover" loading="lazy">
+                        @else
+                            <span class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet text-center px-6">
+                                Portrait to be announced
+                            </span>
+                        @endif
                     </div>
 
-                    <h3 class="ed-display text-xl mt-5">To be announced</h3>
+                    <h3 class="ed-display text-xl mt-5">{{ $speaker['name'] }}</h3>
+                    @if ($speaker['role'])
+                        <p class="ed-mono text-sm mt-3" style="color:var(--ed-accent)">{{ $speaker['role'] }}</p>
+                        <p class="ed-quiet text-base mt-1">{{ $speaker['institution'] }}</p>
+                        <a href="{{ $speaker['url'] }}" target="_blank" rel="noopener"
+                            class="ed-mono text-sm tracking-[.08em] uppercase ed-underline inline-block mt-4">
+                            View profile
+                        </a>
+                    @endif
                 </article>
             @endforeach
         </div>
 
         <p class="ed-quiet text-lg mt-12 max-w-2xl leading-relaxed border-t border-[var(--ed-hair)] pt-6">
-            The keynote line-up is being confirmed. Names, affiliations and lecture topics
-            will be published on this page as they are fixed.
+            Lecture titles and session assignments will be published with the final programme.
         </p>
     </div>
 </div>

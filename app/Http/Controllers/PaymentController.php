@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StorePaymentRequest;
-use App\Http\Requests\UpdatePaymentRequest;
 
 class PaymentController extends Controller
 {
@@ -17,31 +14,36 @@ class PaymentController extends Controller
         if (Auth::user()->role == 'administrator') {
             return abort(403);
         }
+
         return view('participant.payment', [
-            'title' => 'Payment'
+            'title' => 'Payment',
         ]);
     }
 
     public function validation()
     {
         $this->authorize('administrator');
+
         return view('administrator.payment-validation', [
-            'title' => 'Payment Validation'
+            'title' => 'Verify Payments',
         ]);
     }
 
     public function participantPaid()
     {
         $this->authorize('administrator');
+
         return view('administrator.participant-have-paid', [
-            'title' => 'Participant Have Paid'
+            'title' => 'Participant Payments',
         ]);
     }
+
     public function presenterPaid()
     {
         $this->authorize('administrator');
+
         return view('administrator.presenter-have-paid', [
-            'title' => 'Presenter Have Paid'
+            'title' => 'Presenter Payments',
         ]);
     }
 }

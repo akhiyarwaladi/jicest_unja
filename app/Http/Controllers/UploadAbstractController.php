@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
 use App\Mail\SendMail;
-use Illuminate\Support\Facades\Mail;
-use App\Models\UploadAbstract;
 use App\Models\Participant;
+use App\Models\UploadAbstract;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class UploadAbstractController extends Controller
 {
@@ -17,23 +17,23 @@ class UploadAbstractController extends Controller
     public function review()
     {
         $this->authorize('administrator');
+
         return view('administrator.review-abstract', [
-            'title' => 'Review Abstract'
+            'title' => 'Review Submissions',
         ]);
     }
 
     public function testEmail()
     {
-        $data = array('name' => 'Khoirul Anam');
+        $data = ['name' => 'Khoirul Anam'];
         $storageDisk = config('filesystems.storage');
         $attachmentPath = $storageDisk === 'public_html'
-            ? config('filesystems.disks.public_html.root') . '/letter-of-acceptance/LOA-Muhammad Ridho.pdf'
-            : public_path() . '/storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf';
+            ? config('filesystems.disks.public_html.root').'/letter-of-acceptance/LOA-Muhammad Ridho.pdf'
+            : public_path().'/storage/letter-of-acceptance/LOA-Muhammad Ridho.pdf';
 
         $attachment = [$attachmentPath];
 
-
-        Mail::to('anam@gmail.com', 'Anam')->send(new SendMail('Abstract Rejected', "<p>
+        Mail::to('anam@gmail.com', 'Anam')->send(new SendMail('Abstract Rejected', '<p>
         Dear ANAM, <br>
         Congratulations! We are happy to inform you that your abstract for The 11st International Conference of the
         Indonesian
@@ -53,7 +53,7 @@ class UploadAbstractController extends Controller
         acknowledge the receipt of this email, and do not hesitate to contact the organizing committee
         (icics2023@.unja.ac.id) for any inquiry. Thank you for your attention. <br> <br>
         Warm regards, <br><br><br><br>
-        Steering Committee ICICS 2023</p>", $attachment));
+        Steering Committee ICICS 2023</p>', $attachment));
 
         // Mail::send('mail.accepted-abstract', $data, function ($message) {
         //     $message->to('anam@gmail.com', 'Anam')->subject('Abstract Accepted');
@@ -63,10 +63,11 @@ class UploadAbstractController extends Controller
 
         dd('Email Sended');
     }
-    
-    public function repair2() {
 
-    $abstracts = UploadAbstract::where('loa', '!=', null)->get();
+    public function repair2()
+    {
+
+        $abstracts = UploadAbstract::where('loa', '!=', null)->get();
 
         foreach ($abstracts as $abstract) {
             $user = Participant::find($abstract->participant_id);
@@ -76,13 +77,14 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/'.'LOA-ABS'.$abstract->id.'-'.$user->full_name1.'.pdf', $loa->output());
         }
     }
-    
-    public function repair() {
 
-    $abstracts = UploadAbstract::where('loa', '!=', null)->get();
+    public function repair()
+    {
+
+        $abstracts = UploadAbstract::where('loa', '!=', null)->get();
 
         foreach ($abstracts as $abstract) {
             $user = Participant::find($abstract->participant_id);
@@ -92,7 +94,7 @@ class UploadAbstractController extends Controller
                 'institution' => $user->institution,
                 'abstractTitle' => $abstract->title,
             ])->setPaper('a4', 'potrait');
-            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/' . 'LOA-ABS' . $abstract->id . '-' . $user->full_name1 . '.pdf', $loa->output());
+            Storage::disk(config('filesystems.storage'))->put('letter-of-acceptance/'.'LOA-ABS'.$abstract->id.'-'.$user->full_name1.'.pdf', $loa->output());
         }
     }
 }

@@ -3,24 +3,37 @@
 namespace App\Http\Livewire;
 
 use App\Models\Payment;
-use Livewire\Component;
-use App\Models\UploadAbstract;
 use App\Models\UploadFulltext;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class FulltextForm extends Component
 {
-    public $title, $fulltext, $payment_id, $payment;
-    public $add = false, $edit = false, $fulltext_edit_id;
+    public $title;
+
+    public $fulltext;
+
+    public $payment_id;
+
+    public $payment;
+
+    public $add = false;
+
+    public $edit = false;
+
+    public $fulltext_edit_id;
+
     public $current_file = null;
 
     use WithFileUploads;
+
     public function mount()
     {
         $this->payment = Payment::where('participant_id', Auth::user()->participant->id)->where('validation', 'valid')->get();
         // dd($this->payment);
     }
+
     public function rules()
     {
         $rules = [
@@ -29,7 +42,7 @@ class FulltextForm extends Component
         ];
 
         // Only require file on create, make it optional on edit
-        if (!$this->edit) {
+        if (! $this->edit) {
             $rules['fulltext'] = 'required|file|mimes:docx';
         } else {
             $rules['fulltext'] = 'nullable|file|mimes:docx';
@@ -40,11 +53,11 @@ class FulltextForm extends Component
 
     //Custom Errror messages for validation
     protected $messages = [
-        'title.required' => 'Title is required !',
-        'payment_id.required' => 'Abstract is required !',
-        'fulltext.required' => 'Fulltext is required !',
-        'fulltext.file' => 'Fulltext must type a file !',
-        'fulltext.mimes' => 'Fulltext must have .docx format !',
+        'title.required' => 'Enter the paper title.',
+        'payment_id.required' => 'Choose the matching accepted abstract.',
+        'fulltext.required' => 'Choose a Word document to upload.',
+        'fulltext.file' => 'Choose a valid file to upload.',
+        'fulltext.mimes' => 'The paper must use the .docx format.',
     ];
 
     //Reatime Validation
@@ -60,7 +73,6 @@ class FulltextForm extends Component
         $this->resetErrorBag();
         $this->resetValidation();
     }
-
 
     public function empty()
     {
@@ -116,15 +128,15 @@ class FulltextForm extends Component
             $this->dispatchBrowserEvent('fulltext-success', [
                 'title' => 'Full-text Updated!',
                 'message' => 'Your full-text paper has been updated successfully.',
-                'icon' => 'success'
+                'icon' => 'success',
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error updating full-text: ' . $e->getMessage());
+            \Log::error('Error updating full-text: '.$e->getMessage());
 
             $this->dispatchBrowserEvent('fulltext-error', [
                 'title' => 'Update Failed',
                 'message' => 'An error occurred while updating your full-text paper. Please try again.',
-                'icon' => 'error'
+                'icon' => 'error',
             ]);
         }
     }
@@ -149,24 +161,24 @@ class FulltextForm extends Component
                 'payment_id' => $this->payment_id,
                 'fulltext' => $filePath,
                 'validation' => 'not yet validated',
-                'validated_by' => null
+                'validated_by' => null,
             ]);
 
             $this->cancel();
             $this->empty();
-            
+
             $this->dispatchBrowserEvent('fulltext-success', [
                 'title' => 'Full-text Uploaded!',
                 'message' => 'Your full-text paper has been uploaded successfully and is waiting for validation.',
-                'icon' => 'success'
+                'icon' => 'success',
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error uploading full-text: ' . $e->getMessage());
+            \Log::error('Error uploading full-text: '.$e->getMessage());
 
             $this->dispatchBrowserEvent('fulltext-error', [
                 'title' => 'Upload Failed',
                 'message' => 'An error occurred while uploading your full-text paper. Please try again.',
-                'icon' => 'error'
+                'icon' => 'error',
             ]);
         }
     }
@@ -174,7 +186,7 @@ class FulltextForm extends Component
     public function render()
     {
         return view('livewire.fulltext-form', [
-            'fulltexts' => UploadFulltext::whereRelation('payment', 'participant_id', Auth::user()->participant->id)->latest()->get()
+            'fulltexts' => UploadFulltext::whereRelation('payment', 'participant_id', Auth::user()->participant->id)->latest()->get(),
         ]);
     }
 }

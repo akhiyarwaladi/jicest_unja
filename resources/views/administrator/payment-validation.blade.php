@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title">
-                <h4>Payment Validation</h4>
+                <h4>Verify Payments</h4>
             </div>
         </div>
     </div>

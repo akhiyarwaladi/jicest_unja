@@ -1,206 +1,111 @@
+<div class="fulltext-workspace">
+    @if ($add || $edit)
+        <header class="abstract-heading">
+            <p class="ed-eyebrow">Full paper submission</p>
+            <h2>{{ $edit ? 'Edit full paper' : 'Submit a full paper' }}</h2>
+            <p>{{ $edit ? 'Update the title or replace the Word document.' : 'Select the accepted abstract that matches this paper, then upload the Word document.' }}</p>
+        </header>
 
-<div>
-    @if ($add == true)
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Upload Fulltext</h2>
-                </div>
-            </div>
-        </div>
-        <a class="btn btn-warning my-3" wire:click='cancel()'>Back</a>
-        <form wire:submit.prevent="save">
+        <form class="abstract-form" wire:submit.prevent="{{ $edit ? 'update' : 'save' }}">
             <div class="form-group">
-                <label for="payment_id">
-                    Upload For Abstract
-                </label>
-                <select class="custom-select @error('payment_id') is-invalid @enderror" id="payment_id" name="payment_id"
-                    wire:model='payment_id'>
-                    <option value="">Choose One</option>
-                        @foreach ($payment as $item)
-                            <option value="{{ $item->id }}">
-                                {{ $item->uploadAbstract->title ?? 'N/A' }}
-                            </option>
-                        @endforeach
+                <label for="payment_id">Accepted abstract</label>
+                <select class="custom-select @error('payment_id') is-invalid @enderror" id="payment_id" name="payment_id" wire:model="payment_id">
+                    <option value="">Choose an accepted abstract</option>
+                    @foreach ($payment as $item)
+                        <option value="{{ $item->id }}">{{ $item->uploadAbstract->title ?? 'Untitled abstract' }}</option>
+                    @endforeach
                 </select>
                 @error('payment_id')
-                    <span class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <p class="participant-error" role="alert">{{ $message }}</p>
                 @enderror
             </div>
+
             <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                    placeholder="Title" name="title" wire:model='title'>
+                <label for="fulltext-title">Paper title</label>
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="fulltext-title"
+                    placeholder="Enter the full paper title" name="title" wire:model="title">
                 @error('title')
-                    <span class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <p class="participant-error" role="alert">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="fulltext">Upload Fulltext (Microsoft Word .docx)</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                            class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext"
-                            wire:model.debounce.500ms='fulltext'>
-                        <label class="custom-file-label" for="fulltext">
-                            {{ $fulltext == null ? 'Choose Word file (.docx)' : $fulltext->getClientOriginalName() }}
-                        </label>
+
+            @if ($edit && $current_file)
+                <div class="current-document">
+                    <div>
+                        <p class="ed-mono">Current document</p>
+                        <a href="{{ asset('storage/' . $current_file) }}" target="_blank" rel="noopener">View uploaded paper</a>
                     </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                    </div>
-                </div>
-                @error('fulltext')
-                    <span class="invalid-feedback" style="display:block">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
-        </form>
-
-    @elseif ($edit == true)
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Edit Fulltext</h2>
-                </div>
-            </div>
-        </div>
-        <a class="btn btn-warning my-3" wire:click='cancel()'>Back</a>
-        <form wire:submit.prevent="update">
-            <div class="form-group">
-                <label for="payment_id">
-                    Upload For Abstract
-                </label>
-                <select class="custom-select @error('payment_id') is-invalid @enderror" id="payment_id" name="payment_id"
-                    wire:model='payment_id'>
-                    <option value="">Choose One</option>
-                        @foreach ($payment as $item)
-                            <option value="{{ $item->id }}">
-                                {{ $item->uploadAbstract->title ?? 'N/A' }}
-                            </option>
-                        @endforeach
-                </select>
-                @error('payment_id')
-                    <span class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                    placeholder="Title" name="title" wire:model='title'>
-                @error('title')
-                    <span class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            @if ($current_file)
-                <div class="alert alert-info">
-                    <strong>Current File:</strong>
-                    <a href="{{ asset('storage/' . $current_file) }}" target="_blank" class="alert-link">
-                        <i class="fa fa-file-word-o"></i> View Current Document
-                    </a>
                 </div>
             @endif
 
             <div class="form-group">
-                <label for="fulltext_edit">Upload New Fulltext (Microsoft Word .docx) - Optional</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                            class="custom-file-input @error('fulltext') is-invalid @enderror" id="fulltext_edit"
-                            wire:model.debounce.500ms='fulltext'>
-                        <label class="custom-file-label" for="fulltext_edit">
-                            {{ $fulltext == null ? 'Choose new Word file (.docx) - optional' : $fulltext->getClientOriginalName() }}
-                        </label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                    </div>
-                </div>
-                <small class="form-text text-muted">Leave empty to keep current file</small>
+                <label for="fulltext">{{ $edit ? 'Replacement document' : 'Word document' }}</label>
+                <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    class="form-control-file @error('fulltext') is-invalid @enderror" id="fulltext" wire:model.debounce.500ms="fulltext">
+                <p class="participant-help">Microsoft Word .docx only{{ $edit ? '. Leave this empty to keep the current document.' : '.' }}</p>
                 @error('fulltext')
-                    <span class="invalid-feedback" style="display:block">{{ $message }}</span>
+                    <p class="participant-error" role="alert">{{ $message }}</p>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a class="btn btn-warning" wire:click='cancel()'>Cancel</a>
-        </form>
-
-    @else
-        <!-- Information Box -->
-        <div class="alert alert-success" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-left: 5px solid #2563eb; border-radius: 10px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15); margin-bottom: 20px;">
-            <div style="display: flex; align-items: start; gap: 15px;">
-                <div style="flex-shrink: 0;">
-                    <i class="fa fa-file-word-o" style="font-size: 28px; color: #2563eb;"></i>
-                </div>
-                <div style="flex: 1;">
-                    <h5 style="color: #1e40af; font-weight: 700; margin-bottom: 10px; margin-top: 0;">
-                        <i class="fa fa-exclamation-circle"></i> Important: Upload Format Requirements
-                    </h5>
-                    <p style="color: #1e3a8a; margin-bottom: 8px; line-height: 1.6;">
-                        <strong>ACCEPTED FORMAT: MICROSOFT WORD (.docx) ONLY</strong>
-                    </p>
-                    <div style="color: #1e3a8a; line-height: 1.6;">
-                        <div style="margin-bottom: 5px;">
-                            <i class="fa fa-check-circle" style="color: #2563eb;"></i>
-                            <strong>Update title:</strong> Edit your paper title anytime
-                        </div>
-                        <div>
-                            <i class="fa fa-check-circle" style="color: #2563eb;"></i>
-                            <strong>Re-upload file:</strong> Replace your file with an updated version (optional)
-                        </div>
-                    </div>
-                </div>
+            <div class="abstract-actions">
+                <button type="submit" class="btn btn-primary" wire:loading.attr="disabled" wire:target="save,update">
+                    {{ $edit ? 'Save changes' : 'Submit full paper' }}
+                </button>
+                <button type="button" class="btn btn-warning" wire:click="cancel">Back to submissions</button>
+                <span class="participant-loading" wire:loading wire:target="save,update">Uploading document...</span>
             </div>
+        </form>
+    @else
+        <header class="abstract-heading">
+            <p class="ed-eyebrow">Full paper submission</p>
+            <h2>My full paper submissions</h2>
+            <p>Upload a Word document for each accepted abstract and track its validation status.</p>
+        </header>
+
+        <div class="paper-format-note">
+            <p class="ed-mono">Required format</p>
+            <p>Upload Microsoft Word files in .docx format. The paper title must match the accepted abstract record.</p>
         </div>
 
-        @if (count($payment) == 0)
-            <button class="btn btn-primary" disabled>Upload Paper</button>
+        @if (count($payment) === 0)
+            <div class="abstract-empty">
+                <p class="ed-mono">Submission unavailable</p>
+                <h3>Payment verification is required</h3>
+                <p>The full paper form opens after the conference secretariat verifies your payment.</p>
+            </div>
         @else
-            <button class="btn btn-primary" wire:click="add()">Upload Paper</button>
+            <div class="abstract-list-actions">
+                <button type="button" class="btn btn-primary" wire:click="add">Submit Full Paper</button>
+                <span class="participant-loading" wire:loading wire:target="add">Opening form...</span>
+            </div>
         @endif
-        @if (count($fulltexts) !== 0)
-            <div style="overflow-x:auto;">
-                <table class="table my-3">
-                    <thead class="thead-light">
+
+        @if (count($fulltexts) > 0)
+            <div class="table-responsive abstract-table-wrap">
+                <table class="table abstract-table">
+                    <caption class="sr-only">Submitted full papers</caption>
+                    <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">File</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Paper</th>
                             <th scope="col">Status</th>
                             <th scope="col">Validated by</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $a = 0;
-                        @endphp
-                        @foreach ($fulltexts as $item)
-                            <tr>
-                                <th scope="row">{{ ++$a }}</th>
-                                <td>{{ $item->title }}</td>
-                                <td><a href="{{ asset('storage/' . $item->fulltext) }}" target="_blank"
-                                        style="color:#2563eb; font-size:20px"><i class="fa fa-file-word-o"
-                                            aria-hidden="true"></i>
-                                    </a></td>
-                                <td>{{ $item->validation }}</td>
-                                <td>{{ $item->validated_by }}</td>
+                        @foreach ($fulltexts as $index => $item)
+                            <tr wire:key="fulltext-{{ $item->id }}">
+                                <td>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</td>
                                 <td>
-                                    <button class="btn btn-info" wire:click='editFulltext({{ $item->id }})'>Edit</button>
+                                    <strong>{{ $item->title }}</strong>
+                                    <a class="abstract-topic" href="{{ asset('storage/' . $item->fulltext) }}" target="_blank" rel="noopener">View Word document</a>
+                                </td>
+                                <td>{{ $item->validation }}</td>
+                                <td>{{ $item->validated_by ?: 'Pending' }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" wire:click="editFulltext({{ $item->id }})">Edit paper</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -208,35 +113,30 @@
                 </table>
             </div>
         @endif
-
     @endif
 </div>
 
-@section('script')
 <script>
-    // Sweet Alert for fulltext upload success
     window.addEventListener('fulltext-success', event => {
         Swal.fire({
             title: event.detail.title,
             text: event.detail.message,
             icon: event.detail.icon,
-            confirmButtonText: 'Great!',
-            confirmButtonColor: '#10b981',
+            confirmButtonText: 'Close',
+            confirmButtonColor: '#0b1b14',
             timer: 5000,
             showConfirmButton: true
         });
     });
 
-    // Sweet Alert for fulltext upload error
     window.addEventListener('fulltext-error', event => {
         Swal.fire({
             title: event.detail.title,
             text: event.detail.message,
             icon: event.detail.icon,
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#ef4444',
+            confirmButtonText: 'Close',
+            confirmButtonColor: '#b91c1c',
             showConfirmButton: true
         });
     });
 </script>
-@endsection

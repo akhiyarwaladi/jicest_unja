@@ -105,13 +105,13 @@
 
                             @if (count($abstracts) == 0)
                                 <tr>
-                                    <td colspan="9" align="center">No data</td>
+                                    <td colspan="9" align="center">No abstract submissions found.</td>
                                 </tr>
                             @endif
                             @foreach ($abstracts as $item)
                                 <tr>
                                     <td><button class="btn btn-primary btn-sm"
-                                            wire:click="showReview('{{ $item->id }}')">Review</button></td>
+                                            wire:click="showReview('{{ $item->id }}')">Review abstract</button></td>
                                     <td>{{ ($abstracts->currentpage() - 1) * $abstracts->perpage() + $loop->index + 1 }}
                                     </td>
                                     <td>{{ $item->participant->full_name1 }}</td>
@@ -263,24 +263,24 @@
             @if (!$loa)
                 <button class="btn btn-danger" wire:click='reject()' wire:loading.attr="disabled" wire:loading.class="btn-secondary">
                     <span wire:loading.remove wire:target="reject">
-                        <i class="fa fa-times mr-1"></i> Reject
+                        <i class="fa fa-times mr-1"></i> Reject abstract
                     </span>
                     <span wire:loading wire:target="reject">
                         <div class="d-flex align-items-center">
                             <div class="spinner-border spinner-border-sm mr-2" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            Rejecting... Please wait
+                            Rejecting abstract...
                         </div>
                     </span>
                 </button>
-                <button class="btn btn-primary" wire:click='showValidate()'>Accept</button>
+                <button class="btn btn-primary" wire:click='showValidate()'>Accept abstract</button>
             @endif
             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                 wire:click="back()">Cancel</button>
         </div>
 
-        <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
             role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">

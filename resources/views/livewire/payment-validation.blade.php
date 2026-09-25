@@ -73,12 +73,12 @@
                         <tbody>
                             @if (count($payments) == 0)
                                 <tr>
-                                    <td colspan="10" align="center">No data</td>
+                                    <td colspan="10" align="center">No payments found.</td>
                                 </tr>
                             @endif
                             @foreach ($payments as $item)
                                 <tr>
-                                    <td><button class="btn btn-primary btn-sm" wire:click="showDetail('{{ $item->id }}')">Validate</button></td>
+                                    <td><button class="btn btn-primary btn-sm" wire:click="showDetail('{{ $item->id }}')">Review payment</button></td>
                                     <td>{{ ($payments->currentpage() - 1) * $payments->perpage() + $loop->index + 1 }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->participant->user->email }}</td>
@@ -212,24 +212,24 @@
             @if (!$receipt)
                 <button wire:click="invalid()" class="btn btn-danger" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
                     <span wire:loading.remove wire:target="invalid">
-                        <i class="fa fa-times mr-1"></i> Invalid
+                        <i class="fa fa-times mr-1"></i> Reject payment
                     </span>
                     <span wire:loading wire:target="invalid">
                         <div class="d-flex align-items-center">
                             <div class="spinner-border spinner-border-sm mr-2" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            Processing... Please wait
+                            Rejecting payment...
                         </div>
                     </span>
                 </button>
-                <button class="btn btn-primary" wire:click='showValidate()'>Valid</button>
+                <button class="btn btn-primary" wire:click='showValidate()'>Confirm payment</button>
             @endif
             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                 wire:click="back()">Cancel</button>
         </div>
 
-        <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
             role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">

@@ -46,13 +46,13 @@
 
                         @if (count($participants) == 0)
                             <tr>
-                                <td colspan="7" align="center">No data</td>
+                                <td colspan="7" align="center">No member records found.</td>
                             </tr>
                         @endif
                         @foreach ($participants as $item)
                             <tr>
                                 <td><button class="btn btn-primary btn-sm"
-                                        wire:click="showValidate('{{ $item->id }}')">Validate</button></td>
+                                        wire:click="showValidate('{{ $item->id }}')">Review member</button></td>
                                 <td>{{ ($participants->currentpage() - 1) * $participants->perpage() + $loop->index + 1 }}
                                 </td>
                                 <td>{{ $item->user->email }}</td>
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
         role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-xl" role="document">
             <div class="modal-content">
