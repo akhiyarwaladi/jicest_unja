@@ -110,10 +110,16 @@ deadline move to the next round.</p>
             return;
         }
 
+        const target = new Date(targetDate).getTime();
+        if (isNaN(target)) {
+            el.textContent = 'Date pending';
+            return;
+        }
+
         let timer = null;
 
         const tick = () => {
-            const distance = targetDate - new Date().getTime();
+            const distance = target - new Date().getTime();
 
             if (distance < 0) {
                 el.textContent = 'Closed';
