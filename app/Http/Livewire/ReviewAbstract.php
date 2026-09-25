@@ -25,6 +25,7 @@ class ReviewAbstract extends Component
     public $validVouchers = ['JICEST2026FST50RB'];
     public $date_from;
     public $date_to = '';
+    public $date_range_initialized = false;
 
     //LOA
     public $full_name, $institution, $abstractTitle, $loa, $loaPath;
@@ -33,8 +34,18 @@ class ReviewAbstract extends Component
 
     public function mount()
     {
-        $this->date_from = Fee::getDefaultFilterStart();
-        $this->date_to = Fee::getDefaultFilterEnd();
+        $this->initializeDateRange();
+    }
+
+    protected function initializeDateRange(): void
+    {
+        if ($this->date_range_initialized) {
+            return;
+        }
+
+        $this->date_from = $this->date_from ?: Fee::getDefaultFilterStart();
+        $this->date_to = $this->date_to ?: Fee::getDefaultFilterEnd();
+        $this->date_range_initialized = true;
     }
 
     public function empty()
@@ -296,6 +307,8 @@ class ReviewAbstract extends Component
 
     public function render()
     {
+        $this->initializeDateRange();
+
         $query = UploadAbstract::where('status', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
             $query->where('full_name1', 'like', '%' . $this->search2 . '%');
         });
