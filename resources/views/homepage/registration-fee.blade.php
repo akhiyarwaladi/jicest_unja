@@ -6,8 +6,15 @@
 
     The fee prospectus rendered as a printed price list: hairline rows, monospaced
     figures, one accent for early bird and one signal colour for the regular round.
-    Amounts and periods are read from the fees table via Fee::getAllPricingTiers().
+     Amounts and periods are read from the fees table via Fee::getAllPricingTiers().
 --}}
+@php
+    $schedule = $schedule ?? [];
+    $earlyStart = $schedule['early_start'] ?? null;
+    $earlyEnd = $schedule['early_end'] ?? null;
+    $regularStart = $schedule['regular_start'] ?? null;
+    $regularEnd = $schedule['regular_end'] ?? null;
+@endphp
 <div class="ed-paper pt-32 pb-16 w-full">
     <div class="max-w-5xl mx-auto px-6">
         <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10">
@@ -30,8 +37,10 @@
                     &ndash;
                     {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}
                 </span>
+            @elseif ($earlyStart && $earlyEnd)
+                <span style="color:var(--ed-accent)">Early bird &middot; {{ $earlyStart->format('d M') }} &ndash; {{ $earlyEnd->format('d M Y') }}</span>
             @else
-                <span style="color:var(--ed-accent)">Early bird &middot; 01 Aug &ndash; 14 Oct 2026</span>
+                <span style="color:var(--ed-accent)">Early bird &middot; Date pending</span>
             @endif
 
             @if(isset($pricing['presenter']['non_early_bird']) && $pricing['presenter']['non_early_bird'])
@@ -41,8 +50,10 @@
                     &ndash;
                     {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}
                 </span>
+            @elseif ($regularStart && $regularEnd)
+                <span class="ed-quiet">Regular &middot; {{ $regularStart->format('d M') }} &ndash; {{ $regularEnd->format('d M Y') }}</span>
             @else
-                <span class="ed-quiet">Regular &middot; 15 Oct &ndash; 09 Nov 2026</span>
+                <span class="ed-quiet">Regular &middot; Date pending</span>
             @endif
         </div>
     </div>

@@ -264,7 +264,7 @@
             <div class="mt-11">
                 <header class="italic text-black">Hosted and Managed by</header>
                 <div class="flex gap-10 px-5 justify-center">
-                    <img src="{{asset('assets/logos/unja3d.png')}}" class="object-contain" width="90"/>
+                    <img src="{{asset('assets/img/unja-logo-2026.png')}}" class="object-contain" width="90"/>
                     <div class="text-white py-5 text-left w-fit">
                         <p class="font-serif text-3xl font-medium text-blue-800">FACULTY OF SCIENCE AND TECHNOLOGY</p>
                         <p class="font-sans text-3xl font-semibold text-orange-500">UNIVERSITAS JAMBI</p>

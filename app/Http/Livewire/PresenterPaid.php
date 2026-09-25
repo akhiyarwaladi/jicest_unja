@@ -13,11 +13,12 @@ class PresenterPaid extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $search2 = '';
-    public $date_from = '2026-08-01';
+    public $date_from;
     public $date_to = '';
 
     public function mount()
     {
+        $this->date_from = \App\Models\Fee::getDefaultFilterStart();
         $this->date_to = date('Y-m-d');
     }
 

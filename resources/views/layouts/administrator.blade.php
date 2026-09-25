@@ -372,7 +372,18 @@
 
                 <div class="admin-account">
                     <p class="admin-account-label">Signed in as</p>
-                    <p class="admin-account-copy">{{ auth()->user()->name ?: auth()->user()->email }}<br>{{ auth()->user()->email }}</p>
+                    @php
+                        $accountName = auth()->user()->name;
+                        $accountEmail = auth()->user()->email;
+                        $showAccountName = $accountName && $accountName !== $accountEmail;
+                    @endphp
+                    <p class="admin-account-copy">
+                        @if ($showAccountName)
+                            {{ $accountName }}<br>{{ $accountEmail }}
+                        @else
+                            {{ $accountEmail }}
+                        @endif
+                    </p>
                 </div>
             </aside>
 

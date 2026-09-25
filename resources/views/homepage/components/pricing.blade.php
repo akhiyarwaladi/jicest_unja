@@ -5,9 +5,16 @@
     gradient cards. The ink band below is the one deliberately dramatic moment on the
     homepage; everything around it stays on paper.
 
-    Data comes from App\Models\Fee::getAllPricingTiers(), keyed as:
-    presenter, presenter_student, participant, participant_student.
+     Data comes from App\Models\Fee::getAllPricingTiers(), keyed as:
+     presenter, presenter_student, participant, participant_student.
 --}}
+@php
+    $schedule = $schedule ?? [];
+    $earlyStart = $schedule['early_start'] ?? null;
+    $earlyEnd = $schedule['early_end'] ?? null;
+    $regularStart = $schedule['regular_start'] ?? null;
+    $regularEnd = $schedule['regular_end'] ?? null;
+@endphp
 <div class="ed-ink-band w-full py-24 md:py-28 text-white">
     <div class="max-w-5xl mx-auto px-6">
         <header class="max-w-3xl">
@@ -28,8 +35,10 @@
                     &ndash;
                     {{ $pricing['presenter']['early_bird']['period_end']->format('d M Y') }}
                 </span>
+            @elseif ($earlyStart && $earlyEnd)
+                <span style="color:#6ee7b7">Early bird &middot; {{ $earlyStart->format('d M') }} &ndash; {{ $earlyEnd->format('d M Y') }}</span>
             @else
-                <span style="color:#6ee7b7">Early bird &middot; 01 Aug &ndash; 14 Oct 2026</span>
+                <span style="color:#6ee7b7">Early bird &middot; Date pending</span>
             @endif
 
             @if(isset($pricing['presenter']['non_early_bird']) && $pricing['presenter']['non_early_bird'])
@@ -39,8 +48,10 @@
                     &ndash;
                     {{ $pricing['presenter']['non_early_bird']['period_end']->format('d M Y') }}
                 </span>
+            @elseif ($regularStart && $regularEnd)
+                <span class="text-white/70">Regular &middot; {{ $regularStart->format('d M') }} &ndash; {{ $regularEnd->format('d M Y') }}</span>
             @else
-                <span class="text-white/70">Regular &middot; 15 Oct &ndash; 09 Nov 2026</span>
+                <span class="text-white/70">Regular &middot; Date pending</span>
             @endif
         </div>
 

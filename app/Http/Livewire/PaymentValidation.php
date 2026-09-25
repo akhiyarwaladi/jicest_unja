@@ -24,7 +24,7 @@ class PaymentValidation extends Component
     public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate,$payment;
     public $search = '', $search2 = '';
     public $no_receipt, $for_payment_of, $amount, $receipt, $receiptPath, $loaPath;
-    public $date_from = '2026-08-01';
+    public $date_from;
     public $date_to = '';
 
     // USD display fields (read-only for display purposes)
@@ -38,6 +38,7 @@ class PaymentValidation extends Component
 
     public function mount()
     {
+        $this->date_from = \App\Models\Fee::getDefaultFilterStart();
         $this->date_to = date('Y-m-d');
     }
 

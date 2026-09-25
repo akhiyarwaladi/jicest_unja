@@ -220,7 +220,7 @@
             <div class="mt-5" style="margin-top: 100px;">
                 <header class="italic text-black text-center" style=""><i>Hosted and Managed by</i></header>
                 <div class="d-flex flex-row align-items-center w-100 justify-content-center" style="">
-                    <img src="{{asset('assets/logos/unja3d.png')}}" style="object-fit: contain; max-width: 100px; width: 100%;" class="" width=""/>
+                    <img src="{{asset('assets/img/unja-logo-2026.png')}}" style="object-fit: contain; max-width: 100px; width: 100%;" class="" width=""/>
                     <div class="d-flex flex-column" style="margin-left: 20px;">
                         <p class="py-0 my-0" style="font-weight: 600;color: black; ">FACULTY OF SCIENCE AND TECHNOLOGY</p>
                         <p class="py-0 my-0">UNIVERSITAS JAMBI</p>

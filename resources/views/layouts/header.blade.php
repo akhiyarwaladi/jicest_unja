@@ -4,7 +4,7 @@
                 <a href="/">
                     <div style="height: 50px;overflow-y:hidden;" class="d-flex">
                         <img src="{{ asset('assets/logos/jicest.png') }}" style="object-fit:cover; height: 60px;background: transparent;" alt="logo.png" class="logo-Jicest justify-content-center gap-4">
-                        <img src="{{ asset('assets/logos/unja3d.png') }}" style="object-fit: contain" width="30px" class="logo-unja" style="background: transparent;"
+                        <img src="{{ asset('assets/img/unja-logo-2026.png') }}" style="object-fit: contain" width="30px" class="logo-unja" style="background: transparent;"
                         alt="logo.png">
                     </div>
 

@@ -23,7 +23,7 @@ class ReviewAbstract extends Component
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
     public $validVouchers = ['JICEST2026FST50RB'];
-    public $date_from = '2026-08-01';
+    public $date_from;
     public $date_to = '';
 
     //LOA
@@ -33,6 +33,7 @@ class ReviewAbstract extends Component
 
     public function mount()
     {
+        $this->date_from = Fee::getDefaultFilterStart();
         $this->date_to = date('Y-m-d');
     }
 
@@ -143,6 +144,12 @@ class ReviewAbstract extends Component
             \Log::info('Accept function called for abstract review ID: ' . $this->abstract_review);
             $this->email = UploadAbstract::find($this->abstract_review)->participant->user->email;
             \Log::info('Email found: ' . $this->email);
+            $feeDetails = Fee::getFeeForParticipant($this->participant_type);
+            $schedule = Fee::getSchedulePeriods();
+            $paymentStart = $feeDetails['period_start']?->format('d F Y');
+            $paymentEnd = $feeDetails['period_end']?->format('d F Y');
+            $paperDeadline = $schedule['regular_end']?->format('F j, Y') ?? 'the published paper deadline';
+            $paymentDeadline = $paymentEnd ?? 'the published payment deadline';
 
             $loa = PDF::loadView('administrator.pdf.loa', [
                 'full_name' => $this->full_name,
@@ -156,7 +163,9 @@ class ReviewAbstract extends Component
                 'full_name' => $this->full_name,
                 'fee' => $this->fee,
                 'participant_type' => $this->participant_type,
-                'email' => $this->email
+                'email' => $this->email,
+                'payment_start' => $paymentStart,
+                'payment_end' => $paymentEnd
             ])->setPaper('a4', 'landscape');
             Storage::disk(config('filesystems.storage'))->put('invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf', $invoice->output());
             $this->invoicePath = 'invoice/' . 'Invoice-ABS' . $this->abstract_review . '-' . $this->full_name . '.pdf';
@@ -185,8 +194,8 @@ class ReviewAbstract extends Component
             <br>
             <br>
             <br>
-            It is our great pleasure therefore to request that you submit your full paper, no later than November 9th, 2026 by following the template as attached in the website: <a href='http://localhost:8000'>jicest.unja.ac.id</a>. <br>
-            In addition, you are requested to proceed with the payment of the registration fee (no later than November 9th, 2026). <br><br>
+            It is our great pleasure therefore to request that you submit your full paper, no later than " . $paperDeadline . " by following the template as attached in the website: <a href='" . url('/') . "'>jicest.unja.ac.id</a>. <br>
+            In addition, you are requested to proceed with the payment of the registration fee (no later than " . $paymentDeadline . "). <br><br>
             For payment information, please contact our contact persons:<br>
             - Rara Ayu Lestary: +6282210794479<br>
             - Tia Wulandari: +6285266469829<br>

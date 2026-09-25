@@ -1,3 +1,8 @@
+@php
+    $schedule = \App\Models\Fee::getSchedulePeriods();
+    $paperDeadline = $schedule['regular_end']?->format('F j, Y') ?? 'the published paper deadline';
+    $paymentDeadline = $schedule['regular_end']?->format('F j, Y') ?? 'the published payment deadline';
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +21,9 @@
         Engineering, Science and Technology
         (JICEST 2026) <br>
         Title of abstract : <strong>{{ $title }}</strong> has been accepted. <br>
-        It is our great pleasure therefore to request that you submit your full paper, no later than November 9,
-        2026 by following the template as attached in the website: JICEST.unja.ac.id.
-        In addition, you are requested to proceed with the payment of the registration fee (no later than November 9,
-        2026). <br> <br>
+        It is our great pleasure therefore to request that you submit your full paper, no later than {{ $paperDeadline }},
+        by following the template as attached in the website: JICEST.unja.ac.id.
+        In addition, you are requested to proceed with the payment of the registration fee (no later than {{ $paymentDeadline }}). <br> <br>
         After finishing the payment, kindly send the receipt to the committee via website. For payment information, please contact our contact persons: <br>
         Rara Ayu Lestary: +62 822 1079 4479 <br>
         Tia Wulandari: +62 852 6646 9829 <br> <br>

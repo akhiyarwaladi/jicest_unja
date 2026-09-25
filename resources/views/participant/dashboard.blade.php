@@ -72,6 +72,10 @@
             line-height: 1.12;
         }
 
+        .dashboard-panel--ink h2 {
+            color: #fff;
+        }
+
         .dashboard-panel p:not(.dashboard-panel-label) {
             max-width: 560px;
             margin: 12px 0 0;
@@ -90,6 +94,13 @@
 
         .dashboard-account-panel p:not(.dashboard-panel-label) {
             color: var(--ed-ink-70);
+        }
+
+        .dashboard-account-panel h2,
+        .dashboard-account-panel p {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .dashboard-account-list {
@@ -332,6 +343,9 @@
     @php
         $participant = auth()->user()->participant;
         $participantType = $participant->participant_type;
+        $accountName = auth()->user()->name;
+        $accountEmail = auth()->user()->email;
+        $showAccountName = $accountName && $accountName !== $accountEmail;
         $isPresenter = in_array($participantType, ['presenter', 'presenter_reguler', 'presenter_student', 'professional presenter', 'student presenter'], true);
         $typeLabel = match ($participantType) {
             'presenter', 'presenter_reguler', 'professional presenter' => 'Presenter (Reguler)',
@@ -382,8 +396,10 @@
 
             <section class="dashboard-panel dashboard-account-panel">
                 <p class="dashboard-panel-label" style="color:var(--ed-accent)">Account record</p>
-                <h2>{{ auth()->user()->name ?: auth()->user()->email }}</h2>
-                <p>{{ auth()->user()->email }}</p>
+                <h2>{{ $showAccountName ? $accountName : $accountEmail }}</h2>
+                @if ($showAccountName)
+                    <p>{{ $accountEmail }}</p>
+                @endif
                 <dl class="dashboard-account-list">
                     <div class="dashboard-account-row">
                         <dt>Registration</dt>

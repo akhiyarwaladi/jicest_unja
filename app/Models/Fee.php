@@ -150,6 +150,24 @@ class Fee extends Model
         return $pricing;
     }
 
+    public static function getSchedulePeriods()
+    {
+        $early = self::where('early_bird', true)->orderBy('payment_start')->first();
+        $regular = self::where('early_bird', false)->orderBy('payment_start')->first();
+
+        return [
+            'early_start' => $early?->payment_start,
+            'early_end' => $early?->payment_end,
+            'regular_start' => $regular?->payment_start,
+            'regular_end' => $regular?->payment_end,
+        ];
+    }
+
+    public static function getDefaultFilterStart()
+    {
+        return self::getSchedulePeriods()['early_start']?->format('Y-m-d') ?? now()->format('Y-m-d');
+    }
+
     /**
      * Check if current date is in early bird period
      * @return bool

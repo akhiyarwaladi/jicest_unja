@@ -553,7 +553,18 @@
 
                 <div class="participant-account">
                     <p class="participant-account-label">Signed in as</p>
-                    <p class="participant-account-copy">{{ auth()->user()->name ?: auth()->user()->email }}<br>{{ auth()->user()->email }}</p>
+                    @php
+                        $accountName = auth()->user()->name;
+                        $accountEmail = auth()->user()->email;
+                        $showAccountName = $accountName && $accountName !== $accountEmail;
+                    @endphp
+                    <p class="participant-account-copy">
+                        @if ($showAccountName)
+                            {{ $accountName }}<br>{{ $accountEmail }}
+                        @else
+                            {{ $accountEmail }}
+                        @endif
+                    </p>
                 </div>
             </aside>
 

@@ -1,4 +1,13 @@
 {{-- Important dates: a printed deadline table rather than a grid of gradient cards. --}}
+@php
+    $schedule = $schedule ?? [];
+    $earlyEnd = $schedule['early_end'] ?? null;
+    $regularEnd = $schedule['regular_end'] ?? null;
+    $earlyEndLabel = $earlyEnd ? $earlyEnd->format('d M Y') : 'Date pending';
+    $regularEndLabel = $regularEnd ? $regularEnd->format('d M Y') : 'Date pending';
+    $earlyDeadline = $earlyEnd ? $earlyEnd->format('Y-m-d') . 'T23:59:59+07:00' : null;
+    $regularDeadline = $regularEnd ? $regularEnd->format('Y-m-d') . 'T23:59:59+07:00' : null;
+@endphp
 <div class="ed-paper w-full py-20 md:py-24">
     <div class="max-w-5xl mx-auto px-6">
         <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8">
@@ -20,7 +29,7 @@ deadline move to the next round.</p>
                 <h3 class="ed-mono text-sm tracking-[.16em] uppercase" style="color:var(--ed-accent)">Early bird round
     </h3>
                 <span class="ed-leader"></span>
-                <span class="ed-mono text-sm ed-quiet">closes 14 Oct 2026</span>
+                <span class="ed-mono text-sm ed-quiet">closes {{ $earlyEndLabel }}</span>
             </div>
 
             <div class="ed-row grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7">
@@ -30,7 +39,7 @@ deadline move to the next round.</p>
                     <p class="ed-quiet text-base mt-2">Extended abstract, 250-300 words, in the provided template. Early
         bird fee applies.</p>
                 </div>
-                <div class="ed-mono text-lg md:col-span-2 md:text-right">14 Oct 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">{{ $earlyEndLabel }}</div>
                 <div class="md:col-span-4 md:text-right">
                     <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
                     <div id="countdown-abstract-early" class="ed-mono text-2xl mt-1" style="color:var(--ed-accent)">&mdash;</div>
@@ -44,7 +53,7 @@ deadline move to the next round.</p>
                     <p class="ed-quiet text-base mt-2">Final manuscript for the proceedings, submitted after abstract
         acceptance.</p>
                 </div>
-                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">{{ $regularEndLabel }}</div>
                 <div class="md:col-span-4 md:text-right">
                     <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
                     <div id="countdown-paper-early" class="ed-mono text-2xl mt-1" style="color:var(--ed-accent)">&mdash;</div>
@@ -66,7 +75,7 @@ deadline move to the next round.</p>
                     <h4 class="ed-display text-2xl">Abstract submission</h4>
                     <p class="ed-quiet text-base mt-2">Last call for abstracts. Regular registration fee applies.</p>
                 </div>
-                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">{{ $regularEndLabel }}</div>
                 <div class="md:col-span-4 md:text-right">
                     <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
                     <div id="countdown-abstract-regular" class="ed-mono text-2xl mt-1" style="color:var(--ed-signal)">&mdash;</div>
@@ -80,7 +89,7 @@ deadline move to the next round.</p>
                     <p class="ed-quiet text-base mt-2">Absolute deadline for manuscripts to be included in the
         proceedings.</p>
                 </div>
-                <div class="ed-mono text-lg md:col-span-2 md:text-right">9 Nov 2026</div>
+                <div class="ed-mono text-lg md:col-span-2 md:text-right">{{ $regularEndLabel }}</div>
                 <div class="md:col-span-4 md:text-right">
                     <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Closes in</div>
                     <div id="countdown-paper-regular" class="ed-mono text-2xl mt-1" style="color:var(--ed-signal)">&mdash;</div>
@@ -91,11 +100,15 @@ deadline move to the next round.</p>
 </div>
 
 <script>
-    // Countdown to a fixed deadline. Each element shows days / hours / minutes / seconds
+    // Countdown to a fee-table deadline. Each element shows days / hours / minutes / seconds
     // and settles on "Closed" once the date has passed.
     function startCountdown(targetDate, elementId) {
         const el = document.getElementById(elementId);
         if (!el) return;
+        if (!targetDate) {
+            el.textContent = 'Date pending';
+            return;
+        }
 
         let timer = null;
 
@@ -121,12 +134,12 @@ deadline move to the next round.</p>
     }
 
     // Early bird round
-    const abstractEarlyDeadline = new Date('October 14, 2026 23:59:59').getTime();
-    const paperEarlyDeadline = new Date('November 9, 2026 23:59:59').getTime();
+    const abstractEarlyDeadline = @json($earlyDeadline);
+    const paperEarlyDeadline = @json($regularDeadline);
 
     // Final round
-    const abstractRegularDeadline = new Date('November 9, 2026 23:59:59').getTime();
-    const paperRegularDeadline = new Date('November 9, 2026 23:59:59').getTime();
+    const abstractRegularDeadline = @json($regularDeadline);
+    const paperRegularDeadline = @json($regularDeadline);
 
     startCountdown(abstractEarlyDeadline, 'countdown-abstract-early');
     startCountdown(paperEarlyDeadline, 'countdown-paper-early');

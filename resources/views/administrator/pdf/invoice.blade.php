@@ -9,15 +9,12 @@
 
 <body>
     <div class="row justify-content-center">
-        @php
-            $early = false;
-        @endphp
         <div style="width:100%">
             <div class="row justify-content-center"style="width:100%" style="margin:0px 5px">
                 <table style="width:100%">
                     <tr style="margin:0; padding:0">
                         <td style="width:20%">
-                            <img src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('assets/img/unja-3d.jpeg'))) }}" width="100px" alt="">
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/unja-logo-2026.png'))) }}" width="100px" alt="">
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
@@ -92,9 +89,8 @@
                         <td style="padding:5px">{{ $fee }}</td>
                         <td style="padding:5px">1</td>
                         <td style="padding:5px">{{ $fee }}</td>
-                        <td style="padding:5px">14 October 2026</td>
-                        <td style="padding:5px">9 November 2026</td>
-                        <!--<td style="padding:5px">{{$early ? "14 October 2026" : "1 November 2026"}}</td>-->
+                        <td style="padding:5px">{{ $payment_start ?? 'Date pending' }}</td>
+                        <td style="padding:5px">{{ $payment_end ?? 'Date pending' }}</td>
                     </tr>
                     <tr>
                         <td colspan="8" style="padding-top:20px" align="center">
@@ -113,9 +109,9 @@
                                 Signature of Receiver<br>
                             </p>
                             <div class="parent">
-                                <div class="parent" style="position: relative;top: 10px;left: 0;">
-                                    <img class="image1" style="position: relative;top: 0;left: -20px;z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="100px" />
-                                    <img class="image2" style="position: absolute; left: 40px; top: -30px; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/tdtd.png'))) }}" width="90px" />
+                                <div class="parent" style="position: relative; width: 180px; height: 85px; margin-left: auto;">
+                                    <img class="image1" style="position: absolute; left: 90px; top: 20px; z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="90px" />
+                                    <img class="image2" style="position: absolute; left: 0; top: 0; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/chairman-signature-lucky-zaehir.png'))) }}" width="78px" />
                                 </div>
                             </div>
                             <p style="margin:10px 0px 0px 0px; padding:0px;font-size: 14px; text-align:end; white-space: nowrap;">

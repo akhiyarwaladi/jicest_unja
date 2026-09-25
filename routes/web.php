@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ParticipantController;
+use App\Models\Fee;
 use App\Http\Controllers\UploadAbstractController;
 use App\Http\Controllers\UploadFulltextController;
 
@@ -23,10 +24,11 @@ use App\Http\Controllers\UploadFulltextController;
 */
 
 Route::get('/', function () {
-    $pricing = \App\Models\Fee::getAllPricingTiers();
+    $pricing = Fee::getAllPricingTiers();
     return view('homepage.index', [
         'title' => 'Home',
-        'pricing' => $pricing
+        'pricing' => $pricing,
+        'schedule' => Fee::getSchedulePeriods()
     ]);
 });
 
@@ -38,10 +40,11 @@ Route::get('/rundown', function () {
 });
 
 Route::get('/registration-fee', function () {
-    $pricing = \App\Models\Fee::getAllPricingTiers();
+    $pricing = Fee::getAllPricingTiers();
     return view('homepage.registration-fee', [
         'title' => 'Registration Fee',
-        'pricing' => $pricing
+        'pricing' => $pricing,
+        'schedule' => Fee::getSchedulePeriods()
     ]);
 });
 
