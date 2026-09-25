@@ -165,7 +165,7 @@ class Fee extends Model
 
     public static function getDefaultFilterStart()
     {
-        return self::getSchedulePeriods()['early_start']?->format('Y-m-d') ?? now()->format('Y-m-d');
+        return now()->startOfYear()->format('Y-m-d');
     }
 
     public static function getDefaultFilterEnd()
