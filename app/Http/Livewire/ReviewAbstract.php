@@ -22,6 +22,7 @@ class ReviewAbstract extends Component
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
     public $search = '', $search2, $abstract_review, $status_hki;
+    public $reviewError = '';
     public $validVouchers = ['JICEST2026FST50RB'];
     public $date_from;
     public $date_to = '';
@@ -61,36 +62,51 @@ class ReviewAbstract extends Component
         $this->presenter = null;
         $this->attendance = null;
         $this->abstract_review = null;
+        $this->reviewError = '';
     }
 
 
     public function cancel()
     {
         $this->review = false;
+        $this->reviewError = '';
     }
 
     public function showReview($id)
     {
+        $this->reviewError = '';
         $abstract = UploadAbstract::find($id);
-        if($this->status_hki = $abstract->participant->hki_status == 'not yet validated'){
 
-        return redirect('/review-abstract')->with('message', "Cannot review ".$abstract->participant->full_name1." 's abstract because his/her HKI member status has not been validated. click the member hki validation menu to validate!");
-        }else{
-            $this->review = true;
-            $this->abstract_review = $id;
-            $this->topic = $abstract->topic;
-            $this->type = $abstract->type;
-            $this->title = $abstract->title;
-            $this->keywords = $abstract->keywords;
-            $this->authors = $abstract->authors;
-            $this->abstract = $abstract->abstract;
-            $this->loa = $abstract->loa;
-            $this->attendance = $abstract->attendance;
-            $this->institutions = $abstract->institutions;
-            $this->presenter = $abstract->presenter;
+        if (!$abstract) {
+            $this->reviewError = 'The abstract submission could not be found.';
+            return;
         }
 
+        $participant = $abstract->participant;
+        if (!$participant) {
+            $this->reviewError = 'This abstract is not linked to a participant record.';
+            return;
+        }
 
+        $this->status_hki = $participant->hki_status;
+        if ($participant->hki_status === 'not yet validated') {
+            $this->reviewError = 'This abstract cannot be reviewed until the participant HKI status has been validated. Open Member HKI Validation first.';
+            return;
+        }
+
+        $this->review = true;
+        $this->abstract_review = $id;
+        $this->topic = $abstract->topic;
+        $this->type = $abstract->type;
+        $this->title = $abstract->title;
+        $this->keywords = $abstract->keywords;
+        $this->authors = $abstract->authors;
+        $this->abstract = $abstract->abstract;
+        $this->loa = $abstract->loa;
+        $this->attendance = $abstract->attendance;
+        $this->institutions = $abstract->institutions;
+        $this->presenter = $abstract->presenter;
+        $this->dispatchBrowserEvent('to-top');
     }
     
     public function applyDiscount($fee, $amount1, $amount2)
@@ -153,6 +169,7 @@ class ReviewAbstract extends Component
     public function back()
     {
         $this->review = false;
+        $this->reviewError = '';
         $this->dispatchBrowserEvent('to-top');
     }
 

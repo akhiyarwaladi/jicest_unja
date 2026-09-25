@@ -299,6 +299,9 @@
 </style>
 
 <div>
+    @if ($reviewError)
+        <div class="alert alert-danger" role="alert">{{ $reviewError }}</div>
+    @endif
 
     @if ($review !== true)
         <div class="row">
@@ -376,8 +379,14 @@
                             @endif
                             @foreach ($abstracts as $item)
                                 <tr>
-                                    <td><button class="btn btn-primary btn-sm"
-                                            wire:click="showReview('{{ $item->id }}')">Review abstract</button></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm"
+                                            wire:click="showReview({{ $item->id }})"
+                                            wire:loading.attr="disabled" wire:target="showReview">
+                                            <span wire:loading.remove wire:target="showReview">Review abstract</span>
+                                            <span wire:loading wire:target="showReview">Opening…</span>
+                                        </button>
+                                    </td>
                                     <td>{{ ($abstracts->currentpage() - 1) * $abstracts->perpage() + $loop->index + 1 }}
                                     </td>
                                     <td>{{ $item->participant->full_name1 }}</td>
