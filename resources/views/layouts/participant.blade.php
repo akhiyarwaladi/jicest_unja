@@ -512,7 +512,7 @@
     @php
         $activeTitle = $title ?? '';
         $participantType = auth()->user()->participant->participant_type;
-        $isPresenter = in_array($participantType, ['presenter', 'presenter_reguler', 'presenter_student'], true);
+        $isPresenter = in_array($participantType, ['presenter', 'presenter_reguler', 'presenter_student', 'professional presenter', 'student presenter'], true);
         $navigation = [
             ['title' => 'Dashboard', 'label' => 'Dashboard', 'href' => '/dashboard'],
         ];
@@ -553,7 +553,7 @@
 
                 <div class="participant-account">
                     <p class="participant-account-label">Signed in as</p>
-                    <p class="participant-account-copy">{{ auth()->user()->name }}<br>{{ auth()->user()->email }}</p>
+                    <p class="participant-account-copy">{{ auth()->user()->name ?: auth()->user()->email }}<br>{{ auth()->user()->email }}</p>
                 </div>
             </aside>
 

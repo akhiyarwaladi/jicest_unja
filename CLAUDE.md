@@ -195,7 +195,7 @@ uppercase, no gradient and no lift.
   The new migration creates the table and seeds the 2026 tiers, and is a no-op where data exists.
 - ✅ Voucher code rolled to `JICEST2026FST50RB`; admin `date_from` filters default to 2026-08-01
 - ✅ Stale "JICEST 2023" export filenames corrected
-- ✅ Created the missing `assets/img/jicest-logo-2026.png` and `uploads/TemplateAbstract2026.docx`
+- ✅ Created the missing `assets/img/jicest-logo-2026.png` and `uploads/JICEST_2026_Abstract_Template.docx`
   (PDFs and template downloads were 404-ing before this)
 
 ### Frontend redesign

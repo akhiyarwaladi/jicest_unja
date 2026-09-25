@@ -42,8 +42,8 @@
                             'name' => 'Download',
                             'type' => 'multiple',
                             'menu' => [
-                                ['name' => 'Paper Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/downloads/JICEST_Paper.docx', 'inclusion' => [""]],
-                                ['name' => 'Abstract Template JICEST', 'type' => 'download', 'link' => 'https://jicest.unja.ac.id/uploads/TemplateAbstract2026.docx', 'inclusion' => [""]],
+                                 ['name' => 'Paper Template JICEST', 'type' => 'download', 'link' => route('downloads.paper'), 'inclusion' => [""]],
+                                 ['name' => 'Abstract Template JICEST', 'type' => 'download', 'link' => route('downloads.abstract'), 'inclusion' => [""]],
                                 ['name' => 'Oral Presentation Schedule JICEST', 'type' => 'download', 'link' => '/download-schedule-template', 'inclusion' => [""]],
                                 ['name' => 'Presentation Guideline JICEST', 'type' => 'download', 'link' => '/download-guidelines-template', 'inclusion' => [""]],
                             ],

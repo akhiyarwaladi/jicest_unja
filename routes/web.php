@@ -126,8 +126,8 @@ Route::get('/proceeding', function () {
 });
 
 Route::get('/download-template-article', [DownloadController::class, 'downloadTemplate']);
-Route::get('/download-abstract-template', [DownloadController::class,'downloadAbstract']);
-Route::get('/download-paper-template', [DownloadController::class, 'downloadPaper']);
+Route::get('/download-abstract-template', [DownloadController::class, 'downloadAbstract'])->name('downloads.abstract');
+Route::get('/download-paper-template', [DownloadController::class, 'downloadPaper'])->name('downloads.paper');
 Route::get('/download-schedule-template', [DownloadController::class, 'downloadSchedule']);
 Route::get('/download-guidelines-template', [DownloadController::class, 'downloadGuidelines']);
 

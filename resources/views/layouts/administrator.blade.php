@@ -372,7 +372,7 @@
 
                 <div class="admin-account">
                     <p class="admin-account-label">Signed in as</p>
-                    <p class="admin-account-copy">{{ auth()->user()->name }}<br>{{ auth()->user()->email }}</p>
+                    <p class="admin-account-copy">{{ auth()->user()->name ?: auth()->user()->email }}<br>{{ auth()->user()->email }}</p>
                 </div>
             </aside>
 

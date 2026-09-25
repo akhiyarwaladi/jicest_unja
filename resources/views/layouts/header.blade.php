@@ -55,8 +55,8 @@
                                 <!--
                                 <li><a href="/download-template-article">Template Article</a></li>
                                 -->
-                                <li><a href="/download-paper-template">Paper Template JICEST</a></li>
-                                <li><a href="/download-abstract-template">Abstract Template JICEST</a></li>
+                                <li><a href="{{ route('downloads.paper') }}">Paper Template JICEST</a></li>
+                                <li><a href="{{ route('downloads.abstract') }}">Abstract Template JICEST</a></li>
                                 <li><a href="/download-schedule-template">Oral Presentation Schedule JICEST</a></li>
                                 <li><a href="/download-guidelines-template">Presentation Guidelines JICEST</a></li>
                             </ul>

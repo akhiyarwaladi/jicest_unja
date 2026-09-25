@@ -2,506 +2,493 @@
 
 @section('css')
     @parent
-    {{-- Inherit CSS dari layouts/participant.blade.php untuk User Menu styling --}}
+    <style>
+        .dashboard-overview {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
 
-<style>
-    /* Font Poppins - sama dengan homepage */
-    .dashboard-submissions-wrapper {
-        font-family: "Poppins", sans-serif;
-    }
+        .dashboard-intro {
+            max-width: 760px;
+            margin-bottom: 34px;
+        }
 
-    /* Keep FontAwesome icons working */
-    .dashboard-submissions-wrapper .fa {
-        font-family: "FontAwesome";
-    }
+        .dashboard-intro h1 {
+            margin: 8px 0 0;
+            color: var(--ed-ink);
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: clamp(34px, 5vw, 54px);
+            font-weight: 500;
+            letter-spacing: -.03em;
+            line-height: 1.05;
+        }
 
-    /* Modern card styling - sama dengan about/contact pages */
-    .dashboard-submissions-wrapper .submission-card {
-        border: none;
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        transition: all 0.3s ease;
-        background: white;
-        border-top: 4px solid #0284c7;
-    }
+        .dashboard-intro p:last-child {
+            max-width: 650px;
+            margin: 16px 0 0;
+            color: var(--ed-ink-70);
+            font-size: 16px;
+            line-height: 1.7;
+        }
 
-    .dashboard-submissions-wrapper .submission-card:hover {
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        transform: translateY(-4px);
-    }
+        .dashboard-ledger {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+            gap: 20px;
+        }
 
-    .dashboard-submissions-wrapper .submission-header {
-        background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
-        color: #ffffff !important;
-        padding: 48px 40px;
-        position: relative;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        .dashboard-panel {
+            min-width: 0;
+            padding: 26px;
+            border: 1px solid var(--ed-hair);
+            background: #fff;
+        }
 
-    .dashboard-submissions-wrapper .submission-header * {
-        color: #ffffff !important;
-    }
+        .dashboard-panel--ink {
+            border-color: var(--ed-ink);
+            background: var(--ed-ink);
+            color: #fff;
+        }
 
-    .dashboard-submissions-wrapper .submission-header.participant-type {
-        background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-    }
+        .dashboard-panel-label,
+        .dashboard-record-label,
+        .dashboard-status-label,
+        .dashboard-template-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
 
-    .dashboard-submissions-wrapper .conference-badge {
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        padding: 12px 24px;
-        border-radius: 999px;
-        font-size: 18px;
-        font-weight: 900;
-        letter-spacing: 0.1em;
-        display: inline-block;
-        border: 3px solid rgba(255, 255, 255, 0.5);
-        color: #ffffff !important;
-        text-transform: uppercase;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+        .dashboard-panel-label {
+            color: #6ee7b7;
+        }
 
-    .dashboard-submissions-wrapper .status-row {
-        display: flex;
-        align-items: center;
-        padding: 20px 0;
-        border-bottom: 1px solid #e5e7eb;
-    }
+        .dashboard-panel h2 {
+            margin: 12px 0 0;
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: 500;
+            line-height: 1.12;
+        }
 
-    .dashboard-submissions-wrapper .status-row:last-child {
-        border-bottom: none;
-    }
+        .dashboard-panel p:not(.dashboard-panel-label) {
+            max-width: 560px;
+            margin: 12px 0 0;
+            color: rgba(255, 255, 255, .72);
+            line-height: 1.7;
+        }
 
-    .dashboard-submissions-wrapper .status-icon {
-        width: 48px;
-        text-align: center;
-        margin-right: 20px;
-        flex-shrink: 0;
-    }
+        .dashboard-panel .ed-btn {
+            margin-top: 24px;
+        }
 
-    .dashboard-submissions-wrapper .status-content {
-        flex: 1;
-        min-width: 0;
-    }
+        .dashboard-account-panel h2 {
+            color: var(--ed-ink);
+            font-size: 25px;
+        }
 
-    .dashboard-submissions-wrapper .status-label {
-        font-weight: 700;
-        color: #111827;
-        margin-bottom: 6px;
-        font-size: 15px;
-    }
+        .dashboard-account-panel p:not(.dashboard-panel-label) {
+            color: var(--ed-ink-70);
+        }
 
-    .dashboard-submissions-wrapper .status-date {
-        font-size: 13px;
-        color: #6b7280;
-        margin-top: 4px;
-    }
+        .dashboard-account-list {
+            margin: 22px 0 0;
+            border-top: 1px solid var(--ed-hair);
+        }
 
-    .dashboard-submissions-wrapper .status-badge {
-        padding: 8px 18px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 700;
-        white-space: nowrap;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
+        .dashboard-account-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--ed-hair);
+        }
 
-    .dashboard-submissions-wrapper .status-accepted,
-    .dashboard-submissions-wrapper .status-valid {
-        background-color: #d1fae5;
-        color: #065f46;
-        border: 1px solid #86efac;
-    }
+        .dashboard-account-row dt {
+            color: var(--ed-ink-70);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
 
-    .dashboard-submissions-wrapper .status-rejected,
-    .dashboard-submissions-wrapper .status-invalid {
-        background-color: #fee2e2;
-        color: #991b1b;
-        border: 1px solid #fca5a5;
-    }
+        .dashboard-account-row dd {
+            margin: 0;
+            color: var(--ed-ink);
+            font-size: 14px;
+            text-align: right;
+        }
 
-    .dashboard-submissions-wrapper .status-pending {
-        background-color: #fef3c7;
-        color: #92400e;
-        border: 1px solid #fde047;
-    }
+        .dashboard-records {
+            margin-top: 30px;
+            border-top: 1px solid var(--ed-ink);
+        }
 
-    .dashboard-submissions-wrapper .status-not-submitted {
-        background-color: #f3f4f6;
-        color: #6b7280;
-        border: 1px solid #d1d5db;
-    }
+        .dashboard-record {
+            padding: 24px 0 0;
+            border-bottom: 1px solid var(--ed-hair);
+        }
 
-    .dashboard-submissions-wrapper .empty-state {
-        text-align: center;
-        padding: 60px 40px;
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border: 2px dashed #7dd3fc;
-        border-radius: 16px;
-    }
+        .dashboard-record + .dashboard-record {
+            margin-top: 24px;
+        }
 
-    .dashboard-submissions-wrapper .template-section {
-        padding: 40px 32px;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border-radius: 16px;
-        margin-top: 30px;
-        border: 1px solid #bfdbfe;
-    }
+        .dashboard-record-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
-    .dashboard-submissions-wrapper .template-section-title {
-        text-align: center;
-        font-size: 24px;
-        font-weight: 700;
-        color: #1e40af;
-        margin-bottom: 30px;
-    }
+        .dashboard-record-label {
+            color: var(--ed-accent);
+        }
 
-    .dashboard-submissions-wrapper .template-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
+        .dashboard-record h2 {
+            max-width: 760px;
+            margin: 8px 0 0;
+            color: var(--ed-ink);
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 500;
+            line-height: 1.2;
+        }
 
-    .dashboard-submissions-wrapper .template-card {
-        background: white;
-        border: 2px solid #bfdbfe;
-        border-radius: 16px;
-        padding: 32px 24px;
-        text-align: center;
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
+        .dashboard-record-meta {
+            margin: 10px 0 0;
+            color: var(--ed-ink-70);
+            font-size: 14px;
+        }
 
-    .dashboard-submissions-wrapper .template-card:hover {
-        border-color: #3b82f6;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        transform: translateY(-4px);
-    }
+        .dashboard-record-link {
+            flex: 0 0 auto;
+            color: var(--ed-accent);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
 
-    .dashboard-submissions-wrapper .template-card a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-    }
+        .dashboard-status-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 22px;
+            border-top: 1px solid var(--ed-hair);
+        }
 
-    .dashboard-submissions-wrapper .template-card .template-icon {
-        color: #2563eb;
-        margin-bottom: 20px;
-    }
+        .dashboard-status {
+            min-width: 0;
+            padding: 16px 16px 0 0;
+            border-right: 1px solid var(--ed-hair);
+        }
 
-    .dashboard-submissions-wrapper .template-card .template-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1e40af;
-        margin-bottom: 12px;
-    }
+        .dashboard-status + .dashboard-status {
+            padding-left: 16px;
+        }
 
-    .dashboard-submissions-wrapper .template-card .template-desc {
-        font-size: 14px;
-        color: #6b7280;
-        line-height: 1.6;
-    }
+        .dashboard-status:last-child {
+            border-right: 0;
+        }
 
-    .dashboard-submissions-wrapper .card-title-text {
-        color: #ffffff !important;
-        font-weight: 900 !important;
-        margin: 0 !important;
-        font-size: 32px !important;
-        line-height: 1.3 !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
+        .dashboard-status-label {
+            color: var(--ed-ink-70);
+        }
 
-    .dashboard-submissions-wrapper .card-subtitle-text {
-        color: rgba(255, 255, 255, 0.95) !important;
-        font-size: 18px !important;
-        font-weight: 600 !important;
-    }
+        .dashboard-status-value {
+            margin: 8px 0 0;
+            color: var(--ed-ink);
+            font-size: 15px;
+            font-weight: 600;
+        }
 
-    .dashboard-submissions-wrapper .card-meta-text {
-        color: rgba(255, 255, 255, 0.9) !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
-    }
+        .dashboard-status-value--accepted {
+            color: #047857;
+        }
 
-    .dashboard-submissions-wrapper .page-title {
-        font-weight: 700;
-        font-size: 28px;
-        margin-bottom: 24px;
-        color: #111827;
-    }
-</style>
+        .dashboard-status-value--attention {
+            color: #b91c1c;
+        }
+
+        .dashboard-status-value--pending {
+            color: #92400e;
+        }
+
+        .dashboard-empty {
+            margin-top: 30px;
+            padding: 30px 0;
+            border-top: 1px solid var(--ed-ink);
+            border-bottom: 1px solid var(--ed-hair);
+        }
+
+        .dashboard-empty h2 {
+            margin: 8px 0 0;
+            color: var(--ed-ink);
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .dashboard-empty p {
+            max-width: 620px;
+            margin: 10px 0 0;
+            color: var(--ed-ink-70);
+            line-height: 1.7;
+        }
+
+        .dashboard-empty .ed-btn {
+            margin-top: 20px;
+        }
+
+        .dashboard-templates {
+            margin-top: 34px;
+            padding-top: 24px;
+            border-top: 1px solid var(--ed-ink);
+        }
+
+        .dashboard-template-label {
+            color: var(--ed-accent);
+        }
+
+        .dashboard-template-list {
+            margin-top: 14px;
+            border-top: 1px solid var(--ed-hair);
+        }
+
+        .dashboard-template-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 62px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--ed-hair);
+            color: var(--ed-ink);
+            text-decoration: none;
+            transition: color .3s ease, padding-left .3s ease;
+        }
+
+        .dashboard-template-link:hover {
+            padding-left: 8px;
+            color: var(--ed-accent);
+        }
+
+        .dashboard-template-link strong {
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .dashboard-template-link span {
+            color: var(--ed-ink-70);
+            font-size: 14px;
+            text-align: right;
+        }
+
+        @media (max-width: 800px) {
+            .dashboard-ledger {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-status-list {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-status,
+            .dashboard-status + .dashboard-status {
+                padding: 14px 0;
+                border-right: 0;
+                border-bottom: 1px solid var(--ed-hair);
+            }
+
+            .dashboard-status:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .dashboard-panel {
+                padding: 22px 18px;
+            }
+
+            .dashboard-record-header,
+            .dashboard-template-link {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .dashboard-template-link span {
+                text-align: left;
+            }
+        }
+    </style>
 @endsection
 
 @section('content-dashboard')
-    <div class="dashboard-submissions-wrapper">
-        <h3 class="page-title">My Submissions</h3>
+    @php
+        $participant = auth()->user()->participant;
+        $participantType = $participant->participant_type;
+        $isPresenter = in_array($participantType, ['presenter', 'presenter_reguler', 'presenter_student', 'professional presenter', 'student presenter'], true);
+        $typeLabel = match ($participantType) {
+            'presenter', 'presenter_reguler', 'professional presenter' => 'Presenter (Reguler)',
+            'presenter_student' => 'Presenter (Student)',
+            'participant', 'participant_reguler' => 'Participant (Reguler)',
+            'participant_student' => 'Participant (Student)',
+            default => 'Conference participant',
+        };
+        $statusLabel = function ($status) {
+            return match (strtolower((string) $status)) {
+                'accepted', 'valid' => 'Verified',
+                'rejected', 'invalid' => 'Needs attention',
+                'not yet reviewed', 'pending' => 'Pending review',
+                '' => 'Not submitted',
+                default => ucfirst(str_replace('_', ' ', (string) $status)),
+            };
+        };
+        $statusTone = function ($status) {
+            return match (strtolower((string) $status)) {
+                'accepted', 'valid' => 'dashboard-status-value--accepted',
+                'rejected', 'invalid' => 'dashboard-status-value--attention',
+                'not yet reviewed', 'pending' => 'dashboard-status-value--pending',
+                default => '',
+            };
+        };
+    @endphp
 
-        @if (!in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler', 'participant_student']))
+    <div class="dashboard-overview">
+        <header class="dashboard-intro">
+            <p class="ed-eyebrow">JICEST 2026 account</p>
+            <h1>{{ $isPresenter ? 'Presenter workspace' : 'Participant workspace' }}</h1>
+            <p>Keep your conference record in one place. Review the current status of your submissions and take the next action when it is ready.</p>
+        </header>
+
+        <div class="dashboard-ledger">
+            <section class="dashboard-panel dashboard-panel--ink">
+                <p class="dashboard-panel-label">Next action</p>
+                @if ($isPresenter)
+                    <h2>{{ $participant->uploadAbstracts()->exists() ? 'Review your abstract record' : 'Submit your abstract' }}</h2>
+                    <p>{{ $participant->uploadAbstracts()->exists() ? 'Open your submission list to edit the abstract, check the review status, or continue with payment and the full paper.' : 'Prepare your topic, authors, institutions, and abstract content before opening the submission form.' }}</p>
+                    <a href="{{ url('/abstrak') }}" class="ed-btn ed-btn-inverse">{{ $participant->uploadAbstracts()->exists() ? 'Open submissions' : 'Submit Abstract' }}</a>
+                @else
+                    <h2>{{ $participant->payments()->exists() ? 'Check your payment record' : 'Complete your registration payment' }}</h2>
+                    <p>{{ $participant->payments()->exists() ? 'Open the payment page to see the verification status and upload a replacement receipt if needed.' : 'Upload your transfer receipt and student card when applicable from the payment page.' }}</p>
+                    <a href="{{ url('/payment') }}" class="ed-btn ed-btn-inverse">{{ $participant->payments()->exists() ? 'Open payment record' : 'Open Payment' }}</a>
+                @endif
+            </section>
+
+            <section class="dashboard-panel dashboard-account-panel">
+                <p class="dashboard-panel-label" style="color:var(--ed-accent)">Account record</p>
+                <h2>{{ auth()->user()->name ?: auth()->user()->email }}</h2>
+                <p>{{ auth()->user()->email }}</p>
+                <dl class="dashboard-account-list">
+                    <div class="dashboard-account-row">
+                        <dt>Registration</dt>
+                        <dd>{{ $typeLabel }}</dd>
+                    </div>
+                    <div class="dashboard-account-row">
+                        <dt>Conference</dt>
+                        <dd>JICEST 2026</dd>
+                    </div>
+                </dl>
+            </section>
+        </div>
+
+        @if ($isPresenter)
             @php
-                $abstracts = Auth::user()->participant->uploadAbstracts()->orderBy('created_at', 'desc')->get();
+                $abstracts = $participant->uploadAbstracts()->latest()->get();
             @endphp
 
-            @if ($abstracts->count() > 0)
-                @foreach ($abstracts as $index => $abstract)
+            <section class="dashboard-records" aria-labelledby="abstract-records-title">
+                <p class="dashboard-record-label" id="abstract-records-title">Abstract submissions</p>
+                @forelse ($abstracts as $index => $abstract)
                     @php
-                        // Get payment for this abstract
-                        $payment = App\Models\Payment::where('upload_abstract_id', $abstract->id)->first();
-
-                        // Get fulltext for this payment
-                        $fulltext = null;
-                        if ($payment) {
-                            $fulltext = App\Models\UploadFulltext::where('payment_id', $payment->id)->first();
-                        }
-
-                        // Determine conference year based on submission date
-                        // JICEST is held in November, so:
-                        // - Submissions Jan-Nov: for current year conference
-                        // - Submissions in Dec: for next year conference (after event)
-                        $submissionYear = $abstract->created_at->year;
-                        if ($abstract->created_at->month <= 11) {
-                            $conferenceYear = $submissionYear;
-                        } else {
-                            $conferenceYear = $submissionYear + 1;
-                        }
+                        $payment = $abstract->payments()->latest()->first();
+                        $fulltext = $payment ? $payment->uploadFulltexts()->latest()->first() : null;
                     @endphp
-
-                    <div class="submission-card">
-                        <!-- Card Header -->
-                        <div class="submission-header">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                                <div style="flex: 1; min-width: 0;">
-                                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 18px;">
-                                        <span class="conference-badge">JICEST {{ $conferenceYear }}</span>
-                                        <span class="card-meta-text" style="opacity: 0.9;">
-                                            <i class="fa fa-hashtag" style="margin-right: 5px;"></i>{{ $abstracts->count() - $index }}
-                                        </span>
-                                    </div>
-                                    <h4 class="card-title-text" style="margin: 0;">
-                                        {{ $abstract->title }}
-                                    </h4>
-                                </div>
+                    <article class="dashboard-record">
+                        <div class="dashboard-record-header">
+                            <div>
+                                <p class="dashboard-record-label">Submission {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</p>
+                                <h2>{{ $abstract->title }}</h2>
+                                <p class="dashboard-record-meta">Submitted {{ $abstract->created_at->format('d M Y') }}</p>
                             </div>
-                            <p class="card-meta-text" style="margin: 0; display: flex; align-items: center; gap: 5px;">
-                                <i class="fa fa-calendar"></i>
-                                <span>Submitted: {{ $abstract->created_at->format('F d, Y') }}</span>
-                            </p>
+                            <a href="{{ url('/abstrak') }}" class="dashboard-record-link">Open abstract</a>
                         </div>
-
-                        <!-- Card Body -->
-                        <div style="padding: 24px;">
-                            <!-- Abstract Status -->
-                            <div class="status-row">
-                                <div class="status-icon">
-                                    @if ($abstract->status === 'accepted')
-                                        <i class="fa fa-check-circle" style="font-size: 24px; color: #10b981;"></i>
-                                    @elseif ($abstract->status === 'rejected')
-                                        <i class="fa fa-times-circle" style="font-size: 24px; color: #ef4444;"></i>
-                                    @else
-                                        <i class="fa fa-clock-o" style="font-size: 24px; color: #f59e0b;"></i>
-                                    @endif
-                                </div>
-                                <div class="status-content">
-                                    <div class="status-label">Abstract Status</div>
-                                </div>
-                                <div>
-                                    <span class="status-badge status-{{ $abstract->status === 'accepted' ? 'accepted' : ($abstract->status === 'rejected' ? 'rejected' : 'pending') }}">
-                                        {{ ucfirst($abstract->status) }}
-                                    </span>
-                                </div>
+                        <div class="dashboard-status-list">
+                            <div class="dashboard-status">
+                                <p class="dashboard-status-label">Abstract</p>
+                                <p class="dashboard-status-value {{ $statusTone($abstract->status) }}">{{ $statusLabel($abstract->status) }}</p>
                             </div>
-
-                            <!-- Payment Status -->
-                            <div class="status-row">
-                                <div class="status-icon">
-                                    @if ($payment && $payment->validation === 'valid')
-                                        <i class="fa fa-check-circle" style="font-size: 24px; color: #10b981;"></i>
-                                    @elseif ($payment && $payment->validation === 'invalid')
-                                        <i class="fa fa-times-circle" style="font-size: 24px; color: #ef4444;"></i>
-                                    @elseif ($payment)
-                                        <i class="fa fa-clock-o" style="font-size: 24px; color: #f59e0b;"></i>
-                                    @else
-                                        <i class="fa fa-exclamation-circle" style="font-size: 24px; color: #9ca3af;"></i>
-                                    @endif
-                                </div>
-                                <div class="status-content">
-                                    <div class="status-label">Payment Status</div>
-                                    @if ($payment)
-                                        <div class="status-date">
-                                            <i class="fa fa-calendar" style="margin-right: 3px;"></i>
-                                            Submitted: {{ $payment->created_at->format('F d, Y') }}
-                                        </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    @if ($payment)
-                                        <span class="status-badge status-{{ $payment->validation === 'valid' ? 'valid' : ($payment->validation === 'invalid' ? 'invalid' : 'pending') }}">
-                                            {{ ucfirst($payment->validation) }}
-                                        </span>
-                                    @else
-                                        <span class="status-badge status-not-submitted">
-                                            Not Submitted
-                                        </span>
-                                    @endif
-                                </div>
+                            <div class="dashboard-status">
+                                <p class="dashboard-status-label">Payment</p>
+                                <p class="dashboard-status-value {{ $statusTone($payment?->validation) }}">{{ $statusLabel($payment?->validation) }}</p>
                             </div>
-
-                            <!-- Fulltext Status -->
-                            <div class="status-row">
-                                <div class="status-icon">
-                                    @if ($fulltext && $fulltext->validation === 'valid')
-                                        <i class="fa fa-check-circle" style="font-size: 24px; color: #10b981;"></i>
-                                    @elseif ($fulltext && $fulltext->validation === 'invalid')
-                                        <i class="fa fa-times-circle" style="font-size: 24px; color: #ef4444;"></i>
-                                    @elseif ($fulltext)
-                                        <i class="fa fa-clock-o" style="font-size: 24px; color: #f59e0b;"></i>
-                                    @else
-                                        <i class="fa fa-exclamation-circle" style="font-size: 24px; color: #9ca3af;"></i>
-                                    @endif
-                                </div>
-                                <div class="status-content">
-                                    <div class="status-label">Full-text Status</div>
-                                    @if ($fulltext)
-                                        <div class="status-date">
-                                            <i class="fa fa-calendar" style="margin-right: 3px;"></i>
-                                            Submitted: {{ $fulltext->created_at->format('F d, Y') }}
-                                        </div>
-                                    @endif
-                                </div>
-                                <div>
-                                    @if ($fulltext)
-                                        <span class="status-badge status-{{ $fulltext->validation === 'valid' ? 'valid' : ($fulltext->validation === 'invalid' ? 'invalid' : 'pending') }}">
-                                            {{ ucfirst($fulltext->validation) }}
-                                        </span>
-                                    @else
-                                        <span class="status-badge status-not-submitted">
-                                            Not Submitted
-                                        </span>
-                                    @endif
-                                </div>
+                            <div class="dashboard-status">
+                                <p class="dashboard-status-label">Full paper</p>
+                                <p class="dashboard-status-value {{ $statusTone($fulltext?->validation) }}">{{ $statusLabel($fulltext?->validation) }}</p>
                             </div>
                         </div>
+                    </article>
+                @empty
+                    <div class="dashboard-empty">
+                        <p class="dashboard-record-label">No abstract submissions</p>
+                        <h2>Start with your abstract</h2>
+                        <p>Your saved abstract and its review status will appear here after you submit it.</p>
+                        <a href="{{ url('/abstrak') }}" class="ed-btn">Submit Abstract</a>
                     </div>
-                @endforeach
-            @else
-                <div class="empty-state">
-                    <i class="fa fa-info-circle" style="font-size: 56px; color: #3b82f6; margin-bottom: 20px;"></i>
-                    <h5 style="font-weight: 700; font-size: 20px; color: #111827; margin-bottom: 12px;">No abstracts submitted yet</h5>
-                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Select “Submit Abstract” from your account navigation to get started.</p>
+                @endforelse
+            </section>
+
+            <section class="dashboard-templates" aria-labelledby="template-title">
+                <p class="dashboard-template-label" id="template-title">Submission templates</p>
+                <div class="dashboard-template-list">
+                    <a href="{{ route('downloads.abstract') }}" class="dashboard-template-link">
+                        <strong>Abstract Template</strong>
+                        <span>Download the .docx template</span>
+                    </a>
+                    <a href="{{ route('downloads.paper') }}" class="dashboard-template-link">
+                        <strong>Full Paper Template</strong>
+                        <span>Download after acceptance</span>
+                    </a>
                 </div>
-            @endif
+            </section>
         @else
-            <!-- For regular participants without presenter role -->
             @php
-                $payments = Auth::user()->participant->payments()->orderBy('created_at', 'desc')->get();
+                $payments = $participant->payments()->latest()->get();
             @endphp
 
-            @if ($payments->count() > 0)
-                @foreach ($payments as $index => $payment)
-                    @php
-                        // JICEST is held in November, so:
-                        // - Submissions Jan-Nov: for current year conference
-                        // - Submissions in Dec: for next year conference (after event)
-                        $submissionYear = $payment->created_at->year;
-                        if ($payment->created_at->month <= 11) {
-                            $conferenceYear = $submissionYear;
-                        } else {
-                            $conferenceYear = $submissionYear + 1;
-                        }
-                    @endphp
-
-                    <div class="submission-card">
-                        <div class="submission-header participant-type">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                                <div style="flex: 1; min-width: 0;">
-                                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 18px;">
-                                        <span class="conference-badge">JICEST {{ $conferenceYear }}</span>
-                                        <span class="card-meta-text" style="opacity: 0.9;">
-                                            <i class="fa fa-hashtag" style="margin-right: 5px;"></i>{{ $payments->count() - $index }}
-                                        </span>
-                                    </div>
-                                    <h4 class="card-title-text" style="margin: 0;">
-                                        <i class="fa fa-ticket" style="margin-right: 12px; font-size: 28px;"></i>
-                                        Participant Registration
-                                    </h4>
-                                </div>
+            <section class="dashboard-records" aria-labelledby="payment-records-title">
+                <p class="dashboard-record-label" id="payment-records-title">Payment records</p>
+                @forelse ($payments as $index => $payment)
+                    <article class="dashboard-record">
+                        <div class="dashboard-record-header">
+                            <div>
+                                <p class="dashboard-record-label">Payment {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</p>
+                                <h2>Conference registration</h2>
+                                <p class="dashboard-record-meta">Uploaded {{ $payment->created_at->format('d M Y') }}</p>
                             </div>
-                            <p class="card-meta-text" style="margin: 0; display: flex; align-items: center; gap: 5px;">
-                                <i class="fa fa-calendar"></i>
-                                <span>Submitted: {{ $payment->created_at->format('F d, Y') }}</span>
-                            </p>
+                            <a href="{{ url('/payment') }}" class="dashboard-record-link">Open payment</a>
                         </div>
-                        <div style="padding: 24px;">
-                            <div class="status-row">
-                                <div class="status-icon">
-                                    @if ($payment->validation === 'valid')
-                                        <i class="fa fa-check-circle" style="font-size: 24px; color: #10b981;"></i>
-                                    @elseif ($payment->validation === 'invalid')
-                                        <i class="fa fa-times-circle" style="font-size: 24px; color: #ef4444;"></i>
-                                    @else
-                                        <i class="fa fa-clock-o" style="font-size: 24px; color: #f59e0b;"></i>
-                                    @endif
-                                </div>
-                                <div class="status-content">
-                                    <div class="status-label">Payment Status</div>
-                                </div>
-                                <div>
-                                    <span class="status-badge status-{{ $payment->validation === 'valid' ? 'valid' : ($payment->validation === 'invalid' ? 'invalid' : 'pending') }}">
-                                        {{ ucfirst($payment->validation) }}
-                                    </span>
-                                </div>
+                        <div class="dashboard-status-list">
+                            <div class="dashboard-status">
+                                <p class="dashboard-status-label">Verification</p>
+                                <p class="dashboard-status-value {{ $statusTone($payment->validation) }}">{{ $statusLabel($payment->validation) }}</p>
                             </div>
                         </div>
+                    </article>
+                @empty
+                    <div class="dashboard-empty">
+                        <p class="dashboard-record-label">No payment record</p>
+                        <h2>Complete your registration</h2>
+                        <p>Upload your payment receipt from the payment page. The secretariat will update the verification status here.</p>
+                        <a href="{{ url('/payment') }}" class="ed-btn">Open Payment</a>
                     </div>
-                @endforeach
-            @else
-                <div class="empty-state">
-                    <i class="fa fa-info-circle" style="font-size: 56px; color: #3b82f6; margin-bottom: 20px;"></i>
-                    <h5 style="font-weight: 700; font-size: 20px; color: #111827; margin-bottom: 12px;">No payment submitted yet</h5>
-                    <p style="color: #6b7280; margin: 0; font-size: 15px;">Please add your payment in the payment menu.</p>
-                </div>
-            @endif
-        @endif
-
-        <!-- Template Download Section -->
-        @if (!in_array(Auth::user()->participant->participant_type, ['participant', 'participant_reguler', 'participant_student']))
-            <div class="template-section">
-                <h4 class="template-section-title">
-                    <i class="fa fa-download" style="margin-right: 10px;"></i>
-                    Download Templates
-                </h4>
-
-                <div class="template-grid">
-                    <!-- Abstract Template -->
-                    <div class="template-card">
-                        <a href="https://jicest.unja.ac.id/uploads/TemplateAbstract2026.docx">
-                            <div class="template-icon">
-                                <i class="fa fa-file-text-o" style="font-size: 50px;"></i>
-                            </div>
-                            <div class="template-title">Abstract Template</div>
-                            <div class="template-desc">
-                                Download the template for submitting your abstract to JICEST conference
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Full Paper Template -->
-                    <div class="template-card">
-                        <a href="https://jicest.unja.ac.id/uploads/downloads/JICEST_Paper.docx">
-                            <div class="template-icon">
-                                <i class="fa fa-file-word-o" style="font-size: 50px;"></i>
-                            </div>
-                            <div class="template-title">Full Paper Template</div>
-                            <div class="template-desc">
-                                Download the template for submitting your full paper after acceptance
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                @endforelse
+            </section>
         @endif
     </div>
-
 @endsection
