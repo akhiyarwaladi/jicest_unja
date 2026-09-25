@@ -85,18 +85,18 @@
 
         @php
             $subThemes = [
-                ['index' => '01', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, Physics, Biology, Mathematics, Industrial Chemistry, Chemical Analysis'],
-                ['index' => '02', 'title' => 'Earth Sciences &amp; Mining Technology', 'desc' => 'Geophysics, Geology, Mining Engineering, Sustainable Resource Management'],
-                ['index' => '03', 'title' => 'Civil, Chemical &amp; Environmental Engineering', 'desc' => 'Sustainable Infrastructure, Chemical Process Engineering, Environmental Technology, Green Engineering'],
-                ['index' => '04', 'title' => 'Electrical Engineering &amp; Information Systems', 'desc' => 'Smart Technology, IoT Applications, Data Analytics, Digital Innovation'],
-                ['index' => '05', 'title' => 'Educational Technology', 'desc' => 'Digital Transformation in Education, STEM (Science, Technology, Engineering and Mathematics) Education'],
-                ['index' => '06', 'title' => 'Applied Science &amp; Sustainable Innovation', 'desc' => 'Technology Transfer, Innovation Management, Sustainable Solutions for Society'],
+                ['index' => '01', 'icon' => 'mathematical-natural-sciences.svg', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, Physics, Biology, Mathematics, Industrial Chemistry, Chemical Analysis'],
+                ['index' => '02', 'icon' => 'earth-sciences-mining.svg', 'title' => 'Earth Sciences &amp; Mining Technology', 'desc' => 'Geophysics, Geology, Mining Engineering, Sustainable Resource Management'],
+                ['index' => '03', 'icon' => 'civil-chemical-environmental.svg', 'title' => 'Civil, Chemical &amp; Environmental Engineering', 'desc' => 'Sustainable Infrastructure, Chemical Process Engineering, Environmental Technology, Green Engineering'],
+                ['index' => '04', 'icon' => 'electrical-information-systems.svg', 'title' => 'Electrical Engineering &amp; Information Systems', 'desc' => 'Smart Technology, IoT Applications, Data Analytics, Digital Innovation'],
+                ['index' => '05', 'icon' => 'educational-technology.svg', 'title' => 'Educational Technology', 'desc' => 'Digital Transformation in Education, STEM (Science, Technology, Engineering and Mathematics) Education'],
+                ['index' => '06', 'icon' => 'applied-science-sustainable-innovation.svg', 'title' => 'Applied Science &amp; Sustainable Innovation', 'desc' => 'Technology Transfer, Innovation Management, Sustainable Solutions for Society'],
             ];
         @endphp
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14">
             @foreach ($subThemes as $theme)
-                <div class="ed-row flex items-baseline gap-5 py-6">
+                <div class="ed-row flex items-center gap-5 py-6">
                     <span class="ed-mono text-sm ed-quiet shrink-0">{{ $theme['index'] }}</span>
                     <div class="flex-1 min-w-0">
                         <div class="flex items-baseline gap-3">
@@ -105,6 +105,9 @@
                         </div>
                         <p class="ed-quiet text-base mt-2">{!! $theme['desc'] !!}</p>
                     </div>
+                    <img src="{{ asset('assets/img/subthemes/' . $theme['icon']) }}"
+                        class="subtheme-icon shrink-0" width="32" height="32" loading="lazy" decoding="async"
+                        alt="" aria-hidden="true">
                 </div>
             @endforeach
         </div>

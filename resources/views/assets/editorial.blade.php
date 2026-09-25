@@ -99,6 +99,20 @@
         background-image: linear-gradient(90deg, rgba(4, 120, 87, .05), rgba(4, 120, 87, 0) 70%);
     }
 
+    .subtheme-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        opacity: .9;
+    }
+
+    @media (max-width: 640px) {
+        .subtheme-icon {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
     /* Dotted leader that visually ties a label to its value, as in a printed index. */
     .ed-leader {
         flex: 1 1 auto;
@@ -174,6 +188,21 @@
         background-color: var(--ed-ink);
         background-image: radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 0);
         background-size: 22px 22px;
+    }
+
+    .ed-ink-band .ed-display,
+    .ed-ink-band h1,
+    .ed-ink-band h2,
+    .ed-ink-band h3,
+    .ed-ink-band h4,
+    .ed-ink-band h5,
+    .ed-ink-band h6,
+    .bg-black .ed-display {
+        color: #fff;
+    }
+
+    .ed-ink-band .ed-quiet {
+        color: rgba(255, 255, 255, .72);
     }
 
     @media (prefers-reduced-motion: reduce) {

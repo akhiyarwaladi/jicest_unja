@@ -19,7 +19,7 @@ class PresenterPaid extends Component
     public function mount()
     {
         $this->date_from = \App\Models\Fee::getDefaultFilterStart();
-        $this->date_to = date('Y-m-d');
+        $this->date_to = \App\Models\Fee::getDefaultFilterEnd();
     }
 
     public function render()

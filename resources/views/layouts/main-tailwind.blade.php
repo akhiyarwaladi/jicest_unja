@@ -220,63 +220,7 @@
     @yield('content')
     {{-- end content --}}
 
-    <!-- Footer Section Begin -->
-    <footer>
-        <div id="partners" class="bg-gray-100 w-full pt-12 h-fit text-center flex flex-col items-center overflow-x-hidden">
-
-            <!--<header class="text-black font-semibold text-2xl font-serif mt-10">OTHER PUBLISHER PARTNERS</header>-->
-            <!--<div class="relative flex overflow-x-hidden h-fit overflow-y-hidden py-5 w-[1200px] justify-center">-->
-            <!--    <div class="flex animate-marquee2 whitespace-nowrap h-fit gap-14">-->
-            <!--        <img data-link="https://jkk.unjani.ac.id/index.php/jkk"  src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://journal.uinsgd.ac.id/index.php/tadris-kimiya/index"  src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://jurnal.untirta.ac.id/index.php/EduChemia"  src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://jurnal.un   .ac.id/jcena"  src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://journal.uinsgd.ac.id/index.php/ak/inde"  src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-7.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-9.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-10.jpg')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://jkk.unjani.ac.id/index.php/jkk"  src="{{asset('assets/img/partner-logo/jicest/partner-1.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://journal.uinsgd.ac.id/index.php/tadris-kimiya/index"  src="{{asset('assets/img/partner-logo/jicest/partner-2.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://jurnal.untirta.ac.id/index.php/EduChemia"  src="{{asset('assets/img/partner-logo/jicest/partner-3.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://jurnal.unpad.ac.id/jcena"  src="{{asset('assets/img/partner-logo/jicest/partner-4.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://journal.uinsgd.ac.id/index.php/ak/inde"  src="{{asset('assets/img/partner-logo/jicest/partner-5.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-6.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-7.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-8.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-9.png')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--        <img data-link="https://online-journal.unja.ac.id/jisic"  src="{{asset('assets/img/partner-logo/jicest/partner-10.jpg')}}" class="image-link cursor-pointer w-full h-32 object-contain"/>-->
-            <!--    </div>-->
-            <!--    <script>-->
-            <!--        document.addEventListener("DOMContentLoaded", function() {-->
-            <!--            const image = document.querySelectorAll('.image-link');-->
-            <!--            image.forEach(img => {-->
-            <!--                const url = img.getAttribute('data-link');-->
-                            <!--img.style.cursor = 'pointer'; // Change cursor to pointer to indicate it's clickable-->
-            <!--                img.addEventListener('click', function() {-->
-            <!--                    window.open(url, '_blank');-->
-            <!--                });-->
-            <!--            });-->
-            <!--        });-->
-            <!--    </script>-->
-            <!--</div>-->
-            <div class="mt-11">
-                <header class="italic text-black">Hosted and Managed by</header>
-                <div class="flex gap-10 px-5 justify-center">
-                    <img src="{{asset('assets/img/unja-logo-2026.png')}}" class="object-contain" width="90"/>
-                    <div class="text-white py-5 text-left w-fit">
-                        <p class="font-serif text-3xl font-medium text-blue-800">FACULTY OF SCIENCE AND TECHNOLOGY</p>
-                        <p class="font-sans text-3xl font-semibold text-orange-500">UNIVERSITAS JAMBI</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t-[1px] border-gray-400 text-black py-3 mt-10 w-full">
-                Copyright © 2026 All rights reserved | JICEST 2026
-            </div>
-        </div>
-
-    </footer>
+    @include('components.editorial-footer')
 
     <script src="{{ url('') }}/assets/js/jquery-3.3.1.min.js"></script>
     {{-- <script src="{{ url('') }}/assets/js/main.js"></script> --}}

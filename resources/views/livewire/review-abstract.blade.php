@@ -34,6 +34,270 @@
     }
 @endphp
 
+<style>
+    .review-accept-modal .modal-dialog {
+        max-width: 780px;
+        margin: 1.75rem auto;
+    }
+
+    .review-accept-modal .modal-content {
+        overflow: hidden;
+        border: 1px solid var(--ed-hair);
+        border-radius: 0;
+        background: var(--ed-paper);
+        box-shadow: 0 24px 64px rgba(11, 27, 20, .22);
+    }
+
+    .review-accept-modal .modal-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 32px 24px;
+        border: 0;
+        background: var(--ed-ink);
+        color: #fff;
+    }
+
+    .review-accept-modal .review-accept-kicker {
+        margin: 0;
+        color: #6ee7b7;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .review-accept-modal .review-accept-title {
+        margin: 7px 0 8px;
+        color: #fff;
+        font-family: 'IBM Plex Serif', Georgia, serif;
+        font-size: clamp(28px, 4vw, 38px);
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .review-accept-modal .review-accept-description {
+        max-width: 570px;
+        margin: 0;
+        color: rgba(255, 255, 255, .72);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .review-accept-modal .review-accept-close {
+        flex: 0 0 auto;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, .32);
+        background: transparent;
+        color: #fff;
+        font-size: 26px;
+        line-height: 1;
+        transition: background-color .3s ease, color .3s ease;
+    }
+
+    .review-accept-modal .review-accept-close:hover,
+    .review-accept-modal .review-accept-close:focus {
+        background: #fff;
+        color: var(--ed-ink);
+    }
+
+    .review-accept-modal .modal-body {
+        padding: 26px 32px 30px;
+        background: var(--ed-paper);
+        color: var(--ed-ink);
+    }
+
+    .review-accept-modal .review-accept-recipient {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 14px;
+        margin-bottom: 24px;
+        border-top: 1px solid var(--ed-hair);
+        border-bottom: 1px solid var(--ed-hair);
+        background: #fff;
+    }
+
+    .review-accept-modal .review-accept-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--ed-ink-70);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .review-accept-modal .review-accept-recipient .review-accept-label {
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .review-accept-modal .review-accept-recipient strong {
+        color: var(--ed-ink);
+        font-size: 14px;
+        overflow-wrap: anywhere;
+        text-align: right;
+    }
+
+    .review-accept-modal .review-accept-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 20px;
+    }
+
+    .review-accept-modal .review-accept-field--wide {
+        grid-column: 1 / -1;
+    }
+
+    .review-accept-modal .form-group {
+        margin: 0;
+    }
+
+    .review-accept-modal .form-control {
+        min-height: 46px;
+        padding: 10px 12px;
+        border: 1px solid var(--ed-hair);
+        border-radius: 0;
+        background: #fff;
+        color: var(--ed-ink);
+        box-shadow: none;
+    }
+
+    .review-accept-modal textarea.form-control {
+        min-height: 92px;
+        resize: vertical;
+    }
+
+    .review-accept-modal .form-control:focus {
+        border-color: var(--ed-accent);
+        box-shadow: 0 0 0 2px rgba(4, 120, 87, .14);
+    }
+
+    .review-accept-modal .form-control[readonly] {
+        background: var(--ed-paper);
+        color: var(--ed-ink-70);
+    }
+
+    .review-accept-modal .invalid-feedback {
+        color: #b91c1c;
+    }
+
+    .review-accept-modal .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 32px 24px;
+        border-top: 1px solid var(--ed-hair);
+        background: #fff;
+    }
+
+    .review-accept-modal .review-accept-footnote {
+        max-width: 360px;
+        margin: 0;
+        color: var(--ed-ink-70);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .review-accept-modal .review-accept-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .review-accept-modal .review-accept-btn {
+        min-height: 44px;
+        padding: .7rem 1rem;
+        border: 1px solid var(--ed-hair);
+        border-radius: 0;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+    }
+
+    .review-accept-modal .review-accept-btn--secondary {
+        background: var(--ed-paper);
+        color: var(--ed-ink);
+    }
+
+    .review-accept-modal .review-accept-btn--secondary:hover,
+    .review-accept-modal .review-accept-btn--secondary:focus {
+        border-color: var(--ed-ink);
+        background: #fff;
+        color: var(--ed-ink);
+    }
+
+    .review-accept-modal .review-accept-btn--primary {
+        border-color: var(--ed-ink);
+        background: var(--ed-ink);
+        color: #fff;
+    }
+
+    .review-accept-modal .review-accept-btn--primary:hover,
+    .review-accept-modal .review-accept-btn--primary:focus {
+        background: #fff;
+        color: var(--ed-ink);
+    }
+
+    .review-accept-modal .review-accept-btn:disabled {
+        cursor: wait;
+        opacity: .65;
+    }
+
+    @media (max-width: 640px) {
+        .review-accept-modal .modal-dialog {
+            margin: .75rem;
+        }
+
+        .review-accept-modal .modal-header {
+            padding: 22px 20px 20px;
+        }
+
+        .review-accept-modal .modal-body {
+            padding: 22px 20px 24px;
+        }
+
+        .review-accept-modal .review-accept-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .review-accept-modal .review-accept-recipient {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .review-accept-modal .review-accept-recipient strong {
+            text-align: left;
+        }
+
+        .review-accept-modal .modal-footer {
+            align-items: stretch;
+            flex-direction: column;
+            padding: 18px 20px 22px;
+        }
+
+        .review-accept-modal .review-accept-actions {
+            justify-content: stretch;
+        }
+
+        .review-accept-modal .review-accept-btn {
+            flex: 1;
+        }
+    }
+</style>
+
 <div>
 
     @if ($review !== true)
@@ -280,87 +544,83 @@
                 wire:click="back()">Cancel</button>
         </div>
 
-        <div class="modal fade" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
-            role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog modal-lg" role="document">
+        <div class="modal fade review-accept-modal" id="modalValidate" data-backdrop="static" data-keyboard="true" tabindex="-1"
+            role="dialog" wire:ignore.self aria-labelledby="reviewAcceptTitle" aria-describedby="reviewAcceptDescription" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalEditTitle">Accept Abstract</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div>
+                            <p class="review-accept-kicker">JICEST 2026 · Review action</p>
+                            <h2 class="review-accept-title" id="reviewAcceptTitle">Accept abstract</h2>
+                            <p class="review-accept-description" id="reviewAcceptDescription">
+                                Create the Letter of Acceptance and invoice, then send both documents to the presenter.
+                            </p>
+                        </div>
+                        <button type="button" class="review-accept-close" data-dismiss="modal" aria-label="Close acceptance dialog">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4 class="text-center my-3">Data for Letter of Acceptance and Invoice</h4>
-                        <div class="form-group">
-                            <label for="full_name">Full Name</label>
-                            <input type="text" class="form-control @error('full_name') is-invalid @enderror"
-                                id="full_name" aria-describedby="emailHelp" name="full_name" wire:model='full_name'>
-                            @error('full_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="review-accept-recipient">
+                            <span class="review-accept-label">Recipient</span>
+                            <strong>{{ $email }}</strong>
                         </div>
-                        <div class="form-group">
-                            <label for="institution">Institution</label>
-                            <textarea class="form-control @error('institution') is-invalid @enderror" id="institution"
-                                aria-describedby="emailHelp" name="institution" wire:model='institution'> </textarea>
-                            @error('institution')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="abstractTitle">Abstract Title</label>
-                            <textarea type="text" class="form-control @error('abstractTitle') is-invalid @enderror" id="abstractTitle"
-                                aria-describedby="emailHelp" name="abstractTitle" wire:model='abstractTitle'> </textarea>
-                            @error('abstractTitle')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="participant_type">Author Type</label>
-                            <input type="text"
-                                class="form-control @error('participant_type') is-invalid @enderror"
-                                id="participant_type" aria-describedby="emailHelp" placeholder="Presenter"
-                                name="participant_type" wire:model='participant_type'>
-                            @error('participant_type')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fee">Fee</label>
-                            <input type="text" readonly class="form-control @error('fee') is-invalid @enderror"
-                                id="fee" aria-describedby="emailHelp" name="fee" wire:model="fee">
-                            @error('fee')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="review-accept-grid">
+                            <div class="form-group review-accept-field--wide">
+                                <label class="review-accept-label" for="full_name">Full name</label>
+                                <input type="text" class="form-control @error('full_name') is-invalid @enderror"
+                                    id="full_name" name="full_name" wire:model="full_name">
+                                @error('full_name')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group review-accept-field--wide">
+                                <label class="review-accept-label" for="institution">Institution</label>
+                                <textarea class="form-control @error('institution') is-invalid @enderror" id="institution"
+                                    name="institution" wire:model="institution"></textarea>
+                                @error('institution')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group review-accept-field--wide">
+                                <label class="review-accept-label" for="abstractTitle">Abstract title</label>
+                                <textarea class="form-control @error('abstractTitle') is-invalid @enderror" id="abstractTitle"
+                                    name="abstractTitle" wire:model="abstractTitle"></textarea>
+                                @error('abstractTitle')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="review-accept-label" for="participant_type">Author type</label>
+                                <input type="text" readonly
+                                    class="form-control @error('participant_type') is-invalid @enderror"
+                                    id="participant_type" name="participant_type" wire:model="participant_type_label">
+                                @error('participant_type')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="review-accept-label" for="fee">Registration fee</label>
+                                <input type="text" readonly class="form-control @error('fee') is-invalid @enderror"
+                                    id="fee" name="fee" wire:model="fee">
+                                @error('fee')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button wire:click="accept()" class="btn btn-primary position-relative" wire:loading.attr="disabled" wire:loading.class="btn-secondary">
-                            <span wire:loading.remove wire:target="accept">
-                                <i class="fa fa-paper-plane mr-1"></i> Send to {{ $email }}
-                            </span>
-                            <span wire:loading wire:target="accept">
-                                <div class="d-flex align-items-center">
-                                    <div class="spinner-border spinner-border-sm mr-2" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
-                                    Processing... Please wait
-                                </div>
-                            </span>
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <p class="review-accept-footnote">
+                            This action marks the submission as accepted and stores both documents before attempting to email them.
+                        </p>
+                        <div class="review-accept-actions">
+                            <button type="button" class="review-accept-btn review-accept-btn--secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" wire:click="accept()" class="review-accept-btn review-accept-btn--primary"
+                                wire:loading.attr="disabled" wire:target="accept">
+                                <span wire:loading.remove wire:target="accept">Send acceptance email</span>
+                                <span wire:loading wire:target="accept">Sending…</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -398,7 +658,7 @@
                         text: event.detail.message,
                         icon: event.detail.icon,
                         confirmButtonText: 'Great!',
-                        confirmButtonColor: '#10b981',
+                        confirmButtonColor: '#047857',
                         timer: 5000,
                         showConfirmButton: true,
                         allowOutsideClick: false
@@ -406,7 +666,25 @@
                 }, 500);
             });
 
-            // Sweet Alert for review error
+            window.addEventListener('review-warning', event => {
+                $('#modalValidate').modal('hide');
+
+                setTimeout(() => {
+                    $('.modal-backdrop').remove();
+                    $('body').removeClass('modal-open').css('padding-right', '');
+
+                    Swal.fire({
+                        title: event.detail.title,
+                        text: event.detail.message,
+                        icon: event.detail.icon,
+                        confirmButtonText: 'Understood',
+                        confirmButtonColor: '#a16207',
+                        showConfirmButton: true,
+                        allowOutsideClick: false
+                    });
+                }, 500);
+            });
+
             window.addEventListener('review-error', event => {
                 Swal.fire({
                     title: event.detail.title,

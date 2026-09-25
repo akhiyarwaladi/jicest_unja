@@ -38,7 +38,7 @@ class UploadedPaperExport extends DefaultValueBinder implements
     public function __construct($dateFrom = null, $dateTo = null, $search = '', $search2 = '')
     {
         $this->dateFrom = $dateFrom ?: \App\Models\Fee::getDefaultFilterStart();
-        $this->dateTo = $dateTo ?: date('Y-m-d');
+        $this->dateTo = $dateTo ?: \App\Models\Fee::getDefaultFilterEnd();
         $this->search = $search;
         $this->search2 = $search2;
     }

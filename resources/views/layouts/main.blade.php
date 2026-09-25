@@ -64,6 +64,16 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
 
 
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    @include('assets.editorial')
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ url('') }}/assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url('') }}/assets/css/font-awesome.min.css" type="text/css">
@@ -99,6 +109,32 @@
 
         .image-link:hover {
             opacity: 0.8;
+        }
+
+        .hero-section.set-bg {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero-section.set-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: rgba(11, 27, 20, .62);
+        }
+
+        .hero-section.set-bg > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section.set-bg h1,
+        .hero-section.set-bg h2,
+        .hero-section.set-bg h3,
+        .hero-section.set-bg p {
+            color: #fff !important;
+            text-shadow: none !important;
         }
 
         /* Loader styles */
@@ -193,65 +229,10 @@
         <div class="loader"></div>
     </div>
 
-    {{-- HEADER --}}
-    @include('layouts.header')
+    @include('templates.navbar')
 
     @yield('content')
-    <!-- Footer Section Begin -->
-   <footer class="footer-section" style="background: rgb(235, 235, 235)">
-        <div class="container" style="overflow-x: hidden;">
-            <!--
-            <div class="row  justify-content-center">
-                <h4 class="text-white mb-3">PUBLISHER</h4>
-            </div>
-            <div class="row justify-content-center mb-3">
-                <div class="mb-3">
-                    <a href="https://www.scientific.net/" class="pl-table" style="width:150px">
-                        <div class="pl-tablecell">
-                            <img src="{{ url('') }}/assets/img/partner-logo/partner-1.png" alt=""
-                                style="height: 100px;">
-                        </div>
-                    </a>
-                </div>
-            </div>
-            -->
-
-
-            <div class="mt-5" style="margin-top: 100px;">
-                <header class="italic text-black text-center" style=""><i>Hosted and Managed by</i></header>
-                <div class="d-flex flex-row align-items-center w-100 justify-content-center" style="">
-                    <img src="{{asset('assets/img/unja-logo-2026.png')}}" style="object-fit: contain; max-width: 100px; width: 100%;" class="" width=""/>
-                    <div class="d-flex flex-column" style="margin-left: 20px;">
-                        <p class="py-0 my-0" style="font-weight: 600;color: black; ">FACULTY OF SCIENCE AND TECHNOLOGY</p>
-                        <p class="py-0 my-0">UNIVERSITAS JAMBI</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-text">
-                        <div class="copyright-text">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | JICEST 2026
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                        {{-- <div class="ft-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+    @include('components.editorial-footer')
 
     <!-- Js Plugins -->
     <script src="{{ url('') }}/assets/js/jquery-3.3.1.min.js"></script>

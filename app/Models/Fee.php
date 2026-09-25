@@ -168,6 +168,11 @@ class Fee extends Model
         return self::getSchedulePeriods()['early_start']?->format('Y-m-d') ?? now()->format('Y-m-d');
     }
 
+    public static function getDefaultFilterEnd()
+    {
+        return now()->endOfYear()->format('Y-m-d');
+    }
+
     /**
      * Check if current date is in early bird period
      * @return bool

@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('css')
-    @include('assets.editorial')
     <style>
         body {
             background: var(--ed-paper);
@@ -60,6 +59,7 @@
 
         .admin-sidebar h1 {
             margin: 10px 0 8px;
+            color: #fff;
             font-family: 'IBM Plex Serif', Georgia, serif;
             font-size: 28px;
             font-weight: 500;

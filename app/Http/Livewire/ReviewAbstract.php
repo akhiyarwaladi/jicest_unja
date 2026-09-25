@@ -29,12 +29,12 @@ class ReviewAbstract extends Component
     //LOA
     public $full_name, $institution, $abstractTitle, $loa, $loaPath;
     //Invoice
-    public $email, $fee, $participant_type, $invoicePath;
+    public $email, $fee, $participant_type, $participant_type_label, $invoicePath;
 
     public function mount()
     {
         $this->date_from = Fee::getDefaultFilterStart();
-        $this->date_to = date('Y-m-d');
+        $this->date_to = Fee::getDefaultFilterEnd();
     }
 
     public function empty()
@@ -129,6 +129,13 @@ class ReviewAbstract extends Component
         $this->abstractTitle = UploadAbstract::find($this->abstract_review)->title;
         $this->email = $participant->user->email;
         $this->participant_type = $participant->participant_type;
+        $this->participant_type_label = match ($participantType) {
+            'presenter_reguler' => 'Presenter (Reguler)',
+            'presenter_student' => 'Presenter (Student)',
+            'participant_reguler' => 'Participant (Reguler)',
+            'participant_student' => 'Participant (Student)',
+            default => ucwords(str_replace(['_', '-'], ' ', (string) $participantType)),
+        };
         $this->dispatchBrowserEvent('show-modal');
     }
 
@@ -177,14 +184,15 @@ class ReviewAbstract extends Component
                 'reviewed_by' => Auth::user()->email
             ]);
 
-            $linkLoa = env('APP_URL') . "/storage/" . $this->loaPath;
-            $linkInvoice = env('APP_URL') . "/storage/" . $this->invoicePath;
+            $linkLoa = url('/storage/' . $this->loaPath);
+            $linkInvoice = url('/storage/' . $this->invoicePath);
 
             \Log::info('Generated LOA URL: ' . $linkLoa);
             \Log::info('Generated Invoice URL: ' . $linkInvoice);
             \Log::info('Attempting to send email to: ' . $this->email);
             
-            Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
+            try {
+                Mail::to($this->email, $this->full_name)->send(new SendMail('ABSTRACT ACCEPTANCE', "<p>
             Dear " . $this->full_name . ", <br>
             Congratulations! We are happy to inform you that your abstract for The 4th Jambi International Conference on Engineering, Science, and Technology (JICEST 2026) <br>
             Title of abstract: <strong>" . $this->abstractTitle . "</strong> has been accepted. <br><br>
@@ -206,7 +214,23 @@ class ReviewAbstract extends Component
             Warm regards, <br><br><br><br>
             Steering Committee JICEST 2026</p>"));
             
-            \Log::info('Email sent successfully');
+                \Log::info('Email sent successfully');
+            } catch (\Throwable $e) {
+                \Log::error('Acceptance email failed.', [
+                    'abstract_review_id' => $this->abstract_review,
+                    'recipient' => $this->email,
+                    'mailer' => config('mail.default'),
+                    'exception' => $e,
+                ]);
+                $this->review = false;
+                $this->dispatchBrowserEvent('review-warning', [
+                    'title' => 'Abstract accepted; email not sent',
+                    'message' => 'The LOA and invoice were generated successfully, but the notification email could not be sent. Use the LOA and Invoice links in the submission row to send the documents manually.',
+                    'icon' => 'warning'
+                ]);
+                return;
+            }
+
             $this->review = false;
             
             $this->dispatchBrowserEvent('review-success', [
@@ -214,8 +238,11 @@ class ReviewAbstract extends Component
                 'message' => 'Abstract has been accepted successfully. LOA and invoice have been sent to the author.',
                 'icon' => 'success'
             ]);
-        } catch (\Exception $e) {
-            \Log::error('Error in accept function: ' . $e->getMessage());
+        } catch (\Throwable $e) {
+            \Log::error('Error in accept function.', [
+                'abstract_review_id' => $this->abstract_review,
+                'exception' => $e,
+            ]);
             
             $this->dispatchBrowserEvent('review-error', [
                 'title' => 'Accept Failed',
@@ -244,8 +271,11 @@ class ReviewAbstract extends Component
                 'message' => 'Abstract has been rejected and notification email sent to the author.',
                 'icon' => 'warning'
             ]);
-        } catch (\Exception $e) {
-            \Log::error('Error in reject function: ' . $e->getMessage());
+        } catch (\Throwable $e) {
+            \Log::error('Error in reject function.', [
+                'abstract_review_id' => $this->abstract_review,
+                'exception' => $e,
+            ]);
 
             $this->dispatchBrowserEvent('review-error', [
                 'title' => 'Reject Failed',
