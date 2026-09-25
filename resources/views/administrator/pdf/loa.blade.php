@@ -14,7 +14,7 @@
                 <table>
                     <tr style="margin:0; padding:0">
                         <td style="width:20%">
-                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/unja-logo-2026.png'))) }}" width="100px" alt="">
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/unja-logo-2026-pdf.png'))) }}" width="100px" alt="">
                         </td>
                         <td style="width:80%">
                             <h4 style="text-align: center; font-size:18px; margin:0; padding:0">
@@ -85,7 +85,7 @@
                         </p>
                         <div class="parent" style="position:relative;">
                                 <div class="parent" style="position: relative; width: 195px; height: 85px; margin-left: auto; left: -8px;">
-                                    <img class="image1" style="position: absolute; left: 90px; top: 20px; z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026.png'))) }}" width="98px" />
+                                    <img class="image1" style="position: absolute; left: 90px; top: 20px; z-index: 2;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/jicest-logo-2026-pdf.png'))) }}" width="98px" />
                                     <img class="image2" style="position: absolute; left: 0; top: 0; z-index: 3;" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/img/chairman-signature-lucky-zaehir.png'))) }}" width="78px" />
                                 </div>
                             </div>

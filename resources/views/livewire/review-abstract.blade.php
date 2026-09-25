@@ -24,16 +24,9 @@
         ],
     ];
     
-    function getTopicLabel($topicValue, $topics) {
-        foreach ($topics as $category => $options) {
-            if (array_key_exists($topicValue, $options)) {
-                return $options[$topicValue]; // Return the label
-            }
-        }
-        return null; // Return null if not found
-    }
 @endphp
 
+<div>
 <style>
     .review-accept-modal .modal-dialog {
         max-width: 780px;
@@ -298,7 +291,6 @@
     }
 </style>
 
-<div>
     @if ($reviewError)
         <div class="alert alert-danger" role="alert">{{ $reviewError }}</div>
     @endif
@@ -709,4 +701,3 @@
         </script>
     @endsection
 </div>
-

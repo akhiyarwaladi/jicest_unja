@@ -20,7 +20,7 @@ class ReviewAbstract extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $review = false;
-    public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter;
+    public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter, $attendance;
     public $search = '', $search2, $abstract_review, $status_hki;
     public $reviewError = '';
     public $validVouchers = ['JICEST2026FST50RB'];

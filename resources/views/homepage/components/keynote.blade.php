@@ -6,7 +6,7 @@
                 <h2 class="ed-display text-4xl md:text-5xl mt-3">Keynote Speakers</h2>
             </div>
             <p class="ed-quiet max-w-sm md:text-right md:pb-2">
-                Four keynote speakers are confirmed. The fifth plenary speaker will be announced when the programme is final.
+                Meet the four confirmed keynote speakers for JICEST 2026.
             </p>
         </header>
 
@@ -16,7 +16,7 @@
                     'name' => 'Asst. Prof. Dr. Nattinee Thongdee',
                     'role' => 'Director',
                     'institution' => 'Khorat Fossil Museum',
-                    'image' => 'uploads/speakers/nattinee-thongdee.jpg',
+                    'image' => 'uploads/speakers/nattinee-thongdee-2026.jpg',
                     'alt' => 'Portrait of Asst. Prof. Dr. Nattinee Thongdee',
                     'url' => 'https://www.khoratfossil.org/khoratfossil/index.php/en/about-us/board/administrative-board',
                 ],
@@ -44,45 +44,29 @@
                     'alt' => 'Portrait of Nur Hamid',
                     'url' => 'https://pure.kfupm.edu.sa/en/persons/dr-nur-hamid/',
                 ],
-                [
-                    'name' => 'To be announced',
-                    'role' => null,
-                    'institution' => null,
-                    'image' => null,
-                    'alt' => null,
-                    'url' => null,
-                ],
             ];
         @endphp
 
-        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
+        <div class="mt-14 mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-14">
             @foreach ($speakers as $index => $speaker)
                 <article class="border-t border-[var(--ed-hair)] pt-5">
                     <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
                         <span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                        <span>{{ $speaker['url'] ? 'Confirmed' : 'Pending' }}</span>
+                        <span>Confirmed</span>
                     </div>
 
                     <div class="mt-5 aspect-[4/5] bg-[#f3f2ec] border border-[var(--ed-hair)] flex items-center justify-center overflow-hidden">
-                        @if ($speaker['image'])
-                            <img src="{{ asset($speaker['image']) }}" alt="{{ $speaker['alt'] }}"
-                                class="ed-media w-full h-full object-cover" loading="lazy">
-                        @else
-                            <span class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet text-center px-6">
-                                Portrait to be announced
-                            </span>
-                        @endif
+                        <img src="{{ asset($speaker['image']) }}" alt="{{ $speaker['alt'] }}"
+                            class="ed-media w-full h-full object-cover" loading="lazy">
                     </div>
 
                     <h3 class="ed-display text-xl mt-5">{{ $speaker['name'] }}</h3>
-                    @if ($speaker['role'])
-                        <p class="ed-mono text-sm mt-3" style="color:var(--ed-accent)">{{ $speaker['role'] }}</p>
-                        <p class="ed-quiet text-base mt-1">{{ $speaker['institution'] }}</p>
-                        <a href="{{ $speaker['url'] }}" target="_blank" rel="noopener"
-                            class="ed-mono text-sm tracking-[.08em] uppercase ed-underline inline-block mt-4">
-                            View profile
-                        </a>
-                    @endif
+                    <p class="ed-mono text-sm mt-3" style="color:var(--ed-accent)">{{ $speaker['role'] }}</p>
+                    <p class="ed-quiet text-base mt-1">{{ $speaker['institution'] }}</p>
+                    <a href="{{ $speaker['url'] }}" target="_blank" rel="noopener"
+                        class="ed-mono text-sm tracking-[.08em] uppercase ed-underline inline-block mt-4">
+                        View profile
+                    </a>
                 </article>
             @endforeach
         </div>
