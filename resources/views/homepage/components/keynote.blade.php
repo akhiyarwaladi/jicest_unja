@@ -40,7 +40,7 @@
                     'name' => 'Nur Hamid',
                     'role' => 'Postdoctoral Fellow',
                     'institution' => 'King Fahd University of Petroleum & Minerals',
-                    'image' => 'uploads/speakers/nur-hamid.JPG',
+                    'image' => 'uploads/speakers/nur-hamid.jpeg',
                     'alt' => 'Portrait of Nur Hamid',
                     'url' => 'https://pure.kfupm.edu.sa/en/persons/dr-nur-hamid/',
                 ],
