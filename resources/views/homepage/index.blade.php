@@ -104,6 +104,7 @@
         <div class="main h-fit w-full  ">
             @include('homepage.components.about')
             @include('homepage.components.keynote')
+            @include('homepage.components.invited')
             @include('homepage.components.publication')
             @include('homepage.components.date')
             @include('homepage.components.pricing')
