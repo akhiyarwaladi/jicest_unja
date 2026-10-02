@@ -1,13 +1,7 @@
 @extends('layouts.main-tailwind')
 
 @section('content')
-{{--
-    Registration fees page.
-
-    The fee prospectus rendered as a printed price list: hairline rows, monospaced
-    figures, one accent for early bird and one signal colour for the regular round.
-     Amounts and periods are read from the fees table via Fee::getAllPricingTiers().
---}}
+{{-- Fee amounts and General Presenter periods come from the fees table. --}}
 @php
     $schedule = $schedule ?? [];
     $earlyStart = $schedule['early_start'] ?? null;
@@ -15,7 +9,7 @@
     $regularStart = $schedule['regular_start'] ?? null;
     $regularEnd = $schedule['regular_end'] ?? null;
 @endphp
-<div class="ed-paper pt-32 pb-16 w-full">
+<div class="ed-paper pt-32 pb-10 md:pb-16 w-full">
     <div class="max-w-5xl mx-auto px-6">
         <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10">
             <div>
@@ -23,12 +17,14 @@
                 <h1 class="ed-display text-4xl md:text-5xl mt-3">Registration Fees</h1>
             </div>
             <p class="ed-quiet text-lg max-w-sm md:text-right md:pb-1">
-                Fees are quoted per person and cover attendance, the conference proceedings,
-                and a certificate of presentation or participation issued online.
+                Fees are quoted per person and cover attendance and
+                a certificate of presentation or participation issued online.
             </p>
         </header>
 
-        {{-- Fee periods, taken from the live fee table --}}
+        <p class="ed-quiet text-base mb-4 leading-relaxed">
+            Early Bird and Regular rates apply only to General Presenters. Other categories have a fixed fee.
+        </p>
         <div class="flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-sm tracking-[.14em] uppercase">
             @if(isset($pricing['presenter']['early_bird']) && $pricing['presenter']['early_bird'])
                 <span style="color:var(--ed-accent)">
@@ -60,61 +56,19 @@
 </div>
 
 {{-- Fee list --}}
-<div class="w-full py-16 md:py-20 bg-white">
+<div class="w-full pt-8 pb-12 md:py-16 bg-white">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="hidden md:grid grid-cols-12 gap-6 pb-4 border-b border-[var(--ed-hair)]">
-            <div class="col-span-1"></div>
-            <div class="col-span-5 ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Category</div>
-            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase ed-quiet">Early bird</div>
-            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:text-right">Regular</div>
-        </div>
+        <aside class="mb-8 grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3" aria-label="Publication fee notice">
+            <h2 class="ed-display text-xl md:text-2xl md:col-span-4">Publication fee is separate</h2>
+            <p class="text-base ed-quiet leading-relaxed md:col-span-8">
+                An additional publication fee will apply to participants who wish to have their accepted papers published in the Conference Proceedings, subject to the applicable publication terms and conditions.
+            </p>
+        </aside>
 
-        @php
-            $tiers = [
-                ['key' => 'presenter', 'index' => '01', 'name' => 'Presenter (Reguler)', 'note' => 'Authors presenting an accepted paper. Regular and institutional rate.', 'early' => '350K IDR / 35 USD', 'regular' => '400K IDR / 40 USD'],
-                ['key' => 'presenter_student', 'index' => '02', 'name' => 'Presenter (Student)', 'note' => 'Authors presenting an accepted paper. Student rate, valid student ID required.', 'early' => '250K IDR / 25 USD', 'regular' => '300K IDR / 30 USD'],
-                ['key' => 'participant', 'index' => '03', 'name' => 'Participant (Reguler)', 'note' => 'Attendees without a paper. Regular and institutional rate.', 'early' => '100K IDR / 10 USD', 'regular' => '150K IDR / 15 USD'],
-                ['key' => 'participant_student', 'index' => '04', 'name' => 'Participant (Student)', 'note' => 'Attendees without a paper. Student rate, valid student ID required.', 'early' => '50K IDR / 4 USD', 'regular' => '50K IDR / 4 USD'],
-            ];
-        @endphp
-
-        <div>
-            @foreach ($tiers as $tier)
-                @php
-                    $early = $pricing[$tier['key']]['early_bird']['formatted'] ?? $tier['early'];
-                    $regular = $pricing[$tier['key']]['non_early_bird']['formatted'] ?? $tier['regular'];
-                    $earlyAmount = array_map('trim', explode('/', $early));
-                    $regularAmount = array_map('trim', explode('/', $regular));
-                @endphp
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-t border-[var(--ed-hair)]">
-                    <div class="ed-mono text-sm ed-quiet md:col-span-1">{{ $tier['index'] }}</div>
-
-                    <div class="md:col-span-5">
-                        <h2 class="ed-display text-2xl">{{ $tier['name'] }}</h2>
-                        <p class="ed-quiet text-base mt-2">{{ $tier['note'] }}</p>
-                    </div>
-
-                    <div class="md:col-span-3">
-                        <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:hidden">Early bird</div>
-                        <div class="ed-mono text-3xl mt-1 md:mt-0 whitespace-nowrap" style="color:var(--ed-accent)">{{ $earlyAmount[0] }}</div>
-                        @isset($earlyAmount[1])
-                            <div class="ed-mono text-xl ed-quiet mt-1.5 whitespace-nowrap">{{ $earlyAmount[1] }}</div>
-                        @endisset
-                    </div>
-
-                    <div class="md:col-span-3 md:text-right">
-                        <div class="ed-mono text-sm tracking-[.14em] uppercase ed-quiet md:hidden">Regular</div>
-                        <div class="ed-mono text-3xl mt-1 md:mt-0 whitespace-nowrap">{{ $regularAmount[0] }}</div>
-                        @isset($regularAmount[1])
-                            <div class="ed-mono text-xl ed-quiet mt-1.5 whitespace-nowrap">{{ $regularAmount[1] }}</div>
-                        @endisset
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        @include('homepage.components.fee-list', ['dark' => false])
 
         <p class="ed-quiet text-lg mt-8 max-w-2xl leading-relaxed">
-            All amounts include attendance, the conference proceedings and the certificate.
+            All amounts include attendance and the certificate.
             Students are asked to include a scan of their student card with the payment receipt.
         </p>
     </div>

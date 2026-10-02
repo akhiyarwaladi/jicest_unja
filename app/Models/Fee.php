@@ -152,8 +152,9 @@ class Fee extends Model
 
     public static function getSchedulePeriods()
     {
-        $early = self::where('early_bird', true)->orderBy('payment_start')->first();
-        $regular = self::where('early_bird', false)->orderBy('payment_start')->first();
+        $presenterFees = self::where('category', 'presenter')->where('participant_type', 'regular');
+        $early = (clone $presenterFees)->where('early_bird', true)->orderBy('payment_start')->first();
+        $regular = (clone $presenterFees)->where('early_bird', false)->orderBy('payment_start')->first();
 
         return [
             'early_start' => $early?->payment_start,

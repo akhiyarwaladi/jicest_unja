@@ -9,7 +9,7 @@
             <div class="md:col-span-9">
                 <p class="ed-display text-2xl md:text-3xl leading-snug">
                     Accepted JICEST papers are published in the
-                    <span class="whitespace-nowrap">JICEST Conference Proceedings</span> and made available online.
+                    JICEST Conference Proceedings and made available online.
                 </p>
 
                 <dl class="mt-8 ed-mono text-base">

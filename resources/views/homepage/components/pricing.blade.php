@@ -1,13 +1,4 @@
-{{--
-    Registration fees.
-
-    Rendered as a printed price list (category / early bird / regular) instead of a set of
-    gradient cards. The ink band below is the one deliberately dramatic moment on the
-    homepage; everything around it stays on paper.
-
-     Data comes from App\Models\Fee::getAllPricingTiers(), keyed as:
-     presenter, presenter_student, participant, participant_student.
---}}
+{{-- Fee amounts and General Presenter periods come from the fees table. --}}
 @php
     $schedule = $schedule ?? [];
     $earlyStart = $schedule['early_start'] ?? null;
@@ -21,13 +12,15 @@
             <p class="ed-eyebrow" style="color:#6ee7b7">Registration</p>
             <h2 class="ed-display text-4xl md:text-5xl mt-3 text-white">Registration Fees</h2>
             <p class="mt-5 text-lg text-white/70 leading-relaxed">
-                Fees are quoted per person and cover attendance, the conference proceedings, and
+                Fees are quoted per person and cover attendance and
                 a certificate of presentation or participation issued online.
             </p>
         </header>
 
-        {{-- Round dates, taken from the live fee table --}}
-        <div class="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-sm tracking-[.14em] uppercase">
+        <p class="mt-8 text-base text-white/90 leading-relaxed">
+            Early Bird and Regular rates apply only to General Presenters. Other categories have a fixed fee.
+        </p>
+        <div class="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-2 ed-mono text-sm tracking-[.14em] uppercase">
             @if(isset($pricing['presenter']['early_bird']) && $pricing['presenter']['early_bird'])
                 <span style="color:#6ee7b7">
                     Early bird &middot;
@@ -55,58 +48,14 @@
             @endif
         </div>
 
-        {{-- Column headings --}}
-        <div class="mt-10 hidden md:grid grid-cols-12 gap-6 pb-4 border-b border-white/25">
-            <div class="col-span-1"></div>
-            <div class="col-span-5 ed-mono text-sm tracking-[.14em] uppercase text-white/70">Category</div>
-            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase text-white/70">Early bird</div>
-            <div class="col-span-3 ed-mono text-sm tracking-[.14em] uppercase text-white/70 md:text-right">Regular</div>
-        </div>
+        <aside class="mt-8 grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 border-t border-white/25 pt-6" aria-label="Publication fee notice">
+            <h3 class="ed-display text-xl md:text-2xl md:col-span-4">Publication fee is separate</h3>
+            <p class="text-base text-white/90 leading-relaxed md:col-span-8">
+                An additional publication fee will apply to participants who wish to have their accepted papers published in the Conference Proceedings, subject to the applicable publication terms and conditions.
+            </p>
+        </aside>
 
-        @php
-            $tiers = [
-                ['key' => 'presenter', 'index' => '01', 'name' => 'Presenter (Reguler)', 'note' => 'Authors presenting an accepted paper. Regular and institutional rate.', 'early' => '350K IDR / 35 USD', 'regular' => '400K IDR / 40 USD'],
-                ['key' => 'presenter_student', 'index' => '02', 'name' => 'Presenter (Student)', 'note' => 'Authors presenting an accepted paper. Student rate, valid student ID required.', 'early' => '250K IDR / 25 USD', 'regular' => '300K IDR / 30 USD'],
-                ['key' => 'participant', 'index' => '03', 'name' => 'Participant (Reguler)', 'note' => 'Attendees without a paper. Regular and institutional rate.', 'early' => '100K IDR / 10 USD', 'regular' => '150K IDR / 15 USD'],
-                ['key' => 'participant_student', 'index' => '04', 'name' => 'Participant (Student)', 'note' => 'Attendees without a paper. Student rate, valid student ID required.', 'early' => '50K IDR / 4 USD', 'regular' => '50K IDR / 4 USD'],
-            ];
-        @endphp
-
-        <div>
-            @foreach ($tiers as $tier)
-                @php
-                    $early = $pricing[$tier['key']]['early_bird']['formatted'] ?? $tier['early'];
-                    $regular = $pricing[$tier['key']]['non_early_bird']['formatted'] ?? $tier['regular'];
-                    $earlyAmount = array_map('trim', explode('/', $early));
-                    $regularAmount = array_map('trim', explode('/', $regular));
-                @endphp
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-3 items-baseline py-7 border-t border-white/15">
-                    <div class="ed-mono text-sm text-white/70 md:col-span-1">{{ $tier['index'] }}</div>
-
-                    <div class="md:col-span-5">
-                        <h3 class="ed-display text-2xl text-white">{{ $tier['name'] }}</h3>
-                        <p class="text-base text-white/70 mt-2">{{ $tier['note'] }}</p>
-                    </div>
-
-                    <div class="md:col-span-3">
-                        <div class="ed-mono text-sm tracking-[.14em] uppercase text-white/70 md:hidden">Early bird
-                        </div>
-                        <div class="ed-mono text-3xl whitespace-nowrap" style="color:#6ee7b7">{{ $earlyAmount[0] }}</div>
-                        @isset($earlyAmount[1])
-                            <div class="ed-mono text-xl text-white/70 mt-1.5 whitespace-nowrap">{{ $earlyAmount[1] }}</div>
-                        @endisset
-                    </div>
-
-                    <div class="md:col-span-3 md:text-right">
-                        <div class="ed-mono text-sm tracking-[.14em] uppercase text-white/70 md:hidden">Regular</div>
-                        <div class="ed-mono text-3xl text-white whitespace-nowrap">{{ $regularAmount[0] }}</div>
-                        @isset($regularAmount[1])
-                            <div class="ed-mono text-xl text-white/70 mt-1.5 whitespace-nowrap">{{ $regularAmount[1] }}</div>
-                        @endisset
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        @include('homepage.components.fee-list', ['dark' => true])
 
         <div class="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-white/15 pt-8">
             <p class="text-lg text-white/70 max-w-xl">
