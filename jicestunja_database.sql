@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 25, 2026 at 08:42 PM
+-- Generation Time: Oct 02, 2026 at 11:40 PM
 -- Server version: 8.0.46
 -- PHP Version: 8.4.25
 
@@ -313,7 +313,9 @@ INSERT INTO `participants` (`id`, `full_name1`, `full_name2`, `gender`, `partici
 (366, 'sasa', '31sasa asasa', 'male', 'presenter_reguler', 'sasas', 'sasac sasa2131', '+38311111111', NULL, NULL, 'online', 'not a member', NULL, 368, '2025-12-17 02:52:32', '2025-12-17 02:52:32'),
 (367, 'awaw', 'awwa', 'male', 'presenter_reguler', 'wadaw', 'awdaw', '0821398129', NULL, NULL, 'online', 'not a member', NULL, 369, '2026-02-17 21:41:35', '2026-02-17 21:41:35'),
 (368, 'Hshs', 'Shsh', 'male', 'participant_reguler', 'Jjzhz', 'Zhahzh', '0816261727722', NULL, NULL, 'online', 'not a member', NULL, 370, '2026-06-03 19:15:10', '2026-06-03 19:15:10'),
-(369, 'Joy Natasya ', 'Joy Natasya ', 'female', 'presenter_student', 'Universitas Jambi ', 'Mendalo indah', '088740353212', NULL, NULL, 'online', 'not a member', NULL, 371, '2026-08-25 10:11:25', '2026-08-25 10:11:25');
+(369, 'Joy Natasya ', 'Joy Natasya ', 'female', 'presenter_student', 'Universitas Jambi ', 'Mendalo indah', '088740353212', NULL, NULL, 'online', 'not a member', NULL, 371, '2026-08-25 10:11:25', '2026-08-25 10:11:25'),
+(370, 'Regna Tri Jayanti', 'Regna Tri Jayanti, M.T', 'female', 'presenter_reguler', 'Politeknik ATI Padang', 'Jalan Simpang Tabing Koto Tangah, Kota Padang ', '081346621120', NULL, NULL, 'online', 'not a member', NULL, 372, '2026-09-30 06:10:42', '2026-09-30 06:10:42'),
+(371, 'Melvi Muharmi', 'Melvi Muharmi, M.Si', 'female', 'presenter_reguler', 'Jambi University', 'Mendalo Indah, Jambi Luar Kota, Muaro Jambi, Jambi', '083898622499', NULL, NULL, 'online', 'not a member', NULL, 373, '2026-10-01 22:32:38', '2026-10-01 22:32:38');
 
 -- --------------------------------------------------------
 
@@ -548,7 +550,8 @@ INSERT INTO `payments` (`id`, `fee`, `discount`, `fee_after_discount`, `total_bi
 (349, '450000', '0', 'IDR 450000 / $27.27 USD', 'IDR 450000 / $27.27 USD', 'proof-of-payment/MDMjnUxxBvLNqN6eyrb8OuCJpuoBDN2k0Xuq1jOY.jpg', 'JICEST/2025/1127/0003', 'valid', 'administrator@unja.ac.id', 371, 249, '2025-11-27 03:30:17', '2025-11-27 03:31:32');
 INSERT INTO `payments` (`id`, `fee`, `discount`, `fee_after_discount`, `total_bill`, `proof_of_payment`, `receipt`, `validation`, `validated_by`, `upload_abstract_id`, `participant_id`, `created_at`, `updated_at`) VALUES
 (350, '350000', '0', 'IDR 350000 / $21.21 USD', 'IDR 350000 / $21.21 USD', 'proof-of-payment/vRXeMuJhS4tNcSwtW1Zra6M6zOpbZSUMDJvaQ2Cj.jpg', 'JICEST/2025/1127/0004', 'valid', 'administrator@unja.ac.id', 298, 228, '2025-11-27 07:10:41', '2025-11-27 10:58:43'),
-(351, '250000', '0', 'IDR 250000 / $15.15 USD', 'IDR 250000 / $15.15 USD', 'proof-of-payment/MP6VB6wJVoY6axBaCmynOrmnqfujw4qvqfOqN7tS.jpg', 'JICEST/2025/1128/0001', 'valid', 'administrator@unja.ac.id', 369, 362, '2025-11-27 12:08:27', '2025-11-28 01:51:36');
+(351, '250000', '0', 'IDR 250000 / $15.15 USD', 'IDR 250000 / $15.15 USD', 'proof-of-payment/MP6VB6wJVoY6axBaCmynOrmnqfujw4qvqfOqN7tS.jpg', 'JICEST/2025/1128/0001', 'valid', 'administrator@unja.ac.id', 369, 362, '2025-11-27 12:08:27', '2025-11-28 01:51:36'),
+(352, '450000', '0', 'IDR 450000 / $27.27 USD', 'IDR 450000 / $27.27 USD', 'proof-of-payment/8fDe1Dcy28utJ2auXAad3moSqWMHlGKFSfC6eN8b.png', 'JICEST/2026/0925/0001', 'valid', 'administrator@unja.ac.id', 377, 308, '2026-09-25 14:37:33', '2026-09-25 15:40:13');
 
 -- --------------------------------------------------------
 
@@ -797,7 +800,7 @@ INSERT INTO `upload_abstracts` (`id`, `topic`, `type`, `title`, `authors`, `inst
 (374, 'digital_transformation_education', 'oral presentation', 'Integration of Technology (IoT and AI) in Environmental Education at Adiwiyata Schools in Jambi Province', 'Bunga Mardhotillah, Zurweni.', 'Universitas Jambi', 'The Integration of IoT and AI Technology in Environmental Education at Adiwiyata Schools in Jambi Province focuses on how technology can enhance the effectiveness of environment-based learning. Adiwiyata Schools are known as institutions committed to sustainability and environmental conservation, so the integration of technologies such as the Internet of Things (IoT) and Artificial Intelligence (AI) can help strengthen students\' ecological awareness through a more interactive and data-driven approach. In this study, IoT is used to monitor school environmental conditions in real time, such as air quality, energy use, and waste management. Data collected from IoT sensors can be analyzed using AI, enabling teachers and students to understand environmental change patterns and take more appropriate action. This study also identified several challenges in implementing this technology, such as limited infrastructure, lack of training for educators, and obstacles to curriculum integration. The results show that, with a technology-based approach, environmental education at Adiwiyata schools can be more adaptive, data-driven, and action-oriented, thus having a more significant impact on shaping a generation that cares about the environment.\n\n', 'IoT and AI Integration; Adiwiyata Schools.', 'Bunga Mardhotillah', 361, 'accepted', 'administrator@unja.ac.id', 'letter-of-acceptance/LOA-ABS374-Bunga Mardhotillah.pdf', 'invoice/Invoice-ABS374-Bunga Mardhotillah.pdf', '2025-11-26 14:22:29', '2025-11-26 14:40:55'),
 (375, 'socio_engineering', 'oral presentation', 'sasa', 'sasas', 'asa', 'sasasa', 'sasa', 'sassaa', 366, 'not yet reviewed', NULL, NULL, NULL, '2025-12-17 02:53:45', '2025-12-17 02:53:45'),
 (376, 'digital_transformation_education', 'oral presentation', 'awawaw', 'waaw', 'wawa', 'awaw', 'awawa', 'awaw', 367, 'not yet reviewed', NULL, NULL, NULL, '2026-02-17 21:42:28', '2026-02-17 21:42:28'),
-(377, 'sustainable_engineering', 'oral presentation', 'Helo test', 'Helo test', 'Helo test', 'Helo test', 'Helo test', 'Akhiyar Waladi', 308, 'not yet reviewed', NULL, NULL, NULL, '2026-09-25 12:26:40', '2026-09-25 12:26:40');
+(377, 'sustainable_engineering', 'oral presentation', 'Helo test', 'Helo test', 'Helo test', 'Helo test', 'Helo test', 'Akhiyar Waladi', 308, 'accepted', 'administrator@unja.ac.id', 'letter-of-acceptance/LOA-ABS377-Akhiyar Waladi.pdf', 'invoice/Invoice-ABS377-Akhiyar Waladi.pdf', '2026-09-25 12:26:40', '2026-09-25 15:40:13');
 
 -- --------------------------------------------------------
 
@@ -877,7 +880,8 @@ INSERT INTO `upload_fulltexts` (`id`, `fulltext`, `title`, `validation`, `valida
 (140, 'fulltext-papers/o4tVRLDpJMD95sHDmrpth9CFgm6EaA0KQkcdmmBt.docx', 'ANALYSIS OF MICROPLASTIC CONTENT IN AMBIENT AIR IN THE CAMPUS AREA (Case Study: Mendalo Campus, Jambi University)', 'not yet validated', NULL, 348, '2025-11-28 04:27:41', '2025-11-28 04:49:05'),
 (141, 'fulltext-papers/3IVgvMJatm7NNAw1r6fwXdCueZcjNinXkuIiuGuF.docx', 'Color Complexity and Sharpness for Instagram Engagement Classification in University Accounts', 'not yet validated', NULL, 301, '2025-11-30 15:39:10', '2025-11-30 15:39:10'),
 (142, 'fulltext-papers/xbRtwy5UvjTRTNx0MUVg3Wd8cGOTGxAWNJZeTxKn.docx', 'Phytochemical Profile and Antioxidant Activity of Daemonorops draco (Jernang) Resin Extract from Jambi, Indonesia', 'not yet validated', NULL, 292, '2025-12-19 08:01:36', '2025-12-19 08:01:36'),
-(143, 'fulltext-papers/o6A8vXS8qxI3YyE6PXdRq6HPaTJf90LjBEgtLhSm.docx', 'REVITALIZING FACULTY OPEN SPACE THROUGH LOCAL FLORA AND TECHNOLOGICAL INTEGRATION', 'not yet validated', NULL, 298, '2026-01-01 12:36:29', '2026-01-01 12:36:29');
+(143, 'fulltext-papers/o6A8vXS8qxI3YyE6PXdRq6HPaTJf90LjBEgtLhSm.docx', 'REVITALIZING FACULTY OPEN SPACE THROUGH LOCAL FLORA AND TECHNOLOGICAL INTEGRATION', 'invalid', 'administrator@unja.ac.id', 298, '2026-01-01 12:36:29', '2026-09-25 14:14:00'),
+(144, 'fulltext-papers/12SpvtticuyY6haPbS3izTfGkgQL0rsAvCnbHO19.docx', 'hehehe', 'valid', 'administrator@unja.ac.id', 352, '2026-09-25 15:41:28', '2026-09-25 15:41:47');
 
 -- --------------------------------------------------------
 
@@ -942,7 +946,7 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (235, 'g.gunawan@unib.ac.id', '2024-10-03 04:25:32', 'participant', '$2y$10$rLyJiOA2FjN6S.NtFntY/uBMKttM.6tNH9Owu/lqSUOL4wD8E2xQa', NULL, '2024-10-03 04:24:53', '2024-10-03 04:25:32', NULL),
 (236, 'adeadriadi@unja.ac.id', '2024-10-03 07:25:10', 'participant', '$2y$10$WCzz.S5s.nBBUCjDhClNvO5G.ZYcwRRSKrUEPQnJ2NmpsdnqWFleK', NULL, '2024-10-03 07:24:32', '2024-10-03 07:44:03', NULL),
 (237, 'nikenrarasati@unja.ac.id', '2024-10-03 07:43:51', 'participant', '$2y$10$Byyt2X3pJ1RXB/JwzKYAuuh5yAKv1KBtGpPO8kvhsHSEalgJ.JVA6', NULL, '2024-10-03 07:43:29', '2024-10-03 07:43:51', NULL),
-(238, 'fitra.wahyuni88@unja.ac.id', '2024-10-03 14:00:23', 'participant', '$2y$10$CMW9a/ydlKN.7xCysBVyK.tVN6GDDmoAf5NJdrA4e.SDAEpVAU2l.', 'ODMz12ySLWMppyDX2pvCcckJm4eXi0cxAF89yeyzjGXxFgQfSxBqCmMOHybB', '2024-10-03 13:59:34', '2025-10-29 14:25:50', 'JICEST2025FST50RB'),
+(238, 'fitra.wahyuni88@unja.ac.id', '2024-10-03 14:00:23', 'participant', '$2y$10$CMW9a/ydlKN.7xCysBVyK.tVN6GDDmoAf5NJdrA4e.SDAEpVAU2l.', 'ODMz12ySLWMppyDX2pvCcckJm4eXi0cxAF89yeyzjGXxFgQfSxBqCmMOHybB', '2024-10-03 13:59:34', '2025-10-29 14:25:50', NULL),
 (239, 'tugas.mhs.tamsis@gmail.com', '2024-10-03 14:46:28', 'participant', '$2y$10$/BM7Azt1tmQynpkf0ye2T.D/2Re9Q2dGTI2Yesg.EvQl.ZQoKyd3G', NULL, '2024-10-03 14:45:44', '2024-10-03 14:47:29', NULL),
 (240, 'okhriwidenti709@gmail.com', '2024-10-04 01:13:15', 'participant', '$2y$10$usts/f7Xa1rR3Gmrl/R8UOUk9c0AC9W0vlq1B71jCvtpEFrvjrQCG', NULL, '2024-10-04 01:11:26', '2024-10-04 01:13:15', NULL),
 (241, 'jefri.marzal@unja.ac.id', '2024-10-15 02:33:35', 'participant', '$2y$10$T8kJ4M4eoiQbiGGVnb/uc.MN2V9wY6SbxuuI9jEQUVjdPT7F29F4G', 'sHQmt1Ty4H63MlM2hDyxm5947WXrcCrOyflc5m3ddvcKx9SOX3I2rsbnKSlJ', '2024-10-04 02:11:02', '2024-10-15 02:33:35', NULL),
@@ -962,7 +966,7 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (255, 'dodoft29@gmail.com', '2024-10-13 13:14:31', 'participant', '$2y$10$HuMNzWYsLoCO4mb1Ylc4hOT0wXsgSXx56KmuYqlD92s9/iCcVObvG', NULL, '2024-10-13 13:13:44', '2024-10-13 13:14:31', NULL),
 (256, 'windianarta@gmail.com', '2024-10-16 02:08:31', 'participant', '$2y$10$hVcl2nH1HjJutgcOcGZj5Ohil.WfN1DhL6iuuMK1OUUFSX7FVrE.y', NULL, '2024-10-16 02:07:06', '2024-10-16 02:08:31', NULL),
 (257, 'harmes@unja.ac.id', '2024-10-16 03:57:28', 'participant', '$2y$10$JvdTYPTcnAGXd91vcpXwEO54cdFUqbLWOj5fJZ5iZrCm5OLn17pYi', 'Fi9sNMrJMDQDTjGiTEX69I9hn3J3t4MpliTcP4V1nimmgvfLf95UYH5rHHjE', '2024-10-16 03:56:42', '2024-11-29 03:55:39', NULL),
-(258, 'yudiarista@unja.ac.id', '2024-10-16 09:24:10', 'participant', '$2y$10$mk1ko9jKOytVS7C78KSuSeSrk0.BQlCyTVoPzatiVdZloPpCqW7uO', NULL, '2024-10-16 09:23:11', '2025-10-31 04:34:17', 'JICEST2025FST50RB'),
+(258, 'yudiarista@unja.ac.id', '2024-10-16 09:24:10', 'participant', '$2y$10$mk1ko9jKOytVS7C78KSuSeSrk0.BQlCyTVoPzatiVdZloPpCqW7uO', NULL, '2024-10-16 09:23:11', '2025-10-31 04:34:17', NULL),
 (259, 'sithumoe@unja.ac.id', '2024-10-18 01:10:57', 'participant', '$2y$10$doyZuL46ye73DFBJegNZP.mcXtFKGcrvHIwN6TzY/s7K2HDWw4/YW', NULL, '2024-10-18 01:10:18', '2024-10-18 01:10:57', NULL),
 (260, 'intan.chem15@gmail.com', '2024-10-18 04:50:06', 'participant', '$2y$10$6DYfLbQBZThCrWY.5Y8vku8iTaVBSSDAfUPfVyibLJjd2zoC.DRq2', NULL, '2024-10-18 04:49:18', '2024-10-18 04:50:06', NULL),
 (261, 'uni.baroroh.h@unja.ac.id', '2024-10-18 08:55:59', 'participant', '$2y$10$1zzy9MCFwXIEUR620eZx8./VFZqOG0TYaK5mCSuhRecCOlkTrwvpO', NULL, '2024-10-18 08:53:01', '2024-10-18 12:52:11', NULL),
@@ -1014,14 +1018,14 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (307, 'negem93714@gufutu.com', '2025-01-30 03:21:26', 'participant', '$2y$10$33vLid.8jR0tDS.oL5DJ9OpDEBzwuOappf0kXPBBbld/t89uTGaqO', NULL, '2025-01-30 03:14:36', '2025-01-30 03:21:26', NULL),
 (308, 'temonkumino@gmail.com', '2025-07-18 22:12:25', 'participant', '$2y$10$jatZvifySj026gZRYtU1julzUX6iegNOlg8025A5fKqtuHkooid3m', NULL, '2025-07-18 22:11:39', '2025-07-18 22:12:25', NULL),
 (309, 'wekadharmawan@gmail.com', NULL, 'participant', '$2y$10$bvvrGq7GAcRjSm12aPT5qeOE2wE3TckgIPWwZoYBISUuoGefa6q6C', NULL, '2025-09-18 03:57:32', '2025-09-18 03:57:32', NULL),
-(310, 'akhiyar.waladi@unja.ac.id', '2025-09-25 18:02:19', 'participant', '$2y$10$if8NGRJMOirg/CfD.ECpSO22NC.JDslzCkxou89RhGD8Bx5YeUOWi', NULL, '2025-09-25 18:01:26', '2025-10-29 14:05:17', 'JICEST2025FST50RB'),
+(310, 'akhiyar.waladi@unja.ac.id', '2025-09-25 18:02:19', 'participant', '$2y$10$if8NGRJMOirg/CfD.ECpSO22NC.JDslzCkxou89RhGD8Bx5YeUOWi', NULL, '2025-09-25 18:01:26', '2025-10-29 14:05:17', NULL),
 (311, 'dawamsuprayogi@mail.ugm.ac.id', NULL, 'participant', '$2y$10$otomWjh50SJl/Klf36tY5unyPP1iwXL33kmm114X1WPadGdLk6Rwu', NULL, '2025-10-05 01:06:58', '2025-10-05 01:06:58', NULL),
 (312, 'dawam.suprayogi@mail.ugm.ac.id', '2025-10-05 01:17:58', 'participant', '$2y$10$MHZcubODU4iS5Mp4gcvt8.J3kt7YCPj0oCfS7rhdHgYzShnFVFqcC', NULL, '2025-10-05 01:17:40', '2025-10-05 01:17:58', NULL),
 (313, 'andri.yusman@mail.ugm.ac.id', '2025-10-06 03:29:54', 'participant', '$2y$10$nJoDJLIZxL7kFnRESAKY7evKdGhXtGnPIKVUDRcZGnlG2tGfhe5Wq', NULL, '2025-10-06 03:29:29', '2025-10-06 03:29:54', NULL),
 (314, 'akhiyarwaladi@gmail.com', '2025-10-07 06:13:37', 'participant', '$2y$10$1Z7QEMJ4wlOexrYnquDnu.dcsgxuS/P3m5gciXfCnNr67fbPAdB9K', NULL, '2025-10-07 06:09:56', '2025-10-07 06:13:37', NULL),
 (315, 'damris@unja.ac.id', '2025-10-09 03:54:31', 'participant', '$2y$10$Ko6twvzLYIq/FElYl1PoVuiSJQ.Wo4JQczjHNN1QFAjMEqocgOT72', NULL, '2025-10-09 03:53:38', '2025-10-09 03:54:31', NULL),
 (316, 'cutmultahadah@gmail.com', '2025-10-09 07:17:08', 'participant', '$2y$10$zcZd/dax.4suXX3a.qAfeeJAX/q3ZZqoseFxSM7F19jW1O87jzyii', NULL, '2025-10-09 05:29:03', '2025-10-09 07:17:08', NULL),
-(317, 'muhammadrazi@unja.ac.id', '2025-10-09 17:13:44', 'participant', '$2y$10$vjOWZ0.EDQeKQ40JAVh8IOcfSOBLtgiC1EjiOtVGC821x3s/prJve', NULL, '2025-10-09 17:13:26', '2025-10-29 23:15:27', 'JICEST2025FST50RB'),
+(317, 'muhammadrazi@unja.ac.id', '2025-10-09 17:13:44', 'participant', '$2y$10$vjOWZ0.EDQeKQ40JAVh8IOcfSOBLtgiC1EjiOtVGC821x3s/prJve', NULL, '2025-10-09 17:13:26', '2025-10-29 23:15:27', NULL),
 (318, 'yollanoverina@unja.ac.id', '2025-10-10 04:56:50', 'participant', '$2y$10$dXszHkRTvJ6pGOdWARtf5e.uefMjT3zE7LRCyjlC5GcD2xQ2Spkc6', NULL, '2025-10-10 04:43:07', '2025-10-10 04:56:50', NULL),
 (319, 'freddy_ilfan@unja.ac.id', '2025-10-10 10:29:51', 'participant', '$2y$10$GtSJSzpLKmsZXIZuY.LYQOusnajQcP365I87PXiE/DOePG906VE.a', NULL, '2025-10-10 10:28:58', '2025-10-10 10:29:51', NULL),
 (320, 'anggitprimanugraha@unja.ac.id', '2025-10-10 13:12:41', 'participant', '$2y$10$jIxQMpdEw4Earhwus59xwOV1HQ0loIldGe8DqXCJpDeMRS4NQiMTy', NULL, '2025-10-10 13:12:24', '2025-10-10 13:12:41', NULL),
@@ -1029,8 +1033,8 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (322, 'benniasmara@unja.ac.id', '2025-10-13 23:08:39', 'participant', '$2y$10$lbog1De51.dNb10t0z48l.LAAnBkRNd3I1gj6KXwqVjRtsnSoIh1i', NULL, '2025-10-13 23:02:18', '2025-10-13 23:08:39', NULL),
 (323, 'rizki_ah@unja.ac.id', '2025-10-17 07:57:12', 'participant', '$2y$10$xxe5QXSBF0QJxP7KstnakepGNppqc3SchFMh6EGB6AeXXSo1duIgW', NULL, '2025-10-17 07:53:17', '2025-10-17 07:57:12', NULL),
 (324, 'mikrarlagowa@unja.ac.id', '2025-10-18 02:56:14', 'participant', '$2y$10$VfAvFzXc7mL9gBAwjA7pSOul2FE6FWokKz7J6GmGR9ibpgkPeim8.', NULL, '2025-10-18 02:55:59', '2025-10-18 02:56:14', NULL),
-(325, 'mochammadarx@gmail.com', '2025-10-19 09:19:09', 'participant', '$2y$10$zOCHnCIoICpViEPCdwLxgumk.5GzxQSi9NFn8pOA46yeRqFrmqklu', NULL, '2025-10-19 09:18:46', '2025-10-31 06:12:09', 'JICEST2025FST50RB'),
-(326, 'teguh.setyawan@unja.ac.id', '2025-10-21 04:35:09', 'participant', '$2y$10$i7.yntvuT63RQ27o6auZR.hQRzQK.eV6XAqjbGkGUrIyTYj3o/ase', NULL, '2025-10-21 04:33:55', '2025-10-29 14:21:47', 'JICEST2025FST50RB'),
+(325, 'mochammadarx@gmail.com', '2025-10-19 09:19:09', 'participant', '$2y$10$zOCHnCIoICpViEPCdwLxgumk.5GzxQSi9NFn8pOA46yeRqFrmqklu', NULL, '2025-10-19 09:18:46', '2025-10-31 06:12:09', NULL),
+(326, 'teguh.setyawan@unja.ac.id', '2025-10-21 04:35:09', 'participant', '$2y$10$i7.yntvuT63RQ27o6auZR.hQRzQK.eV6XAqjbGkGUrIyTYj3o/ase', NULL, '2025-10-21 04:33:55', '2025-10-29 14:21:47', NULL),
 (327, 'evaachmad@unja.ac.id', '2025-10-21 14:46:54', 'participant', '$2y$10$12Ri9i6h7izarfe4PhdF1O7GIg8.p5s0licfqBdj0fKLwny3v1opy', NULL, '2025-10-21 14:46:20', '2025-10-21 14:46:54', NULL),
 (328, 'mursalin@unja.ac.id', '2025-10-21 15:23:05', 'participant', '$2y$10$mQ3EHhPhNowevC49UBcJdeRsh7yaeMxOK/u5Huxaj2i3gFHqiOQSe', NULL, '2025-10-21 15:20:33', '2025-10-21 15:23:05', NULL),
 (329, 'raraayulestary@unja.ac.id', '2025-10-28 06:24:10', 'participant', '$2y$10$TsXsOliCH2eeQIAfSHRaJuU67ZvgfAeNDahtnqffM5zHnl12Yw09K', NULL, '2025-10-28 06:22:31', '2025-10-28 06:24:10', NULL),
@@ -1045,10 +1049,10 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (338, 'muh.rizal@unja.ac.id', '2025-10-31 11:43:42', 'participant', '$2y$10$a4i8htGU/XUz7.JSCCfjjefySUTRou.RAmESBXwOeF.RwrRgmizHS', NULL, '2025-10-31 11:43:19', '2025-10-31 11:43:42', NULL),
 (339, 'dinaerliana123@unja.ac.id', '2025-10-31 13:19:15', 'participant', '$2y$10$Pg1VeDNFjlYZhL7ykOTOzOHt.0jAxdNy.xndgtVW3QVoQdlk6S2QC', NULL, '2025-10-31 13:17:58', '2025-10-31 13:19:15', NULL),
 (340, 'anggari.linda.destiana@unja.ac.id', '2025-10-31 14:02:21', 'participant', '$2y$10$0wuJplfyupUiIc/T.og16O43Al6nj2R2Gq3WF3Qbxubud2VMZdhIy', NULL, '2025-10-31 14:01:45', '2025-10-31 14:02:21', NULL),
-(341, 'abiyoga@unja.ac.id', '2025-10-31 15:13:44', 'participant', '$2y$10$gE9O0SqrmMGIyP1N4l3sd.NBthuTYSjvgFoOAedk0/nOBihoKJ/R2', NULL, '2025-10-31 15:13:01', '2025-11-03 03:09:41', 'JICEST2025FST50RB'),
+(341, 'abiyoga@unja.ac.id', '2025-10-31 15:13:44', 'participant', '$2y$10$gE9O0SqrmMGIyP1N4l3sd.NBthuTYSjvgFoOAedk0/nOBihoKJ/R2', NULL, '2025-10-31 15:13:01', '2025-11-03 03:09:41', NULL),
 (342, 'muhammadguntur@unja.ac.id', '2025-11-07 07:48:42', 'participant', '$2y$10$VDKJvaXBwW1Ue7AaBZg8eeeLAgg8kQ2g738DigAvwvRN6XKG97zsG', NULL, '2025-11-07 07:48:27', '2025-11-07 07:48:42', NULL),
 (343, 'farandikaakbar@unja.ac.id', '2025-11-08 03:37:20', 'participant', '$2y$10$o9uvInaFfi/7Uqnw.4S7ZuvwhJ/bc83nnwevBoHjZRIAMk6krMcR6', NULL, '2025-11-08 03:36:45', '2025-11-08 03:37:20', NULL),
-(344, 'andinivermitabestari@unja.ac.id', '2025-11-10 03:29:17', 'participant', '$2y$10$XahmHLU/rz.8cahJp1Ub5O/LeXVKlH2MG5MNpyd/2EWuWuPs7g5bu', NULL, '2025-11-10 03:26:21', '2025-11-22 07:57:03', 'JICEST2025FST50RB'),
+(344, 'andinivermitabestari@unja.ac.id', '2025-11-10 03:29:17', 'participant', '$2y$10$XahmHLU/rz.8cahJp1Ub5O/LeXVKlH2MG5MNpyd/2EWuWuPs7g5bu', NULL, '2025-11-10 03:26:21', '2025-11-22 07:57:03', NULL),
 (345, 'annurannisa654@gmail.com', '2025-11-15 07:06:27', 'participant', '$2y$10$6mLD3L3g2JxR34emo0vo9uhVL7gTyR2WpMCiylZkxv4rRlQkMnHwe', NULL, '2025-11-15 07:03:16', '2025-11-15 07:06:27', NULL),
 (346, 'ramadhanpradanaputra796@gmail.com', '2025-11-15 16:02:35', 'participant', '$2y$10$CXknJYE.DDqeA2sBbUG4qeWKx.PR7sIBJghkHwF330TurukQfIyVy', NULL, '2025-11-15 15:59:58', '2025-11-15 16:02:35', NULL),
 (347, 'tyashanifatunnisaa@gmail.com', '2025-11-17 00:49:02', 'participant', '$2y$10$r30ml.o8RYvFaZRU3JeMAuO6G9kRNXhSwfOu5Mh4Mv2TXhkNKFo4i', NULL, '2025-11-17 00:47:25', '2025-11-17 00:49:02', NULL),
@@ -1075,7 +1079,9 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `role`, `password`, `re
 (368, 'saalamm2211@gmail.com', '2025-12-17 02:52:42', 'participant', '$2y$10$gKqWGl1k8pm.yHbv7EenfuRhwTpuW9BnagEaS8CfiPna18HT2aVoG', NULL, '2025-12-17 02:52:32', '2025-12-17 02:52:42', NULL),
 (369, 'tujuhjet7@gmail.com', '2026-02-17 21:41:45', 'participant', '$2y$10$hv5wvpoN.b/282RgDJFrvud/KDp3uRnzO2jXPrbM1cB6TS7FSYqjK', NULL, '2026-02-17 21:41:35', '2026-02-17 21:41:45', NULL),
 (370, 'j@gmail.com', NULL, 'participant', '$2y$10$P6nnkhxo487ayJRHJQniSe7HJvok6C6aL/LXzGivh0JVoKktnP3uq', NULL, '2026-06-03 19:15:10', '2026-06-03 19:15:10', NULL),
-(371, 'joynatasyaa@gmail.com', '2026-08-25 10:11:47', 'participant', '$2y$10$GGmWXDkj2vt8fmFIiddrX.mQOID6mcoQ9hNODnonlYjsq..WZbQge', NULL, '2026-08-25 10:11:25', '2026-08-25 10:11:47', NULL);
+(371, 'joynatasyaa@gmail.com', '2026-08-25 10:11:47', 'participant', '$2y$10$GGmWXDkj2vt8fmFIiddrX.mQOID6mcoQ9hNODnonlYjsq..WZbQge', NULL, '2026-08-25 10:11:25', '2026-08-25 10:11:47', NULL),
+(372, 'regnatrijayanti@gmail.com', '2026-09-30 06:12:08', 'participant', '$2y$10$gSeEOcZTpKwkls3gKv3ds.aixMm9L0ziBImiNHMskyuUs9fsnMkGy', NULL, '2026-09-30 06:10:42', '2026-09-30 06:12:08', NULL),
+(373, 'melvimuharmi@unja.ac.id', '2026-10-01 22:36:16', 'participant', '$2y$10$apv6bR.LU94EK.GyJxj7qublmoVBVh3CUGmYrxYiVQXHCybneG4pi', NULL, '2026-10-01 22:32:38', '2026-10-01 22:36:16', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1190,13 +1196,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=370;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=372;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=353;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1214,13 +1220,13 @@ ALTER TABLE `upload_abstracts`
 -- AUTO_INCREMENT for table `upload_fulltexts`
 --
 ALTER TABLE `upload_fulltexts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=372;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=374;
 
 --
 -- Constraints for dumped tables
