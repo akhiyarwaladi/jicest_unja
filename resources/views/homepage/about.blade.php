@@ -85,7 +85,7 @@
 
         @php
             $subThemes = [
-                ['index' => '01', 'icon' => 'mathematical-natural-sciences.svg', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, Physics, Biology, Mathematics, Industrial Chemistry, Chemical Analysis'],
+                ['index' => '01', 'icon' => 'mathematical-natural-sciences.svg', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, Physics, Biology, Mathematics, Environmental Science, Industrial Chemistry, Chemical Analysis'],
                 ['index' => '02', 'icon' => 'earth-sciences-mining.svg', 'title' => 'Earth Sciences &amp; Mining Technology', 'desc' => 'Geophysics, Geology, Mining Engineering, Sustainable Resource Management'],
                 ['index' => '03', 'icon' => 'civil-chemical-environmental.svg', 'title' => 'Civil, Chemical &amp; Environmental Engineering', 'desc' => 'Sustainable Infrastructure, Chemical Process Engineering, Environmental Technology, Green Engineering'],
                 ['index' => '04', 'icon' => 'electrical-information-systems.svg', 'title' => 'Electrical Engineering &amp; Information Systems', 'desc' => 'Smart Technology, IoT Applications, Data Analytics, Digital Innovation'],
@@ -128,7 +128,7 @@
                 [
                     'index' => '01',
                     'title' => 'Mathematical &amp; Natural Sciences',
-                    'desc' => 'Mathematical and natural sciences form the backbone of scientific innovation. The conference showcases research in chemistry, physics, biology, and mathematics, including specialised applications in industrial chemistry and chemical analysis. These disciplines drive the discoveries that underpin technological advancement and sustainable development.',
+                    'desc' => 'Mathematical and natural sciences form the backbone of scientific innovation. The conference showcases research in chemistry, physics, biology, mathematics, and environmental science, including specialised applications in industrial chemistry and chemical analysis. These disciplines drive the discoveries that underpin technological advancement and sustainable development.',
                 ],
                 [
                     'index' => '02',

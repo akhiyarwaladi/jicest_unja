@@ -55,7 +55,7 @@
 
                     @php
                         $subThemes = [
-                            ['index' => '01', 'icon' => 'mathematical-natural-sciences.svg', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, physics, biology, mathematics, industrial chemistry, chemical analysis'],
+                            ['index' => '01', 'icon' => 'mathematical-natural-sciences.svg', 'title' => 'Mathematical &amp; Natural Sciences', 'desc' => 'Chemistry, physics, biology, mathematics, environmental science, industrial chemistry, chemical analysis'],
                             ['index' => '02', 'icon' => 'earth-sciences-mining.svg', 'title' => 'Earth Sciences &amp; Mining Technology', 'desc' => 'Geology, mining engineering, mineral processing, geospatial mapping'],
                             ['index' => '03', 'icon' => 'civil-chemical-environmental.svg', 'title' => 'Civil, Chemical &amp; Environmental Engineering', 'desc' => 'Structures, materials, process engineering, water and waste treatment'],
                             ['index' => '04', 'icon' => 'electrical-information-systems.svg', 'title' => 'Electrical Engineering &amp; Information Systems', 'desc' => 'Smart technology, IoT applications, data analytics, digital innovation'],
