@@ -30,23 +30,33 @@
             and Engineering for a Sustainable Future
         </p>
 
-        {{-- One quiet date line with a live countdown — plain text, no boxes. --}}
         <p class="ed-mono text-sm tracking-[.16em] uppercase mt-6 text-white/80 fade-in-up">
             Wednesday, 11 November 2026 &middot; Online &middot; UTC+7
         </p>
-        <p class="ed-mono text-sm tracking-[.16em] uppercase mt-2 fade-in-up" style="color:#6ee7b7">
-            Opens in <span id="hero-countdown">&mdash;</span>
+        <p id="hero-countdown" class="ed-mono text-sm mt-2 text-white/80 fade-in-up">
+            Conference starts on 11 November 2026
         </p>
 
-        {{-- One primary action; the anchor link to the about section stays quiet by design. --}}
-        <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-5 fade-in-up">
-            <a href="{{ auth()->check() ? '/dashboard' : '/login' }}" class="ed-btn ed-btn-inverse">
-                Submit Abstract &rarr;
-            </a>
-            <a href="#about"
-                class="ed-mono text-sm tracking-[.16em] uppercase text-white/80 hover:text-white ed-underline self-center sm:self-auto">
-                About the conference &darr;
-            </a>
+        @php
+            $abstractEnd = $schedule['regular_end'] ?? null;
+            $abstractDeadline = $abstractEnd
+                ? \Carbon\Carbon::parse($abstractEnd->format('Y-m-d') . ' 23:59:59', 'Asia/Jakarta')
+                : null;
+            $abstractSubmissionStatus = $abstractDeadline
+                ? (now('Asia/Jakarta')->lte($abstractDeadline) ? 'Abstract submissions are open' : 'Abstract submission deadline has passed')
+                : 'Abstract submission dates pending';
+        @endphp
+        <div class="mt-8 fade-in-up">
+            <p class="text-sm" style="color:#6ee7b7">{{ $abstractSubmissionStatus }}</p>
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-5">
+                <a href="{{ auth()->check() ? '/dashboard' : '/login' }}" class="ed-btn ed-btn-inverse">
+                    Submit Abstract &rarr;
+                </a>
+                <a href="#about"
+                    class="ed-mono text-sm tracking-[.16em] uppercase text-white/80 hover:text-white ed-underline self-center sm:self-auto">
+                    About the conference &darr;
+                </a>
+            </div>
         </div>
 
         {{-- Opening speeches: square hairline portraits, no drop shadows, no rings. --}}
@@ -80,9 +90,6 @@
     </div>
 
     <script>
-        // Live countdown to the conference opening (11 Nov 2026, 08:00 UTC+7),
-        // rendered as one quiet text line in the hero. Clamps at zero and reads
-        // "It's live" once the conference has started.
         (function () {
             const el = document.getElementById('hero-countdown');
             if (!el) return;
@@ -90,24 +97,23 @@
             const target = new Date('2026-11-11T08:00:00+07:00').getTime();
             const nf = new Intl.NumberFormat('en', { minimumIntegerDigits: 2 });
 
-            let timer = 0;
+            let timer = null;
 
             const tick = () => {
-                let d = target - Date.now();
+                const d = target - Date.now();
                 if (d <= 0) {
-                    el.textContent = 'it\'s live';
-                    clearInterval(timer);
+                    el.textContent = 'Conference has started';
+                    if (timer) clearInterval(timer);
                     return;
                 }
                 const days = Math.floor(d / 86400000);
                 const hours = Math.floor((d % 86400000) / 3600000);
                 const minutes = Math.floor((d % 3600000) / 60000);
-                const seconds = Math.floor((d % 60000) / 1000);
-                el.textContent = days + ' days ' + nf.format(hours) + 'h ' + nf.format(minutes) + 'm ' + nf.format(seconds) + 's';
+                el.textContent = 'Conference starts in ' + days + (days === 1 ? ' day ' : ' days ') + nf.format(hours) + 'h ' + nf.format(minutes) + 'm';
             };
 
             tick();
-            timer = setInterval(tick, 1000);
+            if (target > Date.now()) timer = setInterval(tick, 1000);
         })();
     </script>
 </header>

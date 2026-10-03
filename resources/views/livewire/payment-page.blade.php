@@ -150,21 +150,28 @@
     @endif
 
 
-    {{-- @if (Auth::user()->voucher == NULL) --}}
+    @php
+        $hasCurrentVoucher = \App\Support\RegistrationVoucher::isValid(Auth::user()->voucher);
+    @endphp
     <form wire:submit.prevent="redeem" class="mt-5">
-        <!-- Changed from save to redeem -->
         <div class="form-group">
-            <label for="fee">Voucher Code</label>
-            <input @if (Auth::user()->voucher != null) disabled placeholder="{{Auth::user()->voucher}}" @endif
+            <label for="voucher">Voucher Code</label>
+            <input @disabled($hasCurrentVoucher)
             type="text" class="form-control @error('voucher')
             is-invalid @enderror" id="voucher" name="voucher"
-            placeholder="Enter your voucher code" wire:model='voucher'>
+            placeholder="{{ $hasCurrentVoucher ? Auth::user()->voucher : 'Enter your 2026 voucher code' }}" wire:model='voucher'>
+            @if ($hasCurrentVoucher)
+            <small class="form-text text-muted">Your 2026 voucher is applied.</small>
+            @elseif (Auth::user()->voucher)
+            <small class="form-text text-muted">Your saved voucher is from a previous conference. You can enter a 2026 voucher here.</small>
+            @endif
             @error('voucher')
             <span class="invalid-feedback">
                 <strong>Invalid Voucher!</strong>
             </span>
             @enderror
-            <button @if (Auth::user()->voucher == null) class="btn btn-primary mt-2" type="submit" wire:loading.attr="disabled" wire:target="redeem" @else class="btn btn-secondary mt-2" disabled @endif>
+            <button type="submit" class="btn {{ $hasCurrentVoucher ? 'btn-secondary' : 'btn-primary' }} mt-2"
+                @disabled($hasCurrentVoucher) wire:loading.attr="disabled" wire:target="redeem">
                 <span wire:loading.remove wire:target="redeem">
                     <i class="fa fa-ticket mr-1"></i> Redeem Voucher
                 </span>
@@ -177,7 +184,6 @@
             </button>
         </div>
     </form>
-    {{-- @endif --}}
 
 
 
@@ -232,32 +238,36 @@
     @endif
 
     <h4 class="mt-5">Registration Fee Structure</h4>
+    @php
+        $feeRows = [
+            ['General Presenter', 'Early Bird', $pricing['presenter']['early_bird']['idr'] ?? null],
+            ['General Presenter', 'Regular', $pricing['presenter']['non_early_bird']['idr'] ?? null],
+            ['Student Presenter', 'Fixed fee', $pricing['presenter_student']['non_early_bird']['idr'] ?? $pricing['presenter_student']['early_bird']['idr'] ?? null],
+            ['General Participant', 'Fixed fee', $pricing['participant']['non_early_bird']['idr'] ?? $pricing['participant']['early_bird']['idr'] ?? null],
+            ['Student Participant', 'Fixed fee', $pricing['participant_student']['non_early_bird']['idr'] ?? $pricing['participant_student']['early_bird']['idr'] ?? null],
+        ];
+    @endphp
     <div class="" style="overflow-x:auto;">
         <table class="table my-3" style="">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Early Bird</th>
-                    <th scope="col">Non Early Bird</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Fee</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($feeRows as [$category, $rate, $amount])
                 <tr>
-                    <td>1</td>
-                    <td>Presenter</td>
-                    <td>IDR 350K / $25 USD</td>
-                    <td>IDR 450K / $30 USD</td>
+                    <td>{{ $category }}</td>
+                    <td>{{ $rate }}</td>
+                    <td>{{ $amount !== null ? 'IDR ' . number_format($amount) : 'To be confirmed' }}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Participant</td>
-                    <td>IDR 250K / $18 USD</td>
-                    <td>IDR 350K / $23 USD</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
+    <p>Registration fees exclude publication fees. An additional publication fee applies to accepted papers published in the Conference Proceedings, subject to the applicable publication terms and conditions.</p>
 
 
     <h4 class="mt-5">Payment</h4>

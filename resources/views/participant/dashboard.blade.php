@@ -3,338 +3,102 @@
 @section('css')
     @parent
     <style>
-        .dashboard-overview {
-            max-width: 1120px;
-            margin: 0 auto;
-        }
-
-        .dashboard-intro {
-            max-width: 760px;
-            margin-bottom: 34px;
-        }
-
-        .dashboard-intro h1 {
-            margin: 8px 0 0;
-            color: var(--ed-ink);
+        .dashboard-header { margin-bottom: 28px; }
+        .dashboard-header h1 {
+            margin: 0;
             font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: clamp(34px, 5vw, 54px);
+            font-size: clamp(30px, 4vw, 42px);
             font-weight: 500;
             letter-spacing: -.03em;
-            line-height: 1.05;
         }
-
-        .dashboard-intro p:last-child {
-            max-width: 650px;
-            margin: 16px 0 0;
-            color: var(--ed-ink-70);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .dashboard-ledger {
-            display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
-            gap: 20px;
-        }
-
-        .dashboard-panel {
-            min-width: 0;
-            padding: 26px;
-            border: 1px solid var(--ed-hair);
-            background: #fff;
-        }
-
-        .dashboard-panel--ink {
-            border-color: var(--ed-ink);
-            background: var(--ed-ink);
-            color: #fff;
-        }
-
-        .dashboard-panel-label,
-        .dashboard-record-label,
-        .dashboard-status-label,
-        .dashboard-template-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-        }
-
-        .dashboard-panel-label {
-            color: #6ee7b7;
-        }
-
-        .dashboard-panel h2 {
-            margin: 12px 0 0;
-            font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: clamp(26px, 3vw, 38px);
-            font-weight: 500;
-            line-height: 1.12;
-        }
-
-        .dashboard-panel--ink h2 {
-            color: #fff;
-        }
-
-        .dashboard-panel p:not(.dashboard-panel-label) {
-            max-width: 560px;
-            margin: 12px 0 0;
-            color: rgba(255, 255, 255, .72);
-            line-height: 1.7;
-        }
-
-        .dashboard-panel .ed-btn {
-            margin-top: 24px;
-        }
-
-        .dashboard-account-panel h2 {
-            color: var(--ed-ink);
-            font-size: 25px;
-        }
-
-        .dashboard-account-panel p:not(.dashboard-panel-label) {
-            color: var(--ed-ink-70);
-        }
-
-        .dashboard-account-panel h2,
-        .dashboard-account-panel p {
-            min-width: 0;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-
-        .dashboard-account-list {
-            margin: 22px 0 0;
-            border-top: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-account-row {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-account-row dt {
-            color: var(--ed-ink-70);
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-        }
-
-        .dashboard-account-row dd {
-            margin: 0;
-            color: var(--ed-ink);
-            font-size: 14px;
-            text-align: right;
-        }
-
-        .dashboard-records {
-            margin-top: 30px;
-            border-top: 1px solid var(--ed-ink);
-        }
-
-        .dashboard-record {
-            padding: 24px 0 0;
-            border-bottom: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-record + .dashboard-record {
-            margin-top: 24px;
-        }
-
+        .dashboard-header p { margin: 8px 0 0; color: var(--ed-ink-70); font-size: 14px; }
+        .dashboard-section-header,
         .dashboard-record-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .dashboard-record-label {
-            color: var(--ed-accent);
-        }
-
-        .dashboard-record h2 {
-            max-width: 760px;
-            margin: 8px 0 0;
-            color: var(--ed-ink);
-            font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: clamp(22px, 3vw, 30px);
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        .dashboard-record-meta {
-            margin: 10px 0 0;
-            color: var(--ed-ink-70);
-            font-size: 14px;
-        }
-
-        .dashboard-record-link {
-            flex: 0 0 auto;
-            color: var(--ed-accent);
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-
-        .dashboard-status-list {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            margin-top: 22px;
-            border-top: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-status {
-            min-width: 0;
-            padding: 16px 16px 0 0;
-            border-right: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-status + .dashboard-status {
-            padding-left: 16px;
-        }
-
-        .dashboard-status:last-child {
-            border-right: 0;
-        }
-
-        .dashboard-status-label {
-            color: var(--ed-ink-70);
-        }
-
-        .dashboard-status-value {
-            margin: 8px 0 0;
-            color: var(--ed-ink);
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .dashboard-status-value--accepted {
-            color: #047857;
-        }
-
-        .dashboard-status-value--attention {
-            color: #b91c1c;
-        }
-
-        .dashboard-status-value--pending {
-            color: #92400e;
-        }
-
-        .dashboard-empty {
-            margin-top: 30px;
-            padding: 30px 0;
-            border-top: 1px solid var(--ed-ink);
-            border-bottom: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-empty h2 {
-            margin: 8px 0 0;
-            color: var(--ed-ink);
-            font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: 28px;
-            font-weight: 500;
-        }
-
-        .dashboard-empty p {
-            max-width: 620px;
-            margin: 10px 0 0;
-            color: var(--ed-ink-70);
-            line-height: 1.7;
-        }
-
-        .dashboard-empty .ed-btn {
-            margin-top: 20px;
-        }
-
-        .dashboard-templates {
-            margin-top: 34px;
-            padding-top: 24px;
-            border-top: 1px solid var(--ed-ink);
-        }
-
-        .dashboard-template-label {
-            color: var(--ed-accent);
-        }
-
-        .dashboard-template-list {
-            margin-top: 14px;
-            border-top: 1px solid var(--ed-hair);
-        }
-
-        .dashboard-template-link {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
-            min-height: 62px;
-            padding: 14px 0;
+            gap: 16px;
+        }
+        .dashboard-section-header {
+            padding: 18px 0;
+            border-top: 1px solid var(--ed-ink);
             border-bottom: 1px solid var(--ed-hair);
-            color: var(--ed-ink);
-            text-decoration: none;
-            transition: color .3s ease, padding-left .3s ease;
         }
-
-        .dashboard-template-link:hover {
-            padding-left: 8px;
-            color: var(--ed-accent);
-        }
-
-        .dashboard-template-link strong {
+        .dashboard-section-header h2 {
+            margin: 0;
             font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 500;
         }
-
-        .dashboard-template-link span {
+        .dashboard-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: var(--ed-accent);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .dashboard-link:focus-visible { outline: 2px solid var(--ed-accent); outline-offset: 4px; }
+        .dashboard-record { padding: 24px 0; border-bottom: 1px solid var(--ed-hair); }
+        .dashboard-record-header { align-items: flex-start; }
+        .dashboard-record h3 {
+            margin: 0;
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: clamp(20px, 3vw, 26px);
+            font-weight: 500;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+        .dashboard-record-date { margin: 8px 0 0; color: var(--ed-ink-70); font-size: 13px; }
+        .dashboard-record-header .dashboard-link { flex: 0 0 auto; }
+        .dashboard-status-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin: 20px 0 0;
+        }
+        .dashboard-status-list dt { color: var(--ed-ink-70); font-size: 12px; font-weight: 400; }
+        .dashboard-status-value { margin: 5px 0 0; font-size: 14px; font-weight: 500; }
+        .dashboard-status-value--accepted { color: #047857; }
+        .dashboard-status-value--attention { color: #b91c1c; }
+        .dashboard-status-value--pending { color: #92400e; }
+        .dashboard-empty { padding: 28px 0; }
+        .dashboard-empty p { margin: 0 0 18px; color: var(--ed-ink-70); font-size: 14px; }
+        .dashboard-payment {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: baseline;
+            gap: 12px 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--ed-hair);
+        }
+        .dashboard-payment p,
+        .dashboard-payment time { margin: 0; font-size: 14px; }
+        .dashboard-payment-amount {
+            grid-column: 1 / -1;
             color: var(--ed-ink-70);
-            font-size: 14px;
-            text-align: right;
+            font-family: 'IBM Plex Mono', monospace;
+            overflow-wrap: anywhere;
         }
-
-        @media (max-width: 800px) {
-            .dashboard-ledger {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard-status-list {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard-status,
-            .dashboard-status + .dashboard-status {
-                padding: 14px 0;
-                border-right: 0;
-                border-bottom: 1px solid var(--ed-hair);
-            }
-
-            .dashboard-status:last-child {
-                border-bottom: 0;
-            }
+        .dashboard-templates {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 24px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--ed-hair);
         }
-
-        @media (max-width: 560px) {
-            .dashboard-panel {
-                padding: 22px 18px;
-            }
-
-            .dashboard-record-header,
-            .dashboard-template-link {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .dashboard-template-link span {
-                text-align: left;
-            }
+        .dashboard-templates h2 { flex-basis: 100%; margin: 0; color: var(--ed-ink-70); font-size: 13px; font-weight: 400; }
+        @media (max-width: 600px) {
+            .dashboard-header { margin-bottom: 20px; }
+            .dashboard-record-header { flex-direction: column; gap: 8px; }
+            .dashboard-section-header { flex-wrap: wrap; gap: 8px; }
+            .dashboard-status-list { grid-template-columns: 1fr; gap: 12px; }
+            .dashboard-status-list > div { display: flex; justify-content: space-between; gap: 16px; }
+            .dashboard-status-value { margin: 0; text-align: right; }
         }
     </style>
 @endsection
@@ -343,168 +107,101 @@
     @php
         $participant = auth()->user()->participant;
         $participantType = $participant->participant_type;
-        $accountName = auth()->user()->name;
-        $accountEmail = auth()->user()->email;
-        $showAccountName = $accountName && $accountName !== $accountEmail;
         $isPresenter = in_array($participantType, ['presenter', 'presenter_reguler', 'presenter_student', 'professional presenter', 'student presenter'], true);
         $typeLabel = match ($participantType) {
-            'presenter', 'presenter_reguler', 'professional presenter' => 'Presenter (Reguler)',
-            'presenter_student' => 'Presenter (Student)',
-            'participant', 'participant_reguler' => 'Participant (Reguler)',
-            'participant_student' => 'Participant (Student)',
-            default => 'Conference participant',
+            'presenter', 'presenter_reguler', 'professional presenter' => 'General Presenter',
+            'presenter_student', 'student presenter' => 'Student Presenter',
+            'participant', 'participant_reguler' => 'General Participant',
+            'participant_student' => 'Student Participant',
+            default => 'Participant',
         };
-        $statusLabel = function ($status) {
-            return match (strtolower((string) $status)) {
-                'accepted', 'valid' => 'Verified',
-                'rejected', 'invalid' => 'Needs attention',
-                'not yet reviewed', 'pending' => 'Pending review',
-                '' => 'Not submitted',
-                default => ucfirst(str_replace('_', ' ', (string) $status)),
-            };
+        $statusLabel = fn ($status) => match (strtolower((string) $status)) {
+            'accepted' => 'Accepted', 'valid' => 'Verified', 'rejected' => 'Rejected', 'invalid' => 'Invalid',
+            'not yet reviewed', 'not yet validated', 'pending' => 'Pending',
+            '' => 'Not submitted',
+            default => ucfirst(str_replace('_', ' ', (string) $status)),
         };
-        $statusTone = function ($status) {
-            return match (strtolower((string) $status)) {
-                'accepted', 'valid' => 'dashboard-status-value--accepted',
-                'rejected', 'invalid' => 'dashboard-status-value--attention',
-                'not yet reviewed', 'pending' => 'dashboard-status-value--pending',
-                default => '',
-            };
+        $statusTone = fn ($status) => match (strtolower((string) $status)) {
+            'accepted', 'valid' => 'dashboard-status-value--accepted',
+            'rejected', 'invalid' => 'dashboard-status-value--attention',
+            'not yet reviewed', 'not yet validated', 'pending' => 'dashboard-status-value--pending',
+            default => '',
         };
     @endphp
 
-    <div class="dashboard-overview">
-        <header class="dashboard-intro">
-            <p class="ed-eyebrow">JICEST 2026 account</p>
-            <h1>{{ $isPresenter ? 'Presenter workspace' : 'Participant workspace' }}</h1>
-            <p>Keep your conference record in one place. Review the current status of your submissions and take the next action when it is ready.</p>
-        </header>
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p>{{ $typeLabel }}</p>
+    </header>
 
-        <div class="dashboard-ledger">
-            <section class="dashboard-panel dashboard-panel--ink">
-                <p class="dashboard-panel-label">Next action</p>
-                @if ($isPresenter)
-                    <h2>{{ $participant->uploadAbstracts()->exists() ? 'Review your abstract record' : 'Submit your abstract' }}</h2>
-                    <p>{{ $participant->uploadAbstracts()->exists() ? 'Open your submission list to edit the abstract, check the review status, or continue with payment and the full paper.' : 'Prepare your topic, authors, institutions, and abstract content before opening the submission form.' }}</p>
-                    <a href="{{ url('/abstrak') }}" class="ed-btn ed-btn-inverse">{{ $participant->uploadAbstracts()->exists() ? 'Open submissions' : 'Submit Abstract' }}</a>
-                @else
-                    <h2>{{ $participant->payments()->exists() ? 'Check your payment record' : 'Complete your registration payment' }}</h2>
-                    <p>{{ $participant->payments()->exists() ? 'Open the payment page to see the verification status and upload a replacement receipt if needed.' : 'Upload your transfer receipt and student card when applicable from the payment page.' }}</p>
-                    <a href="{{ url('/payment') }}" class="ed-btn ed-btn-inverse">{{ $participant->payments()->exists() ? 'Open payment record' : 'Open Payment' }}</a>
+    @if ($isPresenter)
+        @php
+            $abstracts = $participant->uploadAbstracts()->with(['payments.uploadFulltexts'])->latest()->get();
+        @endphp
+        <section aria-labelledby="abstract-records-title">
+            <header class="dashboard-section-header">
+                <h2 id="abstract-records-title">Abstracts</h2>
+                @if ($abstracts->isNotEmpty())
+                    <a href="{{ url('/abstrak') }}" class="dashboard-link">Submit abstract</a>
                 @endif
-            </section>
-
-            <section class="dashboard-panel dashboard-account-panel">
-                <p class="dashboard-panel-label" style="color:var(--ed-accent)">Account record</p>
-                <h2>{{ $showAccountName ? $accountName : $accountEmail }}</h2>
-                @if ($showAccountName)
-                    <p>{{ $accountEmail }}</p>
-                @endif
-                <dl class="dashboard-account-list">
-                    <div class="dashboard-account-row">
-                        <dt>Registration</dt>
-                        <dd>{{ $typeLabel }}</dd>
+            </header>
+            @forelse ($abstracts as $abstract)
+                @php
+                    $payment = $abstract->payments->sortByDesc('created_at')->first();
+                    $fulltext = $payment?->uploadFulltexts->sortByDesc('created_at')->first();
+                @endphp
+                <article class="dashboard-record">
+                    <div class="dashboard-record-header">
+                        <div>
+                            <h3>{{ $abstract->title }}</h3>
+                            <p class="dashboard-record-date">{{ $abstract->created_at->format('d M Y') }}</p>
+                        </div>
+                        <a href="{{ url('/abstrak') }}" class="dashboard-link" aria-label="View abstract: {{ $abstract->title }}">View abstract</a>
                     </div>
-                    <div class="dashboard-account-row">
-                        <dt>Conference</dt>
-                        <dd>JICEST 2026</dd>
-                    </div>
-                </dl>
-            </section>
-        </div>
-
-        @if ($isPresenter)
-            @php
-                $abstracts = $participant->uploadAbstracts()->latest()->get();
-            @endphp
-
-            <section class="dashboard-records" aria-labelledby="abstract-records-title">
-                <p class="dashboard-record-label" id="abstract-records-title">Abstract submissions</p>
-                @forelse ($abstracts as $index => $abstract)
-                    @php
-                        $payment = $abstract->payments()->latest()->first();
-                        $fulltext = $payment ? $payment->uploadFulltexts()->latest()->first() : null;
-                    @endphp
-                    <article class="dashboard-record">
-                        <div class="dashboard-record-header">
+                    <dl class="dashboard-status-list">
+                        @foreach (['Abstract' => $abstract->status, 'Payment' => $payment?->validation, 'Full paper' => $fulltext?->validation] as $label => $status)
                             <div>
-                                <p class="dashboard-record-label">Submission {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</p>
-                                <h2>{{ $abstract->title }}</h2>
-                                <p class="dashboard-record-meta">Submitted {{ $abstract->created_at->format('d M Y') }}</p>
+                                <dt>{{ $label }}</dt>
+                                <dd class="dashboard-status-value {{ $statusTone($status) }}">{{ $statusLabel($status) }}</dd>
                             </div>
-                            <a href="{{ url('/abstrak') }}" class="dashboard-record-link">Open abstract</a>
-                        </div>
-                        <div class="dashboard-status-list">
-                            <div class="dashboard-status">
-                                <p class="dashboard-status-label">Abstract</p>
-                                <p class="dashboard-status-value {{ $statusTone($abstract->status) }}">{{ $statusLabel($abstract->status) }}</p>
-                            </div>
-                            <div class="dashboard-status">
-                                <p class="dashboard-status-label">Payment</p>
-                                <p class="dashboard-status-value {{ $statusTone($payment?->validation) }}">{{ $statusLabel($payment?->validation) }}</p>
-                            </div>
-                            <div class="dashboard-status">
-                                <p class="dashboard-status-label">Full paper</p>
-                                <p class="dashboard-status-value {{ $statusTone($fulltext?->validation) }}">{{ $statusLabel($fulltext?->validation) }}</p>
-                            </div>
-                        </div>
-                    </article>
-                @empty
-                    <div class="dashboard-empty">
-                        <p class="dashboard-record-label">No abstract submissions</p>
-                        <h2>Start with your abstract</h2>
-                        <p>Your saved abstract and its review status will appear here after you submit it.</p>
-                        <a href="{{ url('/abstrak') }}" class="ed-btn">Submit Abstract</a>
-                    </div>
-                @endforelse
-            </section>
-
-            <section class="dashboard-templates" aria-labelledby="template-title">
-                <p class="dashboard-template-label" id="template-title">Submission templates</p>
-                <div class="dashboard-template-list">
-                    <a href="{{ route('downloads.abstract') }}" class="dashboard-template-link">
-                        <strong>Abstract Template</strong>
-                        <span>Download the .docx template</span>
-                    </a>
-                    <a href="{{ route('downloads.paper') }}" class="dashboard-template-link">
-                        <strong>Full Paper Template</strong>
-                        <span>Download after acceptance</span>
-                    </a>
+                        @endforeach
+                    </dl>
+                </article>
+            @empty
+                <div class="dashboard-empty">
+                    <p>No abstracts submitted.</p>
+                    <a href="{{ url('/abstrak') }}" class="ed-btn">Submit abstract</a>
                 </div>
-            </section>
-        @else
-            @php
-                $payments = $participant->payments()->latest()->get();
-            @endphp
-
-            <section class="dashboard-records" aria-labelledby="payment-records-title">
-                <p class="dashboard-record-label" id="payment-records-title">Payment records</p>
-                @forelse ($payments as $index => $payment)
-                    <article class="dashboard-record">
-                        <div class="dashboard-record-header">
-                            <div>
-                                <p class="dashboard-record-label">Payment {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</p>
-                                <h2>Conference registration</h2>
-                                <p class="dashboard-record-meta">Uploaded {{ $payment->created_at->format('d M Y') }}</p>
-                            </div>
-                            <a href="{{ url('/payment') }}" class="dashboard-record-link">Open payment</a>
-                        </div>
-                        <div class="dashboard-status-list">
-                            <div class="dashboard-status">
-                                <p class="dashboard-status-label">Verification</p>
-                                <p class="dashboard-status-value {{ $statusTone($payment->validation) }}">{{ $statusLabel($payment->validation) }}</p>
-                            </div>
-                        </div>
-                    </article>
-                @empty
-                    <div class="dashboard-empty">
-                        <p class="dashboard-record-label">No payment record</p>
-                        <h2>Complete your registration</h2>
-                        <p>Upload your payment receipt from the payment page. The secretariat will update the verification status here.</p>
-                        <a href="{{ url('/payment') }}" class="ed-btn">Open Payment</a>
-                    </div>
-                @endforelse
-            </section>
-        @endif
-    </div>
+            @endforelse
+        </section>
+        <section class="dashboard-templates" aria-labelledby="template-title">
+            <h2 id="template-title">Templates</h2>
+            <a href="{{ route('downloads.abstract') }}" class="dashboard-link">Abstract template</a>
+            <a href="{{ route('downloads.paper') }}" class="dashboard-link">Full paper template</a>
+        </section>
+    @else
+        @php
+            $payments = $participant->payments()->latest()->get();
+        @endphp
+        <section aria-labelledby="payment-records-title">
+            <header class="dashboard-section-header">
+                <h2 id="payment-records-title">Payments</h2>
+                @if ($payments->isNotEmpty())
+                    <a href="{{ url('/payment') }}" class="dashboard-link">Manage payments</a>
+                @endif
+            </header>
+            @forelse ($payments as $payment)
+                <article class="dashboard-payment" aria-label="Payment uploaded {{ $payment->created_at->format('d M Y') }}">
+                    <time datetime="{{ $payment->created_at->toDateString() }}">{{ $payment->created_at->format('d M Y') }}</time>
+                    <p class="dashboard-status-value {{ $statusTone($payment->validation) }}">{{ $statusLabel($payment->validation) }}</p>
+                    <p class="dashboard-payment-amount">{{ $payment->total_bill }}</p>
+                </article>
+            @empty
+                <div class="dashboard-empty">
+                    <p>No payments submitted.</p>
+                    <a href="{{ url('/payment') }}" class="ed-btn">Add payment</a>
+                </div>
+            @endforelse
+        </section>
+    @endif
 @endsection

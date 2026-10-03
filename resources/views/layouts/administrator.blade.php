@@ -26,7 +26,7 @@
 
         .admin-shell {
             min-height: 70vh;
-            padding: 190px 24px 80px;
+            padding: 112px 24px 56px;
         }
 
         .admin-frame {
@@ -57,16 +57,15 @@
             color: #6ee7b7;
         }
 
-        .admin-sidebar h1 {
+        .admin-sidebar-title {
             margin: 10px 0 8px;
             color: #fff;
             font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 500;
             line-height: 1.15;
         }
 
-        .admin-sidebar-copy,
         .admin-account-copy {
             color: rgba(255, 255, 255, .68);
             font-size: 14px;
@@ -130,7 +129,7 @@
         }
 
         .admin-content {
-            min-height: 620px;
+            min-height: 480px;
             padding: 38px clamp(22px, 4vw, 52px) 52px;
         }
 
@@ -296,7 +295,7 @@
 
         @media (max-width: 960px) {
             .admin-shell {
-                padding: 130px 18px 56px;
+                padding: 100px 16px 40px;
             }
 
             .admin-frame {
@@ -313,7 +312,12 @@
             }
 
             .admin-content {
-                min-height: 480px;
+                min-height: 0;
+            }
+
+            .admin-account {
+                margin-top: 14px;
+                padding-top: 14px;
             }
         }
 
@@ -339,14 +343,14 @@
     @php
         $activeTitle = $title ?? '';
         $navigation = [
-            ['title' => 'Dashboard', 'label' => 'Overview', 'href' => '/dashboard'],
-            ['title' => 'Registered Participant', 'label' => 'Registered Users', 'href' => '/registered-participant'],
-            ['title' => 'Review Submissions', 'label' => 'Review Submissions', 'href' => '/review-abstract'],
-            ['title' => 'Verify Payments', 'label' => 'Verify Payments', 'href' => '/payment-validation'],
-            ['title' => 'Full Paper Submissions', 'label' => 'Full Paper Submissions', 'href' => '/uploaded-paper'],
+            ['title' => 'Dashboard', 'label' => 'Dashboard', 'href' => '/dashboard'],
+            ['title' => 'Registered Participant', 'label' => 'Participants', 'href' => '/registered-participant'],
+            ['title' => 'Review Submissions', 'label' => 'Abstracts', 'href' => '/review-abstract'],
+            ['title' => 'Verify Payments', 'label' => 'Payments', 'href' => '/payment-validation'],
+            ['title' => 'Full Paper Submissions', 'label' => 'Full papers', 'href' => '/uploaded-paper'],
             ['title' => 'Presenter Payments', 'label' => 'Presenter Payments', 'href' => '/presenter-have-paid'],
             ['title' => 'Participant Payments', 'label' => 'Participant Payments', 'href' => '/participant-have-paid'],
-            ['title' => 'Change Password', 'label' => 'Change Password', 'href' => '/change-password'],
+            ['title' => 'Change Password', 'label' => 'Password', 'href' => '/change-password'],
         ];
     @endphp
 
@@ -354,24 +358,14 @@
         <div class="admin-frame">
             <aside class="admin-sidebar">
                 <p class="admin-kicker">JICEST 2026</p>
-                <h1>Conference administration</h1>
-                <p class="admin-sidebar-copy">Review submissions, confirm payments, and manage participant records.</p>
-
-                <nav class="admin-nav" aria-label="Administrator navigation">
-                    @foreach ($navigation as $item)
-                        <a href="{{ $item['href'] }}" class="{{ $activeTitle === $item['title'] ? 'active' : '' }}"
-                            @if ($activeTitle === $item['title']) aria-current="page" @endif>
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit">Sign Out</button>
-                    </form>
-                </nav>
+                <p class="admin-sidebar-title">Administration</p>
+                @include('layouts.components.workspace-menu', [
+                    'menuLabel' => 'Admin menu',
+                    'navigationClass' => 'admin-nav',
+                    'navigationLabel' => 'Administrator navigation',
+                ])
 
                 <div class="admin-account">
-                    <p class="admin-account-label">Signed in as</p>
                     @php
                         $accountName = auth()->user()->name;
                         $accountEmail = auth()->user()->email;

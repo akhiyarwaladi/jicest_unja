@@ -137,8 +137,20 @@ Route::get('/download-guidelines-template', [DownloadController::class, 'downloa
 
 Route::get('/dashboard', function () {
     if (Auth::user()->role === 'administrator') {
+        $dateWindow = [Fee::getDefaultFilterStart() . ' 00:00:00', Fee::getDefaultFilterEnd() . ' 23:59:59'];
         return view('administrator.dashboard', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'conferenceYear' => now()->year,
+            'queues' => [
+                ['label' => 'Abstracts', 'status' => 'Awaiting review', 'href' => '/review-abstract',
+                    'count' => \App\Models\UploadAbstract::whereBetween('created_at', $dateWindow)->where('status', 'not yet reviewed')->count()],
+                ['label' => 'Payments', 'status' => 'Awaiting verification', 'href' => '/payment-validation',
+                    'count' => \App\Models\Payment::whereBetween('created_at', $dateWindow)->where('validation', 'not yet validated')->count()],
+                ['label' => 'Full papers', 'status' => 'Awaiting verification', 'href' => '/uploaded-paper',
+                    'count' => \App\Models\UploadFulltext::whereBetween('created_at', $dateWindow)->where('validation', 'not yet validated')->count()],
+                ['label' => 'Participants', 'status' => 'Registered this year', 'href' => '/registered-participant',
+                    'count' => \App\Models\Participant::whereBetween('created_at', $dateWindow)->count()],
+            ],
         ]);
     } else {
         return view('participant.dashboard', [

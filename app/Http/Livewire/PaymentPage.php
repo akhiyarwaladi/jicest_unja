@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Fee;
 use App\Models\Payment;
 use App\Models\Participant;
+use App\Support\RegistrationVoucher;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\UploadAbstract;
@@ -15,7 +16,6 @@ class PaymentPage extends Component
     public $fee, $discount, $original_fee, $total_bill, $fee_after_discount, $proof_of_payment, $voucher;
     public $add = false, $edit = false, $payment_edit_id, $abstract_delete_id;
     public $abstract, $uploadAbstractId;
-    public $validVouchers = ['JICEST2026FST50RB'];
 
     use WithFileUploads;
 
@@ -56,40 +56,28 @@ class PaymentPage extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function applyDiscount($fee, $amount1, $amount2)
+    protected function setFeeAmounts(Participant $participant): void
     {
-        // Extract the IDR and USD amounts using regular expressions
-        preg_match('/IDR ([\d.,]+)/', $fee, $idrMatch);
-        preg_match('/\$([\d.]+)/', $fee, $usdMatch);
+        $fee = Fee::getFeeForParticipant($participant->participant_type, $participant->attendance);
+        $discountedFee = RegistrationVoucher::apply($fee, Auth::user()->voucher);
 
-        // Get the extracted amounts, convert them to numbers, and apply discounts
-        $idr = isset($idrMatch[1]) ? floatval(str_replace('.', '', $idrMatch[1])) : 0;
-        $usd = isset($usdMatch[1]) ? floatval($usdMatch[1]) : 0;
-
-        // Apply the discount
-        $idrDiscounted = max(0, $idr - $amount1);  // Ensure it doesn't go negative
-        $usdDiscounted = max(0, $usd - $amount2);
-
-        // Format the results back into a string
-        $newFee = 'IDR ' . number_format($idrDiscounted, 0, ',', '.') . ' / $' . number_format($usdDiscounted, 1) . ' USD';
-
-        return $newFee;
+        $this->original_fee = $fee['formatted'];
+        $this->fee = $discountedFee['formatted'];
+        $this->discount = $discountedFee['discount'];
+        $this->fee_after_discount = $this->fee;
+        $this->total_bill = $this->fee;
     }
 
 
 
     public function redeem()
     {
-        // Validate voucher input
         $this->validate([
             'voucher' => 'required|string|max:255',
         ]);
+        $this->voucher = RegistrationVoucher::normalize($this->voucher);
 
-        // List of valid vouchers
-        $validVouchers = ['JICEST2026FST50RB'];
-
-        // Check if the voucher is valid
-        if (!in_array($this->voucher, $validVouchers)) {
+        if (!RegistrationVoucher::isValid($this->voucher)) {
             $this->dispatchBrowserEvent('voucher-error', [
                 'title' => 'Invalid Voucher',
                 'message' => 'The voucher code you entered is not valid. Please check and try again.',
@@ -98,17 +86,14 @@ class PaymentPage extends Component
             return;
         }
 
-        // Retrieve the authenticated user
         $user = Auth::user();
-
-        // Update the user's voucher field and save it
         $user->voucher = $this->voucher;
         $user->save();
 
         // Dispatch success event
         $this->dispatchBrowserEvent('voucher-success', [
             'title' => 'Voucher Redeemed!',
-            'message' => 'Your voucher has been successfully applied. Discount will be shown when you add payment.',
+            'message' => 'Your 2026 voucher has been applied. Open Add Payment to see the discounted amount.',
             'icon' => 'success'
         ]);
 
@@ -122,45 +107,18 @@ class PaymentPage extends Component
     {
         $participant = Auth::user()->participant;
         $participantType = $participant->participant_type;
-        $attendance = $participant->attendance;
 
         if ($participantType !== 'participant') {
             $this->abstract = UploadAbstract::where('participant_id', $participant->id)->where('status', 'accepted')->get();
         }
 
-        // Get fee from database using Fee model
-        $feeData = Fee::getFeeForParticipant($participantType, $attendance);
-        $this->fee = $feeData['formatted'];
-        
-        $this->original_fee = $this->fee;
-        $this->discount = 0; // Tidak ada diskon
+        $this->setFeeAmounts($participant);
 
-        if (Auth::check()) {
-            if (Auth::user()->voucher != null) {
-                if (Auth::user()->voucher == $this->validVouchers[0]) {
-                    $this->fee = $this->applyDiscount($this->fee, 50000, 5);
-                    $this->discount = 'IDR 50.000 / USD 5';
-                }
-            }
-        }
-
-
-
-        // $this->discount = 0; // Tidak ada diskon
-        $this->fee_after_discount = $this->fee;
-        $this->total_bill = $this->fee_after_discount;
-
-
-        // $this->discount = 0; // Tidak ada diskon
-        // $this->fee_after_discount = $this->fee;
-        // $this->total_bill = $this->fee_after_discount;
-
-
-            $this->add = true;
-            $this->dispatchBrowserEvent('to-top');
-            $this->resetErrorBag();
-            $this->resetValidation();
-        }
+        $this->add = true;
+        $this->dispatchBrowserEvent('to-top');
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
 
         public function empty()
         {
@@ -210,18 +168,13 @@ class PaymentPage extends Component
         {
             try {
                 \Log::info('Payment save method started');
+                $this->setFeeAmounts(Auth::user()->participant);
                 $this->validate();
                 \Log::info('Payment validation passed');
             $imagePath = $this->proof_of_payment->store('proof-of-payment', config('filesystems.storage'));
-            $discount = 0;
-            if (Auth::user()->voucher !== null) {
-                if (Auth::user()->voucher == $this->validVouchers[0]) {
-                    $discount = 'IDR 50.000 / USD 5';
-                }
-            } 
             Payment::create([
                 'fee' => $this->original_fee,
-                'discount' => $discount,
+                'discount' => $this->discount,
                 'fee_after_discount' => $this->fee_after_discount,
                 'total_bill' => $this->total_bill,
                 'proof_of_payment' => $imagePath,
@@ -258,7 +211,8 @@ class PaymentPage extends Component
         public function render()
         {
             return view('livewire.payment-page', [
-                'payments' => Payment::where('participant_id', Auth::user()->participant->id)->latest()->get()
+                'payments' => Payment::where('participant_id', Auth::user()->participant->id)->latest()->get(),
+                'pricing' => Fee::getAllPricingTiers(),
             ]);
         }
     }

@@ -26,7 +26,7 @@
 
         .participant-shell {
             min-height: 70vh;
-            padding: 190px 24px 80px;
+            padding: 112px 24px 56px;
         }
 
         .participant-frame {
@@ -56,16 +56,15 @@
             color: #6ee7b7;
         }
 
-        .participant-sidebar h1 {
+        .participant-sidebar-title {
             margin: 10px 0 8px;
             color: #fff;
             font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 500;
             line-height: 1.15;
         }
 
-        .participant-sidebar-copy,
         .participant-account-copy {
             color: rgba(255, 255, 255, .68);
             font-size: 14px;
@@ -129,7 +128,7 @@
         }
 
         .participant-content {
-            min-height: 620px;
+            min-height: 480px;
             padding: 38px clamp(22px, 4vw, 52px) 52px;
         }
 
@@ -469,7 +468,7 @@
 
         @media (max-width: 960px) {
             .participant-shell {
-                padding: 130px 18px 56px;
+                padding: 100px 16px 40px;
             }
 
             .participant-frame {
@@ -486,7 +485,12 @@
             }
 
             .participant-content {
-                min-height: 480px;
+                min-height: 0;
+            }
+
+            .participant-account {
+                margin-top: 14px;
+                padding-top: 14px;
             }
         }
 
@@ -518,41 +522,31 @@
         ];
 
         if ($isPresenter) {
-            $navigation[] = ['title' => 'Submit Abstract', 'label' => 'Submit Abstract', 'href' => '/abstrak'];
+            $navigation[] = ['title' => 'Submit Abstract', 'label' => 'Abstracts', 'href' => '/abstrak'];
         }
 
         $navigation[] = ['title' => 'Payment', 'label' => 'Payment', 'href' => '/payment'];
 
         if ($isPresenter) {
-            $navigation[] = ['title' => 'Submit Full Paper', 'label' => 'Submit Full Paper', 'href' => '/upload-fulltext'];
+            $navigation[] = ['title' => 'Submit Full Paper', 'label' => 'Full papers', 'href' => '/upload-fulltext'];
         }
 
         $navigation[] = ['title' => 'My Profile', 'label' => 'Profile', 'href' => '/profile'];
-        $navigation[] = ['title' => 'Change Password', 'label' => 'Change Password', 'href' => '/change-password'];
+        $navigation[] = ['title' => 'Change Password', 'label' => 'Password', 'href' => '/change-password'];
     @endphp
 
     <main class="participant-shell">
         <div class="participant-frame">
             <aside class="participant-sidebar">
                 <p class="participant-kicker">JICEST 2026</p>
-                <h1>My conference account</h1>
-                <p class="participant-sidebar-copy">Submit work, complete payment, and track review status from one account.</p>
-
-                <nav class="participant-nav" aria-label="Participant navigation">
-                    @foreach ($navigation as $item)
-                        <a href="{{ $item['href'] }}" class="{{ $activeTitle === $item['title'] ? 'active' : '' }}"
-                            @if ($activeTitle === $item['title']) aria-current="page" @endif>
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit">Sign Out</button>
-                    </form>
-                </nav>
+                <p class="participant-sidebar-title">My account</p>
+                @include('layouts.components.workspace-menu', [
+                    'menuLabel' => 'Account menu',
+                    'navigationClass' => 'participant-nav',
+                    'navigationLabel' => 'Participant navigation',
+                ])
 
                 <div class="participant-account">
-                    <p class="participant-account-label">Signed in as</p>
                     @php
                         $accountName = auth()->user()->name;
                         $accountEmail = auth()->user()->email;

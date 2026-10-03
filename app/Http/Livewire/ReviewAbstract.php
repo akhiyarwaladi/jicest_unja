@@ -4,11 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Mail\SendMail;
 use App\Models\Fee;
+use App\Support\RegistrationVoucher;
 use Livewire\Component;
 use PDF;
 use Livewire\WithPagination;
 use App\Models\UploadAbstract;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +23,6 @@ class ReviewAbstract extends Component
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter, $attendance;
     public $search = '', $search2, $abstract_review, $status_hki;
     public $reviewError = '';
-    public $validVouchers = ['JICEST2026FST50RB'];
     public $date_from;
     public $date_to = '';
     public $date_range_initialized = false;
@@ -109,26 +108,6 @@ class ReviewAbstract extends Component
         $this->dispatchBrowserEvent('to-top');
     }
     
-    public function applyDiscount($fee, $amount1, $amount2)
-    {
-        // Extract the IDR and USD amounts using regular expressions
-        preg_match('/IDR ([\d.,]+)/', $fee, $idrMatch);
-        preg_match('/\$([\d.]+)/', $fee, $usdMatch);
-
-        // Get the extracted amounts, convert them to numbers, and apply discounts
-        $idr = isset($idrMatch[1]) ? floatval(str_replace('.', '', $idrMatch[1])) : 0;
-        $usd = isset($usdMatch[1]) ? floatval($usdMatch[1]) : 0;
-
-        // Apply the discount
-        $idrDiscounted = max(0, $idr - $amount1);  // Ensure it doesn't go negative
-        $usdDiscounted = max(0, $usd - $amount2);
-
-        // Format the results back into a string
-        $newFee = 'IDR ' . number_format($idrDiscounted, 0, ',', '.') . ' / $' . number_format($usdDiscounted, 1) . ' USD';
-
-        return $newFee;
-    }
-
     public function showValidate()
     {
         \Log::info('showValidate() called for abstract review ID: ' . $this->abstract_review);
@@ -139,17 +118,8 @@ class ReviewAbstract extends Component
 
         // Get fee from database using Fee model
         $feeData = Fee::getFeeForParticipant($participantType, $attendance);
-        $this->fee = $feeData['formatted'];
-
-        $user_id = $participant->user_id;
-        $user = User::where('id', $user_id)->first();
-        // $this->fee = $user;
-
-        if ($user->voucher != null) {
-            if ($user->voucher == $this->validVouchers[0]) {
-                $this->fee = $this->applyDiscount($this->fee, 50000, 5);
-            }
-        }
+        $discountedFee = RegistrationVoucher::apply($feeData, $participant->user->voucher);
+        $this->fee = $discountedFee['formatted'];
 
         $this->full_name = $participant->full_name1;
         $this->institution = $participant->institution;
