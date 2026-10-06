@@ -62,7 +62,10 @@
                     <tr>
                         <td>For payment information, please contact:<br>
                         Rara Ayu Lestary (+62 822 1079 4479)<br>
-                        Tia Wulandari (+62 852 6646 9829)</td>
+                        Tia Wulandari (+62 852 6646 9829)<br>
+                        TIA WULANDARI<br>
+                        Bank Mandiri<br>
+                        1330012106266</td>
                         <td></td>
                         <td>JAMBI INTERNATIONAL CONFERENCE ON ENGINEERING SCIENCE AND TECNNOLOGY (JICEST 2026)</td>
                         <td>Seminar</td>
