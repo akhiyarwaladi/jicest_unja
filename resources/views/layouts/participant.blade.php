@@ -224,6 +224,28 @@
             color: #fff;
         }
 
+        /* style.css sets a:hover/a:focus to #fff globally, which erases the label
+           on the light workspace surfaces. Re-assert each link's own hover colour. */
+        .participant-content a:hover,
+        .participant-content a:focus {
+            color: var(--ed-ink);
+        }
+
+        .participant-content .document-links a:hover,
+        .participant-content .document-links a:focus,
+        .participant-content .current-document a:hover,
+        .participant-content .current-document a:focus,
+        .participant-content a.abstract-topic:hover,
+        .participant-content a.abstract-topic:focus {
+            color: var(--ed-accent);
+        }
+
+        .participant-content .ed-btn:hover,
+        .participant-content .ed-btn:focus {
+            background: transparent;
+            color: var(--ed-ink);
+        }
+
         .participant-content .alert {
             border: 1px solid var(--ed-hair);
             border-left: 3px solid var(--ed-accent);

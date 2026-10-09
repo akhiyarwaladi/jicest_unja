@@ -102,6 +102,13 @@
                             </strong>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="8" style="padding-top:16px; font-size:13px; line-height:1.5">
+                            <strong>Publication fee is separate</strong><br>
+                            An additional publication fee will apply to participants who wish to have their
+                            accepted papers published in the Conference Proceedings
+                        </td>
+                    </tr>
                 </table>
                 <table style="width:100%">
                     <tr>

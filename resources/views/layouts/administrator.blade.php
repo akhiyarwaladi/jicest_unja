@@ -233,6 +233,19 @@
             color: #fff;
         }
 
+        /* style.css sets a:hover/a:focus to #fff globally, which erases the label
+           on the light workspace surfaces. Re-assert each link's own hover colour. */
+        .admin-content a:hover,
+        .admin-content a:focus {
+            color: var(--ed-ink);
+        }
+
+        .admin-content .ed-btn:hover,
+        .admin-content .ed-btn:focus {
+            background: transparent;
+            color: var(--ed-ink);
+        }
+
         .admin-content .alert {
             border: 1px solid var(--ed-hair);
             border-left: 3px solid var(--ed-accent);
