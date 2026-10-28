@@ -90,7 +90,18 @@
                                         @endif
                                     </td>
                                     <td>{{ $item->total_bill }}</td>
-                                    <td>{{ $item->upload_abstract_id == null ? 'participant' : $item->uploadAbstract->title }}</td>
+                                    <td>
+                                        {{ $item->upload_abstract_id == null ? 'participant' : ($item->uploadAbstract?->title ?? 'Abstract not available') }}
+                                        @if ($item->uploadAbstract?->invoice)
+                                            <a href="{{ asset('storage/' . $item->uploadAbstract->invoice) }}"
+                                                class="btn btn-secondary btn-sm d-block mt-2" target="_blank" rel="noopener"
+                                                aria-label="View invoice for abstract #{{ $item->upload_abstract_id }}">
+                                                View invoice
+                                            </a>
+                                        @elseif ($item->upload_abstract_id)
+                                            <span class="d-block text-muted mt-2">Invoice not available</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->validation }}</td>
                                     <td>{{ $item->validated_by }}</td>
                                     <td>
@@ -196,6 +207,25 @@
             </div>
 
             <div class="col-7">
+                <div class="form-group">
+                    <h5>Invoice</h5>
+                    @if ($payment?->uploadAbstract)
+                        <p class="mb-2">Abstract #{{ $payment->upload_abstract_id }}: {{ $payment->uploadAbstract->title }}</p>
+                        @if ($payment->uploadAbstract->invoice)
+                            <a href="{{ asset('storage/' . $payment->uploadAbstract->invoice) }}"
+                                class="btn btn-secondary btn-sm" target="_blank" rel="noopener"
+                                aria-label="View invoice for abstract #{{ $payment->upload_abstract_id }}">
+                                View invoice
+                            </a>
+                        @else
+                            <p class="text-muted">Invoice not available for this abstract.</p>
+                        @endif
+                    @elseif ($payment?->upload_abstract_id)
+                        <p class="text-muted">Abstract not available.</p>
+                    @else
+                        <p class="text-muted">Participant registration has no abstract invoice.</p>
+                    @endif
+                </div>
                 <div class="form-group">
                     <label for="">Proof of Payment :</label>
                     <div class="row mx-3 card">
