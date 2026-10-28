@@ -25,6 +25,7 @@
                     <select class="custom-select" id="search" name="search" wire:model.debounce.500ms='search'>
                         <option value="">All</option>
                         <option value="valid">Validated</option>
+                        <option value="invalid">Invalid</option>
                         <option value="not yet validated">Not yet validated</option>
                     </select>
                 </div>
@@ -44,6 +45,7 @@
                 </div>
             </div>
         </div>
+        @include('livewire.components.admin-date-filter-note', ['dateLabel' => 'Payment upload dates'])
         @if (session()->has('message'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session('message') }}
@@ -211,6 +213,15 @@
                     <h5>Invoice</h5>
                     @if ($payment?->uploadAbstract)
                         <p class="mb-2">Abstract #{{ $payment->upload_abstract_id }}: {{ $payment->uploadAbstract->title }}</p>
+                        @php($abstractSubmittedAt = $payment->uploadAbstract->created_at?->copy()->setTimezone('Asia/Jakarta'))
+                        <p class="mb-2 text-muted">
+                            Abstract submitted:
+                            @if ($abstractSubmittedAt)
+                                <time datetime="{{ $abstractSubmittedAt->toIso8601String() }}">{{ $abstractSubmittedAt->format('d M Y, H:i') }} WIB</time>
+                            @else
+                                Not available
+                            @endif
+                        </p>
                         @if ($payment->uploadAbstract->invoice)
                             <a href="{{ asset('storage/' . $payment->uploadAbstract->invoice) }}"
                                 class="btn btn-secondary btn-sm" target="_blank" rel="noopener"

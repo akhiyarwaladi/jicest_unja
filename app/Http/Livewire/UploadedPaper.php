@@ -16,6 +16,7 @@ class UploadedPaper extends Component
 {
 
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $title, $fulltext, $uploadedPaper;
     public $search = '', $search2 = '';
@@ -116,19 +117,10 @@ class UploadedPaper extends Component
 
     public function render()
     {
-        $query = UploadFulltext::where('validation', 'like', '%' . $this->search)
-            ->where('title', 'like', '%' . $this->search2 . '%');
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
+        $query = \App\Support\AdminRecords::papers($this->search, $this->search2, $this->date_from, $this->date_to);
 
         return view('livewire.uploaded-paper', [
-            'fulltexts' => $query->orderBy('created_at', 'desc')->paginate(10)
+            'fulltexts' => $query->paginate(10)
         ]);
     }
 }

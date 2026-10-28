@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class ParticipantPaid extends Component
 {
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $search2 = '';
     public $date_from;
@@ -24,25 +25,15 @@ class ParticipantPaid extends Component
 
     public function render()
     {
-        $query = Participant::where('participant_type', 'participant')->where('full_name1', 'like', '%' . $this->search2 . '%')->whereHas('payments', function ($query) {
-            $query->where('validation', 'valid');
-        });
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
+        $query = \App\Support\AdminRecords::participants($this->search2, $this->date_from, $this->date_to, 'participant');
 
         return view('livewire.participant-paid', [
-            'participants' => $query->orderBy('full_name1')->paginate(10)
+            'participants' => $query->paginate(10)
         ]);
     }
 
     public function export()
     {
-        return Excel::download(new PaidParticipantExport(), 'Participant have paid JICEST 2026.xlsx');
+        return Excel::download(new PaidParticipantExport($this->date_from, $this->date_to, '', $this->search2), 'Participant have paid JICEST 2026.xlsx');
     }
 }

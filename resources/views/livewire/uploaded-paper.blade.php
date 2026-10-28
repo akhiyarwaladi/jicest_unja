@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label for="search2">Search</label>
                 <input type="text" class="form-control" id="search2" name="search2" wire:model.debounce.500ms="search2"
-                    placeholder="Search by title">
+                    placeholder="Search by title or presenter name">
             </div>
         </div>
         <div class="col-lg-3">
@@ -35,6 +35,7 @@
             </div>
         </div>
     </div>
+    @include('livewire.components.admin-date-filter-note', ['dateLabel' => 'Paper upload dates'])
     <div class="row mb-3">
         <div class="col-lg-12">
             <button class="btn btn-success" wire:click="exportExcel()" wire:loading.attr="disabled">

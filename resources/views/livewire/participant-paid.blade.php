@@ -30,6 +30,7 @@
             </div>
         </div>
     </div>
+    @include('livewire.components.admin-date-filter-note', ['dateLabel' => 'Payment upload dates'])
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">

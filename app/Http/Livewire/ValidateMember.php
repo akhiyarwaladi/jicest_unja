@@ -13,6 +13,7 @@ class ValidateMember extends Component
 {
 
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $full_name1, $hki_id, $member_card, $memberValidate;
     public $search = '', $search2 = '';
@@ -99,7 +100,7 @@ class ValidateMember extends Component
     public function render()
     {
         return view('livewire.validate-member', [
-            'participants' => Participant::where('hki_status', 'like', '%' . $this->search)->where('member_card', '!=', null)->where('full_name1', 'like', '%' . $this->search2 . '%')->orderBy('full_name1')->paginate(10)
+            'participants' => \App\Support\AdminRecords::members($this->search, $this->search2)->paginate(10)
         ]);
     }
 }

@@ -309,9 +309,11 @@
                     <label for="participant">
                         Filter Status Reviewed
                     </label>
-                    <select class="custom-select" id="search" name="search" wire:model.live='search'>
+                    <select class="custom-select" id="search" name="search" wire:model='search'>
                         <option value="">All</option>
-                        <option value="ted">Reviewed</option>
+                        <option value="reviewed">Reviewed</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="rejected">Rejected</option>
                         <option value="not yet reviewed">Not yet reviewed</option>
                     </select>
                 </div>
@@ -321,7 +323,7 @@
                     <label for="date_from">Date From</label>
                     <input type="date" class="form-control" id="date_from" name="date_from"
                         value="{{ $date_range_initialized ? $date_from : \App\Models\Fee::getDefaultFilterStart() }}"
-                        wire:model.live="date_from">
+                        wire:model="date_from">
                 </div>
             </div>
             <div class="col-lg-3">
@@ -329,10 +331,11 @@
                     <label for="date_to">Date To</label>
                     <input type="date" class="form-control" id="date_to" name="date_to"
                         value="{{ $date_range_initialized ? $date_to : \App\Models\Fee::getDefaultFilterEnd() }}"
-                        wire:model.live="date_to">
+                        wire:model="date_to">
                 </div>
             </div>
         </div>
+        @include('livewire.components.admin-date-filter-note', ['dateLabel' => 'Abstract submission dates'])
         <div class="row mb-3">
             <div class="col-lg-12">
                 <button class="btn btn-success" wire:click="exportExcel()" wire:loading.attr="disabled">

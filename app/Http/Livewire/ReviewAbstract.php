@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class ReviewAbstract extends Component
 {
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $review = false;
     public $topic, $type, $title, $authors, $institutions, $abstract, $keywords, $presenter, $attendance;
@@ -296,20 +297,10 @@ class ReviewAbstract extends Component
     {
         $this->initializeDateRange();
 
-        $query = UploadAbstract::where('status', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
-            $query->where('full_name1', 'like', '%' . $this->search2 . '%');
-        });
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
+        $query = \App\Support\AdminRecords::abstracts($this->search, $this->search2, $this->date_from, $this->date_to);
 
         return view('livewire.review-abstract', [
-            'abstracts' => $query->orderBy('topic')->paginate(10)
+            'abstracts' => $query->paginate(10)
         ]);
     }
 }

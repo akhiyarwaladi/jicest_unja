@@ -15,6 +15,7 @@
                 <select class="custom-select" id="search" name="search" wire:model='search'>
                     <option value="">All</option>
                     <option value="valid">Validated</option>
+                    <option value="invalid">Invalid</option>
                     <option value="not yet validated">Not yet validated</option>
                 </select>
             </div>

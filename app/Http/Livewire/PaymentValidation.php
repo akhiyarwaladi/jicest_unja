@@ -19,6 +19,7 @@ class PaymentValidation extends Component
 {
 
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $validation = false;
     public $full_name1, $email, $participant_type, $payment_for, $fee, $discount, $fee_after_discount, $total_bill, $proof_of_payment, $paymentValidate,$payment;
@@ -405,25 +406,15 @@ class PaymentValidation extends Component
 
     public function export()
     {
-        return Excel::download(new PaymentExport(), 'All Payment JICEST 2026.xlsx');
+        return Excel::download(new PaymentExport($this->date_from, $this->date_to, $this->search, $this->search2), 'All Payment JICEST 2026.xlsx');
     }
 
     public function render()
     {
-        $query = Payment::where('validation', 'like', '%' . $this->search)->whereHas('participant', function ($query) {
-            $query->where('full_name1', 'like', '%' . $this->search2 . '%');
-        });
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
+        $query = \App\Support\AdminRecords::payments($this->search, $this->search2, $this->date_from, $this->date_to);
 
         return view('livewire.payment-validation', [
-            'payments' => $query->orderBy('created_at')->paginate(10)
+            'payments' => $query->paginate(10)
         ]);
     }
 }

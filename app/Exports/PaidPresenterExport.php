@@ -15,6 +15,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class PaidPresenterExport extends DefaultValueBinder implements FromCollection, WithMapping, WithHeadings, WithColumnFormatting, WithCustomValueBinder
 {
+    use \App\Exports\Concerns\HasAdminFilters;
     public function columnFormats(): array
     {
         return [
@@ -46,9 +47,7 @@ class PaidPresenterExport extends DefaultValueBinder implements FromCollection, 
 
     public function collection()
     {
-        return Participant::where('participant_type', '<>', 'participant')->whereHas('payments', function ($query) {
-            $query->where('validation', 'valid');
-        })->orderBy('full_name1')->get();
+        return \App\Support\AdminRecords::participants($this->search2, $this->dateFrom, $this->dateTo, 'presenter')->get();
     }
 
     public function map($participant): array

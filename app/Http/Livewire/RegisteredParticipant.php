@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class RegisteredParticipant extends Component
 {
     use WithPagination;
+    use \App\Http\Livewire\Concerns\ResetsAdminFilters;
     protected $paginationTheme = 'bootstrap';
     public $search2 = '';
     public $date_from;
@@ -24,23 +25,15 @@ class RegisteredParticipant extends Component
 
     public function render()
     {
-        $query = Participant::where('full_name1', 'like', '%' . $this->search2 . '%');
-
-        if ($this->date_from) {
-            $query->whereDate('created_at', '>=', $this->date_from);
-        }
-
-        if ($this->date_to) {
-            $query->whereDate('created_at', '<=', $this->date_to);
-        }
+        $query = \App\Support\AdminRecords::participants($this->search2, $this->date_from, $this->date_to);
 
         return view('livewire.registered-participant', [
-            'participants' => $query->orderBy('full_name1')->paginate(10)
+            'participants' => $query->paginate(10)
         ]);
     }
 
     public function export()
     {
-        return Excel::download(new RegisteredExport(), 'All registered user.xlsx');
+        return Excel::download(new RegisteredExport($this->date_from, $this->date_to, '', $this->search2), 'All registered user.xlsx');
     }
 }

@@ -125,17 +125,21 @@ class PaymentInvoiceTest extends TestCase
         $second = $this->payment('Second abstract', 'invoice/second.pdf');
         $missing = $this->payment('Missing invoice', '');
         $participant = $this->payment('Participant registration', null, false);
+        $first->uploadAbstract->update(['created_at' => '2026-10-01 08:15:00', 'updated_at' => '2026-10-25 19:00:00']);
+        $second->uploadAbstract->update(['created_at' => '2026-10-02 09:45:00', 'updated_at' => '2026-10-26 20:00:00']);
 
         $component = Livewire::actingAs($this->administrator)->test(PaymentValidation::class)
             ->call('showDetail', $first->id)->assertSet('paymentValidate', $first->id)
             ->assertSee('Abstract #'.$first->upload_abstract_id.': First abstract')
             ->assertSee(asset('storage/'.$first->proof_of_payment), false)
-            ->set('fee', '500000')->set('discount', '50000')->assertSet('total_bill', 'IDR 450000 / $27.27 USD');
+            ->set('fee', '500000')->set('discount', '50000')->assertSet('total_bill', 'IDR 450000 / $27.27 USD')
+            ->assertSee('01 Oct 2026, 08:15 WIB')->assertDontSee('25 Oct 2026, 19:00');
         $this->assertSame(['View invoice for abstract #'.$first->upload_abstract_id => asset('storage/invoice/first.pdf')],
             $this->invoiceLinks($component->lastRenderedDom));
 
         $component->call('back')->call('showDetail', $second->id)
-            ->assertSee(asset('storage/'.$second->proof_of_payment), false)->assertDontSee('invoice/first.pdf');
+            ->assertSee(asset('storage/'.$second->proof_of_payment), false)->assertDontSee('invoice/first.pdf')
+            ->assertSee('02 Oct 2026, 09:45 WIB')->assertDontSee('01 Oct 2026, 08:15 WIB');
         $this->assertSame(['View invoice for abstract #'.$second->upload_abstract_id => asset('storage/invoice/second.pdf')],
             $this->invoiceLinks($component->lastRenderedDom));
 

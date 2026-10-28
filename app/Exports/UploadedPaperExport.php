@@ -37,8 +37,8 @@ class UploadedPaperExport extends DefaultValueBinder implements
 
     public function __construct($dateFrom = null, $dateTo = null, $search = '', $search2 = '')
     {
-        $this->dateFrom = $dateFrom ?: \App\Models\Fee::getDefaultFilterStart();
-        $this->dateTo = $dateTo ?: \App\Models\Fee::getDefaultFilterEnd();
+        $this->dateFrom = $dateFrom;
+        $this->dateTo = $dateTo;
         $this->search = $search;
         $this->search2 = $search2;
     }
@@ -76,19 +76,7 @@ class UploadedPaperExport extends DefaultValueBinder implements
 
     public function collection()
     {
-        $query = UploadFulltext::with(['payment.participant.user'])
-            ->where('validation', 'like', '%' . $this->search)
-            ->where('title', 'like', '%' . $this->search2 . '%');
-
-        if ($this->dateFrom) {
-            $query->whereDate('created_at', '>=', $this->dateFrom);
-        }
-
-        if ($this->dateTo) {
-            $query->whereDate('created_at', '<=', $this->dateTo);
-        }
-
-        return $query->orderBy('created_at', 'desc')->get();
+        return \App\Support\AdminRecords::papers($this->search, $this->search2, $this->dateFrom, $this->dateTo)->get();
     }
 
     public function map($fulltext): array

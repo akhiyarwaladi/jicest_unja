@@ -15,6 +15,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class RegisteredExport extends DefaultValueBinder implements FromCollection, WithMapping, WithHeadings, WithColumnFormatting, WithCustomValueBinder
 {
+    use \App\Exports\Concerns\HasAdminFilters;
     public function columnFormats(): array
     {
         return [
@@ -46,7 +47,7 @@ class RegisteredExport extends DefaultValueBinder implements FromCollection, Wit
 
     public function collection()
     {
-        return Participant::with('user')->orderBy('full_name1', 'asc')->get();
+        return \App\Support\AdminRecords::participants($this->search2, $this->dateFrom, $this->dateTo)->get();
     }
 
     public function map($participant): array

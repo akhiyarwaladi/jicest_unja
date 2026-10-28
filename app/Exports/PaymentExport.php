@@ -16,6 +16,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class PaymentExport extends DefaultValueBinder implements FromCollection, WithMapping, WithHeadings, WithColumnFormatting, WithCustomValueBinder
 {
+    use \App\Exports\Concerns\HasAdminFilters;
     public function columnFormats(): array
     {
         return [
@@ -44,7 +45,7 @@ class PaymentExport extends DefaultValueBinder implements FromCollection, WithMa
 
     public function collection()
     {
-        return Payment::with('participant')->with('uploadAbstract')->get();
+        return \App\Support\AdminRecords::payments($this->search, $this->search2, $this->dateFrom, $this->dateTo)->get();
     }
 
     public function map($payment): array
@@ -64,6 +65,6 @@ class PaymentExport extends DefaultValueBinder implements FromCollection, WithMa
 
     public function headings(): array
     {
-        return ['Date', 'Email', 'Total Bill', 'Invoice For', 'Status', 'Validated By', 'Attendance'];
+        return ['Date', 'Email', 'Full Name', 'Total Bill', 'Invoice For', 'Status', 'Validated By', 'Attendance'];
     }
 }
