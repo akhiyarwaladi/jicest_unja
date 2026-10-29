@@ -33,7 +33,7 @@ class AbstractReviewExport implements WithMultipleSheets
             $latestPaper = $paymentHistory->flatMap(fn ($payment) => $payment->uploadFulltexts)
                 ->sortBy([['created_at', 'desc'], ['id', 'desc']])->first();
             $tracking[] = [
-                $abstract->id, $abstract->title, $abstract->presenter, $user?->email,
+                $abstract->id, $abstract->title, $abstract->presenter, $user?->email, $participant?->phone,
                 $participant?->participant_type, $abstract->topic, $abstract->status,
                 $this->date($abstract->created_at), $this->date($abstract->updated_at),
                 $latestPayment?->validation, $this->date($latestPayment?->created_at),
@@ -56,19 +56,19 @@ class AbstractReviewExport implements WithMultipleSheets
 
         return [
             new AbstractReportSheet('Abstract tracking', [
-                'Abstract ID', 'Title', 'Presenter', 'Email', 'Participant type', 'Topic', 'Review status',
+                'Abstract ID', 'Title', 'Presenter', 'Email', 'Phone', 'Participant type', 'Topic', 'Review status',
                 'Abstract submitted (WIB)', 'Abstract last updated (WIB)', 'Latest payment status',
                 'Latest payment uploaded (WIB)', 'Latest payment updated (WIB)', 'Latest payment ID', 'Total bill',
                 'Latest full paper uploaded (WIB)', 'Latest full paper updated (WIB)', 'Full paper status',
                 'Participant registered (WIB)', 'Email verified (WIB)',
             ], $tracking, [
-                'A' => 14, 'B' => 48, 'C' => 27, 'D' => 32, 'E' => 24, 'F' => 26, 'G' => 19,
-                'H' => 24, 'I' => 24, 'J' => 24, 'K' => 24, 'L' => 24, 'M' => 17, 'N' => 28,
-                'O' => 24, 'P' => 24, 'Q' => 24, 'R' => 24, 'S' => 24,
-            ], ['H', 'I', 'K', 'L', 'O', 'P', 'R', 'S'], 'C2', [
-                'I1' => 'Last record update; this is not a dedicated review decision timestamp.',
-                'K1' => 'Time the payment proof record was created. Bank transfer date is not recorded separately. All attempts are listed in Payment history.',
-                'L1' => 'Last payment record update; this is not a dedicated verification timestamp.',
+                'A' => 14, 'B' => 48, 'C' => 27, 'D' => 32, 'E' => 22, 'F' => 24, 'G' => 26, 'H' => 19,
+                'I' => 24, 'J' => 24, 'K' => 24, 'L' => 24, 'M' => 24, 'N' => 17, 'O' => 28,
+                'P' => 24, 'Q' => 24, 'R' => 24, 'S' => 24, 'T' => 24,
+            ], ['I', 'J', 'L', 'M', 'P', 'Q', 'S', 'T'], 'D2', [
+                'J1' => 'Last record update; this is not a dedicated review decision timestamp.',
+                'L1' => 'Time the payment proof record was created. Bank transfer date is not recorded separately. All attempts are listed in Payment history.',
+                'M1' => 'Last payment record update; this is not a dedicated verification timestamp.',
             ]),
             new AbstractReportSheet('Abstract details', [
                 'Abstract ID', 'Title', 'Authors', 'Institutions', 'Abstract', 'Keywords', 'Presenter',
