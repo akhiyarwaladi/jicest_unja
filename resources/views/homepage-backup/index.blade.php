@@ -9,7 +9,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <!-- Hero Section Begin -->
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/fstbbb.jpg">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/archive/faculty-building-bbb.jpg">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row">
                             <div class="col-lg-7">
@@ -27,7 +27,7 @@
                             <div class="col-lg-5">
                                 <h3 class="primary-btn mb-3" style="font-size:20px">Opening Speech</h3>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-1.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-1.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/deann.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/deann.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -63,7 +63,7 @@
             <!--
             <div class="carousel-item">
                 <comment> Hero Section Begin 
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/home-unja.png">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/home-unja.png">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row justify-content-center"
                             style="background-color: rgba(0,0,0,.7);
@@ -99,7 +99,7 @@
     
             <div class="carousel-item">
                 <!-- Hero Section Begin -->
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/fstaaa.jpeg">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/archive/faculty-building-aaa.jpeg">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row">
                             <div class="col-lg-7">
@@ -116,7 +116,7 @@
                             <div class="col-lg-5">
                                 <h3 class="primary-btn mb-3" style="font-size:20px">Opening Speech</h3>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-1.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-1.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/deann.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/deann.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -203,7 +203,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="ha-text">
-                        <img src="{{ url('') }}/assets/img/Logo JOCEST 23.png" alt="jicest">
+                        <img src="{{ url('') }}/assets/logos/logo-jocest-23.png" alt="jicest">
                     </div>
                 </div>
             </div>
@@ -279,28 +279,28 @@
         </div>
         <div class="row justify-content-center">
             <div class="member-item set-bg" style="margin: 10px;border: 3px solid black;"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/Dr.VolkanDegirmenci.jpeg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/dr.volkandegirmenci.jpeg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Dr. Volkan Degirmenci</h5>
                     <span>Chemical Engineering, University of Warwick</span>
                 </div>
             </div>
             <div class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-2.jpg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-2.jpg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Prof. Sal Prima Yudha</h5>
                     <span>Chemistry Department, University of Bengkulu (Biobased Materials Development)</span>
                 </div>
             </div>
             <div margin: 20px class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-3.jpg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-3.jpg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Prof. Sougata Ghosh</h5>
                     <span>Microbiology Department Kasetsart University, Thailand and Microbiology Departmenr, School of Science, RK University, India</span>
                 </div>
             </div>
             <div margin: 20px class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-4.jpg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-4.jpg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Prof. Muhammad Azis </h5>
                     <span>The University of Tokyo, Institute of Industrial Science (Clean energy systems)</span>
@@ -310,21 +310,21 @@
         <!-- Baris Baru -->
         <div class ="row justify-content-center">
             <div margin: 20px class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-5.jpg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-5.jpg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Prof. Muhamma Roil Bilad</h5>
                     <span>Faculty of Integrated Technologies, Universiti Brunei Darussalam</span>
                 </div>
             </div>
             <div margin: 20px class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-6.jpg">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-6.jpg">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Muhammad Mufti Azis, Ph.D.</h5>
                     <span>Department of Chemical Engineering UGM (Biomass Conversion Technology)</span>
                 </div>
             </div>
             <div margin: 20px class="member-item set-bg" style="margin: 10px;border: 3px solid black"
-                data-setbg="{{ url('') }}/assets/img/keynote-speaker/keynote-7.png">
+                data-setbg="{{ url('') }}/assets/img/speakers/archive/first-edition/keynote-7.png">
                 <div class="mi-text" style="padding-right: 10px">
                     <h5>Elvi Restiawaty, Ph.D.</h5>
                     <span>Associate Professor at Faculty of Industrial Technology, ITB</span>
@@ -509,7 +509,7 @@
     <!-- Schedule Section End -->
 
     <!-- Pricing Section Begin -->
-    <section class="pricing-section set-bg spad" data-setbg="{{ url('') }}/assets/img/pricing-bg.jpg">
+    <section class="pricing-section set-bg spad" data-setbg="{{ url('') }}/assets/img/backgrounds/pricing.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -590,7 +590,7 @@
                     <div class="carousel-inner">
                         <!--
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('assets/img/field-trip/gunung kerinci.jpg') }}"
+                            <img class="d-block w-100" src="{{ asset('assets/img/field-trip/gunung-kerinci.jpg') }}"
                                 alt="Gunung Kerinci">
                             <div class="carousel-caption d-none d-md-block text-white p-3"
                                 style="font-weight: bold; background-color:rgb(150, 150, 150);">
@@ -666,7 +666,7 @@
                         -->
                         <!--
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/img/field-trip/Kebun-Teh-Kayu-Aro.jpg') }}"
+                            <img class="d-block w-100" src="{{ asset('assets/img/field-trip/kayu-aro-tea-plantation.jpg') }}"
                                 alt="Gunung Kerinci">
                             <div class="carousel-caption d-none d-md-block text-white p-3"
                                 style="font-weight: bold; background-color:rgb(150, 150, 150);">

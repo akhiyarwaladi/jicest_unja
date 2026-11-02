@@ -4,32 +4,34 @@ namespace App\Http\Controllers;
 
 class DownloadController extends Controller
 {
-    private const ABSTRACT_TEMPLATE = 'uploads/JICEST_2026_Abstract_Template.docx';
+    private const ABSTRACT_TEMPLATE = 'uploads/downloads/2026/jicest-2026-abstract-template.docx';
 
-    private const PAPER_TEMPLATE = 'uploads/JICEST_2026_Full_Paper_Template.docx';
+    private const PAPER_TEMPLATE = 'uploads/downloads/2026/jicest-2026-full-paper-template.docx';
+
+    private const PRESENTER_GUIDELINES = 'uploads/downloads/2026/jicest-2026-presenter-guidelines.pdf';
 
     public function downloadGuidebook()
     {
-        return response()->download(public_path('uploads/downloads/International Scientific Poster_ICICS_2023.pdf'));
+        return response()->download(public_path('uploads/downloads/archive/icics-2023-scientific-poster-guide.pdf'));
     }
 
     public function downloadAbstract()
     {
-        return response()->download(public_path(self::ABSTRACT_TEMPLATE), 'JICEST_2026_Abstract_Template.docx');
+        return response()->download(public_path(self::ABSTRACT_TEMPLATE), 'jicest-2026-abstract-template.docx');
     }
 
     public function downloadPaper()
     {
-        return response()->download(public_path(self::PAPER_TEMPLATE), 'JICEST_2026_Full_Paper_Template.docx');
+        return response()->download(public_path(self::PAPER_TEMPLATE), 'jicest-2026-full-paper-template.docx');
     }
 
     public function downloadSchedule()
     {
-        return response()->download(public_path('uploads/downloads/Schedule_JICEST.pdf'));
+        return view('homepage.oral-schedule', ['title' => 'Oral Presentation Schedule']);
     }
 
     public function downloadGuidelines()
     {
-        return response()->download(public_path('uploads/downloads/Presentation_Guidelines.pdf'));
+        return response()->download(public_path(self::PRESENTER_GUIDELINES), 'jicest-2026-presenter-guidelines.pdf');
     }
 }

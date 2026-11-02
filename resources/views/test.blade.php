@@ -10,7 +10,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <!-- Hero Section Begin -->
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/home-gentala.jpg">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/home-gentala.jpg">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row">
                             <div class="col-lg-7">
@@ -28,7 +28,7 @@
                             <div class="col-lg-5">
                                 <h3 class="primary-btn mb-3" style="font-size:20px">Opening Speech</h3>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-1.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-1.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-2.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-2.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -56,7 +56,7 @@
             </div>
             <div class="carousel-item">
                 <!-- Hero Section Begin -->
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/home-gentala.jpg">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/home-gentala.jpg">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row">
                             <div class="col-lg-7">
@@ -74,7 +74,7 @@
                             <div class="col-lg-5">
                                 <h3 class="primary-btn mb-3" style="font-size:20px">Opening Speech</h3>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-1.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-1.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-2.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-2.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -101,7 +101,7 @@
             </div>
             <div class="carousel-item">
                 <!-- Hero Section Begin -->
-                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/home-gentala.jpg">
+                <section class="hero-section set-bg" data-setbg="{{ url('') }}/assets/img/backgrounds/home-gentala.jpg">
                     <div class="container" style="padding-top:50px; padding-bottom:50px">
                         <div class="row">
                             <div class="col-lg-7">
@@ -119,7 +119,7 @@
                             <div class="col-lg-5">
                                 <h3 class="primary-btn mb-3" style="font-size:20px">Opening Speech</h3>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-1.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-1.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-5"><img src="{{ url('') }}/assets/img/opening-2.png"
+                                    <div class="col-5"><img src="{{ url('') }}/assets/img/people/archive/opening-2.png"
                                             alt="">
                                     </div>
                                     <div class="col-7" style="padding-top: 12%">

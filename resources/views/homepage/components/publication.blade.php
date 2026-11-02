@@ -34,7 +34,7 @@
 
         <div class="ed-row mt-10 grid grid-cols-1 md:grid-cols-12 gap-7 items-start pt-8">
             <div class="md:col-span-2">
-                <img src="{{ asset('uploads/proceeding_related/JICEST_3rd_Proceeding_2026.png') }}"
+                <img src="{{ asset('assets/img/publications/jicest-3rd-proceedings-2026.png') }}"
                     alt="Cover of the 3rd JICEST conference proceedings"
                     class="w-full max-w-40 border border-[var(--ed-hair)]" loading="lazy">
             </div>

@@ -21,7 +21,7 @@
                     'name' => 'Ilmi Fadhilah Rizki, M.Si',
                     'role' => 'Researcher',
                     'institution' => 'Mechanization, Post-Harvest and Environmental Conservation, Indonesian Oil Palm Research Institute',
-                    'image' => 'uploads/speakers/ilmi-fadhilah-rizki.jpeg',
+                    'image' => 'assets/img/speakers/ilmi-fadhilah-rizki.jpeg',
                     'alt' => 'Portrait of Ilmi Fadhilah Rizki',
                     // Subject reads small in the source; crop in for a head-and-shoulders frame.
                     'zoom' => 1.35,
@@ -31,7 +31,7 @@
                     'name' => 'Tika Restianingsih, M.Sc.',
                     'role' => 'Researcher',
                     'institution' => 'Department of Materials Science and Engineering, Science Tokyo',
-                    'image' => 'uploads/speakers/tika-restianingsih.jpeg',
+                    'image' => 'assets/img/speakers/tika-restianingsih.jpeg',
                     'alt' => 'Portrait of Tika Restianingsih',
                     // Source is a close crop; pull back so the portrait sits smaller in the frame.
                     'zoom' => 0.86,
@@ -41,21 +41,21 @@
                     'name' => 'Asmida Herawati, M.Sc., Ph.D.',
                     'role' => 'Researcher',
                     'institution' => 'Research Center for Photonics, National Research and Innovation Agency (BRIN)',
-                    'image' => 'uploads/speakers/asmida-herawati.jpeg',
+                    'image' => 'assets/img/speakers/asmida-herawati.jpeg',
                     'alt' => 'Portrait of Asmida Herawati',
                 ],
                 [
                     'name' => 'Dr. Rini Arianti',
                     'role' => 'Researcher',
                     'institution' => 'Department of Biochemistry and Molecular Biology, Faculty of Medicine, University of Debrecen',
-                    'image' => 'uploads/speakers/rini-arianti.jpeg',
+                    'image' => 'assets/img/speakers/rini-arianti.jpeg',
                     'alt' => 'Portrait of Dr. Rini Arianti',
                 ],
                 [
                     'name' => 'Prof. Drs. H. Sutrisno, M.Sc., Ph.D.',
                     'role' => 'Professor of Chemistry',
                     'institution' => 'Faculty of Science and Technology, Universitas Jambi',
-                    'image' => 'uploads/speakers/sutrisno.jpg',
+                    'image' => 'assets/img/speakers/sutrisno.jpg',
                     'alt' => 'Portrait of Prof. Drs. H. Sutrisno, M.Sc., Ph.D.',
                 ],
             ];

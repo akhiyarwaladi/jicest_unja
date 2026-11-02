@@ -23,6 +23,10 @@ use App\Http\Controllers\UploadFulltextController;
 |
 */
 
+foreach (config('public-assets', []) as $legacyPath => $assetPath) {
+    Route::permanentRedirect('/'.$legacyPath, '/'.$assetPath);
+}
+
 Route::get('/', function () {
     $pricing = Fee::getAllPricingTiers();
     return view('homepage.index', [

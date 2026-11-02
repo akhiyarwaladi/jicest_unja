@@ -7,7 +7,7 @@
     the opening speeches.
 --}}
 <header id="top" class="relative w-full overflow-hidden text-white" style="background-color: var(--ed-ink)">
-    <img src="{{ asset('assets/bg/fstaaa.jpeg') }}" alt="" aria-hidden="true"
+    <img src="{{ asset('assets/img/backgrounds/faculty-building.jpeg') }}" alt="" aria-hidden="true"
         class="absolute inset-0 w-full h-full object-cover" />
     {{-- Light wash only: the photo remains clearly visible through it. --}}
     <div class="absolute inset-0"
@@ -64,7 +64,7 @@
             <p class="ed-mono text-sm tracking-[.16em] uppercase text-white/70">Opening speeches</p>
             <div class="mt-6 grid gap-8 md:grid-cols-2 max-w-3xl">
                 <figure class="flex items-center gap-4">
-                    <img src="{{ asset('assets/dean.jpg') }}" alt="Drs. Jefri Marzal, M.Sc., D.I.T."
+                    <img src="{{ asset('assets/img/people/jefri-marzal.jpg') }}" alt="Drs. Jefri Marzal, M.Sc., D.I.T."
                         class="w-16 h-16 md:w-20 md:h-20 object-cover object-top border border-white/20 ed-media shrink-0"
                         loading="lazy" />
                     <figcaption>
@@ -75,7 +75,7 @@
                     </figcaption>
                 </figure>
                 <figure class="flex items-center gap-4">
-                    <img src="{{ asset('assets/xrector.png') }}" alt="Prof. Dr. Helmi, S.H., M.H."
+                    <img src="{{ asset('assets/img/people/helmi.png') }}" alt="Prof. Dr. Helmi, S.H., M.H."
                         class="w-16 h-16 md:w-20 md:h-20 object-cover object-top border border-white/20 ed-media shrink-0"
                         loading="lazy" />
                     <figcaption>

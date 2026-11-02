@@ -10,7 +10,7 @@
 
         <a href="/" class="{{$focus}} flex items-center gap-3 shrink-0">
             <img src="{{ asset('assets/logos/jicest.png') }}" class="h-10 md:h-11 w-auto" alt="JICEST 2026" />
-            <img src="{{ asset('assets/img/unja-logo-2026.png') }}" class="h-8 w-auto" alt="Universitas Jambi" />
+            <img src="{{ asset('assets/logos/unja-logo-2026.png') }}" class="h-8 w-auto" alt="Universitas Jambi" />
         </a>
 
         <button type="button" onclick="toggleNavbar('navbar-dropdown', this)"
@@ -44,8 +44,8 @@
                             'menu' => [
                                  ['name' => 'Paper Template JICEST', 'type' => 'download', 'link' => route('downloads.paper'), 'inclusion' => [""]],
                                  ['name' => 'Abstract Template JICEST', 'type' => 'download', 'link' => route('downloads.abstract'), 'inclusion' => [""]],
-                                ['name' => 'Oral Presentation Schedule JICEST', 'type' => 'download', 'link' => '/download-schedule-template', 'inclusion' => [""]],
-                                ['name' => 'Presentation Guideline JICEST', 'type' => 'download', 'link' => '/download-guidelines-template', 'inclusion' => [""]],
+                                ['name' => 'Oral Presentation Schedule JICEST (Coming soon)', 'type' => 'single', 'link' => '/download-schedule-template', 'inclusion' => [""]],
+                                ['name' => 'Presentation Guidelines JICEST', 'type' => 'download', 'link' => '/download-guidelines-template', 'inclusion' => [""]],
                             ],
                             'inclusion' => [''],
                         ],

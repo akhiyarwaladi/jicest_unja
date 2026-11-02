@@ -8,7 +8,7 @@
             </div>
             <div>
                 <p class="ed-eyebrow">Hosted by</p>
-                <img class="mt-4 h-20 w-auto" src="{{ asset('assets/img/unja-logo-2026.png') }}" alt="Universitas Jambi">
+                <img class="mt-4 h-20 w-auto" src="{{ asset('assets/logos/unja-logo-2026.png') }}" alt="Universitas Jambi">
                 <p class="ed-mono mt-3 text-sm">Universitas Jambi</p>
                 <p class="ed-quiet mt-1 text-sm">Faculty of Science and Technology</p>
             </div>

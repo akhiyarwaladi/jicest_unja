@@ -22,7 +22,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-1.jpg"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-1.jpg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Dr. Ir. Muhammad Nurdin, M.Sc., IPU, ASEAN.Eng</h5>
@@ -34,7 +34,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-2.jpg"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-2.jpg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Hamzah Fansuri, Ph.D.</h5>
@@ -47,7 +47,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-3.png"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-3.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Dr. M. Rusdi, S.Pd., M.Sc</h5>
@@ -61,7 +61,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-4.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-4.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Maria Paristiowati, M.Si</h5>
@@ -74,7 +74,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-5.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-5.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Dr. Sal Prima Yudha S., M.Si.</h5>
@@ -86,7 +86,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/steering-committe/SC-6.png"
+                                            src="{{ url('') }}/assets/img/committees/steering/sc-6.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Drs. Damris Muhammad, M.Sc., Ph.D.</h5>

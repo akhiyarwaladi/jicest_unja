@@ -23,7 +23,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid grey">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-3.png"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-3.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Madyawati Latief, S.P., M.Si.</h5>
@@ -35,7 +35,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-1.jpg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-1.jpg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr.rer.nat Nurul Hidayat Aprilita, S.Si., M.Si. </h5>
@@ -47,7 +47,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-2.jpg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-2.jpg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Muhammad Haris Effendi Hsb, S.Pd., M.Si., Ph.D </h5>
@@ -61,7 +61,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid grey">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-4.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-4.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Yusnaidar, S,Si, M.Si. </h5>
@@ -76,7 +76,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-5.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-5.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Indra Lasmana Tarigan, S.Pd., M.Sc </h5>
@@ -88,7 +88,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-6.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-6.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Aulia Sanova, S.T., M.Pd. </h5>
@@ -100,7 +100,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-25.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-25.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Lenny Marlinda, S.T., M.T.</h5>
@@ -112,7 +112,7 @@
                                 {{-- <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-7.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-7.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Dra. M. Dwi Wiwik Ernawati, M.Kes </h5>
@@ -124,7 +124,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-8.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-8.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Dr. Dra. Wilda Syahri, M. Pd. </h5>
@@ -139,7 +139,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-9.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-9.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Ratih Dyah Puspitasari, S.Si., M.Si. </h5>
@@ -151,7 +151,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-10.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-10.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Restina Bemis, S.Si., M.Si </h5>
@@ -163,7 +163,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-11.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-11.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dra. Fatria Dewi, M.Pd. </h5>
@@ -175,7 +175,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-12.png"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-12.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Rahmi, S.Pd., M.Si. </h5>
@@ -190,7 +190,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-13.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-13.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Firdiawan Ekaputra, M.Pd. </h5>
@@ -202,7 +202,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-14.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-14.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Martina Asti Rahayu, S.Pd., M.Si.</h5>
@@ -214,7 +214,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-15.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-15.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Diah Riski Gusti, S.Si., M.Si</h5>
@@ -226,7 +226,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-16.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-16.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Intan Lestari, S.Si., M.Si.</h5>
@@ -241,7 +241,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-17.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-17.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Nurul Pratiwi, M.Si.</h5>
@@ -253,7 +253,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-18.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-18.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Syukrya Ningsih, M.Si.</h5>
@@ -265,7 +265,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/bu wiji.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/bu-wiji.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Wiji Utami, M.Sc.</h5>
@@ -277,7 +277,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/bu dori.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/bu-dori.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dori Fitria, M.Si.</h5>
@@ -292,7 +292,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-21.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-21.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Intan Noviarni, M.Si. </h5>
@@ -304,7 +304,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-22.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-22.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Lidia Gusfi Marni, M.Si. </h5>
@@ -316,7 +316,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-23.png"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-23.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Ir. Edwin Permana, ST., MT., IPM., ASEAN ENG </h5>
@@ -328,7 +328,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-24.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-24.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dhian Eka Wijaya, S.Si., M.Si</h5>
@@ -343,7 +343,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-26.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-26.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Hendrawati, M.Si.</h5>
@@ -356,7 +356,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-27.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-27.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Dr. Drs. M. Naswir, M.Si.</h5>
@@ -369,7 +369,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-28.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-28.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Agus Subagyo, S.Si., M.Si.</h5>
@@ -382,7 +382,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-29.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-29.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Asmiyunda, M.Pd.</h5>
@@ -398,7 +398,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/organizing-committe/OC-30.jpeg"
+                                            src="{{ url('') }}/assets/img/committees/organizing/oc-30.jpeg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Muhammad Yudhistira Azis, S.Si., M.Si.</h5>

@@ -22,7 +22,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/scientific-committe/SC-1.jpg"
+                                            src="{{ url('') }}/assets/img/committees/scientific/sc-1.jpg"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Prof. Drs. Sutrisno, M.Sc., Ph.D</h5>
@@ -34,7 +34,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/scientific-committe/SC-2.png"
+                                            src="{{ url('') }}/assets/img/committees/scientific/sc-2.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Dr. Sukro Muhab, M.Si</h5>
@@ -47,7 +47,7 @@
                                 <div style="padding-left: 10px; padding-right: 10px">
                                     <div class="card" style="width: 16rem; border: 2px solid black">
                                         <img style="height: 280px"
-                                            src="{{ url('') }}/assets/img/scientific-committe/SC-3.png"
+                                            src="{{ url('') }}/assets/img/committees/scientific/sc-3.png"
                                             class="card-img-top" alt="...">
                                         <div class="card-body" style="height: 200px">
                                             <h5 class="card-title">Muhamad A. Martoprawiro, M.S., Ph.D. </h5>

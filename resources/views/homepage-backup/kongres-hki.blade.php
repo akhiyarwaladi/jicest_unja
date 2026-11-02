@@ -12,7 +12,7 @@
                     <h2 style="color: black;text-shadow: 2px 2px 5px white;font-weight: 600">Congress HKI</h2>
                     <div class="row justify-content-center" style="padding: 2%">
                         <div class="col-lg-3">
-                            <img src="{{ url('') }}/assets/img/Logo-HKI.png" alt="">
+                            <img src="{{ url('') }}/assets/logos/logo-hki.png" alt="">
                         </div>
                     </div>
                     <br>

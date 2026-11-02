@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-body">
                             {{-- CONTENT --}}
-                            <img src="{{ url('') }}/assets/img/About Conference (JICEST 2023).jpg" alt="">
+                            <img src="{{ url('') }}/assets/img/about-conference-jicest-2023.jpg" alt="">
                         </div>
                     </div>
                 </div>

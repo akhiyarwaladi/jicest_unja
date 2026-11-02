@@ -50,7 +50,7 @@
                 </dl>
 
                 <div class="mt-8 border border-[var(--ed-hair)] p-5 flex items-center gap-5">
-                    <img src="{{ asset('uploads/proceeding_related/Book_of_Abstract_JICEST_2025_Code.jpeg') }}"
+                    <img src="{{ asset('assets/img/publications/jicest-2025-book-of-abstracts-qr.jpeg') }}"
                         alt="QR code linking to the JICEST 2025 Book of Abstracts"
                         class="w-24 h-24 object-contain shrink-0" loading="lazy">
                     <p class="ed-quiet text-base leading-relaxed">
@@ -58,7 +58,7 @@
                     </p>
                 </div>
 
-                <a href="{{ asset('uploads/proceeding_related/Book_of_Abstract_JICEST_2025.pdf') }}"
+                <a href="{{ asset('uploads/downloads/proceedings/jicest-2025-book-of-abstracts.pdf') }}"
                     download="Book_of_Abstract_JICEST_2025.pdf"
                     class="ed-btn mt-8 w-full justify-center">
                     Download PDF
@@ -78,7 +78,7 @@
                 </p>
 
                 <div class="mt-8 border border-[var(--ed-hair)] p-5 grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-6 items-start">
-                    <img src="{{ asset('uploads/proceeding_related/JICEST_3rd_Proceeding_2026.png') }}"
+                    <img src="{{ asset('assets/img/publications/jicest-3rd-proceedings-2026.png') }}"
                         alt="Cover of the 3rd JICEST conference proceedings"
                         class="w-32 border border-[var(--ed-hair)]" loading="lazy">
                     <dl class="ed-mono text-sm">
