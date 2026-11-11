@@ -4,7 +4,7 @@
     $link = "ed-mono block py-1 text-sm tracking-[.16em] uppercase";
 @endphp
 
-<ul class="w-full flex flex-col md:flex-row md:items-center gap-2 md:gap-7">
+<ul class="w-full flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-7">
     @foreach ($navList as $nav)
         @if ($nav['type'] == 'single')
             <li>
@@ -43,7 +43,7 @@
         @endif
     @endforeach
     @if (Auth::user())
-        <li class="md:ml-3">
+        <li class="xl:ml-3">
             <a href="/dashboard" class="{{$focus}} ed-btn !py-2 !px-4">Dashboard</a>
         </li>
     @else

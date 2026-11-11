@@ -1,7 +1,12 @@
 @extends('layouts.main-tailwind')
 
 @section('content')
-<div class="ed-paper pt-32 pb-16 w-full">
+@php
+    $publicationRow = 'grid grid-cols-[5rem_minmax(0,1fr)] sm:grid-cols-[8rem_minmax(0,1fr)] lg:grid-cols-[10rem_minmax(0,1fr)_14rem] gap-x-5 sm:gap-x-8 gap-y-5 border-b border-[var(--ed-hair)] py-8';
+    $publicationCover = 'row-span-2 lg:row-span-1 aspect-[210/297] w-full overflow-hidden border border-[var(--ed-hair)] bg-white';
+    $publicationAction = 'ed-btn col-start-2 lg:col-start-auto justify-center self-start lg:self-center w-full sm:w-fit lg:w-full';
+@endphp
+<div class="ed-paper pt-32 pb-12 md:pb-16 w-full">
     <div class="max-w-5xl mx-auto px-6">
         <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -9,142 +14,105 @@
                 <h1 class="ed-display text-4xl md:text-5xl mt-3">Proceedings</h1>
             </div>
             <p class="ed-quiet max-w-sm md:text-right md:pb-1">
-                Official publications of the Jambi International Conference on Engineering, Science and Technology.
+                Books of abstracts and conference proceedings, by edition.
             </p>
         </header>
-        <hr class="ed-hair mt-10">
     </div>
 </div>
 
-<div class="w-full py-16 md:py-20 bg-white">
+<section aria-labelledby="abstract-books-title" class="w-full py-12 md:py-16 bg-white">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
-            <article>
-                <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
-                    <span>01</span>
-                    <span style="color:var(--ed-accent)">Available</span>
-                </div>
+        <h2 id="abstract-books-title" class="ed-display text-3xl md:text-4xl">Book of Abstracts</h2>
 
-                <h2 class="ed-display text-2xl md:text-3xl mt-4">Book of Abstracts</h2>
-                <p class="ed-quiet text-base mt-3 leading-relaxed">
-                    Research summaries from JICEST 2025 presenters across the six conference sub-themes,
-                    published by the Faculty of Science and Technology, Universitas Jambi.
+        <article aria-labelledby="abstract-book-2026-title"
+            class="{{ $publicationRow }} mt-8 border-t">
+            <div class="{{ $publicationCover }}">
+                <img src="{{ asset('assets/img/publications/jicest-2026-book-of-abstracts-cover.png') }}"
+                    alt="Cover of the 4th JICEST 2026 Book of Abstracts"
+                    width="566" height="800" class="h-full w-full object-contain">
+            </div>
+            <div class="min-w-0 lg:self-center">
+                <p class="ed-mono text-sm" style="color:var(--ed-accent)">Current edition</p>
+                <h3 id="abstract-book-2026-title" class="ed-display text-2xl md:text-3xl mt-3">4th JICEST 2026</h3>
+                <p class="ed-quiet text-base mt-3">11 November 2026</p>
+                <p class="ed-mono text-sm ed-quiet mt-4">
+                    <span class="block sm:inline">136 pages &middot; PDF</span><span class="hidden sm:inline"> &middot; </span><span class="block sm:inline">39.3 MB</span>
                 </p>
-
-                <dl class="ed-mono text-base mt-6">
-                    <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
-                        <dt class="ed-quiet">Edition</dt>
-                        <span class="ed-leader"></span>
-                        <dd>JICEST 2025</dd>
-                    </div>
-                    <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
-                        <dt class="ed-quiet">Coverage</dt>
-                        <span class="ed-leader"></span>
-                        <dd>06 sub-themes</dd>
-                    </div>
-                    <div class="flex items-baseline gap-3 py-3 border-t border-b border-[var(--ed-hair)]">
-                        <dt class="ed-quiet">Format</dt>
-                        <span class="ed-leader"></span>
-                        <dd>PDF &middot; free download</dd>
-                    </div>
-                </dl>
-
-                <div class="mt-8 border border-[var(--ed-hair)] p-5 flex items-center gap-5">
-                    <img src="{{ asset('assets/img/publications/jicest-2025-book-of-abstracts-qr.jpeg') }}"
-                        alt="QR code linking to the JICEST 2025 Book of Abstracts"
-                        class="w-24 h-24 object-contain shrink-0" loading="lazy">
-                    <p class="ed-quiet text-base leading-relaxed">
-                        Scan the code with your phone camera, or download the PDF directly.
-                    </p>
-                </div>
-
-                <a href="{{ asset('uploads/downloads/proceedings/jicest-2025-book-of-abstracts.pdf') }}"
-                    download="Book_of_Abstract_JICEST_2025.pdf"
-                    class="ed-btn mt-8 w-full justify-center">
-                    Download PDF
-                </a>
-            </article>
-
-            <article>
-                <div class="flex items-baseline justify-between ed-mono text-sm tracking-[.14em] uppercase ed-quiet">
-                    <span>02</span>
-                    <span style="color:var(--ed-accent)">Available</span>
-                </div>
-
-                <h2 class="ed-display text-2xl md:text-3xl mt-4">The 3rd JICEST Proceedings</h2>
-                <p class="ed-quiet text-base mt-3 leading-relaxed">
-                    Full proceedings from the 3rd Jambi International Conference on Engineering,
-                    Science and Technology, held on 28 November 2025.
-                </p>
-
-                <div class="mt-8 border border-[var(--ed-hair)] p-5 grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-6 items-start">
-                    <img src="{{ asset('assets/img/publications/jicest-3rd-proceedings-2026.png') }}"
-                        alt="Cover of the 3rd JICEST conference proceedings"
-                        class="w-32 border border-[var(--ed-hair)]" loading="lazy">
-                    <dl class="ed-mono text-sm">
-                        <div class="flex items-baseline gap-3 py-2 border-t border-[var(--ed-hair)]">
-                            <dt class="ed-quiet">Issue</dt>
-                            <span class="ed-leader"></span>
-                            <dd>Vol. 2 No. 2</dd>
-                        </div>
-                        <div class="flex items-baseline gap-3 py-2 border-t border-[var(--ed-hair)]">
-                            <dt class="ed-quiet">Published</dt>
-                            <span class="ed-leader"></span>
-                            <dd>15 Jul 2026</dd>
-                        </div>
-                        <div class="flex items-baseline gap-3 py-2 border-t border-b border-[var(--ed-hair)]">
-                            <dt class="ed-quiet">Contents</dt>
-                            <span class="ed-leader"></span>
-                            <dd>35 manuscripts</dd>
-                        </div>
-                    </dl>
-                </div>
-
-                <dl class="ed-mono text-base mt-6">
-                    <div class="flex items-baseline gap-3 py-3 border-t border-[var(--ed-hair)]">
-                        <dt class="ed-quiet">Authors</dt>
-                        <span class="ed-leader"></span>
-                        <dd>200</dd>
-                    </div>
-                    <div class="flex items-baseline gap-3 py-3 border-t border-b border-[var(--ed-hair)]">
-                        <dt class="ed-quiet">Access</dt>
-                        <span class="ed-leader"></span>
-                        <dd>Open online</dd>
-                    </div>
-                </dl>
-
-                <a href="https://online-journal.unja.ac.id/PROCA/issue/view/2585" target="_blank" rel="noopener"
-                    class="ed-btn mt-8 w-full justify-center">
-                    View issue
-                </a>
-            </article>
-        </div>
-    </div>
-</div>
-
-<div class="ed-paper py-16 w-full">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="border border-[var(--ed-hair)] bg-white p-8 md:p-10">
-            <p class="ed-eyebrow">2026 proceedings</p>
-            <p class="ed-quiet mt-4 leading-relaxed max-w-2xl">
-                The 4th JICEST proceedings will be published after the conference. The secretariat will
-                announce the release date through the official conference channels.
-            </p>
-            <a href="/contact"
-                class="ed-mono text-sm tracking-[.16em] uppercase ed-underline inline-block mt-6"
-                style="color:var(--ed-accent)">
-                Contact the secretariat
+            </div>
+            <a href="{{ asset('uploads/downloads/proceedings/jicest-2026-book-of-abstracts.pdf') }}"
+                download="jicest-2026-book-of-abstracts.pdf"
+                aria-label="Download the JICEST 2026 Book of Abstracts PDF"
+                class="{{ $publicationAction }}">
+                Download PDF
             </a>
-        </div>
-    </div>
-</div>
+        </article>
 
-<div class="ed-ink-band w-full">
-    <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
-        <p class="ed-mono text-sm tracking-[.16em] uppercase text-white/70">Conference theme 2025</p>
-        <blockquote class="ed-display italic text-2xl md:text-4xl leading-snug mt-6 max-w-3xl" style="color:#fff">
-            &ldquo;Digital Transformation, Green Energy, and Advanced Materials for a Sustainable Society&rdquo;
-        </blockquote>
+        <article aria-labelledby="abstract-book-2025-title"
+            class="{{ $publicationRow }}">
+            <div class="{{ $publicationCover }}">
+                <img src="{{ asset('assets/img/publications/jicest-2025-book-of-abstracts-cover.png') }}"
+                    alt="Cover of the 3rd JICEST 2025 Book of Abstracts"
+                    width="566" height="800" class="h-full w-full object-contain" loading="lazy">
+            </div>
+            <div class="min-w-0 lg:self-center">
+                <p class="ed-mono text-sm ed-quiet">Previous edition</p>
+                <h3 id="abstract-book-2025-title" class="ed-display text-2xl md:text-3xl mt-3">3rd JICEST 2025</h3>
+                <p class="ed-quiet text-base mt-3">28 November 2025</p>
+                <p class="ed-mono text-sm ed-quiet mt-4">
+                    <span class="block sm:inline">82 pages &middot; PDF</span><span class="hidden sm:inline"> &middot; </span><span class="block sm:inline">39.4 MB</span>
+                </p>
+            </div>
+            <a href="{{ asset('uploads/downloads/proceedings/jicest-2025-book-of-abstracts.pdf') }}"
+                download="jicest-2025-book-of-abstracts.pdf"
+                aria-label="Download the JICEST 2025 Book of Abstracts PDF"
+                class="{{ $publicationAction }}">
+                Download PDF
+            </a>
+        </article>
     </div>
-</div>
+</section>
+
+<section aria-labelledby="conference-proceedings-title" class="ed-paper w-full py-12 md:py-16">
+    <div class="max-w-5xl mx-auto px-6">
+        <h2 id="conference-proceedings-title" class="ed-display text-3xl md:text-4xl">Conference Proceedings</h2>
+
+        <article aria-labelledby="proceedings-2026-title"
+            class="{{ $publicationRow }} mt-8 border-t">
+            <div class="{{ $publicationCover }}" role="img" aria-label="Placeholder cover for the 4th JICEST 2026 proceedings">
+                <div aria-hidden="true" class="flex h-full flex-col justify-between p-2 sm:p-3 text-center">
+                    <p class="ed-mono text-[.5rem] sm:text-[.65rem] leading-relaxed" style="color:var(--ed-accent)">4th JICEST<br>2026</p>
+                    <p class="ed-display text-[.65rem] sm:text-base lg:text-lg">Conference<br>Proceedings</p>
+                    <p class="ed-mono text-[.45rem] sm:text-[.6rem] leading-relaxed ed-quiet">Cover pending</p>
+                </div>
+            </div>
+            <div class="min-w-0 lg:self-center">
+                <p class="ed-mono text-sm" style="color:var(--ed-accent)">Current edition</p>
+                <h3 id="proceedings-2026-title" class="ed-display text-2xl md:text-3xl mt-3">4th JICEST 2026</h3>
+                <p class="ed-quiet text-base mt-3 leading-relaxed">
+                    The proceedings will be listed here when available.
+                </p>
+            </div>
+            <p class="ed-mono text-base col-start-2 lg:col-start-auto self-start lg:self-center" style="color:var(--ed-accent)">Coming soon</p>
+        </article>
+
+        <article aria-labelledby="proceedings-2025-title"
+            class="{{ $publicationRow }}">
+            <div class="{{ $publicationCover }}">
+                <img src="{{ asset('assets/img/publications/jicest-3rd-proceedings-2026.png') }}"
+                    alt="Cover of the 3rd JICEST conference proceedings"
+                    class="h-full w-full object-contain" loading="lazy">
+            </div>
+            <div class="min-w-0 lg:self-center">
+                <p class="ed-mono text-sm ed-quiet">Previous edition</p>
+                <h3 id="proceedings-2025-title" class="ed-display text-2xl md:text-3xl mt-3">3rd JICEST 2025</h3>
+                <p class="ed-quiet text-base mt-3">Vol. 2 No. 2 &middot; Published July 2026</p>
+            </div>
+            <a href="https://online-journal.unja.ac.id/PROCA/issue/view/2585" target="_blank" rel="noopener"
+                class="{{ $publicationAction }}">
+                View proceedings
+                <span class="sr-only">for the 3rd JICEST 2025 (opens in a new tab)</span>
+            </a>
+        </article>
+    </div>
+</section>
 @endsection

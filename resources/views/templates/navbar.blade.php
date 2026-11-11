@@ -14,7 +14,7 @@
         </a>
 
         <button type="button" onclick="toggleNavbar('navbar-dropdown', this)"
-            class="{{$focus}} md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-[#0b1b14] border border-[rgba(11,27,20,0.14)]"
+            class="{{$focus}} xl:hidden ml-auto shrink-0 w-11 h-11 flex flex-col items-center justify-center gap-[5px] text-[#0b1b14] border border-[rgba(11,27,20,0.14)]"
             aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-dropdown">
             <span class="block w-5 h-px bg-current"></span>
             <span class="block w-5 h-px bg-current"></span>
@@ -22,8 +22,8 @@
         </button>
 
         <div id="navbar-dropdown"
-            class="scale-0 h-0 overflow-hidden w-full md:overflow-visible md:scale-100 md:h-auto md:w-auto">
-            <div class="border-t border-[rgba(11,27,20,0.14)] md:border-t-0 mt-3 md:mt-0 pb-4 md:pb-0">
+            class="absolute left-0 top-full px-4 sm:px-6 bg-[#fbfaf5] border-b border-[rgba(11,27,20,0.14)] invisible scale-0 h-0 overflow-hidden w-full xl:visible xl:static xl:px-0 xl:bg-transparent xl:border-b-0 xl:overflow-visible xl:scale-100 xl:h-auto xl:w-auto">
+            <div class="pt-3 xl:pt-0 pb-4 xl:pb-0">
                 @include('templates.navlist', [
                     'navList' => [
                         ['name' => 'Home', 'type' => 'single', 'link' => '/', 'inclusion' => ['Home']],
@@ -62,15 +62,21 @@
         const element = document.getElementById(id);
         const opening = element.classList.contains('scale-0');
         if (opening) {
+            element.classList.remove('invisible');
             element.classList.remove('scale-0');
             element.classList.add('scale-100');
-            element.classList.add('h-full');
+            element.classList.add('h-auto');
             element.classList.remove('h-0');
+            element.classList.remove('overflow-hidden');
+            element.classList.add('overflow-visible');
         } else {
+            element.classList.add('invisible');
             element.classList.add('scale-0');
             element.classList.remove('scale-100');
-            element.classList.remove('h-full');
+            element.classList.remove('h-auto');
             element.classList.add('h-0');
+            element.classList.add('overflow-hidden');
+            element.classList.remove('overflow-visible');
         }
         if (trigger) trigger.setAttribute('aria-expanded', opening ? 'true' : 'false');
     }

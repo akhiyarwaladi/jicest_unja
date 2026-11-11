@@ -2,6 +2,7 @@
 
 // Keep previously published asset URLs working after the public folder cleanup.
 return [
+    'uploads/downloads/proceedings/Book Of Abstract 4th JICEST.pdf' => 'uploads/downloads/proceedings/jicest-2026-book-of-abstracts.pdf',
     'Dr.-rer.-nat-Lucky-Zaehir-Maulana.pdf' => 'uploads/downloads/speakers/lucky-zaehir-maulana.pdf',
     'assets/Source/Magnific-Popup-master.zip' => 'assets/vendor-archives/magnific-popup-master.zip',
     'assets/Source/OwlCarousel2-2.3.4.zip' => 'assets/vendor-archives/owlcarousel2-2.3.4.zip',
